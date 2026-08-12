@@ -13,34 +13,49 @@ import { useCallback, useEffect, useState } from "react";
 
 import AboutSection from "@/components/sections/about-section";
 import {
+  DevlogDoc,
   DevlogSection,
-  DevlogWindow,
   type DevlogPost,
 } from "@/components/sections/devlog-section";
 import {
+  ProjectDoc,
   ProjectsSection,
-  ProjectWindow,
-  projects,
+  type Project,
 } from "@/components/sections/projects-section";
 import Dock, { type DockItemData } from "@/components/ui/dock";
 import MaskedHeading from "@/components/ui/masked-heading";
+import WindowFrame from "@/components/ui/window-frame";
 import WireframeBall from "@/components/ui/wireframe-ball";
 
-/** 열 수 있는 창의 종류. 상세 창은 프로젝트·글마다 하나씩 생긴다. */
-type WindowId =
-  | "about"
-  | "projects"
-  | "devlog"
-  | `project:${string}`
-  | `post:${string}`;
+/** 열 수 있는 창의 종류. 프로젝트·글 상세는 "docs" 창 하나가 탭으로 품는다. */
+type WindowId = "about" | "projects" | "devlog" | "docs";
+
+/** docs 창의 탭 하나. 접두사로 어느 목록에서 찾을지 구분한다. */
+type DocId = `project:${string}` | `post:${string}`;
+
+/** "project:ait" → "ait.md" */
+function docLabel(docId: DocId) {
+  return `${docId.slice(docId.indexOf(":") + 1)}.md`;
+}
 
 const CASCADE = 40; // 창이 하나씩 늘 때마다 어긋나게 놓을 거리(px)
 const ACTIVE_ITEM = "border-[#8ddbf2]/70 bg-[#8ddbf2]/15 text-white";
 
-export default function HomeScene({ posts }: { posts: DevlogPost[] }) {
+export default function HomeScene({
+  posts,
+  projects,
+}: {
+  posts: DevlogPost[];
+  projects: Project[];
+}) {
   const [paused, setPaused] = useState(false);
   // 배열 순서가 곧 쌓임 순서다. 마지막 항목이 맨 앞 창.
   const [stack, setStack] = useState<WindowId[]>([]);
+  // docs 창이 품고 있는 탭 목록과 그중 보고 있는 탭.
+  const [docs, setDocs] = useState<DocId[]>([]);
+  const [activeDoc, setActiveDoc] = useState<DocId | null>(null);
+  // 보고 있던 탭을 또 눌렀을 때도 창이 펼쳐지도록 문서를 띄운 횟수를 센다.
+  const [docReveal, setDocReveal] = useState(0);
 
   const focusWindow = useCallback((id: WindowId) => {
     setStack((prev) =>
@@ -50,11 +65,56 @@ export default function HomeScene({ posts }: { posts: DevlogPost[] }) {
 
   const closeWindow = useCallback((id: WindowId) => {
     setStack((prev) => prev.filter((w) => w !== id));
+    // docs 창을 닫으면 열려 있던 탭도 함께 버린다.
+    if (id === "docs") {
+      setDocs([]);
+      setActiveDoc(null);
+    }
   }, []);
 
-  const closeTopWindow = useCallback(() => {
-    setStack((prev) => prev.slice(0, -1));
+  const closeAllWindows = useCallback(() => {
+    setStack([]);
+    setDocs([]);
+    setActiveDoc(null);
   }, []);
+
+  /** 이미 열려 있는 문서면 그 탭으로 옮기고, 아니면 탭을 새로 만든다. */
+  const openDoc = useCallback(
+    (docId: DocId) => {
+      setDocs((prev) => (prev.includes(docId) ? prev : [...prev, docId]));
+      setActiveDoc(docId);
+      setDocReveal((count) => count + 1);
+      focusWindow("docs");
+    },
+    [focusWindow],
+  );
+
+  const closeDoc = useCallback(
+    (docId: DocId) => {
+      const index = docs.indexOf(docId);
+      const next = docs.filter((d) => d !== docId);
+
+      setDocs(next);
+      if (next.length === 0) {
+        closeWindow("docs");
+      } else if (activeDoc === docId) {
+        // 닫은 탭이 보고 있던 탭이면 왼쪽 탭으로, 맨 왼쪽이었으면 오른쪽 탭으로 옮긴다.
+        setActiveDoc(next[Math.max(index - 1, 0)]);
+      }
+    },
+    [docs, activeDoc, closeWindow],
+  );
+
+  // 맨 앞 창을 한 단계만 닫는다. docs 창은 탭이 여러 개면 보고 있는 탭만 닫는다.
+  const closeTopWindow = useCallback(() => {
+    const top = stack.at(-1);
+    if (!top) return;
+    if (top === "docs" && activeDoc && docs.length > 1) {
+      closeDoc(activeDoc);
+      return;
+    }
+    closeWindow(top);
+  }, [stack, activeDoc, docs.length, closeDoc, closeWindow]);
 
   // Escape는 맨 앞 창 하나만 닫는다.
   useEffect(() => {
@@ -68,13 +128,23 @@ export default function HomeScene({ posts }: { posts: DevlogPost[] }) {
   const activeItemClass = (id: WindowId) =>
     stack.includes(id) ? ACTIVE_ITEM : undefined;
 
+  const findPost = (docId: DocId) =>
+    posts.find((p) => `post:${p.slug}` === docId);
+  const findProject = (docId: DocId) =>
+    projects.find((p) => `project:${p.slug}` === docId);
+
+  // 제목줄에 나열할 탭. 목록에서 사라진 문서는 조용히 걸러낸다.
+  const docTabs = docs
+    .filter((docId) => findPost(docId) ?? findProject(docId))
+    .map((docId) => ({ id: docId, label: docLabel(docId) }));
+
   // 메인 Dock에 표시할 메뉴 목록이다.
   const navigationItems: DockItemData[] = [
     {
       icon: <House aria-hidden="true" size={20} strokeWidth={1.7} />,
       label: "Home",
       // 홈은 열린 창을 모두 닫아 배경만 남긴다.
-      onClick: () => setStack([]),
+      onClick: closeAllWindows,
       className: stack.length === 0 ? ACTIVE_ITEM : undefined,
       active: stack.length === 0,
     },
@@ -209,7 +279,8 @@ export default function HomeScene({ posts }: { posts: DevlogPost[] }) {
             return (
               <ProjectsSection
                 key={id}
-                onOpen={(projectId) => focusWindow(`project:${projectId}`)}
+                projects={projects}
+                onOpen={(slug) => openDoc(`project:${slug}`)}
                 {...frame}
               />
             );
@@ -220,23 +291,37 @@ export default function HomeScene({ posts }: { posts: DevlogPost[] }) {
               <DevlogSection
                 key={id}
                 posts={posts}
-                onOpen={(slug) => focusWindow(`post:${slug}`)}
+                onOpen={(slug) => openDoc(`post:${slug}`)}
                 {...frame}
               />
             );
           }
 
-          if (id.startsWith("post:")) {
-            const post = posts.find((p) => `post:${p.slug}` === id);
-            return post ? (
-              <DevlogWindow key={id} post={post} {...frame} />
-            ) : null;
-          }
+          // 프로젝트와 글 상세를 탭으로 품는 창. 보고 있는 탭의 본문만 그린다.
+          if (!activeDoc) return null;
 
-          const project = projects.find((p) => `project:${p.id}` === id);
-          return project ? (
-            <ProjectWindow key={id} project={project} {...frame} />
-          ) : null;
+          const post = findPost(activeDoc);
+          const project = findProject(activeDoc);
+          if (!post && !project) return null;
+
+          return (
+            <WindowFrame
+              key={id}
+              title={docLabel(activeDoc)}
+              tabs={docTabs}
+              activeTab={activeDoc}
+              onSelectTab={setActiveDoc}
+              onCloseTab={closeDoc}
+              reveal={docReveal}
+              defaultWidth={620}
+              defaultHeight={560}
+              {...frame}
+            >
+              {/* 탭을 바꿀 때 등장 애니메이션을 다시 재생하도록 key를 준다. */}
+              {post ? <DevlogDoc key={activeDoc} post={post} /> : null}
+              {project ? <ProjectDoc key={activeDoc} project={project} /> : null}
+            </WindowFrame>
+          );
         })}
       </div>
 
