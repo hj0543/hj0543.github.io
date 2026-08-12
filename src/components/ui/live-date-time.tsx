@@ -34,19 +34,16 @@ export default function LiveDateTime() {
   const dateTime = now ? getDateTimeParts(now) : null;
 
   return (
-    <div className="pointer-events-none fixed right-4 top-24 z-30 rounded-2xl border border-white/10 bg-[#0b0714]/35 px-3.5 py-2.5 text-right shadow-[0_12px_36px_rgba(0,0,0,0.18)] backdrop-blur-md sm:right-8 sm:top-8 sm:px-4 sm:py-3">
-      <p className="text-[9px] font-medium tracking-[0.22em] text-white/45 sm:text-[10px]">
-        LOCAL TIME
-      </p>
+    <div className="pointer-events-none fixed inset-0 z-30 flex items-center justify-center px-4">
       <time
-        className="mt-1 flex items-baseline justify-end gap-2 tabular-nums text-white/90"
+        className="flex flex-col items-center justify-center gap-2 whitespace-nowrap text-center font-light tabular-nums [text-shadow:0_2px_24px_rgba(0,0,0,0.4)] sm:gap-3"
         dateTime={now?.toISOString()}
         aria-label={dateTime?.label ?? "현재 날짜와 시간을 불러오는 중"}
       >
-        <span className="text-[10px] tracking-[0.08em] text-white/60 sm:text-xs">
+        <span className="text-xl tracking-[0.12em] text-white/45 sm:text-3xl">
           {dateTime?.date ?? "0000.00.00"}
         </span>
-        <span className="text-base font-semibold tracking-[-0.04em] sm:text-xl">
+        <span className="text-5xl font-medium tracking-[-0.05em] text-white/30 sm:text-7xl lg:text-8xl">
           {dateTime?.time ?? "00:00"}
         </span>
       </time>
