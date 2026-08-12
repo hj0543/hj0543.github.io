@@ -11,6 +11,7 @@ import {
 } from "lucide-react";
 import { useState } from "react";
 
+import AboutSection from "@/components/sections/about-section";
 import Dock, { type DockItemData } from "@/components/ui/dock";
 import MaskedHeading from "@/components/ui/masked-heading";
 import WireframeBall from "@/components/ui/wireframe-ball";
@@ -147,6 +148,11 @@ export default function HomeScene() {
           "absolute inset-0 cursor-grab text-fuchsia-100 active:cursor-grabbing"
         }                                        // 전체 화면 배치 및 드래그 커서
       />
+
+      {/* 배경은 그대로 두고 선택된 섹션의 창만 띄운다. 창을 닫으면 홈으로 돌아간다. */}
+      {activeSection === "about" ? (
+        <AboutSection onClose={() => setActiveSection("home")} />
+      ) : null}
 
       {/*
         Dock의 바깥 래퍼는 포인터 이벤트를 무시하고,
