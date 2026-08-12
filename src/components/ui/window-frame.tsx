@@ -485,7 +485,8 @@ export default function WindowFrame<T extends string = string>({
         {minimized ? null : (
           <div
             ref={bodyRef}
-            className="min-h-0 flex-1 overflow-y-auto overscroll-contain"
+            // @container: 본문이 창 크기를 기준으로 반응하도록 컨테이너 쿼리 기준점을 만든다.
+            className="min-h-0 flex-1 overflow-y-auto overscroll-contain @container"
           >
             {children}
           </div>

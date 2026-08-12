@@ -147,7 +147,8 @@ export function ProjectsSection({
           카드를 누르면 새 창에서 자세히 볼 수 있습니다.
         </motion.p>
 
-        <div className="mt-6 grid gap-4 sm:grid-cols-2">
+        {/* 브라우저가 아니라 창 폭 기준으로 열 수가 늘어난다. 1열 → 576px 2열 → 1152px 3열 → 1536px 4열 */}
+        <div className="mt-6 grid grid-cols-1 gap-4 @xl:grid-cols-2 @[72rem]:grid-cols-3 @[96rem]:grid-cols-4">
           {projects.map((project) => (
             <motion.button
               key={project.slug}
@@ -155,7 +156,7 @@ export function ProjectsSection({
               type="button"
               onClick={() => onOpen(project.slug)}
               className={`group cursor-pointer rounded-xl border border-ink/10 bg-ink/4 p-3.5 text-left transition-colors hover:border-accent/45 hover:bg-ink/8 focus-visible:border-accent/45 focus-visible:outline-none ${
-                project.featured ? "sm:col-span-2" : ""
+                project.featured ? "@xl:col-span-2" : ""
               }`}
             >
               <Thumb project={project} />
