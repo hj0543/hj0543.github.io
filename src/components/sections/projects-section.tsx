@@ -52,6 +52,7 @@ export const projects: Project[] = [
   {
     id: "3",
     name: "Ait",
+    thumbnail: "/projects/Ait.png",
     tagline: "SSAFY 공통 프로젝트 - 웹 기술",
     role: "Frontend Leader",
     period: "2026.07 ~ 2026.08",

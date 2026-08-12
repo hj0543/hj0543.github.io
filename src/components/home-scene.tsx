@@ -13,6 +13,11 @@ import { useCallback, useEffect, useState } from "react";
 
 import AboutSection from "@/components/sections/about-section";
 import {
+  DevlogSection,
+  DevlogWindow,
+  type DevlogPost,
+} from "@/components/sections/devlog-section";
+import {
   ProjectsSection,
   ProjectWindow,
   projects,
@@ -21,13 +26,18 @@ import Dock, { type DockItemData } from "@/components/ui/dock";
 import MaskedHeading from "@/components/ui/masked-heading";
 import WireframeBall from "@/components/ui/wireframe-ball";
 
-/** 열 수 있는 창의 종류. 프로젝트 상세는 프로젝트마다 창이 하나씩 생긴다. */
-type WindowId = "about" | "projects" | `project:${string}`;
+/** 열 수 있는 창의 종류. 상세 창은 프로젝트·글마다 하나씩 생긴다. */
+type WindowId =
+  | "about"
+  | "projects"
+  | "devlog"
+  | `project:${string}`
+  | `post:${string}`;
 
 const CASCADE = 40; // 창이 하나씩 늘 때마다 어긋나게 놓을 거리(px)
 const ACTIVE_ITEM = "border-[#8ddbf2]/70 bg-[#8ddbf2]/15 text-white";
 
-export default function HomeScene() {
+export default function HomeScene({ posts }: { posts: DevlogPost[] }) {
   const [paused, setPaused] = useState(false);
   // 배열 순서가 곧 쌓임 순서다. 마지막 항목이 맨 앞 창.
   const [stack, setStack] = useState<WindowId[]>([]);
@@ -42,14 +52,18 @@ export default function HomeScene() {
     setStack((prev) => prev.filter((w) => w !== id));
   }, []);
 
+  const closeTopWindow = useCallback(() => {
+    setStack((prev) => prev.slice(0, -1));
+  }, []);
+
   // Escape는 맨 앞 창 하나만 닫는다.
   useEffect(() => {
     const onKeyDown = (event: KeyboardEvent) => {
-      if (event.key === "Escape") setStack((prev) => prev.slice(0, -1));
+      if (event.key === "Escape") closeTopWindow();
     };
     window.addEventListener("keydown", onKeyDown);
     return () => window.removeEventListener("keydown", onKeyDown);
-  }, []);
+  }, [closeTopWindow]);
 
   const activeItemClass = (id: WindowId) =>
     stack.includes(id) ? ACTIVE_ITEM : undefined;
@@ -86,7 +100,9 @@ export default function HomeScene() {
     {
       icon: <NotebookPen aria-hidden="true" size={20} strokeWidth={1.7} />,
       label: "Devlog",
-      onClick: () => {},
+      onClick: () => focusWindow("devlog"),
+      className: activeItemClass("devlog"),
+      active: stack.includes("devlog"),
     },
   ];
 
@@ -124,6 +140,7 @@ export default function HomeScene() {
         <MaskedHeading
           text="Belog"                        // 화면에 표시할 문구
           tag="h1"                            // 시맨틱 HTML 태그
+          className="[font-family:var(--font-geist-sans)]" // 좌상단 제목은 기존 Geist Sans 사용
           mediaType="video"                   // 글자 내부에 표시할 미디어 종류
           src="/background/sky_video.mp4"     // 글자에 마스킹할 비디오 경로
           poster="/background/sky.jpg"        // 비디오가 로드되기 전에 표시할 이미지
@@ -168,9 +185,16 @@ export default function HomeScene() {
 
       {/*
         배경은 그대로 두고 열린 창만 겹쳐서 띄운다.
-        래퍼는 포인터 이벤트를 흘려보내서 창 바깥에서는 배경 도형을 계속 드래그할 수 있다.
+        빈 바깥 영역을 누르면 맨 앞 창 하나만 닫는다.
       */}
-      <div className="pointer-events-none fixed inset-0 z-40">
+      <div
+        className={`fixed inset-0 z-40 ${
+          stack.length > 0 ? "pointer-events-auto" : "pointer-events-none"
+        }`}
+        onPointerDown={(event) => {
+          if (event.target === event.currentTarget) closeTopWindow();
+        }}
+      >
         {stack.map((id, index) => {
           const frame = {
             z: index,
@@ -189,6 +213,24 @@ export default function HomeScene() {
                 {...frame}
               />
             );
+          }
+
+          if (id === "devlog") {
+            return (
+              <DevlogSection
+                key={id}
+                posts={posts}
+                onOpen={(slug) => focusWindow(`post:${slug}`)}
+                {...frame}
+              />
+            );
+          }
+
+          if (id.startsWith("post:")) {
+            const post = posts.find((p) => `post:${p.slug}` === id);
+            return post ? (
+              <DevlogWindow key={id} post={post} {...frame} />
+            ) : null;
           }
 
           const project = projects.find((p) => `project:${p.id}` === id);

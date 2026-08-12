@@ -1,30 +1,30 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, JetBrains_Mono } from "next/font/google";
 import SmoothCursor from "@/components/ui/smooth-cursor";
 import "./globals.css";
 
-// next/font가 내려받은 Geist Sans를 전역 CSS 변수로 등록한다.
+// 좌상단 제목에서만 사용할 기존 Geist Sans를 등록한다.
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
 });
 
-// 코드나 숫자 표시에 사용할 Geist Mono를 전역 CSS 변수로 등록한다.
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+// next/font가 내려받은 JetBrains Mono를 전역 CSS 변수로 등록한다.
+const jetbrainsMono = JetBrains_Mono({
+  variable: "--font-jetbrains-mono",
   subsets: ["latin"],
 });
 
 // 모든 페이지에서 공통으로 사용하는 기본 문서 메타데이터다.
 export const metadata: Metadata = {
-  title: "HJ",
+  title: "Belog",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${geistSans.variable} ${jetbrainsMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
         {/* 각 route의 페이지 컴포넌트가 이 위치에 렌더링된다. */}
