@@ -23,6 +23,7 @@ import {
   type Project,
 } from "@/components/sections/projects-section";
 import Dock, { type DockItemData } from "@/components/ui/dock";
+import LiveDateTime from "@/components/ui/live-date-time";
 import MaskedHeading from "@/components/ui/masked-heading";
 import WindowFrame from "@/components/ui/window-frame";
 import WireframeBall from "@/components/ui/wireframe-ball";
@@ -229,6 +230,8 @@ export default function HomeScene({
           textScale={0.15}                     // 컨테이너 너비 대비 글자 크기 비율
         />
       </div>
+
+      <LiveDateTime />
 
       <WireframeBall
         shape="icosahedron"                     // 하단 메뉴 선택과 무관하게 표시할 고정 도형
