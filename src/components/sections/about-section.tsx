@@ -32,15 +32,18 @@ const links = [
   { icon: Mail, label: "Email", href: "mailto:hj0543@gmail.com" },
 ];
 
-export default function AboutSection({ onClose }: { onClose?: () => void }) {
+export default function AboutSection(frame: {
+  onClose?: () => void;
+  z?: number;
+  onFocus?: () => void;
+  offset?: number;
+}) {
   return (
-    /* 래퍼는 포인터 이벤트를 흘려보내서 창 바깥에서는 배경 도형을 계속 드래그할 수 있다. */
-    <div className="pointer-events-none fixed inset-0 z-40">
       <WindowFrame
         title="about-me.tsx"
-        onClose={onClose}
         defaultWidth={560}
         defaultHeight={480}
+        {...frame}
       >
         <motion.div
           variants={container}
@@ -113,6 +116,5 @@ export default function AboutSection({ onClose }: { onClose?: () => void }) {
           </motion.div>
         </motion.div>
       </WindowFrame>
-    </div>
   );
 }

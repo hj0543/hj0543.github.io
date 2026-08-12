@@ -9,67 +9,84 @@ import {
   Play,
   UserRound,
 } from "lucide-react";
-import { useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 
 import AboutSection from "@/components/sections/about-section";
+import {
+  ProjectsSection,
+  ProjectWindow,
+  projects,
+} from "@/components/sections/projects-section";
 import Dock, { type DockItemData } from "@/components/ui/dock";
 import MaskedHeading from "@/components/ui/masked-heading";
 import WireframeBall from "@/components/ui/wireframe-ball";
 
-type NavigationSection =
-  | "home"
-  | "about"
-  | "projects"
-  | "playground"
-  | "devlog";
+/** 열 수 있는 창의 종류. 프로젝트 상세는 프로젝트마다 창이 하나씩 생긴다. */
+type WindowId = "about" | "projects" | `project:${string}`;
+
+const CASCADE = 40; // 창이 하나씩 늘 때마다 어긋나게 놓을 거리(px)
+const ACTIVE_ITEM = "border-[#8ddbf2]/70 bg-[#8ddbf2]/15 text-white";
 
 export default function HomeScene() {
-  // 재생 상태와 현재 선택된 하단 메뉴를 각각 독립적으로 관리한다.
   const [paused, setPaused] = useState(false);
-  const [activeSection, setActiveSection] =
-    useState<NavigationSection>("home");
+  // 배열 순서가 곧 쌓임 순서다. 마지막 항목이 맨 앞 창.
+  const [stack, setStack] = useState<WindowId[]>([]);
 
-  const activeItemClass = (section: NavigationSection) =>
-    activeSection === section
-      ? "border-[#8ddbf2]/70 bg-[#8ddbf2]/15 text-white"
-      : undefined;
+  const focusWindow = useCallback((id: WindowId) => {
+    setStack((prev) =>
+      prev.at(-1) === id ? prev : [...prev.filter((w) => w !== id), id],
+    );
+  }, []);
+
+  const closeWindow = useCallback((id: WindowId) => {
+    setStack((prev) => prev.filter((w) => w !== id));
+  }, []);
+
+  // Escape는 맨 앞 창 하나만 닫는다.
+  useEffect(() => {
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setStack((prev) => prev.slice(0, -1));
+    };
+    window.addEventListener("keydown", onKeyDown);
+    return () => window.removeEventListener("keydown", onKeyDown);
+  }, []);
+
+  const activeItemClass = (id: WindowId) =>
+    stack.includes(id) ? ACTIVE_ITEM : undefined;
 
   // 메인 Dock에 표시할 메뉴 목록이다.
   const navigationItems: DockItemData[] = [
     {
       icon: <House aria-hidden="true" size={20} strokeWidth={1.7} />,
       label: "Home",
-      onClick: () => setActiveSection("home"),
-      className: activeItemClass("home"),
-      active: activeSection === "home",
+      // 홈은 열린 창을 모두 닫아 배경만 남긴다.
+      onClick: () => setStack([]),
+      className: stack.length === 0 ? ACTIVE_ITEM : undefined,
+      active: stack.length === 0,
     },
     {
       icon: <UserRound aria-hidden="true" size={20} strokeWidth={1.7} />,
       label: "About Me",
-      onClick: () => setActiveSection("about"),
+      onClick: () => focusWindow("about"),
       className: activeItemClass("about"),
-      active: activeSection === "about",
+      active: stack.includes("about"),
     },
     {
       icon: <FolderKanban aria-hidden="true" size={20} strokeWidth={1.7} />,
       label: "Projects",
-      onClick: () => setActiveSection("projects"),
+      onClick: () => focusWindow("projects"),
       className: activeItemClass("projects"),
-      active: activeSection === "projects",
+      active: stack.includes("projects"),
     },
     {
       icon: <Gamepad2 aria-hidden="true" size={20} strokeWidth={1.7} />,
       label: "Playground",
-      onClick: () => setActiveSection("playground"),
-      className: activeItemClass("playground"),
-      active: activeSection === "playground",
+      onClick: () => {},
     },
     {
       icon: <NotebookPen aria-hidden="true" size={20} strokeWidth={1.7} />,
       label: "Devlog",
-      onClick: () => setActiveSection("devlog"),
-      className: activeItemClass("devlog"),
-      active: activeSection === "devlog",
+      onClick: () => {},
     },
   ];
 
@@ -149,10 +166,37 @@ export default function HomeScene() {
         }                                        // 전체 화면 배치 및 드래그 커서
       />
 
-      {/* 배경은 그대로 두고 선택된 섹션의 창만 띄운다. 창을 닫으면 홈으로 돌아간다. */}
-      {activeSection === "about" ? (
-        <AboutSection onClose={() => setActiveSection("home")} />
-      ) : null}
+      {/*
+        배경은 그대로 두고 열린 창만 겹쳐서 띄운다.
+        래퍼는 포인터 이벤트를 흘려보내서 창 바깥에서는 배경 도형을 계속 드래그할 수 있다.
+      */}
+      <div className="pointer-events-none fixed inset-0 z-40">
+        {stack.map((id, index) => {
+          const frame = {
+            z: index,
+            offset: index * CASCADE,
+            onFocus: () => focusWindow(id),
+            onClose: () => closeWindow(id),
+          };
+
+          if (id === "about") return <AboutSection key={id} {...frame} />;
+
+          if (id === "projects") {
+            return (
+              <ProjectsSection
+                key={id}
+                onOpen={(projectId) => focusWindow(`project:${projectId}`)}
+                {...frame}
+              />
+            );
+          }
+
+          const project = projects.find((p) => `project:${p.id}` === id);
+          return project ? (
+            <ProjectWindow key={id} project={project} {...frame} />
+          ) : null;
+        })}
+      </div>
 
       {/*
         Dock의 바깥 래퍼는 포인터 이벤트를 무시하고,

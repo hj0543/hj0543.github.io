@@ -20,6 +20,12 @@ export type WindowFrameProps = {
   defaultHeight?: number;
   minWidth?: number;
   minHeight?: number;
+  /** 창이 여러 개 열렸을 때의 쌓임 순서. */
+  z?: number;
+  /** 창 아무 곳이나 누르면 맨 앞으로 올린다. */
+  onFocus?: () => void;
+  /** 나중에 열린 창을 계단식으로 어긋나게 놓는 거리(px). */
+  offset?: number;
   className?: string;
 };
 
@@ -61,6 +67,9 @@ export default function WindowFrame({
   defaultHeight = 460,
   minWidth = 320,
   minHeight = 200,
+  z,
+  onFocus,
+  offset = 0,
   className,
 }: WindowFrameProps) {
   // 첫 렌더에서 뷰포트 크기에 맞춘 초기 위치를 계산한다(클릭으로 열리므로 SSR 대상이 아니다).
@@ -71,7 +80,12 @@ export default function WindowFrame({
     const { vw, vh } = viewport();
     const w = Math.min(defaultWidth, vw - MARGIN * 2);
     const h = Math.min(defaultHeight, vh - MARGIN - DOCK_SAFE);
-    return { x: (vw - w) / 2, y: Math.max((vh - DOCK_SAFE - h) / 2, MARGIN), w, h };
+    return clampPosition({
+      x: (vw - w) / 2 + offset,
+      y: Math.max((vh - DOCK_SAFE - h) / 2, MARGIN) + offset,
+      w,
+      h,
+    });
   });
 
   const [maximized, setMaximized] = useState(false);
@@ -103,20 +117,13 @@ export default function WindowFrame({
     }
   }, [maximized, rect]);
 
-  // Escape로 닫고, 브라우저 창이 줄어들면 창을 화면 안으로 되돌린다.
+  // 브라우저 창이 줄어들면 창을 화면 안으로 되돌린다.
+  // Escape 처리는 맨 앞 창 하나만 닫아야 해서 창 목록을 아는 쪽이 맡는다.
   useEffect(() => {
-    const onKeyDown = (event: KeyboardEvent) => {
-      if (event.key === "Escape") onClose?.();
-    };
     const onResize = () => setRect((current) => clampPosition(current));
-
-    window.addEventListener("keydown", onKeyDown);
     window.addEventListener("resize", onResize);
-    return () => {
-      window.removeEventListener("keydown", onKeyDown);
-      window.removeEventListener("resize", onResize);
-    };
-  }, [onClose]);
+    return () => window.removeEventListener("resize", onResize);
+  }, []);
 
   const beginGesture = (
     event: React.PointerEvent<HTMLElement>,
@@ -202,11 +209,13 @@ export default function WindowFrame({
       transition={{ duration: 0.28, ease: "easeOut" }}
       role="dialog"
       aria-label={title}
+      onPointerDownCapture={onFocus}
       style={{
         left: rect.x,
         top: rect.y,
         width: rect.w,
         height: rect.h,
+        zIndex: z,
       }}
       className="pointer-events-auto absolute"
     >
