@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, JetBrains_Mono } from "next/font/google";
 import localFont from "next/font/local";
+import BootScreen from "@/components/ui/boot-screen";
 import ThemedCursor from "@/components/ui/themed-cursor";
 import "./globals.css";
 
@@ -63,6 +64,8 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         {/* 각 route의 페이지 컴포넌트가 이 위치에 렌더링된다. */}
         {children}
 
+        {/* 첫 진입에만 보이는 부팅 화면. 세션 안에서는 다시 뜨지 않는다. */}
+        <BootScreen />
         <ThemedCursor />
       </body>
     </html>
