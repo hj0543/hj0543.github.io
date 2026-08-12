@@ -104,15 +104,15 @@ export default function HomeScene() {
         className="absolute left-8 top-8 z-30 w-[min(82vw,32rem)]" // 좌상단 위치, 레이어 순서, 반응형 너비
       >
         <MaskedHeading
-          text="Belog"                       // 화면에 표시할 문구
-          tag="h1"                           // 시맨틱 HTML 태그
-          mediaType="video"                  // 글자 내부에 표시할 미디어 종류
+          text="Belog"                        // 화면에 표시할 문구
+          tag="h1"                            // 시맨틱 HTML 태그
+          mediaType="video"                   // 글자 내부에 표시할 미디어 종류
           src="/background/sky_video.mp4"     // 글자에 마스킹할 비디오 경로
           poster="/background/sky.jpg"        // 비디오가 로드되기 전에 표시할 이미지
           fillScale={1.35}                    // 글자 내부 이미지 확대 비율
           parallax={24}                       // 마우스 이동에 따른 이미지 이동 거리(px)
           drift={10}                          // 이미지의 느린 자동 움직임 크기(px)
-          brightness={1}                   // 글자 내부 이미지 밝기
+          brightness={1}                      // 글자 내부 이미지 밝기
           saturation={1.1}                    // 글자 내부 이미지 채도
           reveal="wipe"                       // 문구가 나타나는 애니메이션 방식
           trigger="mount"                     // 페이지가 열릴 때 애니메이션 실행
@@ -121,7 +121,7 @@ export default function HomeScene() {
           weight={700}                        // 글자 굵기
           tracking={-0.020}                   // 글자 간격(em)
           lineHeight={1.08}                   // g, y처럼 아래로 내려오는 글자가 잘리지 않는 줄 높이
-          textScale={0.1}                     // 컨테이너 너비 대비 글자 크기 비율
+          textScale={0.15}                     // 컨테이너 너비 대비 글자 크기 비율
         />
       </div>
 
