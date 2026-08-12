@@ -27,6 +27,9 @@ const skills = [
   "java",
 ];
 
+// SW 역량테스트 등급. CAREER와 HIGHLIGHTS가 같은 값을 공유한다.
+const swCompetencyGrade = "Grade A+ (Python)";
+
 // 경력. 항목을 추가하면 카드에 순서대로 그려진다.
 const career = [
   {
@@ -36,7 +39,7 @@ const career = [
     details: [
       "1학기 성적최우수 (1st)",
       "Monthly member (1, 3월)",
-      "SAMSUNG SW Competency Test - Grade A+ (Python)",
+      `SAMSUNG SW Competency Test - ${swCompetencyGrade}`,
     ],
   },
   {
@@ -51,6 +54,13 @@ const career = [
     period: "2019.03 ~ 2021.06",
     details: ["근무유공표창 2회", "경계작전유공표창 1회"],
   },
+];
+
+// 핵심 강점 요약. 3줄 이내로 유지한다.
+const highlights = [
+  `SSAFY SW Competency Test — ${swCompetencyGrade}`,
+  "Frontend-focused Web Service Development",
+  "Team Leadership Experience",
 ];
 
 const certifications = ["정보처리기사 (필기합격)"];
@@ -155,6 +165,26 @@ export default function AboutSection(frame: {
                       ))}
                     </ul>
                   ) : null}
+                </li>
+              ))}
+            </ul>
+          </motion.section>
+
+          <motion.section
+            variants={item}
+            className="mt-8 border-t border-ink/10 pt-6"
+          >
+            <SectionTitle>Highlights</SectionTitle>
+            <ul className="mt-4 space-y-1.5">
+              {highlights.map((highlight) => (
+                <li
+                  key={highlight}
+                  className="flex items-baseline gap-2 text-sm font-medium text-foreground/75"
+                >
+                  <span aria-hidden="true" className="text-accent">
+                    •
+                  </span>
+                  {highlight}
                 </li>
               ))}
             </ul>
