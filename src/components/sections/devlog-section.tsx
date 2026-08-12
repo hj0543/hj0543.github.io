@@ -37,7 +37,7 @@ const item: Variants = {
 
 function Tag({ label }: { label: string }) {
   return (
-    <span className="rounded-full border border-white/12 bg-white/6 px-2.5 py-1 font-mono text-[10px] text-fuchsia-50/75">
+    <span className="rounded-full border border-ink/12 bg-ink/6 px-2.5 py-1 font-mono text-[10px] text-foreground/75">
       {label}
     </span>
   );
@@ -52,7 +52,7 @@ export function DevlogSection({
   onOpen: (slug: string) => void;
 }) {
   return (
-    <WindowFrame title="devlog" defaultWidth={620} defaultHeight={540} {...frame}>
+    <WindowFrame title="devlog" defaultWidth={930} defaultHeight={810} {...frame}>
       <motion.div
         variants={container}
         initial="hidden"
@@ -61,9 +61,9 @@ export function DevlogSection({
       >
         <motion.p
           variants={item}
-          className="flex items-center gap-2.5 font-mono text-[11px] uppercase tracking-[0.28em] text-accent/80"
+          className="flex items-center gap-2.5 font-mono text-[11px] uppercase tracking-[0.28em] text-label"
         >
-          <span className="h-px w-6 bg-accent/50" />
+          <span className="h-px w-6 bg-label/50" />
           Devlog
         </motion.p>
 
@@ -74,7 +74,7 @@ export function DevlogSection({
               variants={item}
               type="button"
               onClick={() => onOpen(post.slug)}
-              className="group w-full cursor-pointer rounded-xl border border-white/10 bg-white/4 p-4 text-left transition-colors hover:border-accent/45 hover:bg-white/8 focus-visible:border-accent/45 focus-visible:outline-none"
+              className="group w-full cursor-pointer rounded-xl border border-ink/10 bg-ink/4 p-4 text-left transition-colors hover:border-accent/45 hover:bg-ink/8 focus-visible:border-accent/45 focus-visible:outline-none"
             >
               <span className="flex items-center gap-1.5 font-mono text-[11px] text-foreground/45">
                 <CalendarDays aria-hidden="true" size={12} strokeWidth={1.7} />
@@ -141,7 +141,7 @@ export function DevlogDoc({ post }: { post: DevlogPost }) {
       {/* 본문은 저장소에 직접 쓴 마크다운이라 그대로 삽입한다. */}
       <motion.div
         variants={item}
-        className={`mt-6 border-t border-white/10 pt-2 ${PROSE}`}
+        className={`mt-6 border-t border-ink/10 pt-2 ${PROSE}`}
         dangerouslySetInnerHTML={{ __html: post.html }}
       />
     </motion.article>

@@ -36,14 +36,14 @@ export default function LiveDateTime() {
   return (
     <div className="pointer-events-none fixed inset-0 z-30 flex items-center justify-center px-4">
       <time
-        className="flex flex-col items-center justify-center gap-2 whitespace-nowrap text-center font-light tabular-nums [text-shadow:0_2px_24px_rgba(0,0,0,0.4)] sm:gap-3"
+        className="flex flex-col items-center justify-center gap-2 whitespace-nowrap text-center font-light tabular-nums [text-shadow:0_2px_24px_var(--scene-text-shadow)] sm:gap-3"
         dateTime={now?.toISOString()}
         aria-label={dateTime?.label ?? "현재 날짜와 시간을 불러오는 중"}
       >
-        <span className="text-xl tracking-[0.12em] text-white/45 sm:text-3xl">
+        <span className="text-xl tracking-[0.12em] text-ink/45 sm:text-3xl">
           {dateTime?.date ?? "0000.00.00"}
         </span>
-        <span className="text-5xl font-medium tracking-[-0.05em] text-white/30 sm:text-7xl lg:text-8xl">
+        <span className="text-5xl font-medium tracking-[-0.05em] text-ink/30 sm:text-7xl lg:text-8xl">
           {dateTime?.time ?? "00:00"}
         </span>
       </time>

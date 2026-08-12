@@ -99,7 +99,7 @@ function DockItem({
       onBlur={() => isHovered.set(0)}
       onClick={onClick}
       onKeyDown={handleKeyDown}
-      className={`relative inline-flex shrink-0 cursor-pointer items-center justify-center rounded-full border border-white/15 bg-white/[0.08] text-fuchsia-50 shadow-[0_10px_35px_rgba(0,0,0,0.3)] outline-none backdrop-blur-md transition-colors hover:border-fuchsia-200/40 hover:bg-fuchsia-200/10 focus-visible:ring-2 focus-visible:ring-fuchsia-200/70 ${className}`}
+      className={`relative inline-flex shrink-0 cursor-pointer items-center justify-center rounded-full border border-ink/15 bg-ink/[0.08] text-foreground/90 shadow-[0_10px_35px_rgba(0,0,0,0.3)] outline-none backdrop-blur-md transition-colors hover:border-accent/45 hover:bg-accent/12 focus-visible:ring-2 focus-visible:ring-accent/70 ${className}`}
       tabIndex={0}
       role="button"
       aria-label={typeof label === "string" ? label : undefined}
@@ -147,7 +147,7 @@ function DockLabel({
           animate={{ opacity: 1, y: -10 }}
           exit={{ opacity: 0, y: 0 }}
           transition={{ duration: 0.2 }}
-          className={`${className} absolute -top-6 left-1/2 w-fit whitespace-nowrap rounded-md border border-white/15 bg-[#0d0718]/90 px-2 py-1 text-[11px] text-white shadow-lg backdrop-blur-md`}
+          className={`${className} absolute -top-6 left-1/2 w-fit whitespace-nowrap rounded-md border border-ink/15 bg-surface/90 px-2 py-1 text-[11px] text-foreground shadow-lg backdrop-blur-md`}
           role="tooltip"
           style={{ x: "-50%" }}
         >
@@ -212,7 +212,7 @@ export default function Dock({
           isHovered.set(0);
           mouseX.set(Infinity);
         }}
-        className={`${className} ${floating ? "absolute bottom-3 left-1/2 -translate-x-1/2" : "relative"} flex w-fit items-end gap-3 rounded-[1.4rem] border border-white/15 bg-[#0d0718]/55 px-3 pb-2 shadow-[0_20px_60px_rgba(0,0,0,0.45)] backdrop-blur-xl`}
+        className={`${className} ${floating ? "absolute bottom-3 left-1/2 -translate-x-1/2" : "relative"} flex w-fit items-end gap-3 rounded-[1.4rem] border border-ink/15 bg-surface/55 px-3 pb-2 shadow-[0_20px_60px_rgba(0,0,0,0.45)] backdrop-blur-xl`}
         style={{ height: panelHeight }}
         role="toolbar"
         aria-label={ariaLabel}

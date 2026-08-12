@@ -4,12 +4,17 @@ import {
   FolderKanban,
   Gamepad2,
   House,
+  Moon,
   NotebookPen,
   Pause,
   Play,
+  Sun,
   UserRound,
 } from "lucide-react";
 import { useCallback, useEffect, useState } from "react";
+
+import { toggleTheme, useTheme } from "@/lib/theme";
+import { toggleWindowChrome, useWindowChrome } from "@/lib/window-chrome";
 
 import AboutSection from "@/components/sections/about-section";
 import {
@@ -40,7 +45,63 @@ function docLabel(docId: DocId) {
 }
 
 const CASCADE = 40; // 창이 하나씩 늘 때마다 어긋나게 놓을 거리(px)
-const ACTIVE_ITEM = "border-[#8ddbf2]/70 bg-[#8ddbf2]/15 text-white";
+const ACTIVE_ITEM = "border-active/70 bg-active/15 text-foreground";
+
+// 와이어프레임 공은 캔버스에 직접 그려서 CSS 변수를 못 쓴다. 테마별 색을 여기서 고른다.
+const BALL_COLORS = {
+  dark: { edge: "#fffefc", vertex: "#fcf0d9", depth: "#521c02" },
+  light: { edge: "#a9c9c5", vertex: "#5f8f8b", depth: "#3f6b67" },
+} as const;
+
+// 테마별 배경 자산. public/background에 파일을 넣고 경로만 바꾸면 토글에 따라 함께 바뀐다.
+const SCENE_ASSETS = {
+  dark: {
+    backdrop: "/background/background1.jpg", // 화면 전체 배경 사진
+    headingType: "video", // Belog 글자 속 미디어 종류
+    headingSrc: "/background/sky_video.mp4", // Belog 글자 속에 마스킹할 미디어
+    headingPoster: "/background/sky.jpg", // 비디오가 로드되기 전에 표시할 이미지
+  },
+  light: {
+    backdrop: "/background/background_light.png",
+    // TODO: 밤하늘 영상이 준비되면 video + 영상 경로로 교체
+    headingType: "image",
+    headingSrc: "/background/sage_gradient.png",
+    headingPoster: "",
+  },
+} as const;
+
+// lucide에는 브랜드 로고가 없어 애플·윈도우 로고는 직접 그린다.
+function AppleLogo({ size = 17 }: { size?: number }) {
+  return (
+    <svg
+      aria-hidden="true"
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="currentColor"
+    >
+      <path d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.03 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.662.805-3.532 1.818-.78.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.56-1.702" />
+    </svg>
+  );
+}
+
+function WindowsLogo({ size = 15 }: { size?: number }) {
+  return (
+    <svg
+      aria-hidden="true"
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="currentColor"
+    >
+      <path d="M0 3.449L9.75 2.1v9.451H0m10.949-9.602L24 0v11.4H10.949M0 12.6h9.75v9.451L0 20.699M10.949 12.6H24V24l-12.9-1.801" />
+    </svg>
+  );
+}
+
+// 재생·테마 버튼 공통 모양. 왼쪽 Dock 항목과 같은 톤을 유지한다.
+const CONTROL_BUTTON =
+  "flex size-[46px] cursor-pointer items-center justify-center rounded-full border border-ink/15 bg-ink/[0.08] text-foreground/90 transition-colors hover:border-accent/45 hover:bg-accent/12 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/70";
 
 export default function HomeScene({
   posts,
@@ -50,6 +111,10 @@ export default function HomeScene({
   projects: Project[];
 }) {
   const [paused, setPaused] = useState(false);
+  const theme = useTheme();
+  const chrome = useWindowChrome();
+  const ballColors = BALL_COLORS[theme];
+  const assets = SCENE_ASSETS[theme];
   // 배열 순서가 곧 쌓임 순서다. 마지막 항목이 맨 앞 창.
   const [stack, setStack] = useState<WindowId[]>([]);
   // docs 창이 품고 있는 탭 목록과 그중 보고 있는 탭.
@@ -177,44 +242,32 @@ export default function HomeScene({
     },
   ];
 
-  // 재생 제어는 메인 메뉴와 분리된 오른쪽 Dock에 표시한다.
-  const playbackItems: DockItemData[] = [
-    {
-      icon: paused ? (
-        <Play aria-hidden="true" size={20} strokeWidth={1.7} />
-      ) : (
-        <Pause aria-hidden="true" size={20} strokeWidth={1.7} />
-      ),
-      label: paused ? "재생" : "일시 정지",
-      onClick: () => setPaused((value) => !value),
-    },
-  ];
-
   return (
     <main className="relative min-h-svh overflow-hidden bg-background">
       {/* 하단 메뉴 선택과 무관하게 홈 배경을 고정해서 표시한다. */}
       <div
         aria-hidden="true"
         className="absolute inset-0 bg-cover bg-center opacity-55"
-        style={{ backgroundImage: "url('/background/background1.jpg')" }}
+        style={{ backgroundImage: `url('${assets.backdrop}')` }}
       />
 
-      {/* 배경 위에 어두운 그라데이션을 겹쳐 와이어프레임의 명암 대비를 확보한다. */}
+      {/* 배경 위에 테마색 그라데이션을 겹쳐 와이어프레임의 명암 대비를 확보한다. */}
       <div
         aria-hidden="true"
-        className="absolute inset-0 bg-[radial-gradient(circle_at_68%_44%,transparent_0%,rgba(7,3,14,0.18)_32%,rgba(7,3,14,0.88)_100%)]"
+        className="absolute inset-0 bg-[radial-gradient(circle_at_68%_44%,transparent_0%,var(--scene-shade-mid)_32%,var(--scene-shade-edge)_100%)]"
       />
 
       <div
         className="absolute left-8 top-8 z-30 w-[min(82vw,32rem)]" // 좌상단 위치, 레이어 순서, 반응형 너비
       >
         <MaskedHeading
+          key={assets.headingSrc}             // 테마로 미디어가 바뀌면 다시 마운트해 교체한다
           text="Belog"                        // 화면에 표시할 문구
           tag="h1"                            // 시맨틱 HTML 태그
           className="[font-family:var(--font-geist-sans)]" // 좌상단 제목은 기존 Geist Sans 사용
-          mediaType="video"                   // 글자 내부에 표시할 미디어 종류
-          src="/background/sky_video.mp4"     // 글자에 마스킹할 비디오 경로
-          poster="/background/sky.jpg"        // 비디오가 로드되기 전에 표시할 이미지
+          mediaType={assets.headingType}      // 글자 내부에 표시할 미디어 종류
+          src={assets.headingSrc}             // 글자에 마스킹할 미디어 경로
+          poster={assets.headingPoster}       // 비디오가 로드되기 전에 표시할 이미지
           fillScale={1.35}                    // 글자 내부 이미지 확대 비율
           parallax={24}                       // 마우스 이동에 따른 이미지 이동 거리(px)
           drift={10}                          // 이미지의 느린 자동 움직임 크기(px)
@@ -239,20 +292,20 @@ export default function HomeScene({
         zoom={1.08}                              // 오브젝트 확대 비율
         speed={0.72}                             // 자동 회전 속도
         wobble={0.018}                           // 크기가 미세하게 흔들리는 정도
-        edgeColor="#fffefc"                      // 모서리 선 색상
-        edgeGlow={0.6}                           // 모서리 선의 발광 강도
-        edgeThickness={0.010}                    // 모서리 선 굵기
-        vertexColor="#fcf0d9"                    // 꼭짓점 색상
+        edgeColor={ballColors.edge}              // 모서리 선 색상
+        edgeGlow={0.3}                           // 모서리 선의 발광 강도
+        edgeThickness={0.001}                    // 모서리 선 굵기
+        vertexColor={ballColors.vertex}          // 꼭짓점 색상
         vertexSize={0.03}                        // 꼭짓점 크기
         vertexGlow={0.21}                        // 꼭짓점 발광 강도
-        depthColor="#521c02"                     // 뒤쪽 면에 적용할 깊이 색상
+        depthColor={ballColors.depth}            // 뒤쪽 면에 적용할 깊이 색상
         depthTint={0.72}                         // 깊이 색상을 섞는 비율
         depthFade={0.32}                         // 뒤쪽 요소의 흐려지는 정도
         cursorTilt={0.42}                        // 커서 이동에 반응하는 기울기
         spinFriction={0.95}                      // 드래그 회전 후 적용되는 감속 마찰
         paused={paused}                          // 자동 애니메이션 정지 여부
         className={
-          "absolute inset-0 cursor-grab text-fuchsia-100 active:cursor-grabbing"
+          "absolute inset-0 cursor-grab text-foreground active:cursor-grabbing"
         }                                        // 전체 화면 배치 및 드래그 커서
       />
 
@@ -316,8 +369,8 @@ export default function HomeScene({
               onSelectTab={setActiveDoc}
               onCloseTab={closeDoc}
               reveal={docReveal}
-              defaultWidth={620}
-              defaultHeight={560}
+              defaultWidth={930}
+              defaultHeight={840}
               {...frame}
             >
               {/* 탭을 바꿀 때 등장 애니메이션을 다시 재생하도록 key를 준다. */}
@@ -344,17 +397,52 @@ export default function HomeScene({
           magnification={66}
           className="pointer-events-auto"
         />
-        <Dock
-          items={playbackItems}
-          ariaLabel="애니메이션 제어"
-          floating={false}
-          distance={110}
-          panelHeight={62}
-          baseItemSize={46}
-          dockHeight={112}
-          magnification={66}
-          className="pointer-events-auto"
-        />
+        {/* 재생·테마 제어는 확대 효과 없는 일반 버튼으로 둔다. */}
+        <div
+          role="toolbar"
+          aria-label="화면 제어"
+          className="pointer-events-auto flex h-[62px] items-center gap-3 rounded-[1.4rem] border border-ink/15 bg-surface/55 px-3 shadow-[0_20px_60px_rgba(0,0,0,0.45)] backdrop-blur-xl"
+        >
+          <button
+            type="button"
+            aria-label={paused ? "재생" : "일시 정지"}
+            title={paused ? "재생" : "일시 정지"}
+            aria-pressed={paused}
+            onClick={() => setPaused((value) => !value)}
+            className={CONTROL_BUTTON}
+          >
+            {paused ? (
+              <Play aria-hidden="true" size={20} strokeWidth={1.7} />
+            ) : (
+              <Pause aria-hidden="true" size={20} strokeWidth={1.7} />
+            )}
+          </button>
+
+          <button
+            type="button"
+            aria-label={theme === "light" ? "다크 테마" : "라이트 테마"}
+            title={theme === "light" ? "다크 테마" : "라이트 테마"}
+            onClick={toggleTheme}
+            className={CONTROL_BUTTON}
+          >
+            {/* 아이콘은 현재 상태를 보여주고, 라벨은 누르면 바뀔 대상을 알려준다. */}
+            {theme === "light" ? (
+              <Sun aria-hidden="true" size={20} strokeWidth={1.7} />
+            ) : (
+              <Moon aria-hidden="true" size={20} strokeWidth={1.7} />
+            )}
+          </button>
+
+          <button
+            type="button"
+            aria-label={chrome === "mac" ? "윈도우 스타일 창" : "맥 스타일 창"}
+            title={chrome === "mac" ? "윈도우 스타일 창" : "맥 스타일 창"}
+            onClick={toggleWindowChrome}
+            className={CONTROL_BUTTON}
+          >
+            {chrome === "mac" ? <AppleLogo /> : <WindowsLogo />}
+          </button>
+        </div>
       </div>
     </main>
   );

@@ -1,6 +1,13 @@
 "use client";
 
-import { CalendarDays, UserCog, Users } from "lucide-react";
+import {
+  CalendarDays,
+  Code,
+  ExternalLink,
+  Star,
+  UserCog,
+  Users,
+} from "lucide-react";
 import { motion, type Variants } from "motion/react";
 import Image from "next/image";
 
@@ -18,6 +25,10 @@ export type Project = {
   period: string;
   team: string;
   stack: string[];
+  /** GitHub·배포·시연영상 등 외부 링크. 문서 상단에 버튼으로 그린다. */
+  links: { label: string; href: string }[];
+  /** 대표 프로젝트. 목록에서 두 칸 폭으로 강조한다. */
+  featured: boolean;
   /** 빌드할 때 마크다운을 변환해 둔 본문. */
   html: string;
 };
@@ -34,16 +45,40 @@ const item: Variants = {
 
 function Badge({ label }: { label: string }) {
   return (
-    <span className="rounded-full border border-white/12 bg-white/6 px-2.5 py-1 font-mono text-[10px] text-fuchsia-50/75">
+    <span className="rounded-full border border-ink/12 bg-ink/6 px-2.5 py-1 font-mono text-[10px] text-foreground/75">
       {label}
     </span>
+  );
+}
+
+/** 문서 상단의 GitHub·배포 링크 버튼 줄. */
+function LinkButtons({ links }: { links: Project["links"] }) {
+  if (links.length === 0) return null;
+  return (
+    <div className="flex flex-wrap gap-2">
+      {links.map(({ label, href }) => {
+        const Icon = /github/i.test(label) ? Code : ExternalLink;
+        return (
+          <a
+            key={href}
+            href={href}
+            target="_blank"
+            rel="noreferrer"
+            className="flex items-center gap-1.5 rounded-full border border-ink/12 bg-ink/6 px-3 py-1.5 font-mono text-[11px] text-foreground/75 transition-colors hover:border-accent/45 hover:text-accent focus-visible:border-accent/45 focus-visible:outline-none"
+          >
+            <Icon aria-hidden="true" size={12} strokeWidth={1.8} />
+            {label}
+          </a>
+        );
+      })}
+    </div>
   );
 }
 
 /** 썸네일 자리. 이미지가 없으면 이름 머리글자로 채운다. */
 function Thumb({ project }: { project: Project }) {
   return (
-    <div className="relative aspect-video overflow-hidden rounded-lg border border-white/10 bg-linear-to-br from-accent-deep/25 to-accent/10">
+    <div className="relative aspect-video overflow-hidden rounded-lg border border-ink/10 bg-linear-to-br from-accent-deep/25 to-accent/10">
       {project.thumbnail ? (
         <Image
           src={project.thumbnail}
@@ -93,7 +128,7 @@ export function ProjectsSection({
   offset?: number;
 }) {
   return (
-    <WindowFrame title="projects" defaultWidth={720} defaultHeight={560} {...frame}>
+    <WindowFrame title="projects" defaultWidth={1080} defaultHeight={840} {...frame}>
       <motion.div
         variants={container}
         initial="hidden"
@@ -102,9 +137,9 @@ export function ProjectsSection({
       >
         <motion.p
           variants={item}
-          className="flex items-center gap-2.5 font-mono text-[11px] uppercase tracking-[0.28em] text-accent/80"
+          className="flex items-center gap-2.5 font-mono text-[11px] uppercase tracking-[0.28em] text-label"
         >
-          <span className="h-px w-6 bg-accent/50" />
+          <span className="h-px w-6 bg-label/50" />
           Projects
         </motion.p>
 
@@ -119,18 +154,28 @@ export function ProjectsSection({
               variants={item}
               type="button"
               onClick={() => onOpen(project.slug)}
-              className="group cursor-pointer rounded-xl border border-white/10 bg-white/4 p-3.5 text-left transition-colors hover:border-accent/45 hover:bg-white/8 focus-visible:border-accent/45 focus-visible:outline-none"
+              className={`group cursor-pointer rounded-xl border border-ink/10 bg-ink/4 p-3.5 text-left transition-colors hover:border-accent/45 hover:bg-ink/8 focus-visible:border-accent/45 focus-visible:outline-none ${
+                project.featured ? "sm:col-span-2" : ""
+              }`}
             >
               <Thumb project={project} />
 
-              <h3 className="mt-3.5 text-sm font-semibold text-foreground transition-colors group-hover:text-accent">
+              <h3 className="mt-3.5 flex items-center gap-1.5 text-sm font-semibold text-foreground transition-colors group-hover:text-accent">
+                {project.featured ? (
+                  <Star
+                    aria-label="대표 프로젝트"
+                    size={13}
+                    strokeWidth={2}
+                    className="shrink-0 fill-accent/30 text-accent"
+                  />
+                ) : null}
                 {project.name}
               </h3>
               <p className="mt-1 line-clamp-2 text-xs leading-relaxed text-foreground/55">
                 {project.tagline}
               </p>
 
-              <div className="mt-3 border-t border-white/8 pt-3">
+              <div className="mt-3 border-t border-ink/8 pt-3">
                 <Meta project={project} />
               </div>
 
@@ -170,7 +215,13 @@ export function ProjectDoc({ project }: { project: Project }) {
         {project.tagline}
       </motion.p>
 
-      <motion.div variants={item} className="mt-5 border-y border-white/10 py-4">
+      {project.links.length > 0 ? (
+        <motion.div variants={item} className="mt-4">
+          <LinkButtons links={project.links} />
+        </motion.div>
+      ) : null}
+
+      <motion.div variants={item} className="mt-5 border-y border-ink/10 py-4">
         <Meta project={project} />
       </motion.div>
 

@@ -35,6 +35,20 @@ export function toStringArray(value: unknown) {
   return Array.isArray(value) ? value.map(String) : [];
 }
 
+/** 외부 링크. frontmatter의 links: [{ label, href }] 목록을 읽는다. */
+export type ContentLink = { label: string; href: string };
+
+/** href가 없는 항목은 조용히 버려서 프론트매터 오타가 화면을 깨지 않게 한다. */
+export function toLinkArray(value: unknown): ContentLink[] {
+  if (!Array.isArray(value)) return [];
+  return value.flatMap((entry) => {
+    if (typeof entry !== "object" || entry === null) return [];
+    const { label, href } = entry as Record<string, unknown>;
+    if (!href) return [];
+    return [{ label: String(label ?? "Link"), href: String(href) }];
+  });
+}
+
 /**
  * content/{dir}의 마크다운을 모두 읽어 frontmatter와 변환한 본문을 돌려준다.
  * 본문 이미지는 public/{dir}/images/{슬러그}/ 를 기준으로 채운다.

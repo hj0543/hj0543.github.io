@@ -192,7 +192,11 @@ const SmoothCursor: React.FC<SmoothCursorProps> = ({
       context.globalAlpha = 1;
       context.globalCompositeOperation = "source-over";
 
-      animationFrameRef.current = requestAnimationFrame(animate);
+      // 자기 자신이 아니라 ref를 통해 예약해야 색 같은 prop이 바뀌었을 때
+      // 다음 프레임부터 최신 그리기 함수로 갈아탄다.
+      animationFrameRef.current = requestAnimationFrame(() =>
+        animateRef.current?.(),
+      );
     };
 
     animateRef.current = animate;

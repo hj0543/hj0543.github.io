@@ -27,10 +27,47 @@ const skills = [
   "java",
 ];
 
+// 경력. 항목을 추가하면 카드에 순서대로 그려진다.
+const career = [
+  {
+    title: "SSAFY 15th",
+    role: "",
+    period: "2026.01 ~ 2026.12",
+    details: [
+      "1학기 성적최우수 (1st)",
+      "Monthly member (1, 3월)",
+      "SAMSUNG SW Competency Test - Grade A+ (Python)",
+    ],
+  },
+  {
+    title: "Math Academy",
+    role: "Team Leader",
+    period: "2021.07 ~ 2025.12",
+    details: [],
+  },
+  {
+    title: "ROK Army",
+    role: "Officer",
+    period: "2019.03 ~ 2021.06",
+    details: ["근무유공표창 2회", "경계작전유공표창 1회"],
+  },
+];
+
+const certifications = ["정보처리기사 (필기합격)"];
+
 const links = [
   { icon: Code, label: "GitHub", href: "https://github.com/hj0543" },
   { icon: Mail, label: "Email", href: "mailto:hj0543@gmail.com" },
 ];
+
+/** 상단 ABOUT ME 라벨과 같은 문법을 쓰는 카드 안 소제목. */
+function SectionTitle({ children }: { children: React.ReactNode }) {
+  return (
+    <h3 className="font-mono text-[11px] uppercase tracking-[0.28em] text-label">
+      {children}
+    </h3>
+  );
+}
 
 export default function AboutSection(frame: {
   onClose?: () => void;
@@ -41,8 +78,8 @@ export default function AboutSection(frame: {
   return (
       <WindowFrame
         title="about-me.tsx"
-        defaultWidth={560}
-        defaultHeight={480}
+        defaultWidth={840}
+        defaultHeight={720}
         {...frame}
       >
         <motion.div
@@ -53,9 +90,9 @@ export default function AboutSection(frame: {
         >
           <motion.p
             variants={item}
-            className="flex items-center gap-2.5 font-mono text-[11px] uppercase tracking-[0.28em] text-accent/80"
+            className="flex items-center gap-2.5 font-mono text-[11px] uppercase tracking-[0.28em] text-label"
           >
-            <span className="h-px w-6 bg-accent/50" />
+            <span className="h-px w-6 bg-label/50" />
             About Me
           </motion.p>
 
@@ -65,36 +102,84 @@ export default function AboutSection(frame: {
           >
             Hello,
             <br />
-            A developer who love to work with.
-            <span className="bg-linear-to-r from-accent to-accent-deep bg-clip-text text-transparent">
-            <br></br>Hyeonjin Jeong
-            </span>{" "}
-
+            A developer you&apos;d love to work with.
+            <span className="text-accent">
+              <br />
+              Hyeonjin Jeong
+            </span>
           </motion.h2>
-
-          <motion.p
-            variants={item}
-            className="mt-5 text-sm leading-relaxed text-foreground/65"
-          >
-          - SSAFY 15th : 2026. 01 ~ 2026. 12
-          <br></br>- Math Academy : 2021. 07 ~ 2025.12 (Team Leader)
-          <br></br>- ROK Army : 2019. 03 ~ 2021.06 (Officer)
-          </motion.p>
 
           <motion.div variants={item} className="mt-7 flex flex-wrap gap-2">
             {skills.map((skill) => (
               <span
                 key={skill}
-                className="rounded-full border border-white/12 bg-white/6 px-3 py-1.5 font-mono text-[11px] text-fuchsia-50/75"
+                className="rounded-full border border-ink/12 bg-ink/6 px-3 py-1.5 font-mono text-[11px] text-foreground/75"
               >
                 {skill}
               </span>
             ))}
           </motion.div>
 
+          <motion.section
+            variants={item}
+            className="mt-8 border-t border-ink/10 pt-6"
+          >
+            <SectionTitle>Career</SectionTitle>
+            <ul className="mt-4 space-y-4">
+              {career.map((entry) => (
+                <li key={entry.title}>
+                  {/* 제목·역할은 왼쪽, 기간은 오른쪽 끝에 정렬한다. */}
+                  <div className="flex flex-wrap items-baseline gap-x-2.5">
+                    <span className="text-sm font-semibold text-foreground">
+                      {entry.title}
+                    </span>
+                    {entry.role ? (
+                      <span className="text-xs text-foreground/50">
+                        {entry.role}
+                      </span>
+                    ) : null}
+                    <span className="ml-auto font-mono text-[11px] tabular-nums text-foreground/45">
+                      {entry.period}
+                    </span>
+                  </div>
+
+                  {entry.details.length > 0 ? (
+                    <ul className="mt-1.5 list-disc space-y-1 pl-4 marker:text-foreground/30">
+                      {entry.details.map((detail) => (
+                        <li
+                          key={detail}
+                          className="text-xs leading-relaxed text-foreground/55"
+                        >
+                          {detail}
+                        </li>
+                      ))}
+                    </ul>
+                  ) : null}
+                </li>
+              ))}
+            </ul>
+          </motion.section>
+
+          <motion.section
+            variants={item}
+            className="mt-8 border-t border-ink/10 pt-6"
+          >
+            <SectionTitle>Certified</SectionTitle>
+            <ul className="mt-4 space-y-1.5">
+              {certifications.map((certification) => (
+                <li
+                  key={certification}
+                  className="text-sm text-foreground/65"
+                >
+                  {certification}
+                </li>
+              ))}
+            </ul>
+          </motion.section>
+
           <motion.div
             variants={item}
-            className="mt-8 flex flex-wrap items-center gap-x-5 gap-y-3 border-t border-white/10 pt-6"
+            className="mt-8 flex flex-wrap items-center gap-x-5 gap-y-3 border-t border-ink/10 pt-6"
           >
             <span className="flex items-center gap-1.5 text-xs text-foreground/45">
               <MapPin aria-hidden="true" size={14} strokeWidth={1.7} />

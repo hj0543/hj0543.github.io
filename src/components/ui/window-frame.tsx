@@ -12,6 +12,7 @@ import { motion } from "motion/react";
 import React, { useCallback, useEffect, useRef, useState } from "react";
 
 import { cn } from "@/lib/utils";
+import { useWindowChrome } from "@/lib/window-chrome";
 
 type Rect = { x: number; y: number; w: number; h: number };
 
@@ -62,9 +63,15 @@ const HANDLES: { dir: ResizeDir; className: string }[] = [
   { dir: "se", className: "-bottom-1 -right-1 size-3 cursor-nwse-resize" },
 ];
 
-// 제목줄 버튼 공통 모양. hover 색만 각자 다르게 얹는다.
+// 제목줄 버튼 공통 모양. hover 색만 각자 다르게 얹는다. (windows 스타일)
 const TITLE_BUTTON =
-  "flex size-7 cursor-pointer items-center justify-center rounded-md text-foreground/45 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/60";
+  "flex size-7 cursor-pointer items-center justify-center rounded-md text-foreground/45 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink/60";
+
+// mac 스타일 신호등 버튼. 글리프는 버튼 묶음에 마우스를 올렸을 때만 보인다.
+const MAC_BUTTON =
+  "flex size-3.5 cursor-pointer items-center justify-center rounded-full text-black/60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink/60";
+const MAC_GLYPH =
+  "opacity-0 transition-opacity group-hover:opacity-100 group-focus-within:opacity-100";
 
 function viewport() {
   return { vw: window.innerWidth, vh: window.innerHeight };
@@ -89,8 +96,8 @@ export default function WindowFrame<T extends string = string>({
   onSelectTab,
   onCloseTab,
   reveal,
-  defaultWidth = 560,
-  defaultHeight = 460,
+  defaultWidth = 840,
+  defaultHeight = 690,
   minWidth = 320,
   minHeight = 200,
   z,
@@ -98,6 +105,8 @@ export default function WindowFrame<T extends string = string>({
   offset = 0,
   className,
 }: WindowFrameProps<T>) {
+  // 제목줄 스타일(mac 신호등 / windows 아이콘). 토글하면 열려 있는 창이 모두 바뀐다.
+  const chrome = useWindowChrome();
   // 첫 렌더에서 뷰포트 크기에 맞춘 초기 위치를 계산한다(클릭으로 열리므로 SSR 대상이 아니다).
   const [rect, setRect] = useState<Rect>(() => {
     if (typeof window === "undefined") {
@@ -285,7 +294,7 @@ export default function WindowFrame<T extends string = string>({
       */}
       <div
         className={cn(
-          "flex h-full flex-col overflow-hidden rounded-xl border border-white/15 bg-[#0d0718]/80 shadow-[0_30px_80px_rgba(0,0,0,0.6)] backdrop-blur-xl",
+          "flex h-full flex-col overflow-hidden rounded-xl border border-ink/15 bg-surface/80 shadow-[var(--window-shadow)] backdrop-blur-xl",
           className,
         )}
       >
@@ -297,19 +306,70 @@ export default function WindowFrame<T extends string = string>({
           onPointerCancel={endGesture}
           onDoubleClick={toggleMaximize}
           className={cn(
-            "flex shrink-0 touch-none select-none items-center gap-3 border-b border-white/10 bg-white/4 pl-3 pr-2",
+            "flex shrink-0 touch-none select-none items-center gap-3 border-b border-ink/10 bg-ink/4 pl-3 pr-2",
             maximized ? "cursor-default" : "cursor-grab active:cursor-grabbing",
           )}
           style={{ height: TITLE_BAR }}
         >
-          <span
-            aria-hidden
-            className="flex size-7 shrink-0 items-center justify-center rounded-lg border border-white/12 bg-white/6 text-foreground/70"
-          >
-            <CodeXml size={14} strokeWidth={2} />
-          </span>
+          {/* mac 스타일: 왼쪽 신호등 버튼(닫기·최소화·최대화). */}
+          {chrome === "mac" ? (
+            <div
+              onDoubleClick={(event) => event.stopPropagation()}
+              className="group flex shrink-0 items-center gap-2"
+            >
+              <button
+                type="button"
+                aria-label="닫기"
+                title="닫기"
+                onClick={onClose}
+                onPointerDown={(event) => event.stopPropagation()}
+                className={cn(MAC_BUTTON, "bg-[#ff5f57]")}
+              >
+                <X aria-hidden size={9} strokeWidth={2.5} className={MAC_GLYPH} />
+              </button>
 
-          <span className="h-4 w-px shrink-0 bg-white/10" />
+              <button
+                type="button"
+                aria-label={minimized ? "펼치기" : "최소화"}
+                title={minimized ? "펼치기" : "최소화"}
+                aria-pressed={minimized}
+                onClick={toggleMinimize}
+                onPointerDown={(event) => event.stopPropagation()}
+                className={cn(MAC_BUTTON, "bg-[#febc2e]")}
+              >
+                {minimized ? (
+                  <ChevronDown aria-hidden size={9} strokeWidth={2.5} className={MAC_GLYPH} />
+                ) : (
+                  <Minus aria-hidden size={9} strokeWidth={2.5} className={MAC_GLYPH} />
+                )}
+              </button>
+
+              <button
+                type="button"
+                aria-label={maximized ? "이전 크기로" : "창 키우기"}
+                title={maximized ? "이전 크기로" : "창 키우기"}
+                aria-pressed={maximized}
+                onClick={toggleMaximize}
+                onPointerDown={(event) => event.stopPropagation()}
+                className={cn(MAC_BUTTON, "bg-[#28c840]")}
+              >
+                {maximized ? (
+                  <Minimize2 aria-hidden size={8} strokeWidth={2.5} className={MAC_GLYPH} />
+                ) : (
+                  <Maximize2 aria-hidden size={8} strokeWidth={2.5} className={MAC_GLYPH} />
+                )}
+              </button>
+            </div>
+          ) : (
+            <span
+              aria-hidden
+              className="flex size-7 shrink-0 items-center justify-center rounded-lg border border-ink/12 bg-ink/6 text-foreground/70"
+            >
+              <CodeXml size={14} strokeWidth={2} />
+            </span>
+          )}
+
+          <span className="h-4 w-px shrink-0 bg-ink/10" />
 
           {tabs && tabs.length > 0 ? (
             // 탭이 넘치면 가로로 스크롤한다. 스크롤바는 제목줄을 어지럽혀 숨긴다.
@@ -325,8 +385,8 @@ export default function WindowFrame<T extends string = string>({
                     className={cn(
                       "group flex h-7 shrink-0 items-center rounded-md border pl-2.5 pr-1 transition-colors",
                       active
-                        ? "border-accent/40 bg-white/10"
-                        : "border-transparent hover:bg-white/6",
+                        ? "border-accent/40 bg-ink/10"
+                        : "border-transparent hover:bg-ink/6",
                     )}
                   >
                     <button
@@ -351,7 +411,7 @@ export default function WindowFrame<T extends string = string>({
                       onClick={() => onCloseTab?.(tab.id)}
                       onPointerDown={(event) => event.stopPropagation()}
                       className={cn(
-                        "ml-1.5 flex size-4 cursor-pointer items-center justify-center rounded text-foreground/40 transition hover:bg-white/15 hover:text-white focus-visible:opacity-100 group-hover:opacity-100",
+                        "ml-1.5 flex size-4 cursor-pointer items-center justify-center rounded text-foreground/40 transition hover:bg-ink/15 hover:text-foreground focus-visible:opacity-100 group-hover:opacity-100",
                         active ? "opacity-100" : "opacity-0",
                       )}
                     >
@@ -368,7 +428,9 @@ export default function WindowFrame<T extends string = string>({
             </span>
           )}
 
-          {/* 버튼을 두 번 눌러도 제목줄의 더블클릭이 겹쳐 동작하지 않게 막는다. */}
+          {/* windows 스타일: 오른쪽 아이콘 버튼.
+              버튼을 두 번 눌러도 제목줄의 더블클릭이 겹쳐 동작하지 않게 막는다. */}
+          {chrome === "windows" ? (
           <div
             onDoubleClick={(event) => event.stopPropagation()}
             className="ml-auto flex shrink-0 items-center gap-0.5"
@@ -416,6 +478,7 @@ export default function WindowFrame<T extends string = string>({
               <X aria-hidden size={15} strokeWidth={2} />
             </button>
           </div>
+          ) : null}
         </div>
 
         {/* 본문은 창 크기를 넘으면 스크롤된다. 최소화하면 제목줄만 남긴다. */}

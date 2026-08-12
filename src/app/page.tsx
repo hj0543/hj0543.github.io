@@ -1,7 +1,12 @@
 import HomeScene from "@/components/home-scene";
 import type { DevlogPost } from "@/components/sections/devlog-section";
 import type { Project } from "@/components/sections/projects-section";
-import { readMarkdownDir, toDateString, toStringArray } from "@/lib/content";
+import {
+  readMarkdownDir,
+  toDateString,
+  toLinkArray,
+  toStringArray,
+} from "@/lib/content";
 
 /** 최신 글이 위로 온다. */
 async function readDevlogPosts(): Promise<DevlogPost[]> {
@@ -19,12 +24,17 @@ async function readDevlogPosts(): Promise<DevlogPost[]> {
     .sort((a, b) => b.date.localeCompare(a.date));
 }
 
-/** period는 "2026.08 ~ ing"처럼 정렬 키로 쓸 수 없어 frontmatter의 order를 따른다. */
+/** period는 "2026.08 ~ ing"처럼 정렬 키로 쓸 수 없어 frontmatter의 order를 따른다.
+ *  대표(featured) 프로젝트는 order와 무관하게 맨 앞에 온다. */
 async function readProjects(): Promise<Project[]> {
   const files = await readMarkdownDir("projects");
 
   return files
-    .sort((a, b) => Number(a.data.order ?? 0) - Number(b.data.order ?? 0))
+    .sort(
+      (a, b) =>
+        Number(b.data.featured === true) - Number(a.data.featured === true) ||
+        Number(a.data.order ?? 0) - Number(b.data.order ?? 0),
+    )
     .map(({ slug, data, html }) => ({
       slug,
       name: String(data.name ?? slug),
@@ -34,6 +44,8 @@ async function readProjects(): Promise<Project[]> {
       period: String(data.period ?? ""),
       team: String(data.team ?? ""),
       stack: toStringArray(data.stack),
+      links: toLinkArray(data.links),
+      featured: data.featured === true,
       html,
     }));
 }
