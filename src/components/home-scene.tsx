@@ -106,8 +106,9 @@ export default function HomeScene() {
         <MaskedHeading
           text="Belog"                       // 화면에 표시할 문구
           tag="h1"                           // 시맨틱 HTML 태그
-          mediaType="image"                  // 글자 내부에 표시할 미디어 종류
-          src="/background/sky.jpg"           // 글자에 마스킹할 이미지 경로
+          mediaType="video"                  // 글자 내부에 표시할 미디어 종류
+          src="/background/sky_video.mp4"     // 글자에 마스킹할 비디오 경로
+          poster="/background/sky.jpg"        // 비디오가 로드되기 전에 표시할 이미지
           fillScale={1.35}                    // 글자 내부 이미지 확대 비율
           parallax={24}                       // 마우스 이동에 따른 이미지 이동 거리(px)
           drift={10}                          // 이미지의 느린 자동 움직임 크기(px)
