@@ -10,6 +10,7 @@ import {
 } from "lucide-react";
 import { motion } from "motion/react";
 import React, { useCallback, useEffect, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 
 import { cn } from "@/lib/utils";
 import { useWindowChrome } from "@/lib/window-chrome";
@@ -51,6 +52,25 @@ const TITLE_BAR = 44; // 제목 표시줄 높이(px)
 const MARGIN = 16; // 뷰포트 가장자리에서 남겨둘 여백
 const DOCK_SAFE = 148; // 하단 Dock에 가리지 않도록 비워둘 높이
 const GRAB = 72; // 창을 화면 밖으로 끌어낼 때 최소한 남겨둘 너비
+const SNAP_EDGE = 10; // 커서가 이 거리 안으로 들어오면 스냅 후보로 본다(px)
+
+/** 드래그 중 커서가 화면 가장자리에 닿았을 때의 스냅 방향. */
+type SnapTarget = "left" | "right" | "top" | null;
+
+/** 스냅 방향이 차지할 영역. 최대화와 같은 작업 영역(여백·Dock 제외)을 나눈다. */
+function snapRect(target: Exclude<SnapTarget, null>): Rect {
+  const { vw, vh } = viewport();
+  const workW = vw - MARGIN * 2;
+  const h = vh - MARGIN - DOCK_SAFE;
+  if (target === "top") return { x: MARGIN, y: MARGIN, w: workW, h };
+  const half = Math.max(workW / 2 - 4, 280);
+  return {
+    x: target === "left" ? MARGIN : MARGIN + workW - half,
+    y: MARGIN,
+    w: half,
+    h,
+  };
+}
 
 const HANDLES: { dir: ResizeDir; className: string }[] = [
   { dir: "n", className: "-top-1 left-3 right-3 h-2 cursor-ns-resize" },
@@ -126,6 +146,8 @@ export default function WindowFrame<T extends string = string>({
   const [maximized, setMaximized] = useState(false);
   // 최소화는 제목줄만 남기고 접는 것이다. 크기와 위치는 그대로 둔다.
   const [minimized, setMinimized] = useState(false);
+  // 드래그 중 화면 가장자리에 닿으면 놓았을 때 붙을 영역을 미리 보여준다.
+  const [snapTarget, setSnapTarget] = useState<SnapTarget>(null);
   const restoreRect = useRef<Rect | null>(null);
   const bodyRef = useRef<HTMLDivElement>(null);
 
@@ -218,6 +240,17 @@ export default function WindowFrame<T extends string = string>({
     const dy = event.clientY - state.startY;
 
     if (!state.dir) {
+      // 커서가 위·왼쪽·오른쪽 가장자리에 닿으면 스냅 후보를 잡는다.
+      const { vw } = viewport();
+      setSnapTarget(
+        event.clientY <= SNAP_EDGE
+          ? "top"
+          : event.clientX <= SNAP_EDGE
+            ? "left"
+            : event.clientX >= vw - SNAP_EDGE
+              ? "right"
+              : null,
+      );
       setRect(clampPosition({ ...state.start, x: state.start.x + dx, y: state.start.y + dy }));
       return;
     }
@@ -264,10 +297,26 @@ export default function WindowFrame<T extends string = string>({
   };
 
   const endGesture = (event: React.PointerEvent<HTMLElement>) => {
-    if (gesture.current?.pointerId !== event.pointerId) return;
+    const state = gesture.current;
+    if (state?.pointerId !== event.pointerId) return;
     gesture.current = null;
     if (event.currentTarget.hasPointerCapture(event.pointerId)) {
       event.currentTarget.releasePointerCapture(event.pointerId);
+    }
+
+    // 드래그를 가장자리에서 놓으면 스냅한다. 위쪽은 최대화와 같아서 복원 크기도 함께 기억한다.
+    // 포인터가 취소된 경우(pointercancel)는 스냅하지 않고 후보만 지운다.
+    if (event.type === "pointercancel") {
+      setSnapTarget(null);
+      return;
+    }
+    if (state.dir === null && snapTarget) {
+      if (snapTarget === "top") {
+        restoreRect.current = state.start;
+        setMaximized(true);
+      }
+      setRect(snapRect(snapTarget));
+      setSnapTarget(null);
     }
   };
 
@@ -492,6 +541,23 @@ export default function WindowFrame<T extends string = string>({
           </div>
         )}
       </div>
+
+      {/* 스냅 미리보기. 창의 transform 영향을 받지 않도록 body에 그린다. */}
+      {snapTarget
+        ? createPortal(
+            <div
+              aria-hidden
+              className="pointer-events-none fixed z-[70] rounded-xl border border-accent/40 bg-ink/10 backdrop-blur-[2px]"
+              style={(({ x, y, w, h }) => ({
+                left: x,
+                top: y,
+                width: w,
+                height: h,
+              }))(snapRect(snapTarget))}
+            />,
+            document.body,
+          )
+        : null}
 
       {/* 테두리에 겹쳐 놓은 리사이즈 손잡이. 최대화·최소화 상태에서는 숨긴다. */}
       {maximized || minimized

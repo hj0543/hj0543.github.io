@@ -8,6 +8,7 @@ import {
   NotebookPen,
   Pause,
   Play,
+  SquareTerminal,
   Sun,
   UserRound,
 } from "lucide-react";
@@ -27,6 +28,7 @@ import {
   ProjectsSection,
   type Project,
 } from "@/components/sections/projects-section";
+import TerminalSection from "@/components/sections/terminal-section";
 import Dock, { type DockItemData } from "@/components/ui/dock";
 import LiveDateTime from "@/components/ui/live-date-time";
 import MaskedHeading from "@/components/ui/masked-heading";
@@ -34,7 +36,7 @@ import WindowFrame from "@/components/ui/window-frame";
 import WireframeBall from "@/components/ui/wireframe-ball";
 
 /** 열 수 있는 창의 종류. 프로젝트·글 상세는 "docs" 창 하나가 탭으로 품는다. */
-type WindowId = "about" | "projects" | "devlog" | "docs";
+type WindowId = "about" | "projects" | "devlog" | "terminal" | "docs";
 
 /** docs 창의 탭 하나. 접두사로 어느 목록에서 찾을지 구분한다. */
 type DocId = `project:${string}` | `post:${string}`;
@@ -240,6 +242,13 @@ export default function HomeScene({
       className: activeItemClass("devlog"),
       active: stack.includes("devlog"),
     },
+    {
+      icon: <SquareTerminal aria-hidden="true" size={20} strokeWidth={1.7} />,
+      label: "Terminal",
+      onClick: () => focusWindow("terminal"),
+      className: activeItemClass("terminal"),
+      active: stack.includes("terminal"),
+    },
   ];
 
   return (
@@ -348,6 +357,18 @@ export default function HomeScene({
                 key={id}
                 posts={posts}
                 onOpen={(slug) => openDoc(`post:${slug}`)}
+                {...frame}
+              />
+            );
+          }
+
+          if (id === "terminal") {
+            return (
+              <TerminalSection
+                key={id}
+                projects={projects}
+                onOpenWindow={focusWindow}
+                onOpenProject={(slug) => openDoc(`project:${slug}`)}
                 {...frame}
               />
             );

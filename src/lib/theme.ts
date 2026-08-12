@@ -31,12 +31,15 @@ export function useTheme(): Theme {
   return theme;
 }
 
-export function toggleTheme() {
-  const next: Theme = currentTheme() === "light" ? "dark" : "light";
+export function setTheme(next: Theme) {
   document.documentElement.dataset.theme = next;
   try {
     localStorage.setItem("theme", next);
   } catch {
     // 시크릿 모드 등 저장이 막힌 환경에서는 이번 방문 동안만 유지한다.
   }
+}
+
+export function toggleTheme() {
+  setTheme(currentTheme() === "light" ? "dark" : "light");
 }
