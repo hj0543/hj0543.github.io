@@ -11,6 +11,7 @@ import {
   SquareTerminal,
   Sun,
   UserRound,
+  X,
 } from "lucide-react";
 import { useCallback, useEffect, useState } from "react";
 
@@ -29,6 +30,9 @@ import {
   type Project,
 } from "@/components/sections/projects-section";
 import TerminalSection from "@/components/sections/terminal-section";
+import ContextMenu, {
+  type ContextMenuItem,
+} from "@/components/ui/context-menu";
 import Dock, { type DockItemData } from "@/components/ui/dock";
 import LiveDateTime from "@/components/ui/live-date-time";
 import MaskedHeading from "@/components/ui/masked-heading";
@@ -124,6 +128,8 @@ export default function HomeScene({
   const [activeDoc, setActiveDoc] = useState<DocId | null>(null);
   // 보고 있던 탭을 또 눌렀을 때도 창이 펼쳐지도록 문서를 띄운 횟수를 센다.
   const [docReveal, setDocReveal] = useState(0);
+  // 바탕화면 우클릭 메뉴가 열린 위치. null이면 닫힌 상태.
+  const [menu, setMenu] = useState<{ x: number; y: number } | null>(null);
 
   const focusWindow = useCallback((id: WindowId) => {
     setStack((prev) =>
@@ -184,14 +190,29 @@ export default function HomeScene({
     closeWindow(top);
   }, [stack, activeDoc, docs.length, closeDoc, closeWindow]);
 
-  // Escape는 맨 앞 창 하나만 닫는다.
+  // Escape는 우클릭 메뉴가 열려 있으면 메뉴만, 아니면 맨 앞 창 하나만 닫는다.
   useEffect(() => {
     const onKeyDown = (event: KeyboardEvent) => {
-      if (event.key === "Escape") closeTopWindow();
+      if (event.key !== "Escape") return;
+      if (menu) {
+        setMenu(null);
+        return;
+      }
+      closeTopWindow();
     };
     window.addEventListener("keydown", onKeyDown);
     return () => window.removeEventListener("keydown", onKeyDown);
-  }, [closeTopWindow]);
+  }, [menu, closeTopWindow]);
+
+  /** 빈 바탕화면(창·Dock·버튼 밖)에서만 우리 메뉴를 연다. 그 밖에서는 브라우저 기본 메뉴를 둔다. */
+  const onDesktopContextMenu = (event: React.MouseEvent) => {
+    const target = event.target as HTMLElement;
+    if (target.closest('[role="dialog"], [role="toolbar"], [role="menu"], a, button, input')) {
+      return;
+    }
+    event.preventDefault();
+    setMenu({ x: event.clientX, y: event.clientY });
+  };
 
   const activeItemClass = (id: WindowId) =>
     stack.includes(id) ? ACTIVE_ITEM : undefined;
@@ -251,8 +272,58 @@ export default function HomeScene({
     },
   ];
 
+  // 우클릭 메뉴 항목. Dock·툴바에 있는 동작을 한곳에 다시 모은다.
+  const menuItems: ContextMenuItem[] = [
+    {
+      icon: <UserRound aria-hidden="true" size={14} strokeWidth={1.7} />,
+      label: "About Me",
+      onSelect: () => focusWindow("about"),
+    },
+    {
+      icon: <FolderKanban aria-hidden="true" size={14} strokeWidth={1.7} />,
+      label: "Projects",
+      onSelect: () => focusWindow("projects"),
+    },
+    {
+      icon: <NotebookPen aria-hidden="true" size={14} strokeWidth={1.7} />,
+      label: "Devlog",
+      onSelect: () => focusWindow("devlog"),
+    },
+    {
+      icon: <SquareTerminal aria-hidden="true" size={14} strokeWidth={1.7} />,
+      label: "Terminal",
+      onSelect: () => focusWindow("terminal"),
+    },
+    "divider",
+    {
+      icon:
+        theme === "light" ? (
+          <Moon aria-hidden="true" size={14} strokeWidth={1.7} />
+        ) : (
+          <Sun aria-hidden="true" size={14} strokeWidth={1.7} />
+        ),
+      label: theme === "light" ? "다크 테마로 전환" : "라이트 테마로 전환",
+      onSelect: toggleTheme,
+    },
+    {
+      icon:
+        chrome === "mac" ? <WindowsLogo size={13} /> : <AppleLogo size={13} />,
+      label: chrome === "mac" ? "윈도우 스타일 창" : "맥 스타일 창",
+      onSelect: toggleWindowChrome,
+    },
+    "divider",
+    {
+      icon: <X aria-hidden="true" size={14} strokeWidth={1.7} />,
+      label: "모든 창 닫기",
+      onSelect: closeAllWindows,
+    },
+  ];
+
   return (
-    <main className="relative min-h-svh overflow-hidden bg-background">
+    <main
+      className="relative min-h-svh overflow-hidden bg-background"
+      onContextMenu={onDesktopContextMenu}
+    >
       {/* 하단 메뉴 선택과 무관하게 홈 배경을 고정해서 표시한다. */}
       <div
         aria-hidden="true"
@@ -465,6 +536,16 @@ export default function HomeScene({
           </button>
         </div>
       </div>
+
+      {/* 바탕화면 우클릭 메뉴 */}
+      {menu ? (
+        <ContextMenu
+          x={menu.x}
+          y={menu.y}
+          items={menuItems}
+          onClose={() => setMenu(null)}
+        />
+      ) : null}
     </main>
   );
 }
