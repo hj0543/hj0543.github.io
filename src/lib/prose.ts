@@ -1,13 +1,13 @@
 // 타이포그래피 플러그인 없이 마크다운 본문만 골라 스타일을 입힌다.
 // devlog 글과 프로젝트 상세 창이 같은 규칙을 쓴다.
 export const PROSE = [
-  "[&_h2]:mt-7 [&_h2]:text-[15px] [&_h2]:font-semibold [&_h2]:text-foreground",
-  "[&_h3]:mt-6 [&_h3]:text-sm [&_h3]:font-semibold [&_h3]:text-foreground/90",
-  "[&_p]:mt-3.5 [&_p]:text-sm [&_p]:leading-relaxed [&_p]:text-foreground/65",
-  "[&_strong]:font-semibold [&_strong]:text-foreground/90",
-  "[&_ul]:mt-3.5 [&_ul]:list-disc [&_ul]:space-y-1.5 [&_ul]:pl-5",
-  "[&_ol]:mt-3.5 [&_ol]:list-decimal [&_ol]:space-y-1.5 [&_ol]:pl-5",
-  "[&_li]:text-sm [&_li]:leading-relaxed [&_li]:text-foreground/65",
+  "[&_h2]:mt-10 [&_h2]:border-b [&_h2]:border-ink/15 [&_h2]:pb-3 [&_h2]:text-lg [&_h2]:font-bold [&_h2]:tracking-tight [&_h2]:text-foreground",
+  "[&_h3]:mt-8 [&_h3]:border-l-2 [&_h3]:border-accent/70 [&_h3]:py-0.5 [&_h3]:pl-3 [&_h3]:text-base [&_h3]:font-semibold [&_h3]:leading-snug [&_h3]:text-foreground/95",
+  "[&_p]:mt-3 [&_p]:text-sm [&_p]:leading-7 [&_p]:text-foreground/65",
+  "[&_strong]:font-semibold [&_strong]:text-foreground/95",
+  "[&_ul]:mt-4 [&_ul]:list-disc [&_ul]:space-y-2 [&_ul]:pl-5",
+  "[&_ol]:mt-4 [&_ol]:list-decimal [&_ol]:space-y-2 [&_ol]:pl-5",
+  "[&_li]:text-sm [&_li]:leading-7 [&_li]:text-foreground/65",
   "[&_a]:text-accent [&_a]:underline [&_a]:underline-offset-2",
   "[&_code]:rounded [&_code]:bg-ink/8 [&_code]:px-1.5 [&_code]:py-0.5 [&_code]:font-mono [&_code]:text-[12px] [&_code]:text-foreground/85",
   "[&_pre]:mt-4 [&_pre]:overflow-x-auto [&_pre]:rounded-lg [&_pre]:border [&_pre]:border-ink/10 [&_pre]:bg-ink/6 [&_pre]:p-4",

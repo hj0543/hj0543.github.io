@@ -1,14 +1,29 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useSyncExternalStore } from "react";
 
 /** 창 제목줄 스타일. mac은 왼쪽 신호등 버튼, windows는 오른쪽 아이콘 버튼. */
 export type WindowChrome = "mac" | "windows";
 
+const DEFAULT_CHROME: WindowChrome = "windows";
+
 /** layout.tsx의 인라인 스크립트가 첫 페인트 전에 <html>에 넣어둔 값을 읽는다. */
 function currentChrome(): WindowChrome {
-  if (typeof document === "undefined") return "windows";
+  if (typeof document === "undefined") return DEFAULT_CHROME;
   return document.documentElement.dataset.chrome === "mac" ? "mac" : "windows";
+}
+
+function subscribeToChrome(onStoreChange: () => void) {
+  const observer = new MutationObserver(onStoreChange);
+  observer.observe(document.documentElement, {
+    attributes: true,
+    attributeFilter: ["data-chrome"],
+  });
+  return () => observer.disconnect();
+}
+
+function serverChrome(): WindowChrome {
+  return DEFAULT_CHROME;
 }
 
 /**
@@ -16,19 +31,7 @@ function currentChrome(): WindowChrome {
  * 테마와 같은 방식이라 창이 몇 개 열려 있든 prop 전달 없이 함께 바뀐다.
  */
 export function useWindowChrome(): WindowChrome {
-  const [chrome, setChrome] = useState<WindowChrome>(currentChrome);
-
-  useEffect(() => {
-    setChrome(currentChrome());
-    const observer = new MutationObserver(() => setChrome(currentChrome()));
-    observer.observe(document.documentElement, {
-      attributes: true,
-      attributeFilter: ["data-chrome"],
-    });
-    return () => observer.disconnect();
-  }, []);
-
-  return chrome;
+  return useSyncExternalStore(subscribeToChrome, currentChrome, serverChrome);
 }
 
 export function toggleWindowChrome() {

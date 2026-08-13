@@ -1,8 +1,9 @@
 "use client";
 
-import { Code, Mail, MapPin } from "lucide-react";
+import { Mail, MapPin } from "lucide-react";
 import { motion, type Variants } from "motion/react";
 
+import { BrandIcon, TechBadge } from "@/components/ui/brand-icon";
 import WindowFrame from "@/components/ui/window-frame";
 
 // 카드 전체가 순서대로 나타나도록 자식 요소의 등장 시점을 늦춘다.
@@ -66,8 +67,8 @@ const highlights = [
 const certifications = ["정보처리기사 (필기합격)"];
 
 const links = [
-  { icon: Code, label: "GitHub", href: "https://github.com/hj0543" },
-  { icon: Mail, label: "Email", href: "mailto:hj0543@gmail.com" },
+  { label: "GitHub", href: "https://github.com/hj0543" },
+  { label: "Email", href: "mailto:hj0543@gmail.com" },
 ];
 
 /** 상단 ABOUT ME 라벨과 같은 문법을 쓰는 카드 안 소제목. */
@@ -121,12 +122,7 @@ export default function AboutSection(frame: {
 
           <motion.div variants={item} className="mt-7 flex flex-wrap gap-2">
             {skills.map((skill) => (
-              <span
-                key={skill}
-                className="rounded-full border border-ink/12 bg-ink/6 px-3 py-1.5 font-mono text-[11px] text-foreground/75"
-              >
-                {skill}
-              </span>
+              <TechBadge key={skill} label={skill} />
             ))}
           </motion.div>
 
@@ -216,7 +212,7 @@ export default function AboutSection(frame: {
               Gumi, KR
             </span>
 
-            {links.map(({ icon: Icon, label, href }) => (
+            {links.map(({ label, href }) => (
               <a
                 key={label}
                 href={href}
@@ -224,7 +220,11 @@ export default function AboutSection(frame: {
                 rel={href.startsWith("http") ? "noreferrer" : undefined}
                 className="flex items-center gap-1.5 text-xs text-foreground/60 transition-colors hover:text-accent focus-visible:text-accent focus-visible:outline-none"
               >
-                <Icon aria-hidden="true" size={14} strokeWidth={1.7} />
+                {label === "GitHub" ? (
+                  <BrandIcon name="GitHub" size={14} />
+                ) : (
+                  <Mail aria-hidden="true" size={14} strokeWidth={1.7} />
+                )}
                 {label}
               </a>
             ))}

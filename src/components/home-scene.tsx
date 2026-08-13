@@ -401,6 +401,14 @@ export default function HomeScene({
           if (event.target === event.currentTarget) closeTopWindow();
         }}
       >
+        {stack.includes("docs") ? (
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute inset-0 bg-background/45 backdrop-blur-[1px]"
+            style={{ zIndex: stack.indexOf("docs") - 0.5 }}
+          />
+        ) : null}
+
         {stack.map((id, index) => {
           const frame = {
             z: index,
@@ -461,8 +469,9 @@ export default function HomeScene({
               onSelectTab={setActiveDoc}
               onCloseTab={closeDoc}
               reveal={docReveal}
-              defaultWidth={930}
+              defaultWidth={1040}
               defaultHeight={840}
+              className="bg-surface/96"
               {...frame}
             >
               {/* 탭을 바꿀 때 등장 애니메이션을 다시 재생하도록 key를 준다. */}

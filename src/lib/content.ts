@@ -38,6 +38,9 @@ export function toStringArray(value: unknown) {
 /** 외부 링크. frontmatter의 links: [{ label, href }] 목록을 읽는다. */
 export type ContentLink = { label: string; href: string };
 
+/** 프로젝트 대표 화면. src와 alt는 필수이며 caption은 화면 아래 설명으로 쓴다. */
+export type ContentImage = { src: string; alt: string; caption?: string };
+
 /** href가 없는 항목은 조용히 버려서 프론트매터 오타가 화면을 깨지 않게 한다. */
 export function toLinkArray(value: unknown): ContentLink[] {
   if (!Array.isArray(value)) return [];
@@ -46,6 +49,23 @@ export function toLinkArray(value: unknown): ContentLink[] {
     const { label, href } = entry as Record<string, unknown>;
     if (!href) return [];
     return [{ label: String(label ?? "Link"), href: String(href) }];
+  });
+}
+
+/** src가 없는 대표 화면은 제외해 잘못된 frontmatter가 캐러셀을 깨지 않게 한다. */
+export function toImageArray(value: unknown): ContentImage[] {
+  if (!Array.isArray(value)) return [];
+  return value.flatMap((entry) => {
+    if (typeof entry !== "object" || entry === null) return [];
+    const { src, alt, caption } = entry as Record<string, unknown>;
+    if (!src) return [];
+    return [
+      {
+        src: String(src),
+        alt: String(alt ?? "프로젝트 화면"),
+        ...(caption ? { caption: String(caption) } : {}),
+      },
+    ];
   });
 }
 

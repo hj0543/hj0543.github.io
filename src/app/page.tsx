@@ -4,6 +4,7 @@ import type { Project } from "@/components/sections/projects-section";
 import {
   readMarkdownDir,
   toDateString,
+  toImageArray,
   toLinkArray,
   toStringArray,
 } from "@/lib/content";
@@ -44,6 +45,7 @@ async function readProjects(): Promise<Project[]> {
       period: String(data.period ?? ""),
       team: String(data.team ?? ""),
       stack: toStringArray(data.stack),
+      screens: toImageArray(data.screens),
       links: toLinkArray(data.links),
       featured: data.featured === true,
       html,

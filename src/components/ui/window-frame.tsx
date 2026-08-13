@@ -135,9 +135,11 @@ export default function WindowFrame<T extends string = string>({
     const { vw, vh } = viewport();
     const w = Math.min(defaultWidth, vw - MARGIN * 2);
     const h = Math.min(defaultHeight, vh - MARGIN - DOCK_SAFE);
+    // 모바일에서는 계단식 오프셋이 창을 화면 밖으로 밀어내므로 새 창을 같은 자리에 연다.
+    const placementOffset = vw < 640 ? 0 : offset;
     return clampPosition({
-      x: (vw - w) / 2 + offset,
-      y: Math.max((vh - DOCK_SAFE - h) / 2, MARGIN) + offset,
+      x: (vw - w) / 2 + placementOffset,
+      y: Math.max((vh - DOCK_SAFE - h) / 2, MARGIN) + placementOffset,
       w,
       h,
     });

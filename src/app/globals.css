@@ -26,6 +26,7 @@
   --window-shadow: 0 30px 80px rgba(0, 0, 0, 0.6);
   --selection-bg: rgb(239 177 255 / 28%);
   --selection-fg: #ffffff;
+  --brand-icon-filter: invert(1);
 }
 
 /* 라이트 테마는 세이지/틸 계열로 맞춘다. */
@@ -46,6 +47,7 @@
   --window-shadow: 0 30px 80px rgba(20, 46, 43, 0.22);
   --selection-bg: rgb(95 143 139 / 25%);
   --selection-fg: #1c3431;
+  --brand-icon-filter: none;
 }
 
 @theme inline {
@@ -82,6 +84,10 @@ body {
 ::selection {
   background: var(--selection-bg);
   color: var(--selection-fg);
+}
+
+.brand-icon {
+  filter: var(--brand-icon-filter);
 }
 
 @media (prefers-reduced-motion: reduce) {
