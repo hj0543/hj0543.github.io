@@ -3,6 +3,7 @@
 import { CalendarDays } from "lucide-react";
 import { motion, type Variants } from "motion/react";
 
+import AnimatedList from "@/components/ui/animated-list";
 import WindowFrame from "@/components/ui/window-frame";
 import { PROSE } from "@/lib/prose";
 
@@ -67,40 +68,50 @@ export function DevlogSection({
           Devlog
         </motion.p>
 
-        <div className="mt-6 space-y-2">
-          {posts.map((post) => (
-            <motion.button
-              key={post.slug}
-              variants={item}
-              type="button"
-              onClick={() => onOpen(post.slug)}
-              className="group w-full cursor-pointer rounded-xl border border-ink/10 bg-ink/4 p-4 text-left transition-colors hover:border-accent/45 hover:bg-ink/8 focus-visible:border-accent/45 focus-visible:outline-none"
-            >
-              <span className="flex items-center gap-1.5 font-mono text-[11px] text-foreground/45">
-                <CalendarDays aria-hidden="true" size={12} strokeWidth={1.7} />
-                {post.date}
-              </span>
-
-              <h3 className="mt-2 text-sm font-semibold text-foreground transition-colors group-hover:text-accent">
-                {post.title}
-              </h3>
-
-              {post.summary ? (
-                <p className="mt-1.5 line-clamp-2 text-xs leading-relaxed text-foreground/55">
-                  {post.summary}
-                </p>
-              ) : null}
-
-              {post.tags.length > 0 ? (
-                <span className="mt-3 flex flex-wrap gap-1.5">
-                  {post.tags.map((tag) => (
-                    <Tag key={tag} label={tag} />
-                  ))}
+        <motion.div variants={item} className="mt-6">
+          <AnimatedList
+            items={posts}
+            getItemKey={(post) => post.slug}
+            onItemSelect={(post) => onOpen(post.slug)}
+            ariaLabel="Devlog posts"
+            showGradients
+            enableArrowNavigation
+            displayScrollbar
+            className="w-full"
+            listClassName="max-h-[56vh]"
+            itemClassName="rounded-xl border border-ink/10 bg-ink/4 p-4 transition-[border-color,background-color,box-shadow] hover:border-accent/45 hover:bg-ink/8 focus-visible:border-accent/60 focus-visible:ring-2 focus-visible:ring-accent/35 aria-selected:border-accent/45 aria-selected:bg-ink/8"
+            renderItem={(post, _index, selected) => (
+              <>
+                <span className="flex items-center gap-1.5 font-mono text-[11px] text-foreground/45">
+                  <CalendarDays aria-hidden="true" size={12} strokeWidth={1.7} />
+                  {post.date}
                 </span>
-              ) : null}
-            </motion.button>
-          ))}
-        </div>
+
+                <h3
+                  className={`mt-2 text-sm font-semibold transition-colors group-hover:text-accent ${
+                    selected ? "text-accent" : "text-foreground"
+                  }`}
+                >
+                  {post.title}
+                </h3>
+
+                {post.summary ? (
+                  <p className="mt-1.5 line-clamp-2 text-xs leading-relaxed text-foreground/55">
+                    {post.summary}
+                  </p>
+                ) : null}
+
+                {post.tags.length > 0 ? (
+                  <span className="mt-3 flex flex-wrap gap-1.5">
+                    {post.tags.map((tag) => (
+                      <Tag key={tag} label={tag} />
+                    ))}
+                  </span>
+                ) : null}
+              </>
+            )}
+          />
+        </motion.div>
       </motion.div>
     </WindowFrame>
   );
