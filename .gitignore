@@ -25,7 +25,9 @@
 *.pem
 
 # personal profile photos
-/public/my_profile/
+/public/my_profile/*
+!/public/my_profile/
+!/public/my_profile/my_profile.jpg
 
 # debug
 npm-debug.log*
