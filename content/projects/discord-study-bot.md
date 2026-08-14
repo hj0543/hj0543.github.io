@@ -1,9 +1,13 @@
 ---
 name: Discord Algorithms Study Bot
 tagline: 알고리즘 스터디 운영 자동화 봇
-# thumbnail: /projects/discord-study-bot.png
-# screens:
-#   - { src: /projects/discord-study-bot/screen.png, alt: 디스코드 봇 실행 화면, caption: 알고리즘 문제 추천 및 풀이 현황 }
+thumbnail: /projects/Discord_Algo_bot/discord-study-bot.png
+screens:
+  - { src: /projects/discord-study-bot/problem-search.png, alt: 문제 검색 화면, caption: 알고리즘 문제 검색 }
+  - { src: /projects/discord-study-bot/problem-alarm.png, alt: 문제 풀이 알람, caption: 문제풀이 알람 }
+  - { src: /projects/discord-study-bot/problem-solved.png, alt: 스터디원 풀이 현황 화면, caption: 스터디원 풀이 현황 }
+  - { src: /projects/discord-study-bot/problem-notice.png, alt: 공지 등록 화면, caption: 알고리즘 문제풀이 공지 등록 }
+  - { src: /projects/discord-study-bot/probelm-vote.png, alt: 문제 투표 화면, caption: 스터디 문제 투표 }
 role: 1인 기획 · 개발
 period: 2026.02 ~ 2026.03
 team: 개인
@@ -12,7 +16,7 @@ order: 1
 # 채우면 문서 상단에 버튼으로 표시된다.
 links:
   - { label: GitHub, href: https://github.com/hj0543/Discord_Algorthms_StudyBot }
-# featured: true   # 대표 프로젝트: 목록 맨 앞에 두 칸 폭으로 강조된다.
+featured: true   # 대표 프로젝트: 목록 맨 앞에 두 칸 폭으로 강조된다.
 ---
 
 ## 프로젝트 개요
@@ -33,36 +37,23 @@ links:
 - 미풀이 인원 리마인드 알림
 
 ## 담당 역할 및 기여
+기획·개발·배포 솔로프로젝트
 
-난이도·유형별 문제 추천과 스터디원의 풀이 현황을 확인하는 명령어를 구현했습니다.
-
-- 기획:
-- 개발:
-- 배포:
 
 ## 시스템 아키텍처
-
 <!-- TODO: 디스코드 이벤트 처리, 문제 데이터 조회, 스케줄링, Oracle Cloud 배포 구조를 추가한다. -->
-
-## ERD
-
-<!-- TODO: 저장하는 데이터가 있다면 데이터 모델을 추가한다. -->
 
 ## 기술적 고민 및 문제 해결
 
-### 봇이 며칠에 한 번씩 죽던 문제
-
-- 상황:
-- 시도:
-- 해결:
-- 배운 점:
-
 ### 매번 추천하는 문제 중 중복 문제가 많았던 문제
 
-- 상황:
-- 시도:
-- 해결:
-- 배운 점:
+- 상황: 동일한 난이도와 알고리즘 유형으로 여러 번 추천을 요청하면 이전에 추천된 문제가 다시 등장하는 경우가 많았습니다.
+
+- 시도: API가 반환한 문제 중 random.sample()로 5개를 추출했지만, API에서 반환하는 후보 목록 자체가 비슷하게 유지되어 반복 추천을 충분히 줄이지 못했습니다.
+
+- 해결: Solved.ac 검색 쿼리에 sort:random을 추가하고, 요청마다 무작위 쿼리 값을 전달해 캐시된 동일 응답이 반복되는 것을 방지했습니다. 이후 무작위로 정렬된 후보에서 다시 5개를 추출해 추천 결과가 더욱 다양하게 분산되도록 개선했습니다.
+
+- 배운 점: 클라이언트에서 결과만 무작위로 선택해도 원본 후보가 고정되어 있다면 다양성을 확보하기 어렵다는 것을 배웠습니다. 외부 API의 정렬 방식과 캐시 동작까지 고려해야 한다는 점도 알게 되었습니다.
 
 ## 협업 방식
 

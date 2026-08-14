@@ -5,6 +5,7 @@ thumbnail: /projects/Ait/Ait.png
 screens:
   - { src: /projects/Ait/screen_ai_mock_interview.png, alt: AI 모의면접 진행 화면, caption: 실시간 AI 모의면접 }
   - { src: /projects/Ait/screen_ai_mock_interview_result.png, alt: AI 모의면접 결과 리포트, caption: 역량 분석과 질문별 피드백 리포트 }
+  - { src: /projects/Ait/dashboard.png, alt: 대시보드 화면, caption: 성장을 확인할 수 있는 대시보드 }
   - { src: /projects/Ait/screen_studylounge.png, alt: 스터디라운지, caption: 함께 면접을 준비하는 스터디라운지 }  
   - { src: /projects/Ait/screen_mypage.png, alt: 마이페이지, caption: 깃허브 연동부터 이력서와 자소서 등록까지 }  
 role: Frontend Leader
