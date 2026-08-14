@@ -26,6 +26,7 @@ export type DockItemData = {
   active?: boolean;
 };
 
+/** Dock 전체의 크기와 마우스 근접 확대 효과를 조절하는 공개 옵션. */
 export type DockProps = {
   items: DockItemData[];
   className?: string;
@@ -52,6 +53,7 @@ type DockItemProps = {
   active?: boolean;
 };
 
+/** 마우스와의 거리에 따라 크기가 변하는 개별 Dock 항목. */
 function DockItem({
   children,
   className = "",
@@ -67,6 +69,7 @@ function DockItem({
   const ref = useRef<HTMLDivElement>(null);
   const isHovered = useMotionValue(0);
 
+  // 전역 포인터 X 좌표를 각 아이콘 중심으로부터의 상대 거리로 변환한다.
   const mouseDistance = useTransform(mouseX, (value) => {
     const rect = ref.current?.getBoundingClientRect() ?? {
       x: 0,
@@ -80,6 +83,7 @@ function DockItem({
     [-distance, 0, distance],
     [baseItemSize, magnification, baseItemSize],
   );
+  // 목표 크기를 바로 적용하지 않고 spring을 거쳐 macOS Dock처럼 부드럽게 확대한다.
   const size = useSpring(targetSize, spring);
 
   const handleKeyDown = (event: React.KeyboardEvent<HTMLDivElement>) => {
@@ -105,6 +109,7 @@ function DockItem({
       aria-label={typeof label === "string" ? label : undefined}
       aria-pressed={active}
     >
+      {/* Label 자식에 hover MotionValue를 주입해 아이콘과 툴팁 상태를 동기화한다. */}
       {Children.map(children, (child) =>
         React.isValidElement(child)
           ? cloneElement(
@@ -132,6 +137,7 @@ function DockLabel({
 }: DockLabelProps) {
   const [isVisible, setIsVisible] = useState(false);
 
+  // React state는 툴팁 마운트에만 쓰고, 고빈도 hover 값은 MotionValue로 전달한다.
   useEffect(() => {
     if (!isHovered) return;
     return isHovered.on("change", (latest) => {
@@ -184,9 +190,11 @@ export default function Dock({
   dockHeight = 256,
   baseItemSize = 50,
 }: DockProps) {
+  // 한 개의 포인터 값을 모든 항목이 공유해야 인접 아이콘도 함께 확대된다.
   const mouseX = useMotionValue(Infinity);
   const isHovered = useMotionValue(0);
 
+  // 확대된 아이콘과 툴팁이 잘리지 않도록 Dock 바깥 래퍼 높이도 함께 늘린다.
   const maxHeight = useMemo(
     () => Math.max(dockHeight, magnification + magnification / 2 + 4),
     [dockHeight, magnification],

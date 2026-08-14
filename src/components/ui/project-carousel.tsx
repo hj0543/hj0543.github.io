@@ -11,15 +11,18 @@ export type ProjectScreen = {
   caption?: string;
 };
 
+// 드래그 거리나 속도 중 하나가 임계값을 넘으면 다음 슬라이드로 판정한다.
 const SWIPE_DISTANCE = 56;
 const SWIPE_VELOCITY = 500;
 
+/** 버튼·키보드·드래그 조작을 지원하는 프로젝트 화면 캐러셀. */
 export default function ProjectCarousel({
   screens,
 }: {
   screens: ProjectScreen[];
 }) {
   const canNavigate = screens.length > 1;
+  // 양 끝에 반대편 슬라이드를 복제해 경계에서도 끊기지 않는 순환 이동을 만든다.
   const slides = useMemo(
     () =>
       canNavigate
@@ -28,6 +31,7 @@ export default function ProjectCarousel({
     [canNavigate, screens],
   );
   const [position, setPosition] = useState(canNavigate ? 1 : 0);
+  // 슬라이드 이동 거리는 현재 뷰포트의 실제 폭을 기준으로 계산한다.
   const [width, setWidth] = useState(0);
   const [animate, setAnimate] = useState(true);
   const viewportRef = useRef<HTMLDivElement>(null);
@@ -38,6 +42,7 @@ export default function ProjectCarousel({
     : 0;
   const activeScreen = screens[activeIndex];
 
+  /** 복제 슬라이드 범위를 벗어나지 않도록 한 칸씩 이동한다. */
   const move = useCallback(
     (direction: -1 | 1) => {
       if (!canNavigate) return;
@@ -61,6 +66,7 @@ export default function ProjectCarousel({
     return () => observer.disconnect();
   }, []);
 
+  /** 복제된 첫·마지막 슬라이드에 도착하면 애니메이션 없이 실제 위치로 되감는다. */
   const handleAnimationComplete = () => {
     if (!canNavigate) return;
 
@@ -74,6 +80,7 @@ export default function ProjectCarousel({
     window.requestAnimationFrame(() => setAnimate(true));
   };
 
+  /** 느리게 멀리 끌거나 짧게 빠르게 튕기는 동작을 모두 스와이프로 인정한다. */
   const handleDragEnd = (_event: MouseEvent | TouchEvent | PointerEvent, info: PanInfo) => {
     if (
       info.offset.x <= -SWIPE_DISTANCE ||
@@ -90,6 +97,7 @@ export default function ProjectCarousel({
 
   if (!activeScreen) return null;
 
+  // 모든 슬라이드가 같은 폭이므로 인덱스와 측정 폭의 곱만큼 트랙을 이동한다.
   const targetX = -position * width;
 
   return (

@@ -32,6 +32,7 @@ const HELP = [
   "clear                화면 지우기",
 ];
 
+/** 입력 문자열을 로컬 명령으로 해석해 창, 프로젝트, 테마 상태를 제어하는 터미널 화면. */
 export default function TerminalSection({
   projects,
   onOpenWindow,

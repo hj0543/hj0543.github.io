@@ -13,6 +13,7 @@ import { motion, useInView, useReducedMotion } from "motion/react";
 
 import { cn } from "@/lib/utils";
 
+// items를 생략해도 컴포넌트를 단독 미리보기할 수 있는 기본 데이터다.
 const DEFAULT_ITEMS = Array.from({ length: 15 }, (_, index) =>
   `Item ${index + 1}`,
 );
@@ -29,6 +30,7 @@ type AnimatedItemProps = {
   onMouseEnter: () => void;
 };
 
+/** 뷰포트 진입 시 나타나며 listbox의 option 역할을 하는 한 항목. */
 function AnimatedItem({
   children,
   className,
@@ -87,6 +89,7 @@ export type AnimatedListProps<T = string> = {
   ariaLabel?: string;
 };
 
+/** 제네릭 데이터 렌더링과 키보드 탐색을 함께 제공하는 애니메이션 listbox. */
 export default function AnimatedList<T = string>({
   items,
   renderItem,
@@ -109,6 +112,7 @@ export default function AnimatedList<T = string>({
   const [keyboardNav, setKeyboardNav] = useState(false);
   const [topGradientOpacity, setTopGradientOpacity] = useState(0);
   const [bottomGradientOpacity, setBottomGradientOpacity] = useState(0);
+  // 데이터가 줄어든 경우 이전 선택 인덱스를 마지막 항목 안으로 보정한다.
   const activeSelectedIndex =
     selectedIndex >= resolvedItems.length
       ? resolvedItems.length - 1
@@ -139,6 +143,7 @@ export default function AnimatedList<T = string>({
   const handleKeyDown = (event: React.KeyboardEvent<HTMLDivElement>) => {
     if (!enableArrowNavigation || resolvedItems.length === 0) return;
 
+    // roving tabindex 패턴으로 방향키와 Home/End 키를 지원한다.
     let nextIndex: number | null = null;
     if (event.key === "ArrowDown") {
       nextIndex = Math.min(activeSelectedIndex + 1, resolvedItems.length - 1);
@@ -163,6 +168,7 @@ export default function AnimatedList<T = string>({
     const container = listRef.current;
     if (!container) return;
 
+    // 내용이나 컨테이너 높이가 달라져도 위·아래 페이드 강도를 다시 계산한다.
     updateGradients(container);
     const resizeObserver = new ResizeObserver(() => updateGradients(container));
     resizeObserver.observe(container);
@@ -179,6 +185,7 @@ export default function AnimatedList<T = string>({
     );
     if (!selectedItem) return;
 
+    // 브라우저 기본 스크롤 대신 여유 간격을 둔 자체 스크롤을 적용한다.
     selectedItem.focus({ preventScroll: true });
     const extraMargin = 48;
     const itemTop = selectedItem.offsetTop;
@@ -254,6 +261,7 @@ export default function AnimatedList<T = string>({
 
       {showGradients ? (
         <>
+          {/* 더 스크롤할 내용이 있는 방향만 가장자리 페이드를 표시한다. */}
           <div
             aria-hidden="true"
             className="pointer-events-none absolute inset-x-0 top-0 h-12 bg-linear-to-b from-surface via-surface/85 to-transparent transition-opacity duration-300"

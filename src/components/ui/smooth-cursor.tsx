@@ -2,6 +2,7 @@
 
 import React, { useCallback, useEffect, useRef } from "react";
 
+/** 캔버스 커서 꼬리의 물리감과 렌더링 모양을 조절하는 옵션. */
 export interface SmoothCursorProps {
   className?: string;
   pointsCount?: number;
@@ -41,6 +42,7 @@ const SmoothCursor: React.FC<SmoothCursorProps> = ({
   trailOpacity = 1,
   smoothFactor = 1,
 }) => {
+  // 물리 계산이 불안정해지지 않도록 최소 점 개수와 감쇠 범위를 보정한다.
   const safePointsCount = Math.max(Math.floor(pointsCount), 2);
   const safeDampening = Math.min(Math.max(dampening, 0.1), 0.99);
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -50,6 +52,7 @@ const SmoothCursor: React.FC<SmoothCursorProps> = ({
   const cursorVisibleRef = useRef(true);
   const scaleRef = useRef(1);
   const animationFrameRef = useRef<number | null>(null);
+  // 이벤트 effect를 재등록하지 않고도 다음 프레임에 최신 animate 함수를 읽는다.
   const animateRef = useRef<(() => void) | null>(null);
 
   useEffect(() => {
@@ -70,6 +73,7 @@ const SmoothCursor: React.FC<SmoothCursorProps> = ({
       y: canvas.offsetHeight * 0.5,
     };
 
+    // 모든 점을 중앙에 겹쳐 초기 프레임에서 긴 선이 번쩍이는 현상을 막는다.
     trailRef.current = Array.from({ length: safePointsCount }, () => ({
       x: cursorRef.current.x,
       y: cursorRef.current.y,
@@ -132,6 +136,7 @@ const SmoothCursor: React.FC<SmoothCursorProps> = ({
 
       context.clearRect(0, 0, canvas.width, canvas.height);
 
+      // 첫 점은 실제 포인터를, 나머지는 바로 앞 점을 spring 목표로 삼는다.
       trailRef.current.forEach((point, index) => {
         const target =
           index === 0 ? cursorRef.current : trailRef.current[index - 1];
@@ -145,6 +150,7 @@ const SmoothCursor: React.FC<SmoothCursorProps> = ({
         point.y += point.vy;
       });
 
+      // 포인터가 문서 밖으로 나가면 선을 즉시 끊지 않고 서서히 감춘다.
       const targetScale = cursorVisibleRef.current ? 1 : 0;
       scaleRef.current += (targetScale - scaleRef.current) * 0.15;
 
@@ -156,6 +162,7 @@ const SmoothCursor: React.FC<SmoothCursorProps> = ({
       context.beginPath();
       context.moveTo(trailRef.current[0].x, trailRef.current[0].y);
 
+      // 인접 점의 중간점을 향하는 이차 곡선으로 각진 궤적을 부드럽게 만든다.
       for (let index = 1; index < trailRef.current.length - 1; index++) {
         let velocityFactor = 1;
         if (velocityScale) {
@@ -219,6 +226,7 @@ const SmoothCursor: React.FC<SmoothCursorProps> = ({
     const context = canvas.getContext("2d");
     if (!context) return;
 
+    // 캔버스·이벤트·requestAnimationFrame 생명주기를 한 effect에서 함께 관리한다.
     ctxRef.current = context;
     initializeCanvas();
 

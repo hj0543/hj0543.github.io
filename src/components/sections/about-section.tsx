@@ -80,6 +80,7 @@ function SectionTitle({ children }: { children: React.ReactNode }) {
   );
 }
 
+/** 소개, 경력, 기술 정보를 데스크톱 창 형태로 묶는 프로필 화면. */
 export default function AboutSection(frame: {
   onClose?: () => void;
   z?: number;

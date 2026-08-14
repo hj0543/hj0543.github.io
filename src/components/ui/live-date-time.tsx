@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 
+/** 화면 표시용 날짜·시간과 스크린 리더용 한국어 레이블을 한 번에 만든다. */
 function getDateTimeParts(date: Date) {
   const pad = (value: number) => String(value).padStart(2, "0");
 
@@ -13,6 +14,7 @@ function getDateTimeParts(date: Date) {
 }
 
 export default function LiveDateTime() {
+  // 서버와 클라이언트의 시각 차이로 hydration 오류가 나지 않도록 첫 렌더는 자리표시자로 둔다.
   const [now, setNow] = useState<Date | null>(null);
 
   useEffect(() => {
@@ -20,6 +22,7 @@ export default function LiveDateTime() {
     let intervalId: number | undefined;
 
     update();
+    // 임의의 60초 뒤가 아니라 실제 분 경계에 맞춘 후 1분 간격으로 갱신한다.
     const timeoutId = window.setTimeout(() => {
       update();
       intervalId = window.setInterval(update, 60_000);

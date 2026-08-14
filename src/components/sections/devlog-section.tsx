@@ -44,6 +44,7 @@ function Tag({ label }: { label: string }) {
   );
 }
 
+/** 글 목록의 키보드 탐색은 AnimatedList에 맡기고 선택한 slug만 상위 창 관리자에 전달한다. */
 export function DevlogSection({
   posts,
   onOpen,

@@ -10,6 +10,7 @@ const clamp = (value: number, min: number, max: number): number =>
 type Reveal = "rise" | "wipe" | "fade" | "none";
 type Trigger = "view" | "mount" | "hover";
 
+/** 텍스트 윤곽 안에 이미지나 영상을 채우고 등장·시차 효과를 적용하는 제목 옵션. */
 export interface MaskedHeadingProps {
   text?: string;
   tag?: ElementType;
@@ -36,6 +37,7 @@ export interface MaskedHeadingProps {
   [key: string]: unknown;
 }
 
+// 투명 HTML 텍스트로 레이아웃을 잡고, 같은 좌표의 SVG 글자를 미디어 클리핑에 사용한다.
 const MaskedHeading: FC<MaskedHeadingProps> = ({
   text = "Designed in the details",
   tag = "h2",
@@ -350,6 +352,7 @@ const MaskedHeading: FC<MaskedHeadingProps> = ({
       }}
       {...rest}
     >
+      {/* 실제 문서 흐름과 단어별 좌표 측정을 담당하는 투명 레이어. */}
       <span ref={measureRef} className="text-transparent">
         {words.map((word, index) => (
           <span
@@ -370,6 +373,7 @@ const MaskedHeading: FC<MaskedHeadingProps> = ({
         ))}
       </span>
 
+      {/* 측정한 단어 좌표를 미디어에 재사용할 수 있는 SVG 클리핑 경로로 만든다. */}
       <svg
         className="absolute h-0 w-0 overflow-hidden"
         aria-hidden="true"
@@ -391,6 +395,7 @@ const MaskedHeading: FC<MaskedHeadingProps> = ({
         </defs>
       </svg>
 
+      {/* 클리핑된 미디어만 절대 배치해 원래 제목의 크기와 줄바꿈을 유지한다. */}
       <span
         ref={revealRef}
         className="pointer-events-none absolute inset-0 block"

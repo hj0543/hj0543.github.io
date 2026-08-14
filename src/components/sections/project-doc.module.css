@@ -1,3 +1,4 @@
+/* Markdown 본문이 앱의 mono UI와 구분되도록 읽기용 서체와 행간을 적용한다. */
 .prose {
   font-family: var(--font-pretendard), sans-serif;
   color: color-mix(in srgb, var(--foreground) 74%, transparent);
@@ -7,6 +8,7 @@
   word-break: keep-all;
 }
 
+/* 큰 섹션 제목은 세로 accent 선으로 문서의 주요 구획을 표시한다. */
 .prose h2 {
   scroll-margin-top: 70px;
   margin-top: 76px;
@@ -23,6 +25,7 @@
   margin-top: 56px;
 }
 
+/* 문제 해결 사례처럼 섹션 안에서 반복되는 소제목은 장식 없이 위계만 둔다. */
 .prose h3 {
   margin-top: 44px;
   color: color-mix(in srgb, var(--foreground) 96%, transparent);
@@ -65,12 +68,14 @@
   color: color-mix(in srgb, var(--foreground) 38%, transparent);
 }
 
+/* 링크는 본문의 accent 색과 밑줄을 함께 사용해 색상에만 의존하지 않는다. */
 .prose a {
   color: var(--accent);
   text-decoration: underline;
   text-underline-offset: 3px;
 }
 
+/* 인라인 코드와 코드 블록은 본문보다 조밀한 mono 서체로 구분한다. */
 .prose code {
   padding: 2px 5px;
   border-radius: 3px;
@@ -111,6 +116,7 @@
   color: color-mix(in srgb, var(--foreground) 64%, transparent);
 }
 
+/* Markdown 변환 과정에서 생성한 gallery 래퍼는 넓은 창에서 두 열로 배치한다. */
 .prose :global(.gallery) {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -123,6 +129,7 @@
   margin-top: 0;
 }
 
+/* 창 자체가 리사이즈되므로 브라우저 폭 대신 WindowFrame 컨테이너 폭을 따른다. */
 @container (max-width: 42rem) {
   .prose {
     font-size: 15px;

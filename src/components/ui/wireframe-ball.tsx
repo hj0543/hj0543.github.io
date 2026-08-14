@@ -13,6 +13,7 @@ import * as THREE from "three";
 
 import { cn } from "@/lib/utils";
 
+/** 정다면체의 기본 꼭짓점에서 생성할 수 있는 와이어프레임 형태. */
 export type WireframeBallShape =
   | "tetrahedron"
   | "cube"
@@ -54,6 +55,7 @@ export interface WireframeBallProps {
   children?: React.ReactNode;
 }
 
+// 각 edge를 카메라를 향한 얇은 사각형 인스턴스로 확장하는 셰이더다.
 const strandVertex = `
 attribute vec2 corner;
 attribute vec3 aHead;
@@ -123,6 +125,7 @@ void main() {
 }
 `;
 
+// 각 vertex를 화면 방향의 원형 billboard 인스턴스로 그리는 셰이더다.
 const nodeVertex = `
 attribute vec2 corner;
 attribute vec3 aSeat;
@@ -192,6 +195,7 @@ const GOLD = (1 + Math.sqrt(5)) / 2;
 const HOUSE_RADIUS = Math.hypot(1.28, 1);
 const EDGE_CUTOFF = 0.0035;
 
+/** 정다면체 종류별 원본 꼭짓점을 생성한다. */
 const seedPoints = (shape: WireframeBallShape, stretch: number): number[][] => {
   if (shape === "tetrahedron") {
     return [
@@ -269,6 +273,7 @@ const dot3 = (a: number[], b: number[]) =>
 
 const norm = (a: number[]) => Math.hypot(a[0], a[1], a[2]);
 
+/** 모든 점이 한쪽 면에 놓이는 평면을 찾아 볼록 다면체의 면 순서를 복원한다. */
 const hullRings = (pts: number[][]) => {
   const total = pts.length;
   const claimed = new Set<string>();
@@ -302,6 +307,7 @@ const hullRings = (pts: number[][]) => {
         if (claimed.has(tag)) continue;
         claimed.add(tag);
 
+        // 면 중심과 로컬 축을 만든 뒤 각도로 정렬해 테두리 순환 순서를 얻는다.
         const hub = [0, 0, 0];
         flat.forEach((m) => {
           hub[0] += pts[m][0] / flat.length;
@@ -339,6 +345,7 @@ const buildLattice = (
   detail: number,
   stretch: number,
 ) => {
+  // 원본 면을 삼각형으로 나누고 구 표면으로 투영해 detail 단계만큼 세분화한다.
   const seeds = seedPoints(shape, stretch);
   const rings = hullRings(seeds);
   const shell = norm(seeds[0]) || 1;
@@ -349,6 +356,7 @@ const buildLattice = (
     pairs.add(a < b ? `${a}:${b}` : `${b}:${a}`);
 
   if (detail <= 0) {
+    // 세분화하지 않을 때는 원래 다면체 면의 외곽선만 연결한다.
     rings.forEach((ring) => {
       for (let i = 0; i < ring.length; i++) {
         link(ring[i], ring[(i + 1) % ring.length]);
@@ -383,6 +391,7 @@ const buildLattice = (
     });
 
     for (let pass = 0; pass < detail; pass++) {
+      // 같은 변의 중점을 면마다 중복 생성하지 않도록 pass 단위 캐시를 둔다.
       const cut = new Map<string, number>();
       const halve = (a: number, b: number) => {
         const tag = a < b ? `${a}:${b}` : `${b}:${a}`;
@@ -420,6 +429,7 @@ const buildLattice = (
     });
   }
 
+  // 실제 edge에 쓰인 꼭짓점만 압축하고 GPU instancing용 typed array로 변환한다.
   const live = new Map<number, number>();
   const heads: number[] = [];
   const tails: number[] = [];
@@ -470,6 +480,7 @@ const buildLattice = (
   };
 };
 
+/** edge와 node billboard가 공유하는 단위 사각형 geometry를 만든다. */
 const quadCorners = () => {
   const geometry = new THREE.InstancedBufferGeometry();
   geometry.setAttribute(
@@ -512,6 +523,7 @@ interface LatticeProps
   readDrift: () => DriftState;
 }
 
+/** 계산된 lattice를 두 개의 instanced shader mesh로 렌더링한다. */
 const Lattice = ({
   shape,
   detail,
@@ -547,6 +559,7 @@ const Lattice = ({
     [shape, detail, stretch],
   );
 
+  // edge 하나당 사각형 하나를 만들고 양 끝점을 인스턴스 속성으로 전달한다.
   const strandGeometry = useMemo(() => {
     const geometry = quadCorners();
     geometry.setAttribute(
@@ -561,6 +574,7 @@ const Lattice = ({
     return geometry;
   }, [lattice]);
 
+  // vertex 하나당 billboard 하나와 연결 차수 기반 밝기 가중치를 전달한다.
   const nodeGeometry = useMemo(() => {
     const geometry = quadCorners();
     geometry.setAttribute(
@@ -575,6 +589,7 @@ const Lattice = ({
     return geometry;
   }, [lattice]);
 
+  // 객체를 매 프레임 새로 만들지 않고 uniform의 value만 갱신한다.
   const strandUniforms = useMemo(
     () => ({
       uFrame: { value: new THREE.Matrix3() },
@@ -619,12 +634,14 @@ const Lattice = ({
 
   useEffect(
     () => () => {
+      // shape/detail 변경과 unmount 시 GPU buffer를 명시적으로 해제한다.
       strandGeometry.dispose();
       nodeGeometry.dispose();
     },
     [strandGeometry, nodeGeometry],
   );
 
+  // ref로 보관해 접근성 설정 변경이 매 프레임 React 렌더를 만들지 않게 한다.
   const reducedMotion = useRef(false);
   useEffect(() => {
     if (typeof window === "undefined" || !window.matchMedia) return;
@@ -638,6 +655,7 @@ const Lattice = ({
   }, []);
 
   const clock = useRef(0.8);
+  // 최근 FPS가 목표보다 낮으면 DPR을 단계적으로 낮추는 품질 예산 상태다.
   const budget = useRef({
     since: 0,
     frames: 0,
@@ -648,6 +666,7 @@ const Lattice = ({
   });
 
   useFrame((_, delta) => {
+    // 탭 복귀 직후 큰 delta가 회전 계산을 튀게 하지 않도록 상한을 둔다.
     const step = Math.min(delta, 0.05);
     if (!paused && !reducedMotion.current) clock.current += step * speed;
 
@@ -670,6 +689,7 @@ const Lattice = ({
     q = [q[0] / qLength, q[1] / qLength, q[2] / qLength];
     const r = cross(q, p);
 
+    // 드래그가 끝난 뒤에는 마지막 속도에 마찰을 적용해 관성 회전을 만든다.
     const drift = readDrift();
     if (!drift.dragging) {
       drift.yaw += drift.yawRate * step * 60;
@@ -719,6 +739,7 @@ const Lattice = ({
     const node = nodeMaterialRef.current?.uniforms;
     if (!strand || !node) return;
 
+    // 회전된 직교 기저를 하나의 행렬로 보내 모든 인스턴스에 공통 적용한다.
     const frame = strand.uFrame.value;
     frame.set(
       P[0] * breathe,
@@ -754,6 +775,7 @@ const Lattice = ({
     node.uDepthInk.value.copy(farInk);
 
     if (adaptiveQuality) {
+      // 0.75초 단위 FPS 샘플로 낮출 때는 빠르게, 높일 때는 세 번 확인 후 천천히 조정한다.
       const sample = budget.current;
       sample.warm += step;
       if (sample.warm > 0.5) {
@@ -836,9 +858,11 @@ const Lattice = ({
   );
 };
 
+// DPR은 hydration 시 서버 값 1을 쓰고 클라이언트 첫 스냅샷에서 실제 값을 읽는다.
 const subscribeToScreen = () => () => {};
 const readScreenDpr = () => window.devicePixelRatio || 1;
 
+/** 뷰포트 진입 여부와 포인터 상호작용을 관리하는 외부 WireframeBall 컴포넌트. */
 const WireframeBall = ({
   shape = "icosahedron",
   detail = 0,
@@ -894,6 +918,7 @@ const WireframeBall = ({
     () => 1,
   );
 
+  // 화면에서 멀어진 3D canvas는 통째로 unmount해 GPU 자원을 쉬게 한다.
   useEffect(() => {
     const node = rootRef.current;
     if (!node) return;
@@ -909,6 +934,7 @@ const WireframeBall = ({
     const node = rootRef.current;
     if (!node) return;
     let pending = 0;
+    // currentColor 옵션이 테마 전환을 따라가도록 계산된 CSS color를 다시 읽는다.
     const sync = () => {
       const color = window.getComputedStyle(node).color;
       if (color) setInheritedInk(color);
@@ -949,6 +975,7 @@ const WireframeBall = ({
       const current = drift.current;
 
       if (grip.current.active) {
+        // 드래그 거리 비율을 회전각과 관성 속도로 함께 변환한다.
         const dx = event.clientX - grip.current.x;
         const dy = event.clientY - grip.current.y;
         grip.current.x = event.clientX;
@@ -962,6 +989,7 @@ const WireframeBall = ({
         return;
       }
 
+      // 드래그 중이 아닐 때는 포인터 위치만큼 부드러운 시선 기울기를 준다.
       if (!cursorInteraction) return;
       current.aimX = nx * cursorTilt;
       current.aimY = ny * cursorTilt;
@@ -1002,6 +1030,7 @@ const WireframeBall = ({
     drift.current.friction = spinFriction;
   }, [spinFriction]);
 
+  // 사용자 지정 DPR과 실제 화면 DPR 중 낮은 값을 택해 과도한 렌더링을 막는다.
   const ceiling = useMemo(
     () => clamp(Math.min(screenDpr, dpr), 0.5, 2),
     [screenDpr, dpr],

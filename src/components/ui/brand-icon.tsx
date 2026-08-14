@@ -1,5 +1,6 @@
 import Image from "next/image";
 
+/** frontmatter에 허용할 기술명 별칭과 /public/icons의 실제 파일명을 연결한다. */
 const BRAND_ICONS: Record<string, string> = {
   django: "django",
   docker: "docker",
@@ -39,6 +40,7 @@ export function BrandIcon({
 }) {
   const icon = BRAND_ICONS[name.trim().toLowerCase()];
 
+  // 등록하지 않은 기술도 텍스트 배지는 유지할 수 있도록 아이콘만 생략한다.
   if (!icon) return null;
 
   return (
@@ -53,6 +55,7 @@ export function BrandIcon({
   );
 }
 
+/** 프로젝트 목록과 상세 화면에서 공통으로 쓰는 아이콘 포함 기술 배지. */
 export function TechBadge({ label }: { label: string }) {
   return (
     <span className="inline-flex items-center gap-1.5 rounded-full border border-ink/12 bg-ink/6 px-2.5 py-1 font-mono text-[10px] text-foreground/75">

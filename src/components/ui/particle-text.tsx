@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, type CSSProperties } from "react";
 
+/** 텍스트 샘플링 밀도, 입자 물리, 상호작용과 정렬을 조절하는 공개 옵션. */
 export interface ParticleTextProps {
   text?: string;
   particleSize?: number;
@@ -41,6 +42,7 @@ type Particle = {
   delay: number;
 };
 
+// 색상 보간은 캔버스가 바로 사용할 수 있는 RGB 값으로만 수행한다.
 const hexToRgb = (hex: string): Rgb | null => {
   const clean = hex.replace("#", "").trim();
   if (!/^[0-9a-fA-F]{6}$/.test(clean)) return null;
@@ -73,6 +75,7 @@ const resolveFontSize = (
 ): number => {
   if (typeof value === "number") return value;
 
+  // clamp(), rem 같은 CSS 글자 크기를 실제 px 값으로 얻기 위한 임시 측정 노드다.
   const probe = document.createElement("span");
   probe.textContent = "M";
   probe.style.position = "absolute";
@@ -99,6 +102,7 @@ const waitForFonts = async (font: string): Promise<void> => {
   await document.fonts.ready;
 };
 
+/** 오프스크린 텍스트의 alpha 픽셀을 입자로 바꿔 canvas에 그린다. */
 const ParticleText = ({
   text = "React Bits",
   particleSize = 2,
@@ -134,6 +138,7 @@ const ParticleText = ({
     const context = canvas.getContext("2d");
     if (!context) return undefined;
 
+    // 이 effect가 canvas의 입자 데이터, 관찰자, 이벤트와 RAF 생명주기를 전부 소유한다.
     let particles: Particle[] = [];
     let animationFrame: number | null = null;
     let resizeFrame: number | null = null;
@@ -147,6 +152,7 @@ const ParticleText = ({
     let height = 0;
     let dpr = 1;
 
+    // 실제 포인터와 보간된 포인터를 분리해 반발력이 갑자기 튀지 않게 한다.
     const pointer = {
       active: false,
       x: 0,
@@ -155,6 +161,7 @@ const ParticleText = ({
       smoothY: 0,
     };
 
+    /** 현재 위치 또는 흩어진 위치에서 각 입자의 글자 목표점으로 수렴시킨다. */
     const startGather = (fromScatter = true): void => {
       if (!particles.length) return;
 
@@ -184,6 +191,7 @@ const ParticleText = ({
       gathering = true;
     };
 
+    /** hover 모드에서 입자를 결정적인 seed 방향으로 흩어 놓는다. */
     const scatterForHover = (): void => {
       if (!particles.length || reducedMotion) return;
 
@@ -223,6 +231,7 @@ const ParticleText = ({
       context.fill();
     };
 
+    /** 수렴·idle drift·포인터 반발을 합산해 한 프레임을 그린다. */
     const render = (now: number): void => {
       context.clearRect(0, 0, width, height);
 
@@ -269,6 +278,7 @@ const ParticleText = ({
             particle.depth;
         }
 
+        // 반경 안에서는 거리가 가까울수록 제곱 비율로 더 강하게 밀어낸다.
         if (
           pointer.active &&
           !reducedMotion &&
@@ -307,6 +317,7 @@ const ParticleText = ({
       }
     };
 
+    /** 글자를 오프스크린에 그린 뒤 alpha 픽셀을 새 입자 목표점으로 샘플링한다. */
     const sampleText = async (): Promise<void> => {
       const currentBuild = ++buildId;
       const rect = container.getBoundingClientRect();
@@ -315,6 +326,7 @@ const ParticleText = ({
 
       if (width <= 0 || height <= 0) return;
 
+      // 고해상도 화면에서도 메모리와 픽셀 처리량이 폭증하지 않도록 DPR 상한을 둔다.
       dpr = Math.min(window.devicePixelRatio || 1, 2);
       canvas.width = Math.max(1, Math.floor(width * dpr));
       canvas.height = Math.max(1, Math.floor(height * dpr));
@@ -338,6 +350,7 @@ const ParticleText = ({
       await waitForFonts(font);
       if (currentBuild !== buildId) return;
 
+      // 실제 표시 canvas와 별개인 버퍼에서 텍스트 픽셀만 읽는다.
       const offscreen = document.createElement("canvas");
       const offscreenContext = offscreen.getContext("2d", {
         willReadFrequently: true,
@@ -349,6 +362,7 @@ const ParticleText = ({
       offscreenContext.font = font;
       let metrics = offscreenContext.measureText(content);
       const measuredWidth = Math.max(1, metrics.width);
+      // 긴 텍스트는 컨테이너 폭의 92% 안에 들어오도록 글자 크기를 한 번 축소한다.
       if (measuredWidth > maxTextWidth) {
         resolvedSize = Math.max(
           18,
@@ -405,6 +419,7 @@ const ParticleText = ({
             ? height - offscreen.height + padding
             : height / 2 - offscreen.height / 2;
 
+      // 완전히 투명한 픽셀은 버리고 density 간격으로 글자 내부만 순회한다.
       for (let y = 0; y < offscreen.height; y += step) {
         for (let x = 0; x < offscreen.width; x += step) {
           const alpha = imageData.data[(y * offscreen.width + x) * 4 + 3];
@@ -418,6 +433,7 @@ const ParticleText = ({
         }
       }
 
+      // 화면 면적에 맞춘 상한으로 저사양 기기에서 지나친 입자 수를 방지한다.
       const maxParticles = Math.max(
         900,
         Math.min(5200, Math.floor((width * height) / 90)),
@@ -427,6 +443,7 @@ const ParticleText = ({
       const highlightRgb = hexToRgb(highlightColor);
       const selected = targets.filter((_, index) => index % stride === 0);
 
+      // 인덱스 기반 seed를 사용해 리사이즈 후에도 비슷한 분산 패턴을 재현한다.
       particles = selected.map((target, index) => {
         const seed = ((index * 9301 + 49297) % 233280) / 233280;
         const depth = 0.45 + (((index * 233 + 97) % 1000) / 1000) * 0.9;
@@ -474,6 +491,7 @@ const ParticleText = ({
       pointer.smoothX = pointer.x;
       pointer.smoothY = pointer.y;
 
+      // hover 모드는 완성된 글자에서 시작하고, 모션 감소 환경은 모든 이동을 생략한다.
       if (reducedMotion || trigger === "hover") {
         particles.forEach((particle) => {
           particle.x = particle.targetX;
@@ -491,6 +509,7 @@ const ParticleText = ({
       ensureRenderLoop();
     };
 
+    // ResizeObserver의 연속 호출을 한 animation frame 안에서 합친다.
     const queueSample = (): void => {
       if (resizeFrame) window.cancelAnimationFrame(resizeFrame);
       resizeFrame = window.requestAnimationFrame(sampleText);
@@ -520,6 +539,7 @@ const ParticleText = ({
       if (trigger === "click") startGather(true);
     };
 
+    // 접근성 설정이 실행 중 바뀌어도 입자 상태를 즉시 다시 만든다.
     const reduceMotionQuery = window.matchMedia?.(
       "(prefers-reduced-motion: reduce)",
     );
@@ -539,6 +559,7 @@ const ParticleText = ({
     void sampleText();
 
     return () => {
+      // 비동기 폰트 로드 결과와 예약된 프레임이 unmount 후 반영되지 않게 모두 무효화한다.
       buildId += 1;
       resizeObserver.disconnect();
       reduceMotionQuery?.removeEventListener(

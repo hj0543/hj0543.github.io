@@ -46,6 +46,7 @@ async function readProjects(): Promise<Project[]> {
       team: String(data.team ?? ""),
       stack: toStringArray(data.stack),
       responsibilities: toStringArray(data.responsibilities),
+      // 잘못된 frontmatter 값이 카운터나 진행률 UI를 깨뜨리지 않도록 0~100으로 제한한다.
       contribution:
         data.contribution === undefined ||
         !Number.isFinite(Number(data.contribution))
