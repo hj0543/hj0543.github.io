@@ -11,7 +11,7 @@ screens:
 role: Frontend Leader
 period: 2026.07 ~ 2026.08
 team: 6인 팀
-stack: [React, TypeScript, Tailwind CSS, LiveKit]
+stack: [Figma, React, TypeScript, Tailwind CSS, LiveKit, Vercel]
 order: 3
 # 채우면 문서 상단에 버튼으로 표시된다.
 # links:
