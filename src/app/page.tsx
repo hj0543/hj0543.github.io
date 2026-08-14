@@ -45,6 +45,12 @@ async function readProjects(): Promise<Project[]> {
       period: String(data.period ?? ""),
       team: String(data.team ?? ""),
       stack: toStringArray(data.stack),
+      responsibilities: toStringArray(data.responsibilities),
+      contribution:
+        data.contribution === undefined ||
+        !Number.isFinite(Number(data.contribution))
+          ? undefined
+          : Math.min(100, Math.max(0, Number(data.contribution))),
       screens: toImageArray(data.screens),
       links: toLinkArray(data.links),
       featured: data.featured === true,

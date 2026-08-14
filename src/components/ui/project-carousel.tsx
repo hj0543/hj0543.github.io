@@ -96,7 +96,7 @@ export default function ProjectCarousel({
     <section
       aria-roledescription="carousel"
       aria-label="프로젝트 대표 화면"
-      className="overflow-hidden rounded-xl border border-ink/10 bg-ink/4"
+      className="overflow-hidden border border-ink/12 bg-ink/3"
       onKeyDown={(event) => {
         if (event.key === "ArrowLeft") move(-1);
         if (event.key === "ArrowRight") move(1);
@@ -145,7 +145,7 @@ export default function ProjectCarousel({
               type="button"
               aria-label="이전 화면"
               onClick={() => move(-1)}
-              className="absolute left-3 top-1/2 grid size-9 -translate-y-1/2 cursor-pointer place-items-center rounded-full border border-white/15 bg-black/55 text-white backdrop-blur-sm transition-colors hover:bg-black/75 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/80"
+              className="absolute left-3 top-1/2 grid size-9 -translate-y-1/2 cursor-pointer place-items-center border border-white/15 bg-black/55 text-white backdrop-blur-sm transition-colors hover:bg-black/75 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/80"
             >
               <ChevronLeft aria-hidden="true" size={18} />
             </button>
@@ -153,7 +153,7 @@ export default function ProjectCarousel({
               type="button"
               aria-label="다음 화면"
               onClick={() => move(1)}
-              className="absolute right-3 top-1/2 grid size-9 -translate-y-1/2 cursor-pointer place-items-center rounded-full border border-white/15 bg-black/55 text-white backdrop-blur-sm transition-colors hover:bg-black/75 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/80"
+              className="absolute right-3 top-1/2 grid size-9 -translate-y-1/2 cursor-pointer place-items-center border border-white/15 bg-black/55 text-white backdrop-blur-sm transition-colors hover:bg-black/75 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/80"
             >
               <ChevronRight aria-hidden="true" size={18} />
             </button>
@@ -178,7 +178,7 @@ export default function ProjectCarousel({
           target="_blank"
           rel="noreferrer"
           aria-label={`${activeScreen.alt} 원본 보기`}
-          className="grid size-8 shrink-0 place-items-center rounded-full text-foreground/45 transition-colors hover:bg-ink/8 hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/60"
+          className="grid size-8 shrink-0 place-items-center text-foreground/45 transition-colors hover:bg-ink/8 hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/60"
         >
           <Maximize2 aria-hidden="true" size={14} />
         </a>
@@ -199,7 +199,7 @@ export default function ProjectCarousel({
                 setAnimate(true);
                 setPosition(index + 1);
               }}
-              className={`group relative aspect-video w-16 shrink-0 cursor-pointer overflow-hidden rounded-md border transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/60 ${
+              className={`group relative aspect-video w-16 shrink-0 cursor-pointer overflow-hidden border transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/60 ${
                 activeIndex === index
                   ? "border-accent ring-1 ring-accent/35"
                   : "border-ink/10 opacity-55 hover:border-ink/25 hover:opacity-90"
@@ -212,12 +212,6 @@ export default function ProjectCarousel({
                 sizes="64px"
                 className="object-cover"
               />
-              <span
-                aria-hidden="true"
-                className="absolute bottom-0.5 right-1 rounded bg-black/60 px-1 font-mono text-[8px] tabular-nums text-white/85"
-              >
-                {String(index + 1).padStart(2, "0")}
-              </span>
             </button>
           ))}
         </div>

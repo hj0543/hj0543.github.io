@@ -4,6 +4,7 @@ const BRAND_ICONS: Record<string, string> = {
   django: "django",
   docker: "docker",
   fastapi: "fastapi",
+  figma: "figma",
   github: "github",
   gitlab: "gitlab",
   javascript: "javascript",

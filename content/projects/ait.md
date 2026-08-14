@@ -11,6 +11,8 @@ screens:
 role: Frontend Leader
 period: 2026.07 ~ 2026.08
 team: 6인 팀
+contribution: 19
+responsibilities: [프론트엔드 아키텍처, AI 모의면접, LiveKit 화상 스터디]
 stack: [Figma, React, TypeScript, Tailwind CSS, LiveKit, Vercel]
 order: 3
 # 채우면 문서 상단에 버튼으로 표시된다.
