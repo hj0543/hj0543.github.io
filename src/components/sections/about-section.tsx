@@ -2,6 +2,7 @@
 
 import { Mail, MapPin } from "lucide-react";
 import { motion, type Variants } from "motion/react";
+import Image from "next/image";
 
 import { BrandIcon, TechBadge } from "@/components/ui/brand-icon";
 import WindowFrame from "@/components/ui/window-frame";
@@ -18,14 +19,19 @@ const item: Variants = {
 };
 
 // 기술스택
-const skills = [
-  "Python",
-  "Django",
-  "Vue",
-  "javascript",
-  "React",
-  "Tailwind CSS",
-  "java",
+const skillGroups = [
+  {
+    title: "Core Stack",
+    skills: ["Python", "Django", "Vue", "Tailwind CSS", "MySQL"],
+  },
+  {
+    title: "Tools",
+    skills: ["Figma", "Jira"],
+  },
+  {
+    title: "Currently Learning",
+    skills: ["React", "JavaScript", "TypeScript", "Java"],
+  },
 ];
 
 // SW 역량테스트 등급. CAREER와 HIGHLIGHTS가 같은 값을 공유한다.
@@ -47,7 +53,7 @@ const career = [
     title: "Math Academy",
     role: "Team Leader",
     period: "2021.07 ~ 2025.12",
-    details: [],
+    details: ["초,중,고 수학교육", "학원운영 시스템 기획 및 개발"],
   },
   {
     title: "ROK Army",
@@ -108,22 +114,44 @@ export default function AboutSection(frame: {
             About Me
           </motion.p>
 
-          <motion.h2
+          <motion.div
             variants={item}
-            className="mt-5 text-2xl font-bold leading-tight tracking-tight text-foreground"
+            className="mt-5 flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-between"
           >
-            Hello,
-            <br />
-            A developer you&apos;d love to work with.
-            <span className="text-accent">
+            <h2 className="text-2xl font-bold leading-tight tracking-tight text-foreground">
+              Hello,
               <br />
-              Hyeonjin Jeong
-            </span>
-          </motion.h2>
+              A developer you&apos;d love to work with.
+              <span className="text-accent">
+                <br />
+                Hyeonjin Jeong
+              </span>
+            </h2>
 
-          <motion.div variants={item} className="mt-7 flex flex-wrap gap-2">
-            {skills.map((skill) => (
-              <TechBadge key={skill} label={skill} />
+            <div className="relative h-28 w-28 shrink-0 overflow-hidden rounded-full border border-ink/15 bg-ink/5 shadow-[0_16px_40px_rgb(0_0_0/0.24)] sm:h-32 sm:w-32">
+              <Image
+                src="/my_profile/my_profile.jpg"
+                alt="Hyeonjin Jeong profile photo"
+                width={2160}
+                height={2160}
+                sizes="(max-width: 640px) 112px, 128px"
+                className="h-[180%] w-[180%] max-w-none -translate-x-[22.222%] object-cover object-top"
+              />
+            </div>
+          </motion.div>
+
+          <motion.div variants={item} className="mt-7 space-y-4">
+            {skillGroups.map((group) => (
+              <div key={group.title}>
+                <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-foreground/45">
+                  {group.title}
+                </p>
+                <div className="mt-2 flex flex-wrap gap-2">
+                  {group.skills.map((skill) => (
+                    <TechBadge key={skill} label={skill} />
+                  ))}
+                </div>
+              </div>
             ))}
           </motion.div>
 
