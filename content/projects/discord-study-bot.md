@@ -1,13 +1,13 @@
 ---
 name: Discord Algorithms Study Bot
 tagline: 알고리즘 스터디 운영 자동화 봇
-thumbnail: /projects/discord_study_bot/discord-study-bot.png
+thumbnail: /projects/discord_study_bot/discord_study_bot.png
 screens:
-  - { src: /projects/discord-study-bot/problem-search.png, alt: 문제 검색 화면, caption: 알고리즘 문제 검색 }
-  - { src: /projects/discord-study-bot/problem-alarm.png, alt: 문제 풀이 알람, caption: 문제풀이 알람 }
-  - { src: /projects/discord-study-bot/problem-solved.png, alt: 스터디원 풀이 현황 화면, caption: 스터디원 풀이 현황 }
-  - { src: /projects/discord-study-bot/problem-notice.png, alt: 공지 등록 화면, caption: 알고리즘 문제풀이 공지 등록 }
-  - { src: /projects/discord-study-bot/probelm-vote.png, alt: 문제 투표 화면, caption: 스터디 문제 투표 }
+  - { src: /projects/discord_study_bot/problem-search.png, alt: 문제 검색 화면, caption: 알고리즘 문제 검색 }
+  - { src: /projects/discord_study_bot/problem-alarm.png, alt: 문제 풀이 알람, caption: 문제풀이 알람 }
+  - { src: /projects/discord_study_bot/problem-solved.png, alt: 스터디원 풀이 현황 화면, caption: 스터디원 풀이 현황 }
+  - { src: /projects/discord_study_bot/problem-notice.png, alt: 공지 등록 화면, caption: 알고리즘 문제풀이 공지 등록 }
+  - { src: /projects/discord_study_bot/probelm-vote.png, alt: 문제 투표 화면, caption: 스터디 문제 투표 }
 role: 1인 기획 · 개발
 period: 2026.02 ~ 2026.03
 team: 개인
