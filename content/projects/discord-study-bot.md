@@ -1,7 +1,7 @@
 ---
 name: Discord Algorithms Study Bot
 tagline: 알고리즘 스터디 운영 자동화 봇
-thumbnail: /projects/discord_study_bot/discord_study_bot.png
+thumbnail: /projects/discord_study_bot/discord-study-bot.png
 screens:
   - { src: /projects/discord_study_bot/problem-search.png, alt: 문제 검색 화면, caption: 알고리즘 문제 검색 }
   - { src: /projects/discord_study_bot/problem-alarm.png, alt: 문제 풀이 알람, caption: 문제풀이 알람 }
@@ -59,4 +59,4 @@ links:
 
 ## 관련 링크
 
-- [GitHub](https://github.com/hj0543/Discord_Algorthms_StudyBot)
+- [소개 영상]()
