@@ -1,10 +1,10 @@
 ---
-name: 프로젝트 명 미정
+name: 도담
 tagline: SSAFY 특화 프로젝트 - 핀테크
 # thumbnail: /projects/fintech.png
 # screens:
 #   - { src: /projects/fintech/screen.png, alt: 프로젝트 화면, caption: 주요 서비스 화면 }
-role: Backend, Team leader
+role: Backend, PM(Team leader)
 period: 2026.08 ~ ing
 team: 6인 팀
 stack: [Springboot]
@@ -37,7 +37,7 @@ SSAFY 특화 프로젝트로 핀테크 도메인 서비스를 개발하고 있�
 <!-- TODO: 도메인 모델, API 설계, 인증·보안 및 팀 리딩 경험을 구체적으로 작성한다. -->
 
 ## 시스템 아키텍처
-
+![alt text](/projects/dodam/architecture.png)
 <!-- TODO: 백엔드, 데이터베이스, 외부 서비스 및 배포 환경 구성도를 추가한다. -->
 
 ## ERD

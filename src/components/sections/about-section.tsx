@@ -39,7 +39,7 @@ const career = [
     period: "2026.01 ~ 2026.12",
     details: [
       "1학기 성적최우수 (1st)",
-      "Monthly member (1, 3월)",
+      "Monthly member (Jan, Mar, Aug)",
       `SAMSUNG SW Competency Test - ${swCompetencyGrade}`,
     ],
   },
