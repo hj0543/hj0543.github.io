@@ -8,7 +8,7 @@ screens:
   - { src: /projects/discord-study-bot/problem-solved.png, alt: 스터디원 풀이 현황 화면, caption: 스터디원 풀이 현황 }
   - { src: /projects/discord-study-bot/problem-notice.png, alt: 공지 등록 화면, caption: 알고리즘 문제풀이 공지 등록 }
   - { src: /projects/discord-study-bot/probelm-vote.png, alt: 문제 투표 화면, caption: 스터디 문제 투표 }
-role: 1인 기획 · 개발
+role: 1인 기획 · 개발 · 배포
 period: 2026.02 ~ 2026.03
 team: 개인
 stack: [Python, discord.py, Solved.ac API, JSON, Oracle Cloud, systemd]
@@ -95,3 +95,4 @@ SSAFY 과정 중 운영한 알고리즘 스터디에서 반복되던 문제 선�
 ## 관련 링크
 
 - [GitHub](https://github.com/hj0543/Discord_Algorthms_StudyBot)
+- [Solved.ac API v3](https://solved.ac/api/v3)
