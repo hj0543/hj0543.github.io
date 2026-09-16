@@ -17,7 +17,6 @@ stack: [React 19, TypeScript, Vite, Tailwind CSS v4, shadcn/ui, LiveKit, MediaPi
 order: 3
 links:
   - { label: 영상 포트폴리오, href: https://youtu.be/IB8Yz5kkJ9s }
-featured: true
 ---
 
 ## 프로젝트 개요

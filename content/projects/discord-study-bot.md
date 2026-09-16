@@ -16,7 +16,6 @@ order: 1
 # 채우면 문서 상단에 버튼으로 표시된다.
 links:
   - { label: GitHub, href: https://github.com/hj0543/Discord_Algorthms_StudyBot }
-# featured: true   # 대표 프로젝트: 목록 맨 앞에 두 칸 폭으로 강조된다.
 ---
 
 ## 프로젝트 개요

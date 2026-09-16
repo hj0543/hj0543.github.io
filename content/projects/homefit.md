@@ -17,7 +17,6 @@ order: 2
 # links:
 #   - { label: GitHub, href: https://github.com/... }
 #   - { label: Demo, href: https://... }
-# featured: true   # 대표 프로젝트: 목록 맨 앞에 두 칸 폭으로 강조된다.
 ---
 
 ## 프로젝트 개요

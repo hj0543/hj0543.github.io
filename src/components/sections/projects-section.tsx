@@ -2,7 +2,6 @@
 
 import {
   CalendarDays,
-  Star,
   UserCog,
   Users,
 } from "lucide-react";
@@ -37,8 +36,6 @@ export type Project = {
   screens: ProjectScreen[];
   /** GitHub·배포·시연영상 등 외부 링크. 문서 상단에 버튼으로 그린다. */
   links: { label: string; href: string }[];
-  /** 대표 프로젝트. 목록에서 두 칸 폭으로 강조한다. */
-  featured: boolean;
   /** 빌드할 때 마크다운을 변환해 둔 본문. */
   html: string;
 };
@@ -228,21 +225,11 @@ export function ProjectsSection({
               variants={item}
               type="button"
               onClick={() => onOpen(project.slug)}
-              className={`group cursor-pointer rounded-xl border border-ink/10 bg-ink/4 p-3.5 text-left transition-colors hover:border-accent/45 hover:bg-ink/8 focus-visible:border-accent/45 focus-visible:outline-none ${
-                project.featured ? "@xl:col-span-2" : ""
-              }`}
+              className="group cursor-pointer rounded-xl border border-ink/10 bg-ink/4 p-3.5 text-left transition-colors hover:border-accent/45 hover:bg-ink/8 focus-visible:border-accent/45 focus-visible:outline-none"
             >
               <Thumb project={project} />
 
               <h3 className="mt-3.5 flex items-center gap-1.5 text-sm font-semibold text-foreground transition-colors group-hover:text-accent">
-                {project.featured ? (
-                  <Star
-                    aria-label="대표 프로젝트"
-                    size={13}
-                    strokeWidth={2}
-                    className="shrink-0 fill-accent/30 text-accent"
-                  />
-                ) : null}
                 {project.name}
               </h3>
               <p className="mt-1 line-clamp-2 text-xs leading-relaxed text-foreground/55">

@@ -12,7 +12,6 @@ team: 1인 개발
 stack: [React Native, Expo, TypeScript, Django, Celery, PostgreSQL, Redis]
 order: 6
 
-# featured: true
 
 ---
 

@@ -21,7 +21,6 @@ order: 5
 
 # - { label: Demo, href: https://... }
 
-# featured: true
 
 ---
 
