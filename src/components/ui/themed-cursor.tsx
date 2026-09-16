@@ -17,7 +17,7 @@ export default function ThemedCursor() {
       lineWidth={0.15}                              // 선 굵기
       springStrength={0.3}                          // 포인터를 따라가는 힘
       dampening={0.54}                              // 움직임의 관성
-      color={light ? "#3f6b67" : "#e6b34e"}         // 트레일 색상
+      color={light ? "#3f6b67" : "#e6b34e"}     // 트레일 색상
       blur={3}                                      // 빛 번짐 정도
       mixBlendMode={light ? "multiply" : "screen"}  // 밝은 배경엔 multiply, 어두운 배경엔 screen
       velocityScale                                 // 이동 속도에 따라 선 굵기 변경
