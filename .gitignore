@@ -56,3 +56,6 @@ Desktop.ini
 
 # claude
 .claude/settings.local.json
+
+# local drafts (not published)
+/drafts/
