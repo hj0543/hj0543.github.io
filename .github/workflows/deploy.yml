@@ -1,9 +1,8 @@
 name: Deploy Next.js site to Pages
 
+# 리디자인 중이라 push 자동 배포를 끄고 Actions 탭에서 수동으로만 배포한다.
+# 다시 켜려면 아래에 push: branches: [master] 를 되돌린다.
 on:
-  push:
-    branches:
-      - master
   workflow_dispatch:
 
 permissions:

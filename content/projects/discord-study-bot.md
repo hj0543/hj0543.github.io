@@ -1,6 +1,8 @@
 ---
 name: Discord Algorithms Study Bot
 tagline: Solved.ac API 기반 알고리즘 스터디 운영 자동화 봇
+problem: 반복되는 문제 선정과 공지 작성, 풀이 확인에 운영 시간이 들었습니다.
+result: 문제 추천·공지 작성·풀이 현황 집계를 자동화했습니다.
 thumbnail: /projects/discord_study_bot/discord-study-bot.png
 screens:
   - { src: /projects/discord-study-bot/problem-search.png, alt: 문제 검색 화면, caption: 알고리즘 문제 검색 }

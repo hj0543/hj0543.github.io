@@ -2,6 +2,7 @@
 
 name: 쉬운공시
 tagline: 부모님을 위한 보유·관심 종목 공시·리서치 해석 서비스
+problem: 공시와 재무 정보를 읽기 어려워 보유 종목을 이해하기 힘들었습니다.
 
 # thumbnail: /projects/stock/thumbnail.png
 

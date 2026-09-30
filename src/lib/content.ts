@@ -4,6 +4,9 @@ import path from "node:path";
 import matter from "gray-matter";
 import { marked } from "marked";
 
+import type { DevlogPost } from "@/components/devlog-doc";
+import type { Project } from "@/components/project-doc";
+
 /** 읽어 온 마크다운 한 편. data는 frontmatter 원본이다. */
 export type MarkdownFile = {
   /** 확장자를 뗀 파일 이름. 창 제목과 이미지 폴더 이름에 그대로 쓴다. */
@@ -94,4 +97,50 @@ export async function readMarkdownDir(dir: string): Promise<MarkdownFile[]> {
       };
     }),
   );
+}
+
+/** 최신 글이 위로 온다. */
+export async function readDevlogPosts(): Promise<DevlogPost[]> {
+  const files = await readMarkdownDir("devlog");
+
+  return files
+    .map(({ slug, data, html }) => ({
+      slug,
+      title: String(data.title ?? slug),
+      date: toDateString(data.date),
+      tags: toStringArray(data.tags),
+      summary: String(data.summary ?? ""),
+      html,
+    }))
+    .sort((a, b) => b.date.localeCompare(a.date));
+}
+
+/** period는 "2026.08 ~ ing"처럼 정렬 키로 쓸 수 없어 frontmatter의 order를 따른다. */
+export async function readProjects(): Promise<Project[]> {
+  const files = await readMarkdownDir("projects");
+
+  return files
+    .sort((a, b) => Number(a.data.order ?? 0) - Number(b.data.order ?? 0))
+    .map(({ slug, data, html }) => ({
+      slug,
+      name: String(data.name ?? slug),
+      tagline: String(data.tagline ?? ""),
+      problem: data.problem ? String(data.problem) : undefined,
+      result: data.result ? String(data.result) : undefined,
+      thumbnail: data.thumbnail ? String(data.thumbnail) : undefined,
+      role: String(data.role ?? ""),
+      period: String(data.period ?? ""),
+      team: String(data.team ?? ""),
+      stack: toStringArray(data.stack),
+      responsibilities: toStringArray(data.responsibilities),
+      // 잘못된 frontmatter 값이 카운터나 진행률 UI를 깨뜨리지 않도록 0~100으로 제한한다.
+      contribution:
+        data.contribution === undefined ||
+        !Number.isFinite(Number(data.contribution))
+          ? undefined
+          : Math.min(100, Math.max(0, Number(data.contribution))),
+      screens: toImageArray(data.screens),
+      links: toLinkArray(data.links),
+      html,
+    }));
 }

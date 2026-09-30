@@ -10,7 +10,7 @@
 
 /* 큰 섹션 제목은 세로 accent 선으로 문서의 주요 구획을 표시한다. */
 .prose h2 {
-  scroll-margin-top: 70px;
+  scroll-margin-top: 120px;
   margin-top: 76px;
   padding-left: 14px;
   border-left: 3px solid color-mix(in srgb, var(--accent) 72%, transparent);
@@ -129,7 +129,7 @@
   margin-top: 0;
 }
 
-/* 창 자체가 리사이즈되므로 브라우저 폭 대신 WindowFrame 컨테이너 폭을 따른다. */
+/* 본문 영역(@container) 폭을 기준으로 좁은 화면에서 글자 크기를 줄인다. */
 @container (max-width: 42rem) {
   .prose {
     font-size: 15px;

@@ -1,6 +1,7 @@
 ---
 name: Geomate
 tagline: 태블릿에서 도형을 그리며 배우는 AI 기하 학습 보조 앱
+problem: 기하 문제에서 보조선을 어디에 그어야 할지 몰라 풀이를 시작하기 어려웠습니다.
 thumbnail: /projects/geomate/geomate.png
 screens:
 # - { src: /projects/geomate/canvas.png, alt: 작도 캔버스 화면, caption: 펜으로 점·선·원·다각형을 그리는 작도 캔버스 }

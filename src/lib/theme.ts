@@ -4,12 +4,12 @@ import { useSyncExternalStore } from "react";
 
 export type Theme = "dark" | "light";
 
-const DEFAULT_THEME: Theme = "dark";
+const DEFAULT_THEME: Theme = "light";
 
 /** layout.tsx의 인라인 스크립트가 첫 페인트 전에 <html>에 넣어둔 값을 읽는다. */
 function currentTheme(): Theme {
   if (typeof document === "undefined") return DEFAULT_THEME;
-  return document.documentElement.dataset.theme === "light" ? "light" : "dark";
+  return document.documentElement.dataset.theme === "dark" ? "dark" : "light";
 }
 
 function subscribeToTheme(onStoreChange: () => void) {
@@ -44,5 +44,5 @@ export function setTheme(next: Theme) {
 }
 
 export function toggleTheme() {
-  setTheme(currentTheme() === "light" ? "dark" : "light");
+  setTheme(currentTheme() === "dark" ? "light" : "dark");
 }

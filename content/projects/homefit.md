@@ -1,6 +1,8 @@
 ---
 name: Homefit
 tagline: 개인 맞춤형 부동산 추천 서비스
+problem: 매물, 주변 환경, 대출 가능 여부를 여러 서비스에서 따로 확인해야 했습니다.
+result: 매물 검색·비교와 대출 시뮬레이션을 한 흐름으로 연결했습니다.
 # thumbnail: /projects/homefit.png
 # screens:
 #   - { src: /projects/homefit/screen_search.png, alt: 매물 검색 화면, caption: 지도 기반 매물 검색 }

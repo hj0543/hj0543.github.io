@@ -1,11 +1,3 @@
-"use client";
-
-import {
-  CalendarDays,
-  UserCog,
-  Users,
-} from "lucide-react";
-import { motion, type Variants } from "motion/react";
 import Image from "next/image";
 
 import { TechBadge } from "@/components/ui/brand-icon";
@@ -13,15 +5,18 @@ import CountUp from "@/components/ui/count-up";
 import ProjectCarousel, {
   type ProjectScreen,
 } from "@/components/ui/project-carousel";
-import WindowFrame from "@/components/ui/window-frame";
 
-import styles from "./project-doc.module.css";
+import Link from "next/link";
+
+import styles from "./doc-prose.module.css";
 
 export type Project = {
-  /** 확장자를 뗀 파일 이름. 창 제목에 그대로 쓴다. */
+  /** 확장자를 뗀 파일 이름. 상세 페이지 주소에 그대로 쓴다. */
   slug: string;
   name: string;
   tagline: string;
+  problem?: string;
+  result?: string;
   /** /public 기준 경로. 없으면 자리표시 타일을 대신 그린다. */
   thumbnail?: string;
   role: string;
@@ -38,16 +33,6 @@ export type Project = {
   links: { label: string; href: string }[];
   /** 빌드할 때 마크다운을 변환해 둔 본문. */
   html: string;
-};
-
-const container: Variants = {
-  hidden: {},
-  show: { transition: { staggerChildren: 0.06, delayChildren: 0.14 } },
-};
-
-const item: Variants = {
-  hidden: { opacity: 0, y: 14 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.45, ease: "easeOut" } },
 };
 
 /** 문서 상단의 GitHub·배포 링크. 본문 링크와 같은 간결한 형태로 표시한다. */
@@ -77,42 +62,26 @@ function LinkButtons({ links }: { links: Project["links"] }) {
 }
 
 /** 썸네일 자리. 이미지가 없으면 이름 머리글자로 채운다. */
-function Thumb({ project }: { project: Project }) {
+export function Thumb({ project }: { project: Project }) {
   return (
-    <div className="relative aspect-video overflow-hidden rounded-lg border border-ink/10 bg-linear-to-br from-accent-deep/25 to-accent/10">
+    <div className="relative aspect-video overflow-hidden rounded-xl border border-ink/10 bg-linear-to-br from-surface to-accent/10">
       {project.thumbnail ? (
         <Image
           src={project.thumbnail}
           alt=""
           fill
           sizes="(max-width: 640px) 90vw, 320px"
-          className="object-cover"
+          className="object-contain p-2 transition-transform duration-300 group-hover:scale-[1.02]"
         />
       ) : (
-        <span className="absolute inset-0 grid place-items-center font-mono text-2xl text-foreground/25">
-          {project.name.slice(0, 2).toUpperCase()}
-        </span>
+        <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 px-5 text-center">
+          <span className="font-mono text-3xl font-semibold tracking-[-0.05em] text-accent/70">
+            {project.name.slice(0, 2).toUpperCase()}
+          </span>
+          <span className="text-xs font-medium text-foreground/60">{project.name}</span>
+        </div>
       )}
     </div>
-  );
-}
-
-function Meta({ project }: { project: Project }) {
-  const rows = [
-    { icon: UserCog, value: project.role },
-    { icon: CalendarDays, value: project.period },
-    { icon: Users, value: project.team },
-  ];
-
-  return (
-    <dl className="space-y-1.5">
-      {rows.map(({ icon: Icon, value }) => (
-        <div key={value} className="flex items-center gap-2 text-[11px] text-foreground/55">
-          <Icon aria-hidden="true" size={13} strokeWidth={1.7} className="shrink-0" />
-          <dd className="truncate">{value}</dd>
-        </div>
-      ))}
-    </dl>
   );
 }
 
@@ -175,7 +144,7 @@ function ProjectFacts({ project }: { project: Project }) {
           key={label}
           className="grid grid-cols-[3.5rem_minmax(0,1fr)] items-baseline gap-3 py-2 @[34rem]:block @[34rem]:py-3.5 @[48rem]:grid @[48rem]:py-2"
         >
-          <dt className="font-mono text-[10px] tracking-[0.12em] text-foreground/40">
+          <dt className="font-mono text-[11px] tracking-[0.12em] text-foreground/65">
             {label}
           </dt>
           <dd className="text-[13px] leading-relaxed text-foreground/80">{value}</dd>
@@ -185,96 +154,44 @@ function ProjectFacts({ project }: { project: Project }) {
   );
 }
 
-export function ProjectsSection({
-  projects,
-  onOpen,
-  ...frame
-}: {
-  projects: Project[];
-  onOpen: (slug: string) => void;
-  onClose?: () => void;
-  z?: number;
-  onFocus?: () => void;
-  offset?: number;
-}) {
-  return (
-    <WindowFrame title="projects" defaultWidth={1080} defaultHeight={840} {...frame}>
-      <motion.div
-        variants={container}
-        initial="hidden"
-        animate="show"
-        className="p-7 sm:p-8"
-      >
-        <motion.p
-          variants={item}
-          className="flex items-center gap-2.5 font-mono text-[11px] uppercase tracking-[0.28em] text-label"
-        >
-          <span className="h-px w-6 bg-label/50" />
-          Projects
-        </motion.p>
-
-        <motion.p variants={item} className="mt-4 text-sm text-foreground/55">
-          카드를 누르면 새 창에서 자세히 볼 수 있습니다.
-        </motion.p>
-
-        {/* 브라우저가 아니라 창 폭 기준으로 열 수가 늘어난다. 1열 → 576px 2열 → 1152px 3열 → 1536px 4열 */}
-        <div className="mt-6 grid grid-cols-1 gap-4 @xl:grid-cols-2 @[72rem]:grid-cols-3 @[96rem]:grid-cols-4">
-          {projects.map((project) => (
-            <motion.button
-              key={project.slug}
-              variants={item}
-              type="button"
-              onClick={() => onOpen(project.slug)}
-              className="group cursor-pointer rounded-xl border border-ink/10 bg-ink/4 p-3.5 text-left transition-colors hover:border-accent/45 hover:bg-ink/8 focus-visible:border-accent/45 focus-visible:outline-none"
-            >
-              <Thumb project={project} />
-
-              <h3 className="mt-3.5 flex items-center gap-1.5 text-sm font-semibold text-foreground transition-colors group-hover:text-accent">
-                {project.name}
-              </h3>
-              <p className="mt-1 line-clamp-2 text-xs leading-relaxed text-foreground/55">
-                {project.tagline}
-              </p>
-
-              <div className="mt-3 border-t border-ink/8 pt-3">
-                <Meta project={project} />
-              </div>
-
-              <div className="mt-3 flex flex-wrap gap-1.5">
-                {project.stack.map((tech) => (
-                  <TechBadge key={tech} label={tech} />
-                ))}
-              </div>
-            </motion.button>
-          ))}
-        </div>
-      </motion.div>
-    </WindowFrame>
-  );
-}
-
-/** 문서 창의 탭 하나에 들어가는 본문. 창 껍데기는 바깥에서 씌운다. */
+/** 프로젝트 상세 페이지 본문. 페이지 껍데기는 바깥에서 씌운다. */
 export function ProjectDoc({ project }: { project: Project }) {
   const prepared = prepareProjectHtml(project);
 
   return (
-    <motion.div
-      variants={container}
-      initial="hidden"
-      animate="show"
-      className="pb-16"
-    >
-      <motion.header
-        variants={item}
-        className="mx-auto grid max-w-[1020px] gap-8 px-5 pb-10 pt-12 sm:px-8 sm:pt-16 @[48rem]:grid-cols-[minmax(230px,0.72fr)_minmax(0,1.28fr)] @[48rem]:items-start"
-      >
+    <div className="pb-16">
+      <header className="mx-auto grid max-w-[1080px] gap-8 px-5 pb-10 pt-8 sm:px-8 sm:pt-10 @[48rem]:grid-cols-[minmax(230px,0.72fr)_minmax(0,1.28fr)] @[48rem]:items-start">
         <div className="min-w-0">
+          <Link
+            href="/#projects"
+            className="font-mono text-[12px] text-foreground/50 transition-colors hover:text-accent"
+          >
+            ← Projects
+          </Link>
+          <div className="mt-8" />
           <h1 className="text-3xl font-bold leading-tight tracking-[-0.04em] text-foreground @[48rem]:text-[2rem]">
             {project.name}
           </h1>
           <p className="mt-4 text-[15px] leading-7 text-foreground/60">
             {project.tagline}
           </p>
+
+          {project.problem || project.result ? (
+            <dl className="mt-7 grid gap-3 border-t border-ink/10 pt-5 text-sm leading-6">
+              {project.problem ? (
+                <div>
+                  <dt className="font-mono text-[11px] tracking-[0.1em] text-label">문제</dt>
+                  <dd className="mt-1 text-foreground/75">{project.problem}</dd>
+                </div>
+              ) : null}
+              {project.result ? (
+                <div>
+                  <dt className="font-mono text-[11px] tracking-[0.1em] text-label">결과</dt>
+                  <dd className="mt-1 text-foreground/75">{project.result}</dd>
+                </div>
+              ) : null}
+            </dl>
+          ) : null}
 
           <div className="mt-9">
             <ProjectFacts project={project} />
@@ -286,7 +203,7 @@ export function ProjectDoc({ project }: { project: Project }) {
             <div className="mt-5 grid gap-4">
               {project.responsibilities.length > 0 ? (
                 <div className="flex min-w-0 items-baseline gap-4">
-                  <span className="shrink-0 font-mono text-[10px] tracking-[0.12em] text-foreground/40">
+                  <span className="shrink-0 font-mono text-[11px] tracking-[0.12em] text-foreground/65">
                     담당
                   </span>
                   <p className="text-[13px] leading-relaxed text-foreground/70">
@@ -297,7 +214,7 @@ export function ProjectDoc({ project }: { project: Project }) {
 
               {project.stack.length > 0 ? (
                 <div className="flex min-w-0 items-start gap-4">
-                  <span className="shrink-0 font-mono text-[10px] tracking-[0.12em] text-foreground/40">
+                  <span className="shrink-0 font-mono text-[11px] tracking-[0.12em] text-foreground/65">
                     기술
                   </span>
                   <div className="flex flex-wrap gap-1.5">
@@ -320,15 +237,14 @@ export function ProjectDoc({ project }: { project: Project }) {
             <Thumb project={project} />
           )}
         </div>
-      </motion.header>
+      </header>
 
       {prepared.sections.length > 0 ? (
-        <motion.nav
-          variants={item}
+        <nav
           aria-label="프로젝트 문서 목차"
-          className="sticky top-0 z-20 mt-12 overflow-x-auto border-y border-ink/10 bg-surface/95 backdrop-blur-xl [&::-webkit-scrollbar]:hidden"
+          className="sticky top-14 z-20 mt-12 overflow-x-auto border-y border-ink/10 bg-background/90 backdrop-blur-md [&::-webkit-scrollbar]:hidden"
         >
-          <div className="mx-auto flex h-10 w-max min-w-full max-w-[920px] items-center gap-6 px-5 sm:px-8">
+          <div className="mx-auto flex h-10 max-w-[1080px] items-center gap-6 px-5 sm:px-8">
             <span className="flex h-5 shrink-0 items-center border-r border-ink/12 pr-5 font-mono text-[14px] leading-none tracking-[0.14em] text-foreground/35">
               목차
             </span>
@@ -342,15 +258,14 @@ export function ProjectDoc({ project }: { project: Project }) {
               </a>
             ))}
           </div>
-        </motion.nav>
+        </nav>
       ) : null}
 
       {/* 저장소의 Markdown을 읽기 폭이 제한된 케이스 스터디 본문으로 표시한다. */}
-      <motion.div
-        variants={item}
+      <div
         className={`${styles.prose} mx-auto max-w-[760px] px-5 sm:px-8`}
         dangerouslySetInnerHTML={{ __html: prepared.html }}
       />
-    </motion.div>
+    </div>
   );
 }
