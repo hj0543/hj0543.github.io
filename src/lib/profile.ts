@@ -2,13 +2,20 @@
 
 export const profile = {
   name: "Hyeonjin Jeong",
-  role: "Frontend-focused Web Developer",
+  role: "Service Planning · Data",
   location: "Gumi, KR",
-  photo: "/my_profile/my_profile.jpg",
+  // 증명사진 아래 이름 밑에 표시한다.
+  facts: [
+    ["생년", "1996"],
+    ["전공", "신소재공학부"],
+    ["병역", "육군 중위 만기전역"],
+    ["MBTI", "ISFJ"],
+  ],
+  photo: "/my_profile/증명사진.png",
   // 홈 첫 화면의 큰 제목. 줄마다 끊어서 그린다.
-  headline: ["문제를 이해하고,", "끝까지 구현하는 개발자."],
+  headline: ["직접 만들어 본 기획자,", "데이터로 판단합니다."],
   intro:
-    "SSAFY 15기에서 프론트엔드 중심의 웹 서비스를 만들고 있습니다. 기획부터 화면 구현, 협업까지 끝까지 책임지는 개발자가 되고 싶습니다.",
+    "SSAFY 15기에서 웹·앱 서비스를 직접 개발하며, 기획이 화면과 데이터로 구현되는 과정을 배웠습니다. 도담에서는 5인 팀의 PM을 맡아 기획과 개발을 함께 이끌었습니다. 개발을 이해하는 기획자로서 데이터에 근거해 판단하고, 개발팀과 같은 언어로 소통하겠습니다.",
   github: "https://github.com/hj0543",
   email: "hj0543@gmail.com",
 };
@@ -24,6 +31,7 @@ export const career = [
     period: "2026.01 ~ 2026.12",
     details: [
       "1학기 성적최우수 (1st)",
+      "2학기 특화 프로젝트 2등 (팀장, 발표)",
       "Monthly member (Jan, Mar, Aug)",
       `SAMSUNG SW Competency Test - ${swCompetencyGrade}`,
     ],
@@ -31,7 +39,7 @@ export const career = [
   {
     title: "Math Academy",
     role: "Team Leader",
-    period: "2021.07 ~ 2025.12",
+    period: "2023.10 ~ 2025.12",
     details: ["초,중,고 수학교육", "학원운영 시스템 기획 및 개발"],
   },
   {
@@ -49,19 +57,21 @@ export const highlights = [
   "Team Leadership",
 ];
 
-export const certifications = ["정보처리기사 (필기합격)"];
+// 합격하면 "응시예정"을 "합격"으로 바꾼다.
+export const certifications = [
+  "정보처리기사 (필기 합격 · 실기 2026.10.25 응시예정)",
+  "ADsP (2026.10.31 응시예정)",
+  "SQLD (2026.11.14 응시예정)",
+];
 
+// 기획·데이터 도구를 먼저, 개발 스택은 "개발 경험"으로 묶어 아래에 둔다.
 export const skillGroups = [
   {
-    title: "Core Stack",
-    skills: ["Python", "Django", "Vue", "Tailwind CSS", "MySQL"],
+    title: "기획 · 데이터",
+    skills: ["Figma", "Jira", "Python", "MySQL"],
   },
   {
-    title: "Tools",
-    skills: ["Figma", "Jira"],
-  },
-  {
-    title: "Currently Learning",
-    skills: ["React", "JavaScript", "TypeScript", "Java"],
+    title: "개발 경험",
+    skills: ["Django", "Vue", "React", "TypeScript", "JavaScript", "Java", "Tailwind CSS"],
   },
 ];

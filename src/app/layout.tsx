@@ -23,7 +23,7 @@ const pretendard = localFont({
 // 모든 페이지에서 공통으로 사용하는 기본 문서 메타데이터다.
 export const metadata: Metadata = {
   title: "Belog",
-  description: "Hyeonjin Jeong의 프로젝트와 개발 기록",
+  description: "Hyeonjin Jeong의 기획·데이터 포트폴리오",
 };
 
 // 저장해 둔 테마(없으면 시스템 설정)를 첫 페인트 전에 <html>에 적용해

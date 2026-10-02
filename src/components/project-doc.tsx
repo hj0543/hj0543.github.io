@@ -15,6 +15,8 @@ export type Project = {
   slug: string;
   name: string;
   tagline: string;
+  /** 대표 프로젝트. 홈 목록 맨 위에 배치한다. */
+  featured: boolean;
   problem?: string;
   result?: string;
   /** /public 기준 경로. 없으면 자리표시 타일을 대신 그린다. */
@@ -64,7 +66,7 @@ function LinkButtons({ links }: { links: Project["links"] }) {
 /** 썸네일 자리. 이미지가 없으면 이름 머리글자로 채운다. */
 export function Thumb({ project }: { project: Project }) {
   return (
-    <div className="relative aspect-video overflow-hidden rounded-xl border border-ink/10 bg-linear-to-br from-surface to-accent/10">
+    <div className="relative aspect-video overflow-hidden border border-ink/10 bg-linear-to-br from-surface to-accent/10">
       {project.thumbnail ? (
         <Image
           src={project.thumbnail}

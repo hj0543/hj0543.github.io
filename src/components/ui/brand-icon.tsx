@@ -58,7 +58,7 @@ export function BrandIcon({
 /** 프로젝트 목록과 상세 화면에서 공통으로 쓰는 아이콘 포함 기술 배지. */
 export function TechBadge({ label }: { label: string }) {
   return (
-    <span className="inline-flex items-center gap-1.5 rounded-full border border-ink/12 bg-ink/6 px-2.5 py-1 font-mono text-[10px] text-foreground/75">
+    <span className="inline-flex items-center gap-1.5 border border-ink/12 bg-ink/6 px-2.5 py-1 font-mono text-[10px] text-foreground/75">
       <BrandIcon name={label} size={12} />
       {label}
     </span>

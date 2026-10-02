@@ -8,29 +8,30 @@
 */
 :root {
   color-scheme: light;
-  --background: #ffffff;
-  --foreground: #1f2937;
-  --accent: #3157c8;
-  --accent-deep: #1e3a8a;
-  --ink: #0f172a;
-  --surface: #f5f8fa;
-  /* 섹션 번호·라벨(01 · PROJECTS 등)의 색 */
-  --label: #3157c8;
-  --selection-bg: rgb(49 87 200 / 18%);
-  --selection-fg: #1f2937;
+  /* 종이 위에 먹으로 쓴 문서. 포인트는 교정용 주홍 하나만 쓴다. */
+  --background: #f5f2ea;
+  --foreground: #1c1b18;
+  --accent: #c2410c;
+  --accent-deep: #9a3412;
+  --ink: #1c1b18;
+  --surface: #ece8dd;
+  /* 섹션 번호(§1 등)의 색 */
+  --label: #c2410c;
+  --selection-bg: rgb(194 65 12 / 18%);
+  --selection-fg: #1c1b18;
   --brand-icon-filter: none;
 }
 
 :root[data-theme="dark"] {
   color-scheme: dark;
-  --background: #101722;
-  --foreground: #eef4f8;
-  --accent: #8eabff;
-  --accent-deep: #5b7be0;
+  --background: #161513;
+  --foreground: #ebe7dd;
+  --accent: #f28c52;
+  --accent-deep: #d9692e;
   --ink: #ffffff;
-  --surface: #182231;
-  --label: #8eabff;
-  --selection-bg: rgb(142 171 255 / 28%);
+  --surface: #201f1b;
+  --label: #f28c52;
+  --selection-bg: rgb(242 140 82 / 28%);
   --selection-fg: #ffffff;
   --brand-icon-filter: invert(1);
 }

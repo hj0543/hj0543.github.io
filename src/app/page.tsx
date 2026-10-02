@@ -1,20 +1,23 @@
-import { CalendarDays, MapPin } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
-import { Tag, type DevlogPost } from "@/components/devlog-doc";
+import type { DevlogPost } from "@/components/devlog-doc";
 import { Thumb, type Project } from "@/components/project-doc";
 import { TechBadge } from "@/components/ui/brand-icon";
 import { readDevlogPosts, readProjects } from "@/lib/content";
 import {
   career,
   certifications,
-  highlights,
   profile,
   skillGroups,
 } from "@/lib/profile";
 
-/** 번호·라벨·제목이 같은 문법을 쓰는 홈 섹션 틀. */
+const pad = (n: number) => String(n).padStart(2, "0");
+
+// 문서 판번호. 빌드한 달로 찍힌다.
+const revision = new Date().toISOString().slice(0, 7).replace("-", ".");
+
+/** 문서의 한 장(§). 넓은 화면에서는 장 번호가 왼쪽 여백에 붙는다. */
 function Section({
   id,
   index,
@@ -24,7 +27,7 @@ function Section({
   children,
 }: {
   id: string;
-  index: string;
+  index: number;
   eyebrow: string;
   title: string;
   count?: number;
@@ -33,317 +36,335 @@ function Section({
   return (
     <section
       id={id}
-      className="scroll-mt-14 border-t border-ink/8 py-16 sm:py-24"
+      className="grid scroll-mt-14 gap-6 border-t-2 border-ink py-14 sm:py-20 md:grid-cols-[140px_minmax(0,1fr)] md:gap-10"
     >
-      <div className="flex items-end justify-between gap-4">
-        <div>
-          <p className="font-mono text-[12px] tracking-[0.2em] text-label">
-            {index} · {eyebrow}
-          </p>
-          <h2 className="mt-3 text-2xl font-bold tracking-[-0.03em] text-foreground sm:text-[1.75rem]">
+      {/* 넓은 화면에서는 장 번호가 섹션 끝까지 헤더 아래에 따라온다. */}
+      <div className="md:sticky md:top-20 md:self-start">
+        <p className="font-mono text-3xl font-semibold text-label">§{index}</p>
+        <p className="mt-2 font-mono text-[11px] uppercase tracking-[0.16em] text-foreground/55">
+          {eyebrow}
+        </p>
+      </div>
+      <div className="min-w-0">
+        <div className="flex items-baseline justify-between gap-4 border-b border-ink/15 pb-4">
+          <h2 className="text-2xl font-bold tracking-[-0.03em] text-foreground sm:text-[1.75rem]">
             {title}
           </h2>
+          {count !== undefined ? (
+            <span className="font-mono text-[12px] tabular-nums text-foreground/55">
+              {pad(count)}건
+            </span>
+          ) : null}
         </div>
-        {count !== undefined ? (
-          <span className="font-mono text-[12px] tabular-nums text-foreground/60">
-            {String(count).padStart(2, "0")}
-          </span>
-        ) : null}
+        <div className="mt-2">{children}</div>
       </div>
-      <div className="mt-10">{children}</div>
     </section>
   );
 }
 
-function Hero() {
+/** 표지: 문서 머리줄 → 제목 → 증명사진·연락 | 경력·기술·자격 → 목차. */
+function Cover({ toc }: { toc: { id: string; title: string; count?: number }[] }) {
+  const meta: [string, React.ReactNode][] = [
+    [
+      "경력",
+      // 세로선 타임라인. 맨 위(진행 중) 항목만 점을 주홍으로 칠하고, 나머지는 마우스를 대면 강조한다.
+      <ol key="career" className="border-l border-ink/20">
+        {career.map((entry, i) => (
+          <li key={entry.title} className="group/career relative pb-4 pl-5 last:pb-0">
+            <span
+              aria-hidden="true"
+              className={`absolute left-[-4.5px] top-2 size-2 transition-colors duration-300 ${
+                i === 0 ? "bg-accent" : "bg-ink/30 group-hover/career:bg-accent"
+              }`}
+            />
+            <p>
+              <span className="font-semibold text-foreground transition-colors duration-300 group-hover/career:text-accent">
+                {entry.title}
+              </span>
+              {entry.role ? <span className="ml-1.5 text-foreground/55">{entry.role}</span> : null}
+              <span className="ml-2 font-mono text-[11px] tabular-nums text-foreground/50">
+                {entry.period}
+              </span>
+            </p>
+            <ul className="text-[13px] text-foreground/60">
+              {entry.details.map((detail) => (
+                <li key={detail}>{detail}</li>
+              ))}
+            </ul>
+          </li>
+        ))}
+      </ol>,
+    ],
+    [
+      "기술",
+      <div key="skills" className="space-y-3">
+        {skillGroups.map((group) => (
+          <div key={group.title}>
+            <p className="text-[12px] text-foreground/55">{group.title}</p>
+            <div className="mt-1.5 flex flex-wrap gap-1.5">
+              {group.skills.map((skill) => (
+                <TechBadge key={skill} label={skill} />
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>,
+    ],
+    [
+      "자격",
+      <ul key="certifications">
+        {certifications.map((certification) => (
+          <li key={certification}>{certification}</li>
+        ))}
+      </ul>,
+    ],
+  ];
+
   return (
-    <section className="grid gap-12 pb-20 pt-16 sm:pt-24 md:grid-cols-[minmax(0,1fr)_300px] md:items-end">
-      <div>
-        <p className="font-mono text-[12px] uppercase tracking-[0.2em] text-label">
-          {profile.role}
-        </p>
-        <h1 className="mt-5 text-[2.5rem] font-bold leading-[1.15] tracking-[-0.045em] text-foreground sm:text-[3.4rem]">
-          {profile.headline[0]}
-          <br />
-          {profile.headline[1]}
-        </h1>
-        <p className="mt-6 max-w-[560px] text-[17px] leading-8 text-foreground/65">
-          {profile.intro}
-        </p>
-        <div className="mt-8 flex flex-wrap gap-3">
-          <Link
-            href="#projects"
-            className="inline-flex min-h-11 items-center justify-center rounded-full bg-accent px-5 text-sm font-semibold text-background transition-opacity hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
-          >
-            프로젝트 보기 <span aria-hidden="true" className="ml-2">↘</span>
-          </Link>
-          <a
-            href={`mailto:${profile.email}`}
-            className="inline-flex min-h-11 items-center justify-center rounded-full border border-ink/15 px-5 text-sm font-semibold text-foreground transition-colors hover:border-accent hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
-          >
-            연락하기
-          </a>
-        </div>
-        <ul className="mt-8 flex flex-wrap gap-2">
-          {highlights.map((highlight) => (
-            <li
-              key={highlight}
-              className="rounded-full border border-ink/10 bg-surface px-3.5 py-1.5 text-[13px] text-foreground/70"
-            >
-              {highlight}
-            </li>
-          ))}
-        </ul>
+    <section id="about" className="scroll-mt-14 pb-16 pt-10 sm:pt-14">
+      <div className="flex flex-wrap justify-between gap-x-6 gap-y-1 border-y-2 border-ink py-2 font-mono text-[11px] uppercase tracking-[0.16em] text-foreground/70">
+        <span>Portfolio Document</span>
+        <span>Doc No. HJ-2026 · Rev. {revision}</span>
       </div>
 
-      <aside className="rounded-2xl border border-ink/8 bg-surface p-6">
-        <div className="relative size-20 overflow-hidden rounded-full border border-ink/10">
-          {/* 원본 사진이 상반신이라 얼굴 쪽으로 확대해 자른다. */}
+      <h1 className="mt-12 text-[2.4rem] font-bold leading-[1.15] tracking-[-0.045em] text-foreground sm:text-[3.4rem]">
+        {profile.headline[0]}
+        <br />
+        {profile.headline[1]}
+      </h1>
+      <p className="mt-6 max-w-[600px] text-[17px] leading-8 text-foreground/65">
+        {profile.intro}
+      </p>
+
+      <div className="mt-14 grid gap-10 md:grid-cols-[180px_minmax(0,1fr)]">
+        <div>
           <Image
             src={profile.photo}
-            alt={`${profile.name} 프로필 사진`}
-            width={2160}
-            height={2160}
-            sizes="80px"
-            className="h-[180%] w-[180%] max-w-none -translate-x-[22.222%] object-cover object-top"
+            alt={`${profile.name} 증명사진`}
+            width={200}
+            height={249}
+            sizes="180px"
+            className="w-36 border border-ink/20 md:w-full"
           />
+          <p className="mt-4 text-lg font-bold tracking-[-0.02em] text-foreground">
+            {profile.name}
+          </p>
+          <dl className="mt-3 grid grid-cols-[44px_minmax(0,1fr)] gap-y-1 text-[13px]">
+            {profile.facts.map(([label, value]) => (
+              <div key={label} className="col-span-2 grid grid-cols-subgrid">
+                <dt className="font-mono text-[12px] text-foreground/50">{label}</dt>
+                <dd className="tabular-nums text-foreground/80">{value}</dd>
+              </div>
+            ))}
+          </dl>
+          <ul className="mt-4 space-y-1.5 text-sm">
+            <li>
+              <a
+                href={`mailto:${profile.email}`}
+                className="break-all border-b border-accent/50 text-accent hover:border-accent"
+              >
+                {profile.email}
+              </a>
+            </li>
+            <li>
+              <a
+                href={profile.github}
+                target="_blank"
+                rel="noreferrer"
+                className="border-b border-ink/25 text-foreground/80 hover:border-accent hover:text-accent"
+              >
+                GitHub ↗
+              </a>
+            </li>
+          </ul>
         </div>
-        <p className="mt-5 text-lg font-bold tracking-[-0.02em] text-foreground">
-          {profile.name}
+        <dl className="grid grid-cols-[64px_minmax(0,1fr)] content-start border-t border-ink/15 text-sm">
+          {meta.map(([label, value]) => (
+            <div key={label} className="col-span-2 grid grid-cols-subgrid border-b border-ink/10 py-3">
+              <dt className="font-mono text-[12px] leading-6 text-foreground/50">{label}</dt>
+              <dd className="leading-6 text-foreground/80">{value}</dd>
+            </div>
+          ))}
+        </dl>
+      </div>
+
+      {/* 목차는 프로필 아래에 가로 탭으로 늘어놓는다. */}
+      <nav aria-label="목차" className="mt-12">
+        <p className="font-mono text-[11px] uppercase tracking-[0.16em] text-foreground/55">
+          Contents
         </p>
-        <p className="mt-1 text-sm text-foreground/55">SSAFY 15th</p>
-        <p className="mt-4 flex items-center gap-1.5 text-[13px] text-foreground/55">
-          <MapPin aria-hidden="true" size={14} strokeWidth={1.7} />
-          {profile.location}
-        </p>
-        <div className="mt-6 flex gap-2 border-t border-ink/8 pt-5">
-          <a
-            href={`mailto:${profile.email}`}
-            className="flex-1 rounded-full bg-accent py-2 text-center text-[13px] font-semibold text-background transition-opacity hover:opacity-90"
-          >
-            Email
-          </a>
-          <a
-            href={profile.github}
-            target="_blank"
-            rel="noreferrer"
-            className="flex-1 rounded-full border border-ink/15 py-2 text-center text-[13px] font-semibold text-foreground/80 transition-colors hover:border-accent/50 hover:text-accent"
-          >
-            GitHub ↗
-          </a>
-        </div>
-      </aside>
+        <ol className="mt-3 flex divide-x divide-ink/15 border-y border-ink/15">
+          {toc.map((item, i) => (
+            <li key={item.id} className="flex-1">
+              <a
+                href={`#${item.id}`}
+                className="group flex items-baseline gap-3 px-4 py-3.5 text-[15px] transition-colors hover:bg-surface"
+              >
+                <span className="font-mono text-[12px] text-label">§{i + 1}</span>
+                <span className="text-foreground/85 transition-colors group-hover:text-accent">
+                  {item.title}
+                </span>
+                <span className="ml-auto font-mono text-[12px] tabular-nums text-foreground/55">
+                  {item.count !== undefined ? pad(item.count) : "—"}
+                </span>
+              </a>
+            </li>
+          ))}
+        </ol>
+      </nav>
     </section>
   );
 }
 
-/** 첫 프로젝트는 크게, 나머지는 격자로 보여준다. 순서는 frontmatter의 order를 따른다. */
+function ProblemResult({ project }: { project: Project }) {
+  return (
+    <dl className="mt-4 grid gap-1.5 text-sm leading-6">
+      {project.problem ? (
+        <div className="grid grid-cols-[40px_minmax(0,1fr)]">
+          <dt className="font-mono text-[11px] font-semibold leading-6 text-foreground/50">문제</dt>
+          <dd className="text-foreground/75">{project.problem}</dd>
+        </div>
+      ) : null}
+      <div className="grid grid-cols-[40px_minmax(0,1fr)]">
+        <dt className="font-mono text-[11px] font-semibold leading-6 text-label">결과</dt>
+        <dd className={project.result ? "text-foreground/75" : "text-foreground/45"}>
+          {project.result ?? "진행 중"}
+        </dd>
+      </div>
+    </dl>
+  );
+}
+
+function ProjectTitle({ project, className }: { project: Project; className: string }) {
+  return (
+    <h3 className={`${className} font-bold tracking-[-0.025em] text-foreground transition-colors group-hover:text-accent`}>
+      {project.name}
+      <span aria-hidden="true" className="ml-2 inline-block opacity-0 transition-opacity group-hover:opacity-100">
+        →
+      </span>
+    </h3>
+  );
+}
+
+/**
+ * 대표 프로젝트(featured)는 썸네일 | 내용 2분할로 크게, 나머지는 그 아래 한 열로 나열한다.
+ * 대표 프로젝트가 맨 위에 오고, 나머지는 frontmatter의 order를 따른다.
+ */
 function ProjectList({ projects }: { projects: Project[] }) {
-  const [featured, ...rest] = projects;
-  if (!featured) return null;
+  const number = (project: Project) => `P-${pad(projects.indexOf(project) + 1)}`;
+  const featured = projects.filter((project) => project.featured);
+  const rest = projects.filter((project) => !project.featured);
 
   return (
-    <>
-      <Link
-        href={`/projects/${featured.slug}`}
-        className="group grid gap-6 rounded-2xl border border-ink/8 bg-surface p-4 transition-colors hover:border-accent/40 sm:p-5 md:grid-cols-[minmax(0,1.15fr)_minmax(0,1fr)] md:items-center md:gap-10"
-      >
-        <Thumb project={featured} />
-        <div className="md:pr-4">
-          <p className="font-mono text-[11px] tracking-[0.18em] text-label">
-            FEATURED
-          </p>
-          <h3 className="mt-3 text-2xl font-bold tracking-[-0.03em] text-foreground transition-colors group-hover:text-accent">
-            {featured.name}
-          </h3>
-          <p className="mt-3 text-[15px] leading-7 text-foreground/60">
-            {featured.tagline}
-          </p>
-          {featured.problem ? (
-            <p className="mt-5 text-sm leading-6 text-foreground/75">
-              <span className="mr-2 font-mono text-[11px] font-semibold text-label">문제</span>
-              {featured.problem}
+    <div>
+      {featured.map((project) => (
+        <Link
+          key={project.slug}
+          href={`/projects/${project.slug}`}
+          className="group grid gap-x-10 gap-y-6 border-b border-ink/15 py-8 md:grid-cols-[minmax(0,1.1fr)_minmax(0,1fr)] md:items-center"
+        >
+          <Thumb project={project} />
+          <div className="min-w-0">
+            <p className="flex items-center gap-2 font-mono text-[12px] text-label">
+              {number(project)}
+              <span className="border border-accent/60 px-1.5 text-[10px] tracking-[0.12em]">대표</span>
             </p>
-          ) : null}
-          {featured.result ? (
-            <p className="mt-2 text-sm leading-6 text-foreground/75">
-              <span className="mr-2 font-mono text-[11px] font-semibold text-label">결과</span>
-              {featured.result}
-            </p>
-          ) : null}
-          <dl className="mt-6 grid gap-2 text-[13px]">
-            {[
-              ["Role", featured.role],
-              ["Period", featured.period],
-            ].map(([label, value]) =>
-              value ? (
-                <div key={label} className="flex gap-4">
-                  <dt className="w-14 shrink-0 font-mono text-[12px] leading-5 text-foreground/60">
-                    {label}
-                  </dt>
-                  <dd className="text-foreground/75">{value}</dd>
-                </div>
-              ) : null,
-            )}
-          </dl>
-          <p className="mt-6 text-sm font-semibold text-accent">
-            자세히 보기 →
-          </p>
-        </div>
-      </Link>
+            <ProjectTitle project={project} className="mt-2 text-2xl leading-9" />
+            <p className="mt-1 text-[15px] leading-7 text-foreground/60">{project.tagline}</p>
+            <ProblemResult project={project} />
+            <ProjectMeta project={project} />
+          </div>
+        </Link>
+      ))}
 
-      {rest.length > 0 ? (
-        <ul className="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {rest.map((project) => (
-            <li key={project.slug}>
-              <Link
-                href={`/projects/${project.slug}`}
-                className="group flex h-full flex-col rounded-2xl border border-ink/8 p-3.5 transition-colors hover:border-accent/40 hover:bg-surface"
-              >
-                <Thumb project={project} />
-                <div className="flex flex-1 flex-col px-1.5 pb-1.5 pt-4">
-                  <h3 className="text-[17px] font-bold tracking-[-0.02em] text-foreground transition-colors group-hover:text-accent">
-                    {project.name}
-                  </h3>
-                  <p className="mt-2 line-clamp-2 text-sm leading-6 text-foreground/60">
-                    {project.tagline}
-                  </p>
-                  {project.problem ? (
-                    <p className="mt-4 line-clamp-2 text-[13px] leading-5 text-foreground/75">
-                      <span className="mr-1.5 font-semibold text-label">문제</span>
-                      {project.problem}
-                    </p>
-                  ) : null}
-                  {project.result ? (
-                    <p className="mt-2 line-clamp-2 text-[13px] leading-5 text-foreground/75">
-                      <span className="mr-1.5 font-semibold text-label">결과</span>
-                      {project.result}
-                    </p>
-                  ) : null}
-                  {project.period ? (
-                    <div className="mt-auto flex flex-wrap items-center justify-between gap-2 pt-5 text-[12px] text-foreground/65">
-                      <span className="font-medium">{project.role}</span>
-                      <span className="font-mono tabular-nums">{project.period}</span>
-                    </div>
-                  ) : null}
+      <ol>
+        {rest.map((project) => (
+          <li key={project.slug} className="border-b border-ink/15">
+            <Link href={`/projects/${project.slug}`} className="group block h-full py-7">
+              <div className="flex items-center gap-4">
+                <MiniThumb project={project} />
+                <div className="min-w-0">
+                  <p className="font-mono text-[12px] text-label">{number(project)}</p>
+                  <ProjectTitle project={project} className="mt-0.5 text-xl leading-8" />
                 </div>
-              </Link>
-            </li>
-          ))}
-        </ul>
-      ) : null}
-    </>
+              </div>
+              <p className="mt-3 text-[15px] leading-7 text-foreground/60">{project.tagline}</p>
+              <ProblemResult project={project} />
+              <ProjectMeta project={project} />
+            </Link>
+          </li>
+        ))}
+      </ol>
+    </div>
+  );
+}
+
+/** 목록용 작은 정사각 썸네일. 이미지가 없으면 이름 머리글자로 채운다. */
+function MiniThumb({ project }: { project: Project }) {
+  return (
+    <div className="relative size-14 shrink-0 overflow-hidden border border-ink/15 bg-surface">
+      {project.thumbnail ? (
+        <Image
+          src={project.thumbnail}
+          alt=""
+          fill
+          sizes="56px"
+          className="object-cover transition-transform duration-300 group-hover:scale-105"
+        />
+      ) : (
+        <span className="absolute inset-0 flex items-center justify-center font-mono text-sm font-semibold text-accent/70">
+          {project.name.slice(0, 2).toUpperCase()}
+        </span>
+      )}
+    </div>
+  );
+}
+
+function ProjectMeta({ project }: { project: Project }) {
+  return (
+    <p className="mt-4 flex flex-wrap gap-x-3 text-[13px] text-foreground/60">
+      <span className="text-foreground/80">{project.role}</span>
+      <span className="font-mono text-[12px] tabular-nums">{project.period}</span>
+      <span>{project.team}</span>
+    </p>
   );
 }
 
 function DevlogList({ posts }: { posts: DevlogPost[] }) {
   if (posts.length === 0) {
-    return <p className="text-sm text-foreground/50">아직 작성한 글이 없습니다.</p>;
+    return <p className="py-6 text-sm text-foreground/50">아직 작성한 글이 없습니다.</p>;
   }
 
   return (
-    <ul className="border-t border-ink/8">
+    <ol>
       {posts.map((post) => (
-        <li key={post.slug} className="border-b border-ink/8">
+        <li key={post.slug} className="border-b border-ink/15">
           <Link
             href={`/devlog/${post.slug}`}
-            className="group grid gap-2 py-6 sm:grid-cols-[120px_minmax(0,1fr)] sm:gap-8"
+            className="group grid gap-2 py-6 sm:grid-cols-[110px_minmax(0,1fr)] sm:gap-8"
           >
-            <span className="flex items-center gap-1.5 font-mono text-[12px] text-foreground/65 sm:pt-1">
-              <CalendarDays aria-hidden="true" size={13} strokeWidth={1.7} />
+            <span className="font-mono text-[12px] leading-7 tabular-nums text-foreground/55">
               {post.date}
             </span>
             <div className="min-w-0">
-              <h3 className="text-lg font-bold tracking-[-0.02em] text-foreground transition-colors group-hover:text-accent">
+              <h3 className="text-lg font-bold leading-7 tracking-[-0.02em] text-foreground transition-colors group-hover:text-accent">
                 {post.title}
               </h3>
               {post.summary ? (
-                <p className="mt-2 line-clamp-2 text-[15px] leading-7 text-foreground/60">
+                <p className="mt-1.5 line-clamp-2 text-[15px] leading-7 text-foreground/60">
                   {post.summary}
                 </p>
               ) : null}
               {post.tags.length > 0 ? (
-                <div className="mt-3 flex flex-wrap gap-1.5">
-                  {post.tags.map((tag) => (
-                    <Tag key={tag} label={tag} />
-                  ))}
-                </div>
+                <p className="mt-2 font-mono text-[11px] text-foreground/50">
+                  {post.tags.map((tag) => `#${tag}`).join("  ")}
+                </p>
               ) : null}
             </div>
           </Link>
         </li>
       ))}
-    </ul>
-  );
-}
-
-function About() {
-  return (
-    <div className="grid gap-12 md:grid-cols-[minmax(0,1.4fr)_minmax(0,1fr)]">
-      <ol className="border-l border-ink/12">
-        {career.map((entry) => (
-          <li key={entry.title} className="relative pb-10 pl-7 last:pb-0">
-            <span
-              aria-hidden="true"
-              className="absolute -left-[5px] top-2 size-[9px] rounded-full border-2 border-background bg-accent"
-            />
-            <p className="font-mono text-[12px] tabular-nums text-foreground/65">
-              {entry.period}
-            </p>
-            <h3 className="mt-1.5 text-[17px] font-bold tracking-[-0.02em] text-foreground">
-              {entry.title}
-              {entry.role ? (
-                <span className="ml-2 text-sm font-normal text-foreground/50">
-                  {entry.role}
-                </span>
-              ) : null}
-            </h3>
-            <ul className="mt-2 space-y-1">
-              {entry.details.map((detail) => (
-                <li key={detail} className="text-[15px] leading-7 text-foreground/65">
-                  {detail}
-                </li>
-              ))}
-            </ul>
-          </li>
-        ))}
-      </ol>
-
-      <div className="space-y-10">
-        <div>
-          <h3 className="font-mono text-[12px] tracking-[0.16em] text-foreground/65">
-            TOOLBOX
-          </h3>
-          <dl className="mt-4 divide-y divide-ink/8 border-y border-ink/8">
-            {skillGroups.map((group) => (
-              <div key={group.title} className="py-4">
-                <dt className="text-[13px] font-semibold text-foreground/80">
-                  {group.title}
-                </dt>
-                <dd className="mt-2.5 flex flex-wrap gap-1.5">
-                  {group.skills.map((skill) => (
-                    <TechBadge key={skill} label={skill} />
-                  ))}
-                </dd>
-              </div>
-            ))}
-          </dl>
-        </div>
-
-        <div>
-          <h3 className="font-mono text-[12px] tracking-[0.16em] text-foreground/65">
-            CERTIFIED
-          </h3>
-          <ul className="mt-4 space-y-1">
-            {certifications.map((certification) => (
-              <li key={certification} className="text-[15px] text-foreground/70">
-                {certification}
-              </li>
-            ))}
-          </ul>
-        </div>
-      </div>
-    </div>
+    </ol>
   );
 }
 
@@ -355,30 +376,19 @@ export default async function Home() {
 
   return (
     <div className="mx-auto max-w-[1080px] px-5 sm:px-8">
-      <Hero />
+      <Cover
+        toc={[
+          { id: "projects", title: "프로젝트", count: projects.length },
+          { id: "devlog", title: "개발 기록", count: posts.length },
+        ]}
+      />
 
-      <Section
-        id="projects"
-        index="01"
-        eyebrow="PROJECTS"
-        title="프로젝트"
-        count={projects.length}
-      >
+      <Section id="projects" index={1} eyebrow="Projects" title="프로젝트" count={projects.length}>
         <ProjectList projects={projects} />
       </Section>
 
-      <Section
-        id="devlog"
-        index="02"
-        eyebrow="DEVLOG"
-        title="개발 기록"
-        count={posts.length}
-      >
+      <Section id="devlog" index={2} eyebrow="Devlog" title="개발 기록" count={posts.length}>
         <DevlogList posts={posts} />
-      </Section>
-
-      <Section id="about" index="03" eyebrow="BACKGROUND" title="경력과 기술">
-        <About />
       </Section>
     </div>
   );

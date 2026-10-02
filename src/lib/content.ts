@@ -115,16 +115,24 @@ export async function readDevlogPosts(): Promise<DevlogPost[]> {
     .sort((a, b) => b.date.localeCompare(a.date));
 }
 
-/** period는 "2026.08 ~ ing"처럼 정렬 키로 쓸 수 없어 frontmatter의 order를 따른다. */
+/**
+ * period는 "2026.08 ~ ing"처럼 정렬 키로 쓸 수 없어 frontmatter의 order를 따른다.
+ * featured: true인 대표 프로젝트는 order와 상관없이 맨 위로 올린다.
+ */
 export async function readProjects(): Promise<Project[]> {
   const files = await readMarkdownDir("projects");
 
   return files
-    .sort((a, b) => Number(a.data.order ?? 0) - Number(b.data.order ?? 0))
+    .sort(
+      (a, b) =>
+        Number(b.data.featured === true) - Number(a.data.featured === true) ||
+        Number(a.data.order ?? 0) - Number(b.data.order ?? 0),
+    )
     .map(({ slug, data, html }) => ({
       slug,
       name: String(data.name ?? slug),
       tagline: String(data.tagline ?? ""),
+      featured: data.featured === true,
       problem: data.problem ? String(data.problem) : undefined,
       result: data.result ? String(data.result) : undefined,
       thumbnail: data.thumbnail ? String(data.thumbnail) : undefined,

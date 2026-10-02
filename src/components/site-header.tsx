@@ -47,7 +47,7 @@ export default function SiteHeader() {
             href={profile.github}
             target="_blank"
             rel="noreferrer"
-            className="hidden rounded-full border border-ink/12 px-3.5 py-1.5 text-[13px] font-medium text-foreground/80 transition-colors hover:border-accent/50 hover:text-accent md:block"
+            className="hidden text-sm text-foreground/60 transition-colors hover:text-accent md:block"
           >
             GitHub ↗
           </a>
