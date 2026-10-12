@@ -1,0 +1,175 @@
+.hero {
+  position: relative;
+  isolation: isolate;
+}
+
+.ambience {
+  position: absolute;
+  z-index: -1;
+  inset: -2rem -1rem 14rem;
+  overflow: hidden;
+  pointer-events: none;
+  border-radius: 3rem;
+  background: radial-gradient(ellipse at 80% 35%, color-mix(in srgb, var(--sage) 65%, transparent), transparent 55%);
+  mask-image: linear-gradient(transparent, black 12%, black 75%, transparent);
+}
+
+.ambience::before,
+.ambience::after {
+  content: "";
+  position: absolute;
+  width: 65%;
+  height: 80%;
+  border-radius: 50%;
+  filter: blur(55px);
+  animation: drift 18s ease-in-out infinite alternate;
+}
+
+.ambience::before {
+  top: 0;
+  right: 0;
+  background: color-mix(in srgb, var(--accent-soft) 65%, transparent);
+}
+
+.ambience::after {
+  bottom: 0;
+  left: 15%;
+  background: color-mix(in srgb, var(--sage) 45%, transparent);
+  animation-delay: -9s;
+}
+
+.portrait {
+  border: 1px solid color-mix(in srgb, var(--ink) 10%, transparent);
+  border-radius: 0.25rem;
+  padding: 1rem 1rem 1.5rem;
+  background: color-mix(in srgb, var(--background) 92%, white);
+  box-shadow: 0 2px 4px rgb(0 0 0 / 4%), 0 18px 36px -20px rgb(0 0 0 / 22%);
+}
+
+.portraitCaption {
+  margin-top: 1.25rem;
+  padding-inline: 0.25rem;
+}
+
+.projectPanel {
+  --panel-color: #b7c7b0;
+  position: relative;
+  display: grid;
+  aspect-ratio: 16 / 11;
+  padding: clamp(1.25rem, 3vw, 2rem);
+  overflow: hidden;
+  border-radius: 0.75rem;
+  background: linear-gradient(140deg,
+    color-mix(in srgb, var(--panel-color) 25%, var(--background)),
+    color-mix(in srgb, var(--panel-color) 65%, var(--background)));
+}
+
+.projectPanel[data-project="homefit"] { --panel-color: #d2ad95; }
+.projectPanel[data-project="ait"] { --panel-color: #adbcd3; }
+.projectPanel[data-project="geomate"] { --panel-color: #b5accb; }
+.projectPanel[data-project="discord-study-bot"] { --panel-color: #c3bca1; }
+
+.projectImage {
+  position: relative;
+  min-width: 0;
+  min-height: 0;
+  overflow: hidden;
+  border-radius: 0.35rem;
+  box-shadow: 0 20px 36px -20px rgb(0 0 0 / 28%);
+}
+
+.featuredPanel {
+  aspect-ratio: 4 / 3;
+  padding: clamp(1.25rem, 3vw, 2rem);
+}
+
+.projectMeta {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  color: color-mix(in srgb, var(--foreground) 60%, transparent);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.05em;
+}
+
+.projectMeta > span:first-child {
+  color: var(--accent);
+}
+
+.notesList {
+  border-top: 1px solid color-mix(in srgb, var(--ink) 15%, transparent);
+}
+
+.notesList > li {
+  border-bottom: 1px solid color-mix(in srgb, var(--ink) 15%, transparent);
+}
+
+.notesList a {
+  grid-template-columns: 7.5rem minmax(0, 1fr) auto;
+  column-gap: 2rem;
+  padding: 2rem 0.75rem;
+  border-radius: 0.25rem;
+  transition: background-color 200ms;
+}
+
+.notesList a:hover {
+  background: color-mix(in srgb, var(--accent-soft) 45%, transparent);
+}
+
+.notesList a:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 4px;
+}
+
+.notesList h3 {
+  overflow: visible;
+  white-space: normal;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 1.6;
+}
+
+.notesList p {
+  margin-top: 0.25rem;
+  line-height: 1.8;
+}
+
+@media (min-width: 1024px) {
+  .portrait {
+    transform: rotate(-2deg);
+  }
+}
+
+@media (max-width: 639px) {
+  .notesList a {
+    grid-template-columns: minmax(0, 1fr) auto;
+    column-gap: 1rem;
+    padding: 1.5rem 0.25rem;
+  }
+
+  .notesList a > span:first-child {
+    grid-column: 1 / -1;
+  }
+
+  .notesList h3 {
+    font-size: 17px;
+  }
+
+  .notesList p {
+    grid-column: 1;
+  }
+}
+
+@keyframes drift {
+  from { transform: translate(-4%, -3%) scale(1); }
+  to { transform: translate(6%, 5%) scale(1.12); }
+}
+
+@media (max-width: 639px), (prefers-reduced-motion: reduce) {
+  .ambience::before,
+  .ambience::after {
+    animation: none;
+  }
+}

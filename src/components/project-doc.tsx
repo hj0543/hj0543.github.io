@@ -1,3 +1,4 @@
+import { Trophy } from "lucide-react";
 import Image from "next/image";
 
 import { TechBadge } from "@/components/ui/brand-icon";
@@ -17,6 +18,8 @@ export type Project = {
   tagline: string;
   /** 대표 프로젝트. 홈 목록 맨 위에 배치한다. */
   featured: boolean;
+  /** 수상 내역. 홈 대표 프로젝트에 배지로, 상세 화면 제목 위에 표시한다. */
+  award?: string;
   problem?: string;
   result?: string;
   /** /public 기준 경로. 없으면 자리표시 타일을 대신 그린다. */
@@ -85,6 +88,15 @@ export function Thumb({ project }: { project: Project }) {
       )}
     </div>
   );
+}
+
+/** 문제 → 결과 중 frontmatter에 채운 줄만 순서대로 돌려준다. */
+export function caseRows(project: Project): [string, string][] {
+  const rows: [string, string | undefined][] = [
+    ["문제", project.problem],
+    ["결과", project.result],
+  ];
+  return rows.filter((row): row is [string, string] => Boolean(row[1]));
 }
 
 const SECTION_LABELS: Record<string, string> = {
@@ -171,6 +183,12 @@ export function ProjectDoc({ project }: { project: Project }) {
             ← Projects
           </Link>
           <div className="mt-8" />
+          {project.award ? (
+            <p className="mb-4 inline-flex items-center gap-1.5 rounded-full border border-accent/40 px-3.5 py-1.5 text-[12px] font-semibold text-accent">
+              <Trophy aria-hidden="true" size={13} strokeWidth={2} />
+              {project.award}
+            </p>
+          ) : null}
           <h1 className="text-3xl font-bold leading-tight tracking-[-0.04em] text-foreground @[48rem]:text-[2rem]">
             {project.name}
           </h1>
@@ -178,20 +196,14 @@ export function ProjectDoc({ project }: { project: Project }) {
             {project.tagline}
           </p>
 
-          {project.problem || project.result ? (
+          {caseRows(project).length > 0 ? (
             <dl className="mt-7 grid gap-3 border-t border-ink/10 pt-5 text-sm leading-6">
-              {project.problem ? (
-                <div>
-                  <dt className="font-mono text-[11px] tracking-[0.1em] text-label">문제</dt>
-                  <dd className="mt-1 text-foreground/75">{project.problem}</dd>
+              {caseRows(project).map(([label, value]) => (
+                <div key={label}>
+                  <dt className="font-mono text-[11px] tracking-[0.1em] text-label">{label}</dt>
+                  <dd className="mt-1 text-foreground/75">{value}</dd>
                 </div>
-              ) : null}
-              {project.result ? (
-                <div>
-                  <dt className="font-mono text-[11px] tracking-[0.1em] text-label">결과</dt>
-                  <dd className="mt-1 text-foreground/75">{project.result}</dd>
-                </div>
-              ) : null}
+              ))}
             </dl>
           ) : null}
 
@@ -244,7 +256,7 @@ export function ProjectDoc({ project }: { project: Project }) {
       {prepared.sections.length > 0 ? (
         <nav
           aria-label="프로젝트 문서 목차"
-          className="sticky top-14 z-20 mt-12 overflow-x-auto border-y border-ink/10 bg-background/90 backdrop-blur-md [&::-webkit-scrollbar]:hidden"
+          className="sticky top-16 z-20 mt-12 overflow-x-auto border-y border-ink/10 bg-background/90 backdrop-blur-md [&::-webkit-scrollbar]:hidden"
         >
           <div className="mx-auto flex h-10 max-w-[1080px] items-center gap-6 px-5 sm:px-8">
             <span className="flex h-5 shrink-0 items-center border-r border-ink/12 pr-5 font-mono text-[14px] leading-none tracking-[0.14em] text-foreground/35">

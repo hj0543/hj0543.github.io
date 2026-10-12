@@ -1,394 +1,466 @@
+import {
+  ArrowDownRight,
+  ArrowRight,
+  ArrowUpRight,
+  Building2,
+  Trophy,
+} from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
-import type { DevlogPost } from "@/components/devlog-doc";
-import { Thumb, type Project } from "@/components/project-doc";
-import { TechBadge } from "@/components/ui/brand-icon";
+import { NoteLink } from "@/components/devlog-doc";
+import { caseRows, type Project } from "@/components/project-doc";
+import { BlurText, FadeContent, ScrollReveal, SpotlightCard } from "@/components/react-bits/home-effects";
 import { readDevlogPosts, readProjects } from "@/lib/content";
-import {
-  career,
-  certifications,
-  profile,
-  skillGroups,
-} from "@/lib/profile";
+import { career, certificationLogo, certifications, profile } from "@/lib/profile";
+
+import styles from "./home.module.css";
 
 const pad = (n: number) => String(n).padStart(2, "0");
 
-// 문서 판번호. 빌드한 달로 찍힌다.
-const revision = new Date().toISOString().slice(0, 7).replace("-", ".");
+/** 홈에 미리 보여 줄 기록 수. 나머지는 /devlog에서 본다. */
+const NOTE_PREVIEW = 4;
 
-/** 문서의 한 장(§). 넓은 화면에서는 장 번호가 왼쪽 여백에 붙는다. */
-function Section({
-  id,
-  index,
-  eyebrow,
-  title,
-  count,
-  children,
-}: {
-  id: string;
-  index: number;
-  eyebrow: string;
-  title: string;
-  count?: number;
-  children: React.ReactNode;
-}) {
-  return (
-    <section
-      id={id}
-      className="grid scroll-mt-14 gap-6 border-t-2 border-ink py-14 sm:py-20 md:grid-cols-[140px_minmax(0,1fr)] md:gap-10"
-    >
-      {/* 넓은 화면에서는 장 번호가 섹션 끝까지 헤더 아래에 따라온다. */}
-      <div className="md:sticky md:top-20 md:self-start">
-        <p className="font-mono text-3xl font-semibold text-label">§{index}</p>
-        <p className="mt-2 font-mono text-[11px] uppercase tracking-[0.16em] text-foreground/55">
-          {eyebrow}
-        </p>
-      </div>
-      <div className="min-w-0">
-        <div className="flex items-baseline justify-between gap-4 border-b border-ink/15 pb-4">
-          <h2 className="text-2xl font-bold tracking-[-0.03em] text-foreground sm:text-[1.75rem]">
-            {title}
-          </h2>
-          {count !== undefined ? (
-            <span className="font-mono text-[12px] tabular-nums text-foreground/55">
-              {pad(count)}건
-            </span>
-          ) : null}
-        </div>
-        <div className="mt-2">{children}</div>
-      </div>
-    </section>
-  );
-}
-
-/** 표지: 문서 머리줄 → 제목 → 증명사진·연락 | 경력·기술·자격 → 목차. */
-function Cover({ toc }: { toc: { id: string; title: string; count?: number }[] }) {
-  const meta: [string, React.ReactNode][] = [
-    [
-      "경력",
-      // 세로선 타임라인. 맨 위(진행 중) 항목만 점을 주홍으로 칠하고, 나머지는 마우스를 대면 강조한다.
-      <ol key="career" className="border-l border-ink/20">
-        {career.map((entry, i) => (
-          <li key={entry.title} className="group/career relative pb-4 pl-5 last:pb-0">
-            <span
-              aria-hidden="true"
-              className={`absolute left-[-4.5px] top-2 size-2 transition-colors duration-300 ${
-                i === 0 ? "bg-accent" : "bg-ink/30 group-hover/career:bg-accent"
-              }`}
-            />
-            <p>
-              <span className="font-semibold text-foreground transition-colors duration-300 group-hover/career:text-accent">
-                {entry.title}
-              </span>
-              {entry.role ? <span className="ml-1.5 text-foreground/55">{entry.role}</span> : null}
-              <span className="ml-2 font-mono text-[11px] tabular-nums text-foreground/50">
-                {entry.period}
-              </span>
-            </p>
-            <ul className="text-[13px] text-foreground/60">
-              {entry.details.map((detail) => (
-                <li key={detail}>{detail}</li>
-              ))}
-            </ul>
-          </li>
-        ))}
-      </ol>,
-    ],
-    [
-      "기술",
-      <div key="skills" className="space-y-3">
-        {skillGroups.map((group) => (
-          <div key={group.title}>
-            <p className="text-[12px] text-foreground/55">{group.title}</p>
-            <div className="mt-1.5 flex flex-wrap gap-1.5">
-              {group.skills.map((skill) => (
-                <TechBadge key={skill} label={skill} />
-              ))}
-            </div>
-          </div>
-        ))}
-      </div>,
-    ],
-    [
-      "자격",
-      <ul key="certifications">
-        {certifications.map((certification) => (
-          <li key={certification}>{certification}</li>
-        ))}
-      </ul>,
-    ],
-  ];
-
-  return (
-    <section id="about" className="scroll-mt-14 pb-16 pt-10 sm:pt-14">
-      <div className="flex flex-wrap justify-between gap-x-6 gap-y-1 border-y-2 border-ink py-2 font-mono text-[11px] uppercase tracking-[0.16em] text-foreground/70">
-        <span>Portfolio Document</span>
-        <span>Doc No. HJ-2026 · Rev. {revision}</span>
-      </div>
-
-      <h1 className="mt-12 text-[2.4rem] font-bold leading-[1.15] tracking-[-0.045em] text-foreground sm:text-[3.4rem]">
-        {profile.headline[0]}
-        <br />
-        {profile.headline[1]}
-      </h1>
-      <p className="mt-6 max-w-[600px] text-[17px] leading-8 text-foreground/65">
-        {profile.intro}
-      </p>
-
-      <div className="mt-14 grid gap-10 md:grid-cols-[180px_minmax(0,1fr)]">
-        <div>
-          <Image
-            src={profile.photo}
-            alt={`${profile.name} 증명사진`}
-            width={200}
-            height={249}
-            sizes="180px"
-            className="w-36 border border-ink/20 md:w-full"
-          />
-          <p className="mt-4 text-lg font-bold tracking-[-0.02em] text-foreground">
-            {profile.name}
-          </p>
-          <dl className="mt-3 grid grid-cols-[44px_minmax(0,1fr)] gap-y-1 text-[13px]">
-            {profile.facts.map(([label, value]) => (
-              <div key={label} className="col-span-2 grid grid-cols-subgrid">
-                <dt className="font-mono text-[12px] text-foreground/50">{label}</dt>
-                <dd className="tabular-nums text-foreground/80">{value}</dd>
-              </div>
-            ))}
-          </dl>
-          <ul className="mt-4 space-y-1.5 text-sm">
-            <li>
-              <a
-                href={`mailto:${profile.email}`}
-                className="break-all border-b border-accent/50 text-accent hover:border-accent"
-              >
-                {profile.email}
-              </a>
-            </li>
-            <li>
-              <a
-                href={profile.github}
-                target="_blank"
-                rel="noreferrer"
-                className="border-b border-ink/25 text-foreground/80 hover:border-accent hover:text-accent"
-              >
-                GitHub ↗
-              </a>
-            </li>
-          </ul>
-        </div>
-        <dl className="grid grid-cols-[64px_minmax(0,1fr)] content-start border-t border-ink/15 text-sm">
-          {meta.map(([label, value]) => (
-            <div key={label} className="col-span-2 grid grid-cols-subgrid border-b border-ink/10 py-3">
-              <dt className="font-mono text-[12px] leading-6 text-foreground/50">{label}</dt>
-              <dd className="leading-6 text-foreground/80">{value}</dd>
-            </div>
-          ))}
-        </dl>
-      </div>
-
-      {/* 목차는 프로필 아래에 가로 탭으로 늘어놓는다. */}
-      <nav aria-label="목차" className="mt-12">
-        <p className="font-mono text-[11px] uppercase tracking-[0.16em] text-foreground/55">
-          Contents
-        </p>
-        <ol className="mt-3 flex divide-x divide-ink/15 border-y border-ink/15">
-          {toc.map((item, i) => (
-            <li key={item.id} className="flex-1">
-              <a
-                href={`#${item.id}`}
-                className="group flex items-baseline gap-3 px-4 py-3.5 text-[15px] transition-colors hover:bg-surface"
-              >
-                <span className="font-mono text-[12px] text-label">§{i + 1}</span>
-                <span className="text-foreground/85 transition-colors group-hover:text-accent">
-                  {item.title}
-                </span>
-                <span className="ml-auto font-mono text-[12px] tabular-nums text-foreground/55">
-                  {item.count !== undefined ? pad(item.count) : "—"}
-                </span>
-              </a>
-            </li>
-          ))}
-        </ol>
-      </nav>
-    </section>
-  );
-}
-
-function ProblemResult({ project }: { project: Project }) {
-  return (
-    <dl className="mt-4 grid gap-1.5 text-sm leading-6">
-      {project.problem ? (
-        <div className="grid grid-cols-[40px_minmax(0,1fr)]">
-          <dt className="font-mono text-[11px] font-semibold leading-6 text-foreground/50">문제</dt>
-          <dd className="text-foreground/75">{project.problem}</dd>
-        </div>
-      ) : null}
-      <div className="grid grid-cols-[40px_minmax(0,1fr)]">
-        <dt className="font-mono text-[11px] font-semibold leading-6 text-label">결과</dt>
-        <dd className={project.result ? "text-foreground/75" : "text-foreground/45"}>
-          {project.result ?? "진행 중"}
-        </dd>
-      </div>
-    </dl>
-  );
-}
-
-function ProjectTitle({ project, className }: { project: Project; className: string }) {
-  return (
-    <h3 className={`${className} font-bold tracking-[-0.025em] text-foreground transition-colors group-hover:text-accent`}>
-      {project.name}
-      <span aria-hidden="true" className="ml-2 inline-block opacity-0 transition-opacity group-hover:opacity-100">
-        →
-      </span>
-    </h3>
-  );
-}
+const PROCESS = [
+  {
+    title: "문제 발견",
+    body: "사용자의 맥락을 깊이 이해하고, 겉으로 보이는 현상 너머의 진짜 문제를 찾습니다.",
+  },
+  {
+    title: "해결 설계",
+    body: "문제를 여러 관점에서 검토하고, 실행 가능한 해결 방안을 구체화합니다.",
+  },
+  {
+    title: "구현과 협업",
+    body: "기획한 것을 실제로 작동하는 서비스로 만들고, 팀과 함께 끝까지 완성합니다.",
+  },
+];
 
 /**
- * 대표 프로젝트(featured)는 썸네일 | 내용 2분할로 크게, 나머지는 그 아래 한 열로 나열한다.
- * 대표 프로젝트가 맨 위에 오고, 나머지는 frontmatter의 order를 따른다.
+ * 경력 로고 배지. 로고는 흰 바탕에 맞춰 만든 것이 많아 다크 모드에서도 흰 배지를 유지한다.
+ * 로고가 없는 항목은 건물 아이콘으로 대신한다.
  */
-function ProjectList({ projects }: { projects: Project[] }) {
-  const number = (project: Project) => `P-${pad(projects.indexOf(project) + 1)}`;
-  const featured = projects.filter((project) => project.featured);
-  const rest = projects.filter((project) => !project.featured);
-
+function CareerBadge({ title, logo }: { title: string; logo?: string }) {
   return (
-    <div>
-      {featured.map((project) => (
-        <Link
-          key={project.slug}
-          href={`/projects/${project.slug}`}
-          className="group grid gap-x-10 gap-y-6 border-b border-ink/15 py-8 md:grid-cols-[minmax(0,1.1fr)_minmax(0,1fr)] md:items-center"
-        >
-          <Thumb project={project} />
-          <div className="min-w-0">
-            <p className="flex items-center gap-2 font-mono text-[12px] text-label">
-              {number(project)}
-              <span className="border border-accent/60 px-1.5 text-[10px] tracking-[0.12em]">대표</span>
-            </p>
-            <ProjectTitle project={project} className="mt-2 text-2xl leading-9" />
-            <p className="mt-1 text-[15px] leading-7 text-foreground/60">{project.tagline}</p>
-            <ProblemResult project={project} />
-            <ProjectMeta project={project} />
-          </div>
-        </Link>
-      ))}
-
-      <ol>
-        {rest.map((project) => (
-          <li key={project.slug} className="border-b border-ink/15">
-            <Link href={`/projects/${project.slug}`} className="group block h-full py-7">
-              <div className="flex items-center gap-4">
-                <MiniThumb project={project} />
-                <div className="min-w-0">
-                  <p className="font-mono text-[12px] text-label">{number(project)}</p>
-                  <ProjectTitle project={project} className="mt-0.5 text-xl leading-8" />
-                </div>
-              </div>
-              <p className="mt-3 text-[15px] leading-7 text-foreground/60">{project.tagline}</p>
-              <ProblemResult project={project} />
-              <ProjectMeta project={project} />
-            </Link>
-          </li>
-        ))}
-      </ol>
-    </div>
-  );
-}
-
-/** 목록용 작은 정사각 썸네일. 이미지가 없으면 이름 머리글자로 채운다. */
-function MiniThumb({ project }: { project: Project }) {
-  return (
-    <div className="relative size-14 shrink-0 overflow-hidden border border-ink/15 bg-surface">
-      {project.thumbnail ? (
-        <Image
-          src={project.thumbnail}
-          alt=""
-          fill
-          sizes="56px"
-          className="object-cover transition-transform duration-300 group-hover:scale-105"
-        />
+    <span className="relative grid h-11 w-[4.25rem] shrink-0 place-items-center overflow-hidden rounded-lg bg-white shadow-[0_0_0_1px_rgb(29_28_25/0.08),0_1px_2px_rgb(29_28_25/0.06)]">
+      {logo ? (
+        <Image src={logo} alt={`${title} 로고`} fill sizes="68px" className="object-contain p-2" />
       ) : (
-        <span className="absolute inset-0 flex items-center justify-center font-mono text-sm font-semibold text-accent/70">
-          {project.name.slice(0, 2).toUpperCase()}
-        </span>
+        <Building2 aria-hidden="true" size={20} strokeWidth={1.7} className="text-[#9b4d2f]" />
       )}
-    </div>
+    </span>
   );
 }
 
-function ProjectMeta({ project }: { project: Project }) {
+/** 섹션 위의 영문 라벨. "Selected Work / 01"이면 앞은 이탤릭 세리프, " / " 뒤는 작은 모노로 쓴다. */
+function Eyebrow({ children }: { children: string }) {
+  const [label, ...rest] = children.split(" / ");
   return (
-    <p className="mt-4 flex flex-wrap gap-x-3 text-[13px] text-foreground/60">
-      <span className="text-foreground/80">{project.role}</span>
-      <span className="font-mono text-[12px] tabular-nums">{project.period}</span>
-      <span>{project.team}</span>
+    <p className="flex items-baseline gap-2.5 text-label">
+      <span className="font-serif text-[22px] italic leading-none sm:text-[26px]">{label}</span>
+      {rest.length ? (
+        <span className="font-mono text-[11px] tracking-[0.1em] text-foreground/50">
+          / {rest.join(" / ")}
+        </span>
+      ) : null}
     </p>
   );
 }
 
-function DevlogList({ posts }: { posts: DevlogPost[] }) {
-  if (posts.length === 0) {
-    return <p className="py-6 text-sm text-foreground/50">아직 작성한 글이 없습니다.</p>;
-  }
+function Section({
+  id,
+  eyebrow,
+  title,
+  action,
+  children,
+}: {
+  id: string;
+  eyebrow: string;
+  title: string;
+  action?: React.ReactNode;
+  children: React.ReactNode;
+}) {
+  return (
+    <section id={id} className="scroll-mt-20 border-t border-ink/15 pb-20 pt-12">
+      <FadeContent className="flex items-end justify-between gap-6">
+        <div>
+          <Eyebrow>{eyebrow}</Eyebrow>
+          <h2 className="mt-3 text-[1.75rem] font-bold tracking-[-0.04em] text-foreground sm:text-[2rem]">
+            <ScrollReveal text={title} />
+          </h2>
+        </div>
+        {action}
+      </FadeContent>
+      <div className="mt-10">{children}</div>
+    </section>
+  );
+}
+
+/**
+ * 첫 화면. 프로필 사진 | 제목·소개, 그 아래 Background 줄에 경력·자격을 늘어놓는다.
+ * 일하는 방식(01 · 02 · 03)은 아래 HOW I WORK가 맡으므로 여기서는 반복하지 않는다.
+ */
+function Hero() {
+  const rows = [
+    ...career.map((entry) => ({
+      title: entry.title,
+      role: entry.role,
+      period: entry.period,
+      details: entry.details,
+      logo: "logo" in entry ? entry.logo : undefined,
+    })),
+    {
+      title: "Certificates",
+      role: "자격",
+      period: "",
+      details: certifications,
+      logo: certificationLogo,
+    },
+  ];
+  return (
+    <section id="about" className={`${styles.hero} scroll-mt-20 pb-20 pt-12 sm:pt-16`}>
+      <div aria-hidden="true" className={styles.ambience} />
+      {/* 표지처럼 맨 위에 이름 줄을 긋는다. */}
+      <div className="flex items-baseline justify-between gap-4 border-b border-ink/15 pb-3">
+        <Eyebrow>{`${profile.name} / Portfolio`}</Eyebrow>
+        <p className="font-mono text-[11px] text-foreground/60">{profile.location}</p>
+      </div>
+
+      {/* 사진은 왼쪽, 제목·소개·버튼은 오른쪽에 묶어 사진 아래쪽 선에 맞춘다. */}
+      <div className="mt-12 grid gap-12 lg:grid-cols-[280px_minmax(0,1fr)] lg:items-end lg:gap-16">
+        {/* 사진은 자르지 않고 원본 비율(3:4) 그대로 보여 준다. 좁은 화면에서는 소개 아래로 내린다. */}
+        <FadeContent delay={0.15} className="w-full max-w-[280px] max-lg:order-last">
+          <figure className={styles.portrait}>
+            <div className="relative aspect-[3/4] overflow-hidden rounded-sm bg-surface">
+              <Image
+                src={profile.photo}
+                alt={`${profile.nameKo} 프로필 사진`}
+                fill
+                priority
+                sizes="280px"
+                className="object-cover"
+              />
+            </div>
+            <figcaption className={styles.portraitCaption}>
+              <p className="text-[17px] font-bold tracking-[-0.02em] text-foreground">
+                {profile.nameKo}
+                <span className="ml-2 text-[13px] font-medium text-foreground/65">
+                  {profile.name}
+                </span>
+              </p>
+              <p className="mt-1 text-[12px] text-foreground/70">
+                {profile.facts.map(([label, value]) => `${label} ${value}`).join(" · ")}
+              </p>
+              <p className="mt-4 font-serif text-[16px] italic text-accent">{profile.role}</p>
+            </figcaption>
+          </figure>
+        </FadeContent>
+
+        <div className="lg:pb-2">
+          {/* 만든 것은 진하게, 배운 것은 같은 굵기의 회색으로 이어 두 줄이 대비되게 한다. */}
+          <h1 className="text-[2.5rem] font-bold leading-[1.18] tracking-[-0.05em] text-foreground sm:text-[3.5rem]">
+            <BlurText text={profile.headline[0]} />
+            <br />
+            <BlurText text={profile.headline[1]} delay={0.2} className="text-foreground/40" />
+          </h1>
+          <FadeContent delay={0.2}>
+            <p className="mt-8 max-w-[560px] text-[16px] leading-8 text-foreground/75 sm:text-[17px] sm:leading-9">
+              {profile.intro.map((line) => (
+                <span key={line} className="sm:block">
+                  {line}{" "}
+                </span>
+              ))}
+            </p>
+            <div className="mt-10 flex flex-wrap items-center gap-8">
+              <a
+                href="#projects"
+                className="inline-flex h-12 items-center gap-2 rounded-md bg-accent px-6 text-[15px] font-semibold text-on-accent transition-colors hover:bg-accent-deep focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/60 focus-visible:ring-offset-2"
+              >
+                프로젝트 보기
+                <ArrowDownRight aria-hidden="true" size={17} />
+              </a>
+              <a
+                href={profile.github}
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center gap-1.5 border-b border-foreground/50 pb-1 text-[15px] font-medium text-foreground transition-colors hover:border-accent hover:text-accent"
+              >
+                GitHub
+                <ArrowUpRight aria-hidden="true" size={15} />
+              </a>
+            </div>
+          </FadeContent>
+        </div>
+      </div>
+
+      <FadeContent className="mt-16 border-t border-ink/15 pt-10">
+        <Eyebrow>Background</Eyebrow>
+        <ol className="mt-7 grid gap-y-10 sm:grid-cols-2 lg:grid-cols-4">
+          {rows.map((row) => (
+            <li
+              key={row.title}
+              className="min-w-0 sm:odd:pr-6 sm:even:border-l sm:even:border-ink/15 sm:even:pl-6 lg:border-l lg:border-ink/15 lg:px-6 lg:first:border-l-0 lg:first:pl-0 lg:last:pr-0"
+            >
+              <div className="flex items-center gap-3.5">
+                <CareerBadge title={row.title} logo={row.logo} />
+                <div className="min-w-0">
+                  <p className="truncate text-[15px] font-bold leading-6 text-foreground">
+                    {row.title}
+                  </p>
+                  {row.role ? (
+                    <p className="truncate text-[12px] leading-5 text-foreground/65">{row.role}</p>
+                  ) : null}
+                </div>
+              </div>
+              {row.period ? (
+                <p className="mt-4 font-mono text-[11px] tabular-nums text-accent">{row.period}</p>
+              ) : null}
+              <ul
+                className={`${row.period ? "mt-2" : "mt-4"} space-y-1 text-[13px] leading-5 text-foreground/75`}
+              >
+                {row.details.map((detail) => (
+                  <li key={detail}>{detail}</li>
+                ))}
+              </ul>
+            </li>
+          ))}
+        </ol>
+      </FadeContent>
+    </section>
+  );
+}
+
+/** 이미지가 없을 때 쓰는 자리표시. 이름 머리글자를 크게 둔다. */
+function Placeholder({ project, large = false }: { project: Project; large?: boolean }) {
+  return (
+    <span
+      className={`absolute inset-0 flex items-center justify-center font-bold tracking-[-0.05em] text-foreground/25 ${
+        large ? "text-6xl" : "text-3xl"
+      }`}
+    >
+      {large ? project.name : project.name.slice(0, 2).toUpperCase()}
+    </span>
+  );
+}
+
+/** 대표 이미지 모서리에 걸치는 작은 원형 수상 도장. 바탕색 위에 테두리 글자가 천천히 돈다. */
+function AwardSeal({ year }: { year: string }) {
+  return (
+    <div
+      aria-hidden="true"
+      className="absolute -right-2.5 -top-2.5 size-20 rounded-full bg-background text-accent shadow-[0_0_0_1px_rgb(155_77_47/0.22),0_8px_20px_-8px_rgb(29_28_25/0.35)] sm:-right-4 sm:-top-4 sm:size-[5.5rem]"
+    >
+      <svg
+        viewBox="0 0 120 120"
+        className="absolute inset-0 animate-[spin_24s_linear_infinite] motion-reduce:animate-none"
+      >
+        <defs>
+          <path id="award-ring" d="M60,60 m-47,0 a47,47 0 1,1 94,0 a47,47 0 1,1 -94,0" />
+        </defs>
+        <text className="fill-current text-[11px] font-semibold uppercase" letterSpacing="0.16em">
+          <textPath href="#award-ring" textLength="290" lengthAdjust="spacing">
+            {`Project Award · SSAFY ${year} · `}
+          </textPath>
+        </text>
+      </svg>
+      <span className="absolute inset-[24%] flex flex-col items-center justify-center rounded-full border border-current/25">
+        <Trophy size={15} strokeWidth={2} />
+        <span className="mt-0.5 text-[10px] font-bold tracking-[-0.02em]">우수상</span>
+      </span>
+    </div>
+  );
+}
+
+/** 색상 패널 안에 썸네일 전체를 보여 주는 작품집 이미지. */
+function ProjectArtwork({ project, featured = false }: { project: Project; featured?: boolean }) {
+  return (
+    <div
+      data-project={project.slug}
+      className={`${styles.projectPanel} ${featured ? styles.featuredPanel : ""}`}
+    >
+      <div className={styles.projectImage}>
+        {project.thumbnail ? (
+          <Image
+            src={project.thumbnail}
+            alt=""
+            fill
+            sizes={featured ? "(max-width: 1024px) 85vw, 520px" : "(max-width: 640px) 80vw, 440px"}
+            className="object-contain transition-transform duration-500 motion-safe:group-hover:scale-[1.02]"
+          />
+        ) : (
+          <Placeholder project={project} large={featured} />
+        )}
+      </div>
+    </div>
+  );
+}
+
+/** 대표 작업: 넓은 화면에서는 왼쪽 이미지, 오른쪽 소개·문제·결과. */
+function FeaturedProject({ project }: { project: Project }) {
+  const href = `/projects/${project.slug}`;
 
   return (
-    <ol>
-      {posts.map((post) => (
-        <li key={post.slug} className="border-b border-ink/15">
+    <article>
+      <FadeContent className={`${styles.projectMeta} mb-5`}>
+        <span>01 / FEATURED WORK</span>
+        <span>{project.period}</span>
+      </FadeContent>
+      <div className="grid gap-10 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,1fr)] lg:items-center lg:gap-14">
+        <FadeContent className="relative">
           <Link
-            href={`/devlog/${post.slug}`}
-            className="group grid gap-2 py-6 sm:grid-cols-[110px_minmax(0,1fr)] sm:gap-8"
+            href={href}
+            aria-label={`${project.name} 자세히 보기`}
+            className="group block rounded-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-4 focus-visible:ring-offset-background"
           >
-            <span className="font-mono text-[12px] leading-7 tabular-nums text-foreground/55">
-              {post.date}
-            </span>
-            <div className="min-w-0">
-              <h3 className="text-lg font-bold leading-7 tracking-[-0.02em] text-foreground transition-colors group-hover:text-accent">
-                {post.title}
-              </h3>
-              {post.summary ? (
-                <p className="mt-1.5 line-clamp-2 text-[15px] leading-7 text-foreground/60">
-                  {post.summary}
-                </p>
-              ) : null}
-              {post.tags.length > 0 ? (
-                <p className="mt-2 font-mono text-[11px] text-foreground/50">
-                  {post.tags.map((tag) => `#${tag}`).join("  ")}
-                </p>
-              ) : null}
+            <ProjectArtwork project={project} featured />
+          </Link>
+          {project.award ? <AwardSeal year={project.period.slice(0, 4)} /> : null}
+        </FadeContent>
+
+        <FadeContent delay={0.1} className="min-w-0">
+          <h3 className="text-[2.75rem] font-bold tracking-[-0.045em] text-foreground sm:text-[3.5rem]">
+            {project.name}
+          </h3>
+          <p className="mt-2 text-[17px] leading-7 text-foreground/75">{project.tagline}</p>
+          <div className="mt-5 flex flex-wrap gap-2">
+            {project.award ? (
+              <p className="inline-flex items-center gap-1.5 rounded-full border border-accent/40 px-4 py-1.5 text-[13px] font-semibold text-accent">
+                <Trophy aria-hidden="true" size={14} strokeWidth={2} />
+                {project.award}
+              </p>
+            ) : null}
+            <p className="rounded-full bg-accent-soft px-4 py-1.5 text-[13px] font-medium text-accent">
+              {project.role}
+            </p>
+          </div>
+
+          <dl className="mt-8 border-b border-ink/15">
+            {caseRows(project).map(([label, value]) => (
+              <div key={label} className="grid grid-cols-[3rem_minmax(0,1fr)] gap-3 border-t border-ink/15 py-6 text-[15px] leading-8">
+                <dt className={`font-bold ${label === "결과" ? "text-accent" : "text-foreground"}`}>{label}</dt>
+                <dd className="text-foreground/75">{value}</dd>
+              </div>
+            ))}
+          </dl>
+          <Link
+            href={href}
+            className="mt-8 inline-flex items-center gap-1.5 border-b border-accent/60 pb-1 text-[15px] font-medium text-accent transition-colors hover:border-accent"
+          >
+            프로젝트 자세히 보기
+            <ArrowUpRight aria-hidden="true" size={15} />
+          </Link>
+        </FadeContent>
+      </div>
+    </article>
+  );
+}
+
+function ProjectCard({ project, index }: { project: Project; index: number }) {
+  return (
+    <li>
+      <FadeContent delay={(index % 2) * 0.08} className="h-full">
+        <SpotlightCard>
+          <Link href={`/projects/${project.slug}`} className="group flex h-full flex-col p-4 sm:p-5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-accent">
+            <div className={`${styles.projectMeta} mb-4`}>
+              <span>{pad(index + 2)} / PROJECT</span>
+              <span>{project.period.slice(0, 4)}</span>
+            </div>
+            <ProjectArtwork project={project} />
+            <h3 className="mt-5 text-xl font-bold tracking-[-0.03em] text-foreground transition-colors group-hover:text-accent">
+              {project.name}
+            </h3>
+            <p className="mt-1.5 line-clamp-2 text-[14px] leading-6 text-foreground/70">
+              {project.tagline}
+            </p>
+            <div className="mt-auto flex items-center justify-between gap-3 pt-5">
+              <span className="truncate rounded-full bg-ink/6 px-3 py-1.5 text-[12px] text-foreground/75">
+                {project.role}
+              </span>
+              <span
+                aria-hidden="true"
+                className="grid size-9 shrink-0 place-items-center rounded-full border border-ink/30 text-foreground transition-colors group-hover:border-accent group-hover:bg-accent group-hover:text-on-accent"
+              >
+                <ArrowRight size={16} />
+              </span>
             </div>
           </Link>
-        </li>
-      ))}
-    </ol>
+        </SpotlightCard>
+      </FadeContent>
+    </li>
   );
 }
 
 export default async function Home() {
-  const [posts, projects] = await Promise.all([
-    readDevlogPosts(),
-    readProjects(),
-  ]);
+  const [posts, projects] = await Promise.all([readDevlogPosts(), readProjects()]);
+  const featured = projects.find((project) => project.featured);
+  const rest = projects.filter((project) => project !== featured);
 
   return (
     <div className="mx-auto max-w-[1080px] px-5 sm:px-8">
-      <Cover
-        toc={[
-          { id: "projects", title: "프로젝트", count: projects.length },
-          { id: "devlog", title: "개발 기록", count: posts.length },
-        ]}
-      />
+      <Hero />
 
-      <Section id="projects" index={1} eyebrow="Projects" title="프로젝트" count={projects.length}>
-        <ProjectList projects={projects} />
+      <Section id="projects" eyebrow="Selected Work / 01" title="경험으로 보여드립니다.">
+        {featured ? <FeaturedProject project={featured} /> : null}
+        <ul className="mt-20 grid gap-x-8 gap-y-10 border-t border-ink/15 pt-12 sm:grid-cols-2 sm:mt-24">
+          {rest.map((project, index) => (
+            <ProjectCard key={project.slug} project={project} index={index} />
+          ))}
+        </ul>
       </Section>
 
-      <Section id="devlog" index={2} eyebrow="Devlog" title="개발 기록" count={posts.length}>
-        <DevlogList posts={posts} />
+      <Section id="process" eyebrow="How I Work / 02" title="문제에서 시작해, 결과까지 연결합니다.">
+        <ol className="grid gap-8 md:grid-cols-3 md:gap-0">
+          {PROCESS.map((step, i) => (
+            <li
+              key={step.title}
+              className="flex gap-5 md:border-l md:border-ink/15 md:px-8 md:first:border-l-0 md:first:pl-0"
+            >
+              <FadeContent delay={i * 0.08} className="flex gap-5">
+                <span className="font-mono text-2xl leading-8 text-accent">{pad(i + 1)}</span>
+                <div>
+                  <h3 className="text-lg font-bold leading-8 tracking-[-0.02em] text-foreground">
+                    {step.title}
+                  </h3>
+                  <p className="mt-2 text-[14px] leading-6 text-foreground/70">{step.body}</p>
+                </div>
+              </FadeContent>
+            </li>
+          ))}
+        </ol>
+      </Section>
+
+      <Section
+        id="devlog"
+        eyebrow="Notes / 03"
+        title="만들며 남긴 기록"
+        action={
+          posts.length > NOTE_PREVIEW ? (
+            <Link
+              href="/devlog/"
+              className="inline-flex shrink-0 items-center gap-1 border-b border-accent/60 pb-1 text-[14px] font-medium text-accent hover:border-accent"
+            >
+              모든 글 보기
+              <ArrowUpRight aria-hidden="true" size={14} />
+            </Link>
+          ) : null
+        }
+      >
+        {posts.length === 0 ? (
+          <p className="text-sm text-foreground/70">아직 작성한 글이 없습니다.</p>
+        ) : (
+          <FadeContent>
+            <ol className={styles.notesList}>
+              {posts.slice(0, NOTE_PREVIEW).map((post) => (
+                <li
+                  key={post.slug}
+                  className="min-w-0"
+                >
+                  <NoteLink post={post} />
+                </li>
+              ))}
+            </ol>
+          </FadeContent>
+        )}
       </Section>
     </div>
   );

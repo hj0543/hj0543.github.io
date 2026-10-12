@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
-import { JetBrains_Mono } from "next/font/google";
+import { Instrument_Serif, JetBrains_Mono } from "next/font/google";
 import localFont from "next/font/local";
 
+import Noise from "@/components/react-bits/noise";
 import SiteFooter from "@/components/site-footer";
 import SiteHeader from "@/components/site-header";
 import "./globals.css";
@@ -10,6 +11,14 @@ import "./globals.css";
 const jetbrainsMono = JetBrains_Mono({
   variable: "--font-jetbrains-mono",
   subsets: ["latin"],
+});
+
+// 섹션 라벨(Selected Work 등)에만 쓰는 이탤릭 세리프.
+const instrumentSerif = Instrument_Serif({
+  variable: "--font-instrument-serif",
+  subsets: ["latin"],
+  weight: "400",
+  style: "italic",
 });
 
 // 본문용 Pretendard(가변).
@@ -23,7 +32,7 @@ const pretendard = localFont({
 // 모든 페이지에서 공통으로 사용하는 기본 문서 메타데이터다.
 export const metadata: Metadata = {
   title: "Belog",
-  description: "Hyeonjin Jeong의 기획·데이터 포트폴리오",
+  description: "Hyeonjin Jeong의 포트폴리오",
 };
 
 // 저장해 둔 테마(없으면 시스템 설정)를 첫 페인트 전에 <html>에 적용해
@@ -48,7 +57,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     <html
       lang="ko"
       suppressHydrationWarning
-      className={`${jetbrainsMono.variable} ${pretendard.variable} h-full antialiased`}
+      className={`${jetbrainsMono.variable} ${instrumentSerif.variable} ${pretendard.variable} h-full antialiased`}
     >
       <head>
         <script dangerouslySetInnerHTML={{ __html: THEME_INIT }} />
@@ -58,6 +67,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         {/* 각 route의 페이지 컴포넌트가 이 위치에 렌더링된다. */}
         <main className="flex-1">{children}</main>
         <SiteFooter />
+        <Noise />
       </body>
     </html>
   );

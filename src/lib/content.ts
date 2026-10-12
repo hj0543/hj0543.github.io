@@ -1,3 +1,4 @@
+import { existsSync } from "node:fs";
 import fs from "node:fs/promises";
 import path from "node:path";
 
@@ -25,6 +26,11 @@ function resolveImagePaths(html: string, base: string) {
     /(<img[^>]+src=")(?!https?:|\/|data:)([^"]+)(")/g,
     `$1${base}/$2$3`,
   );
+}
+
+/** frontmatter의 /public 기준 경로에 실제 파일이 있는지. */
+function publicFileExists(src: unknown) {
+  return Boolean(src) && existsSync(path.join(process.cwd(), "public", String(src)));
 }
 
 /** YAML은 date를 Date로 파싱하므로 둘 다 받아 YYYY-MM-DD로 맞춘다. */
@@ -133,9 +139,11 @@ export async function readProjects(): Promise<Project[]> {
       name: String(data.name ?? slug),
       tagline: String(data.tagline ?? ""),
       featured: data.featured === true,
+      award: data.award ? String(data.award) : undefined,
       problem: data.problem ? String(data.problem) : undefined,
       result: data.result ? String(data.result) : undefined,
-      thumbnail: data.thumbnail ? String(data.thumbnail) : undefined,
+      // 아직 올리지 않은 이미지는 깨진 그림 대신 자리표시가 그려지도록 비워 둔다.
+      thumbnail: publicFileExists(data.thumbnail) ? String(data.thumbnail) : undefined,
       role: String(data.role ?? ""),
       period: String(data.period ?? ""),
       team: String(data.team ?? ""),

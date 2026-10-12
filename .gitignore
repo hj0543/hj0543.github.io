@@ -28,6 +28,7 @@
 /public/my_profile/*
 !/public/my_profile/
 !/public/my_profile/my_profile.jpg
+!/public/my_profile/profile.jpg
 
 # debug
 npm-debug.log*

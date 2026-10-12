@@ -1,9 +1,12 @@
 ---
 name: 도담
 featured: true
+# 채우면 홈 대표 프로젝트에 수상 배지로 표시된다.
+award: SSAFY 특화 프로젝트 우수상
 tagline: 금융 목표를 기준으로 현재 상태를 진단하고, 개선 행동별 목표 달성 시점의 변화를 보여주는 개인 금융 코치
 problem: 금융 현황을 확인해도 어떤 행동이 목표 달성일을 바꾸는지 알기 어려웠습니다.
 result: 금융 진단과 행동별 목표 달성 시점 비교를 하나의 흐름으로 연결했습니다.
+thumbnail: /projects/dodam/thumbnail.jpg
 role: Backend, PM(Team leader)
 period: 2026.08 ~ 2026.09
 team: 5인 팀 (FE 2, BE 3 — BE 1명 Infra 겸임)
