@@ -2,7 +2,7 @@
 title: "예측이 실패한 자리에서 세이프박스가 나왔다"
 date: 2026-09-28
 categories: [devlog, backend]
-tags: [spring-boot, time-series, forecasting, safebox]
+tags: [SSAFY, 도담, 백엔드]
 ---
 
 도담은 목표를 정하면 예상 달성일을 보여준다. 이 날짜 하나를 믿을 만하게 만드는 게 생각보다 긴 여정이었다. 그 과정에서 시계열 예측 모델을 만들었고, 그 모델이 실패하는 지점에서 세이프박스라는 구조가 나왔다. 순서대로 정리해 둔다.

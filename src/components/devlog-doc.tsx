@@ -43,6 +43,13 @@ export function NoteLink({ post }: { post: DevlogPost }) {
       {post.summary ? (
         <p className="col-start-1 line-clamp-1 text-[14px] leading-6 text-foreground/70 sm:col-start-2">{post.summary}</p>
       ) : null}
+      {post.tags.length > 0 ? (
+        <div className="col-start-1 flex flex-wrap gap-1.5 sm:col-start-2">
+          {post.tags.map((tag) => (
+            <Tag key={tag} label={tag} />
+          ))}
+        </div>
+      ) : null}
     </Link>
   );
 }
