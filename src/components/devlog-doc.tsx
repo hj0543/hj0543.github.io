@@ -32,7 +32,7 @@ export function NoteLink({ post }: { post: DevlogPost }) {
       <span className="col-span-2 font-mono text-[12px] tabular-nums text-foreground/65 sm:col-span-1">
         {post.date.replaceAll("-", ".")}
       </span>
-      <h3 className="line-clamp-2 text-[17px] font-bold leading-7 tracking-[-0.02em] text-foreground transition-colors group-hover:text-accent sm:line-clamp-none sm:truncate">
+      <h3 className="line-clamp-2 text-[17px] font-semibold leading-7 tracking-[-0.02em] text-foreground transition-colors group-hover:text-accent sm:line-clamp-none sm:truncate">
         {post.title}
       </h3>
       <ArrowRight
@@ -61,7 +61,7 @@ export function DevlogDoc({ post }: { post: DevlogPost }) {
       <div>
         <Link
           href="/#devlog"
-          className="font-mono text-[12px] text-foreground/65 transition-colors hover:text-accent"
+          className="text-[13px] text-foreground/65 transition-colors hover:text-accent"
         >
           ← Devlog
         </Link>

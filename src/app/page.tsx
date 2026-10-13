@@ -1,5 +1,4 @@
 import {
-  ArrowDownRight,
   ArrowRight,
   ArrowUpRight,
   Building2,
@@ -20,21 +19,6 @@ import styles from "./home.module.css";
 const pad = (n: number) => String(n).padStart(2, "0");
 /** "5인 팀 (FE 2, ...)" → "5인", 숫자가 없으면 원문("개인") 그대로. */
 const headcount = (team: string) => team.match(/\d+인/)?.[0] ?? team;
-
-const PROCESS = [
-  {
-    title: "문제 발견",
-    body: "사용자의 맥락을 깊이 이해하고, 겉으로 보이는 현상 너머의 진짜 문제를 찾습니다.",
-  },
-  {
-    title: "해결 설계",
-    body: "문제를 여러 관점에서 검토하고, 실행 가능한 해결 방안을 구체화합니다.",
-  },
-  {
-    title: "구현과 협업",
-    body: "기획한 것을 실제로 작동하는 서비스로 만들고, 팀과 함께 끝까지 완성합니다.",
-  },
-];
 
 /**
  * 경력 로고 배지. 로고는 흰 바탕에 맞춰 만든 것이 많아 다크 모드에서도 흰 배지를 유지한다.
@@ -115,16 +99,15 @@ function Hero() {
     },
   ];
   return (
-    <section id="about" className={`${styles.hero} scroll-mt-20 pb-20 pt-12 sm:pt-16`}>
-      <div aria-hidden="true" className={styles.ambience} />
+    <section id="about" className="scroll-mt-20 pb-20 pt-12 sm:pt-16">
       {/* 표지처럼 맨 위에 이름 줄을 긋는다. */}
       <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-3 border-b border-ink/15 pb-3">
         <Eyebrow>{`${profile.name} / Portfolio`}</Eyebrow>
-        <p className="shrink-0 font-mono text-[12px] text-foreground/65">{profile.location}</p>
+        <p className="shrink-0 text-[12px] text-foreground/65">{profile.location}</p>
       </div>
 
-      {/* 사진은 왼쪽, 제목·소개·버튼은 오른쪽에 묶어 사진 아래쪽 선에 맞춘다. */}
-      <div className="mt-12 grid gap-12 lg:grid-cols-[280px_minmax(0,1fr)] lg:items-end lg:gap-16">
+      {/* 사진은 왼쪽, 제목·소개는 오른쪽에 두고 세로 가운데에 맞춘다. */}
+      <div className="mt-12 grid gap-12 lg:grid-cols-[280px_minmax(0,1fr)] lg:items-center lg:gap-16">
         {/* 사진은 자르지 않고 원본 비율(3:4) 그대로 보여 준다. 좁은 화면에서는 소개 아래로 내린다. */}
         <FadeContent delay={0.15} className="w-full max-w-[280px] max-lg:order-last">
           <figure className={styles.portrait}>
@@ -153,12 +136,13 @@ function Hero() {
           </figure>
         </FadeContent>
 
-        <div className="lg:pb-2">
-          {/* 만든 것은 진하게, 배운 것은 같은 굵기의 회색으로 이어 두 줄이 대비되게 한다. */}
-          <h1 className="text-[2.5rem] font-bold leading-[1.18] tracking-[-0.03em] text-foreground sm:text-[3.5rem]">
+        <div>
+          {/* 첫 줄은 진하게, 둘째 줄은 회색으로 두고 강조어만 accent로 칠한다. */}
+          <h1 className="text-[2.25rem] font-bold leading-[1.18] tracking-[-0.03em] text-foreground sm:text-[3.5rem]">
             <BlurText text={profile.headline[0]} />
             <br />
-            <BlurText text={profile.headline[1]} delay={0.2} className="text-foreground/60" />
+            <BlurText text={profile.headline[1]} delay={0.2} className="text-accent" />
+            <BlurText text={profile.headline[2]} delay={0.38} className="text-foreground/60" />
           </h1>
           <FadeContent delay={0.2}>
             <p className="mt-8 max-w-[560px] text-[16px] leading-7 text-foreground/75 sm:text-[17px] sm:leading-[30px]">
@@ -168,24 +152,6 @@ function Hero() {
                 </span>
               ))}
             </p>
-            <div className="mt-10 flex flex-wrap items-center gap-8">
-              <a
-                href="#projects"
-                className="inline-flex h-12 items-center gap-2 rounded-md bg-accent px-6 text-[15px] font-semibold text-on-accent transition-colors hover:bg-accent-deep focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/60 focus-visible:ring-offset-2"
-              >
-                프로젝트 보기
-                <ArrowDownRight aria-hidden="true" size={17} />
-              </a>
-              <a
-                href={profile.github}
-                target="_blank"
-                rel="noreferrer"
-                className="inline-flex items-center gap-1.5 border-b border-foreground/50 pb-1 text-[15px] font-medium text-foreground transition-colors hover:border-accent hover:text-accent"
-              >
-                GitHub
-                <ArrowUpRight aria-hidden="true" size={15} />
-              </a>
-            </div>
           </FadeContent>
         </div>
       </div>
@@ -205,7 +171,7 @@ function Hero() {
                     {row.title}
                   </p>
                   {row.role ? (
-                    <p className="truncate text-[13px] leading-5 text-foreground/65">{row.role}</p>
+                    <p className="truncate text-[14px] leading-6 text-foreground/65">{row.role}</p>
                   ) : null}
                 </div>
               </div>
@@ -213,7 +179,7 @@ function Hero() {
                 <p className="mt-4 font-mono text-[12px] tabular-nums text-accent">{row.period}</p>
               ) : null}
               <ul
-                className={`${row.period ? "mt-2" : "mt-4"} space-y-1 text-[13px] leading-5 text-foreground/75`}
+                className={`${row.period ? "mt-2" : "mt-4"} space-y-1 text-[14px] leading-6 text-foreground/75`}
               >
                 {row.details.map((detail) => (
                   <li key={detail}>{detail}</li>
@@ -240,12 +206,12 @@ function Placeholder({ project, large = false }: { project: Project; large?: boo
   );
 }
 
-/** 대표 이미지 모서리에 걸치는 작은 원형 수상 도장. 바탕색 위에 테두리 글자가 천천히 돈다. */
+/** 대표 이미지 모서리에 걸치는 작은 원형 수상 도장. accent로 채워 패널 위에서 도드라지게 하고, 테두리 글자가 천천히 돈다. */
 function AwardSeal({ year }: { year: string }) {
   return (
     <div
       aria-hidden="true"
-      className="absolute -right-2.5 -top-2.5 size-20 rounded-full bg-background text-accent shadow-[0_0_0_1px_rgb(155_77_47/0.22),0_8px_20px_-8px_rgb(29_28_25/0.35)] sm:-right-4 sm:-top-4 sm:size-[5.5rem]"
+      className="absolute -right-2.5 -top-2.5 size-20 rounded-full bg-accent text-on-accent shadow-[0_8px_20px_-8px_rgb(29_28_25/0.45)] sm:-right-4 sm:-top-4 sm:size-[5.5rem]"
     >
       <svg
         viewBox="0 0 120 120"
@@ -260,7 +226,7 @@ function AwardSeal({ year }: { year: string }) {
           </textPath>
         </text>
       </svg>
-      <span className="absolute inset-[24%] flex flex-col items-center justify-center rounded-full border border-current/25">
+      <span className="absolute inset-[24%] flex flex-col items-center justify-center rounded-full border border-current/40">
         <Trophy size={15} strokeWidth={2} />
         <span className="mt-0.5 text-[10px] font-bold tracking-[-0.02em]">우수상</span>
       </span>
@@ -421,32 +387,7 @@ export default async function Home() {
         </ul>
       </Section>
 
-      <Section id="process" eyebrow="How I Work / 02" title="문제에서 시작해, 결과까지 연결합니다.">
-        <ol className="grid gap-8 md:grid-cols-3 md:gap-0">
-          {PROCESS.map((step, i) => (
-            <li
-              key={step.title}
-              className="flex gap-5 md:border-l md:border-ink/15 md:px-8 md:first:border-l-0 md:first:pl-0"
-            >
-              <FadeContent delay={i * 0.08} className="flex gap-5">
-                <span className="font-mono text-2xl leading-8 text-accent">{pad(i + 1)}</span>
-                <div>
-                  <h3 className="text-lg font-bold leading-8 tracking-[-0.02em] text-foreground">
-                    {step.title}
-                  </h3>
-                  <p className="mt-2 text-[14px] leading-6 text-foreground/70">{step.body}</p>
-                </div>
-              </FadeContent>
-            </li>
-          ))}
-        </ol>
-      </Section>
-
-      <Section
-        id="devlog"
-        eyebrow="Notes / 03"
-        title="만들며 남긴 기록"
-      >
+      <Section id="devlog" eyebrow="Notes / 02" title="만들며 남긴 기록">
         {posts.length === 0 ? (
           <p className="text-sm text-foreground/70">아직 작성한 글이 없습니다.</p>
         ) : (

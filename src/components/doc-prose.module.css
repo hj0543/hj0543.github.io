@@ -1,7 +1,7 @@
 /* Markdown 본문에 읽기용 서체와 행간을 적용한다. */
 .prose {
   font-family: var(--font-pretendard), sans-serif;
-  color: color-mix(in srgb, var(--foreground) 74%, transparent);
+  color: var(--body);
   font-size: 16px;
   line-height: 1.85;
   overflow-wrap: anywhere;
@@ -16,7 +16,7 @@
   border-left: 3px solid color-mix(in srgb, var(--accent) 72%, transparent);
   color: var(--foreground);
   font-size: 24px;
-  font-weight: 750;
+  font-weight: 700;
   letter-spacing: -0.025em;
   line-height: 1.35;
 }

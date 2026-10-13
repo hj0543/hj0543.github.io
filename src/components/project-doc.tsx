@@ -51,7 +51,7 @@ function LinkButtons({ links }: { links: Project["links"] }) {
           href={href}
           target="_blank"
           rel="noreferrer"
-          className="group/link inline-flex items-center gap-1 border-b border-ink/25 pb-0.5 text-[13px] text-foreground/75 transition-colors hover:border-accent hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/60"
+          className="group/link inline-flex items-center gap-1 border-b border-ink/25 pb-0.5 text-[14px] text-foreground/75 transition-colors hover:border-accent hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/60"
         >
           {label}
           <span
@@ -161,7 +161,7 @@ function ProjectFacts({ project }: { project: Project }) {
           <dt className="text-[12px] font-medium text-foreground/65">
             {label}
           </dt>
-          <dd className="text-[13px] leading-relaxed text-foreground/80">{value}</dd>
+          <dd className="text-[14px] leading-relaxed text-foreground/80">{value}</dd>
         </div>
       ))}
     </dl>
@@ -178,7 +178,7 @@ export function ProjectDoc({ project }: { project: Project }) {
         <div className="min-w-0">
           <Link
             href="/#projects"
-            className="font-mono text-[12px] text-foreground/65 transition-colors hover:text-accent"
+            className="text-[13px] text-foreground/65 transition-colors hover:text-accent"
           >
             ← Projects
           </Link>
@@ -220,7 +220,7 @@ export function ProjectDoc({ project }: { project: Project }) {
                   <span className="shrink-0 text-[12px] font-medium text-foreground/65">
                     담당
                   </span>
-                  <p className="text-[13px] leading-relaxed text-foreground/70">
+                  <p className="text-[14px] leading-relaxed text-foreground/70">
                     {project.responsibilities.join(" · ")}
                   </p>
                 </div>

@@ -11,6 +11,8 @@
   /* 따뜻한 베이지 바탕에 테라코타 포인트, 대표 이미지 판넬만 세이지 그린을 쓴다. */
   --background: #f4f1ea;
   --foreground: #1d1c19;
+  /* 긴 글 본문색 */
+  --body: #49463f;
   --accent: #9b4d2f;
   --accent-deep: #7e3d24;
   /* 테라코타 위 글자색 */
@@ -20,6 +22,8 @@
   --sage: #dbe3d3;
   --ink: #1d1c19;
   --surface: #ebe6dc;
+  /* 프로필 카드처럼 종이 느낌이 필요한 면 */
+  --paper: #fffdf8;
   /* 섹션 라벨(SELECTED WORK / 01 등)의 색 */
   --label: #9b4d2f;
   --selection-bg: rgb(155 77 47 / 18%);
@@ -31,6 +35,7 @@
   color-scheme: dark;
   --background: #171614;
   --foreground: #ece8df;
+  --body: color-mix(in srgb, var(--foreground) 74%, transparent);
   --accent: #e09272;
   --accent-deep: #c97a59;
   --on-accent: #1d1c19;
@@ -38,6 +43,7 @@
   --sage: #27302a;
   --ink: #ffffff;
   --surface: #211f1c;
+  --paper: color-mix(in srgb, var(--background) 92%, white);
   --label: #e09272;
   --selection-bg: rgb(224 146 114 / 28%);
   --selection-fg: #ffffff;
