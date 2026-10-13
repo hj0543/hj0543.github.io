@@ -24,7 +24,7 @@ export const profile = {
 };
 
 // SW 역량테스트 등급. 경력과 하이라이트가 같은 값을 공유한다.
-const swCompetencyGrade = "Grade A+ (Python)";
+const swCompetencyGrade = "A+ (Python)";
 
 /**
  * 경력. 항목을 추가하면 홈 경력 줄에 순서대로 그려진다.
@@ -32,15 +32,15 @@ const swCompetencyGrade = "Grade A+ (Python)";
  */
 export const career = [
   {
-    title: "SSAFY 15th",
+    title: "SSAFY 15기",
     role: "",
     logo: "/ex_logo/ssafy_web.png",
     period: "2026.01 ~ 2026.12",
     details: [
       "1학기 성적최우수 (1st)",
       "2학기 특화 프로젝트 2등 (팀장, 발표)",
-      "Monthly member (Jan, Mar, Aug)",
-      `SAMSUNG SW Competency Test - ${swCompetencyGrade}`,
+      "이달의 우수 교육생 (1월, 3월, 8월)",
+      `삼성 SW 역량테스트 ${swCompetencyGrade}`,
     ],
   },
   {
