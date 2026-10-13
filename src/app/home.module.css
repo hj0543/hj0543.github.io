@@ -11,7 +11,11 @@
   pointer-events: none;
   border-radius: 3rem;
   background: radial-gradient(ellipse at 80% 35%, color-mix(in srgb, var(--sage) 65%, transparent), transparent 55%);
-  mask-image: linear-gradient(transparent, black 12%, black 75%, transparent);
+  /* 상하·좌우 마스크를 겹쳐 그라데이션이 네 가장자리에서 배경으로 스며들게 한다. */
+  mask-image:
+    linear-gradient(transparent, black 12%, black 75%, transparent),
+    linear-gradient(90deg, transparent, black 12%, black 82%, transparent);
+  mask-composite: intersect;
 }
 
 .ambience::before,
@@ -88,9 +92,9 @@
   align-items: baseline;
   justify-content: space-between;
   gap: 1rem;
-  color: color-mix(in srgb, var(--foreground) 60%, transparent);
+  color: color-mix(in srgb, var(--foreground) 65%, transparent);
   font-family: var(--font-mono);
-  font-size: 11px;
+  font-size: 12px;
   letter-spacing: 0.05em;
 }
 
@@ -154,6 +158,7 @@
   }
 
   .notesList h3 {
+    overflow: hidden;
     font-size: 17px;
   }
 

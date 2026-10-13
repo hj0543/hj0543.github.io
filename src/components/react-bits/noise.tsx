@@ -34,7 +34,7 @@ function paintTile(contrast: number) {
 }
 
 /** 화면 전체에 얹는 정지된 종이 질감. 클릭은 통과시킨다. */
-export default function Noise({ opacity = 0.12, contrast = 0.5 }: { opacity?: number; contrast?: number }) {
+export default function Noise({ opacity = 0.05, contrast = 0.5 }: { opacity?: number; contrast?: number }) {
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {

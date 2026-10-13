@@ -1,4 +1,4 @@
-/* Markdown 본문이 앱의 mono UI와 구분되도록 읽기용 서체와 행간을 적용한다. */
+/* Markdown 본문에 읽기용 서체와 행간을 적용한다. */
 .prose {
   font-family: var(--font-pretendard), sans-serif;
   color: color-mix(in srgb, var(--foreground) 74%, transparent);
@@ -17,7 +17,7 @@
   color: var(--foreground);
   font-size: 24px;
   font-weight: 750;
-  letter-spacing: -0.035em;
+  letter-spacing: -0.025em;
   line-height: 1.35;
 }
 
@@ -82,7 +82,7 @@
   background: color-mix(in srgb, var(--ink) 7%, transparent);
   color: color-mix(in srgb, var(--foreground) 90%, transparent);
   font-family: var(--font-jetbrains-mono), monospace;
-  font-size: 12px;
+  font-size: 13px;
 }
 
 .prose pre {

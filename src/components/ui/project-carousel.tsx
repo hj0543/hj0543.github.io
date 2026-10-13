@@ -172,7 +172,7 @@ export default function ProjectCarousel({
       <div className="flex min-h-12 items-center gap-3 border-t border-ink/10 px-3.5 py-2">
         <span
           aria-live="polite"
-          className="shrink-0 font-mono text-[10px] tabular-nums text-foreground/45"
+          className="shrink-0 font-mono text-[12px] tabular-nums text-foreground/65"
         >
           {String(activeIndex + 1).padStart(2, "0")} / {String(screens.length).padStart(2, "0")}
         </span>
@@ -186,7 +186,7 @@ export default function ProjectCarousel({
           target="_blank"
           rel="noreferrer"
           aria-label={`${activeScreen.alt} 원본 보기`}
-          className="grid size-8 shrink-0 place-items-center text-foreground/45 transition-colors hover:bg-ink/8 hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/60"
+          className="grid size-8 shrink-0 place-items-center text-foreground/65 transition-colors hover:bg-ink/8 hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/60"
         >
           <Maximize2 aria-hidden="true" size={14} />
         </a>

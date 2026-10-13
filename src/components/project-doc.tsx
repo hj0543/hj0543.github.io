@@ -83,7 +83,7 @@ export function Thumb({ project }: { project: Project }) {
           <span className="font-mono text-3xl font-semibold tracking-[-0.05em] text-accent/70">
             {project.name.slice(0, 2).toUpperCase()}
           </span>
-          <span className="text-xs font-medium text-foreground/60">{project.name}</span>
+          <span className="text-xs font-medium text-foreground/65">{project.name}</span>
         </div>
       )}
     </div>
@@ -158,7 +158,7 @@ function ProjectFacts({ project }: { project: Project }) {
           key={label}
           className="grid grid-cols-[3.5rem_minmax(0,1fr)] items-baseline gap-3 py-2 @[34rem]:block @[34rem]:py-3.5 @[48rem]:grid @[48rem]:py-2"
         >
-          <dt className="font-mono text-[11px] tracking-[0.12em] text-foreground/65">
+          <dt className="text-[12px] font-medium text-foreground/65">
             {label}
           </dt>
           <dd className="text-[13px] leading-relaxed text-foreground/80">{value}</dd>
@@ -178,7 +178,7 @@ export function ProjectDoc({ project }: { project: Project }) {
         <div className="min-w-0">
           <Link
             href="/#projects"
-            className="font-mono text-[12px] text-foreground/50 transition-colors hover:text-accent"
+            className="font-mono text-[12px] text-foreground/65 transition-colors hover:text-accent"
           >
             ← Projects
           </Link>
@@ -189,10 +189,10 @@ export function ProjectDoc({ project }: { project: Project }) {
               {project.award}
             </p>
           ) : null}
-          <h1 className="text-3xl font-bold leading-tight tracking-[-0.04em] text-foreground @[48rem]:text-[2rem]">
+          <h1 className="text-3xl font-bold leading-tight tracking-[-0.03em] text-foreground @[48rem]:text-[2rem]">
             {project.name}
           </h1>
-          <p className="mt-4 text-[15px] leading-7 text-foreground/60">
+          <p className="mt-4 text-[15px] leading-7 text-foreground/70">
             {project.tagline}
           </p>
 
@@ -200,7 +200,7 @@ export function ProjectDoc({ project }: { project: Project }) {
             <dl className="mt-7 grid gap-3 border-t border-ink/10 pt-5 text-sm leading-6">
               {caseRows(project).map(([label, value]) => (
                 <div key={label}>
-                  <dt className="font-mono text-[11px] tracking-[0.1em] text-label">{label}</dt>
+                  <dt className="text-[12px] font-medium text-label">{label}</dt>
                   <dd className="mt-1 text-foreground/75">{value}</dd>
                 </div>
               ))}
@@ -217,7 +217,7 @@ export function ProjectDoc({ project }: { project: Project }) {
             <div className="mt-5 grid gap-4">
               {project.responsibilities.length > 0 ? (
                 <div className="flex min-w-0 items-baseline gap-4">
-                  <span className="shrink-0 font-mono text-[11px] tracking-[0.12em] text-foreground/65">
+                  <span className="shrink-0 text-[12px] font-medium text-foreground/65">
                     담당
                   </span>
                   <p className="text-[13px] leading-relaxed text-foreground/70">
@@ -228,7 +228,7 @@ export function ProjectDoc({ project }: { project: Project }) {
 
               {project.stack.length > 0 ? (
                 <div className="flex min-w-0 items-start gap-4">
-                  <span className="shrink-0 font-mono text-[11px] tracking-[0.12em] text-foreground/65">
+                  <span className="shrink-0 text-[12px] font-medium text-foreground/65">
                     기술
                   </span>
                   <div className="flex flex-wrap gap-1.5">
@@ -259,14 +259,14 @@ export function ProjectDoc({ project }: { project: Project }) {
           className="sticky top-16 z-20 mt-12 overflow-x-auto border-y border-ink/10 bg-background/90 backdrop-blur-md [&::-webkit-scrollbar]:hidden"
         >
           <div className="mx-auto flex h-10 max-w-[1080px] items-center gap-6 px-5 sm:px-8">
-            <span className="flex h-5 shrink-0 items-center border-r border-ink/12 pr-5 font-mono text-[14px] leading-none tracking-[0.14em] text-foreground/35">
+            <span className="flex h-5 shrink-0 items-center border-r border-ink/12 pr-5 text-[14px] font-medium leading-none text-foreground/65">
               목차
             </span>
             {prepared.sections.map((section) => (
               <a
                 key={section.id}
                 href={`#${section.id}`}
-                className="flex h-full shrink-0 items-center font-mono text-[14px] leading-none text-foreground/50 transition-colors hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/60"
+                className="flex h-full shrink-0 items-center text-[14px] leading-none text-foreground/70 transition-colors hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/60"
               >
                 {section.label}
               </a>

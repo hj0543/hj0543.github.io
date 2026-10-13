@@ -57,9 +57,9 @@ function Eyebrow({ children }: { children: string }) {
   const [label, ...rest] = children.split(" / ");
   return (
     <p className="flex items-baseline gap-2.5 text-label">
-      <span className="font-serif text-[22px] italic leading-none sm:text-[26px]">{label}</span>
+      <span className="section-label">{label}</span>
       {rest.length ? (
-        <span className="font-mono text-[11px] tracking-[0.1em] text-foreground/50">
+        <span className="font-mono text-[12px] tracking-[0.05em] text-foreground/65">
           / {rest.join(" / ")}
         </span>
       ) : null}
@@ -85,7 +85,7 @@ function Section({
       <FadeContent className="flex items-end justify-between gap-6">
         <div>
           <Eyebrow>{eyebrow}</Eyebrow>
-          <h2 className="mt-3 text-[1.75rem] font-bold tracking-[-0.04em] text-foreground sm:text-[2rem]">
+          <h2 className="mt-3 text-[1.75rem] font-bold tracking-[-0.025em] text-foreground sm:text-[2rem]">
             <ScrollReveal text={title} />
           </h2>
         </div>
@@ -121,9 +121,9 @@ function Hero() {
     <section id="about" className={`${styles.hero} scroll-mt-20 pb-20 pt-12 sm:pt-16`}>
       <div aria-hidden="true" className={styles.ambience} />
       {/* 표지처럼 맨 위에 이름 줄을 긋는다. */}
-      <div className="flex items-baseline justify-between gap-4 border-b border-ink/15 pb-3">
+      <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-3 border-b border-ink/15 pb-3">
         <Eyebrow>{`${profile.name} / Portfolio`}</Eyebrow>
-        <p className="font-mono text-[11px] text-foreground/60">{profile.location}</p>
+        <p className="shrink-0 font-mono text-[12px] text-foreground/65">{profile.location}</p>
       </div>
 
       {/* 사진은 왼쪽, 제목·소개·버튼은 오른쪽에 묶어 사진 아래쪽 선에 맞춘다. */}
@@ -158,13 +158,13 @@ function Hero() {
 
         <div className="lg:pb-2">
           {/* 만든 것은 진하게, 배운 것은 같은 굵기의 회색으로 이어 두 줄이 대비되게 한다. */}
-          <h1 className="text-[2.5rem] font-bold leading-[1.18] tracking-[-0.05em] text-foreground sm:text-[3.5rem]">
+          <h1 className="text-[2.5rem] font-bold leading-[1.18] tracking-[-0.03em] text-foreground sm:text-[3.5rem]">
             <BlurText text={profile.headline[0]} />
             <br />
-            <BlurText text={profile.headline[1]} delay={0.2} className="text-foreground/40" />
+            <BlurText text={profile.headline[1]} delay={0.2} className="text-foreground/60" />
           </h1>
           <FadeContent delay={0.2}>
-            <p className="mt-8 max-w-[560px] text-[16px] leading-8 text-foreground/75 sm:text-[17px] sm:leading-9">
+            <p className="mt-8 max-w-[560px] text-[16px] leading-7 text-foreground/75 sm:text-[17px] sm:leading-[30px]">
               {profile.intro.map((line) => (
                 <span key={line} className="sm:block">
                   {line}{" "}
@@ -208,12 +208,12 @@ function Hero() {
                     {row.title}
                   </p>
                   {row.role ? (
-                    <p className="truncate text-[12px] leading-5 text-foreground/65">{row.role}</p>
+                    <p className="truncate text-[13px] leading-5 text-foreground/65">{row.role}</p>
                   ) : null}
                 </div>
               </div>
               {row.period ? (
-                <p className="mt-4 font-mono text-[11px] tabular-nums text-accent">{row.period}</p>
+                <p className="mt-4 font-mono text-[12px] tabular-nums text-accent">{row.period}</p>
               ) : null}
               <ul
                 className={`${row.period ? "mt-2" : "mt-4"} space-y-1 text-[13px] leading-5 text-foreground/75`}
@@ -318,7 +318,7 @@ function FeaturedProject({ project }: { project: Project }) {
         </FadeContent>
 
         <FadeContent delay={0.1} className="min-w-0">
-          <h3 className="text-[2.75rem] font-bold tracking-[-0.045em] text-foreground sm:text-[3.5rem]">
+          <h3 className="text-[2.75rem] font-bold tracking-[-0.03em] text-foreground sm:text-[3.5rem]">
             {project.name}
           </h3>
           <p className="mt-2 text-[17px] leading-7 text-foreground/75">{project.tagline}</p>

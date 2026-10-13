@@ -16,7 +16,7 @@ export type DevlogPost = {
 
 export function Tag({ label }: { label: string }) {
   return (
-    <span className="rounded-full border border-ink/12 bg-ink/6 px-2.5 py-1 font-mono text-[10px] text-foreground/75">
+    <span className="rounded-full border border-ink/12 bg-ink/6 px-2.5 py-1 text-[12px] text-foreground/75">
       {label}
     </span>
   );
@@ -27,12 +27,12 @@ export function NoteLink({ post }: { post: DevlogPost }) {
   return (
     <Link
       href={`/devlog/${post.slug}`}
-      className="group grid grid-cols-[auto_minmax(0,1fr)_auto] items-baseline gap-x-5 gap-y-2 py-6"
+      className="group grid grid-cols-[minmax(0,1fr)_auto] items-baseline gap-x-4 gap-y-2 py-6 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent sm:grid-cols-[auto_minmax(0,1fr)_auto] sm:gap-x-5"
     >
-      <span className="font-mono text-[12px] tabular-nums text-foreground/65">
+      <span className="col-span-2 font-mono text-[12px] tabular-nums text-foreground/65 sm:col-span-1">
         {post.date.replaceAll("-", ".")}
       </span>
-      <h3 className="truncate text-[17px] font-bold tracking-[-0.02em] text-foreground transition-colors group-hover:text-accent">
+      <h3 className="line-clamp-2 text-[17px] font-bold leading-7 tracking-[-0.02em] text-foreground transition-colors group-hover:text-accent sm:line-clamp-none sm:truncate">
         {post.title}
       </h3>
       <ArrowRight
@@ -41,7 +41,7 @@ export function NoteLink({ post }: { post: DevlogPost }) {
         className="self-center text-foreground/70 transition-transform group-hover:translate-x-1 group-hover:text-accent"
       />
       {post.summary ? (
-        <p className="col-start-2 line-clamp-1 text-[14px] text-foreground/70">{post.summary}</p>
+        <p className="col-start-1 line-clamp-1 text-[14px] leading-6 text-foreground/70 sm:col-start-2">{post.summary}</p>
       ) : null}
     </Link>
   );
@@ -54,23 +54,23 @@ export function DevlogDoc({ post }: { post: DevlogPost }) {
       <div>
         <Link
           href="/#devlog"
-          className="font-mono text-[12px] text-foreground/50 transition-colors hover:text-accent"
+          className="font-mono text-[12px] text-foreground/65 transition-colors hover:text-accent"
         >
           ← Devlog
         </Link>
       </div>
 
-      <span className="mt-10 flex items-center gap-1.5 font-mono text-[12px] text-foreground/45">
+      <span className="mt-10 flex items-center gap-1.5 font-mono text-[12px] text-foreground/65">
         <CalendarDays aria-hidden="true" size={13} strokeWidth={1.7} />
         {post.date}
       </span>
 
-      <h1 className="mt-4 text-3xl font-bold leading-tight tracking-[-0.04em] text-foreground sm:text-[2.25rem]">
+      <h1 className="mt-4 text-3xl font-bold leading-tight tracking-[-0.025em] text-foreground sm:text-[2.25rem]">
         {post.title}
       </h1>
 
       {post.summary ? (
-        <p className="mt-4 text-[16px] leading-7 text-foreground/60">
+        <p className="mt-4 text-[16px] leading-7 text-foreground/70">
           {post.summary}
         </p>
       ) : null}

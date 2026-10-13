@@ -13,10 +13,10 @@ export default function SiteFooter() {
       <div className="mx-auto max-w-[1080px] px-5 sm:px-8">
         <div className="flex flex-wrap items-end justify-between gap-x-10 gap-y-6 border-t border-ink/15 py-12">
           <div>
-            <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-label">
+            <p className="section-label">
               Let&apos;s Connect
             </p>
-            <h2 className="mt-3 text-2xl font-bold tracking-[-0.04em] text-foreground sm:text-[1.75rem]">
+            <h2 className="mt-3 text-2xl font-bold tracking-[-0.025em] text-foreground sm:text-[1.75rem]">
               함께 해결할 문제를 이야기해요.
             </h2>
           </div>

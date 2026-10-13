@@ -55,7 +55,7 @@
   --color-ink: var(--ink);
   --color-surface: var(--surface);
   --color-label: var(--label);
-  /* 본문은 Pretendard, 날짜·라벨처럼 작은 보조 글자만 JetBrains Mono를 쓴다. */
+  /* 한글 UI는 Pretendard, 영문 섹션 라벨은 세리프, 날짜·코드는 Mono를 쓴다. */
   --font-sans: var(--font-pretendard), sans-serif;
   --font-serif: var(--font-instrument-serif), serif;
   --font-mono: var(--font-jetbrains-mono), var(--font-pretendard);
@@ -71,7 +71,6 @@ html {
 }
 
 body {
-  min-width: 320px;
   margin: 0;
   background: var(--background);
   color: var(--foreground);
@@ -86,6 +85,20 @@ body {
 
 .brand-icon {
   filter: var(--brand-icon-filter);
+}
+
+.section-label {
+  color: var(--label);
+  font-family: var(--font-instrument-serif), serif;
+  font-size: 22px;
+  font-style: italic;
+  line-height: 1;
+}
+
+@media (min-width: 640px) {
+  .section-label {
+    font-size: 26px;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
