@@ -1,0 +1,4 @@
+@import url("https://giscus.app/themes/light.css");
+@import url("./heart.css");
+
+main { --color-canvas-default: transparent; }

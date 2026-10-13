@@ -22,7 +22,13 @@ export async function generateMetadata({
 }: PageProps<"/devlog/[slug]">): Promise<Metadata> {
   const post = await findPost((await params).slug);
   return post
-    ? { title: `${post.title} · Belog`, description: post.summary || undefined }
+    ? {
+        title: `${post.title} · Belog`,
+        description: post.summary || undefined,
+        other: {
+          "giscus:backlink": `https://hj0543.github.io/devlog/${post.slug}/`,
+        },
+      }
     : {};
 }
 

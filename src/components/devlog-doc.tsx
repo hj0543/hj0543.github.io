@@ -1,6 +1,9 @@
 import { ArrowRight, CalendarDays } from "lucide-react";
 import Link from "next/link";
 
+import PostComments from "@/components/post-comments";
+import PostStats from "@/components/post-stats";
+
 import styles from "./doc-prose.module.css";
 
 export type DevlogPost = {
@@ -50,6 +53,7 @@ export function NoteLink({ post }: { post: DevlogPost }) {
           ))}
         </div>
       ) : null}
+      <PostStats slug={post.slug} className="col-start-1 sm:col-start-2" />
     </Link>
   );
 }
@@ -75,6 +79,7 @@ export function DevlogDoc({ post }: { post: DevlogPost }) {
       <h1 className="mt-4 text-3xl font-bold leading-tight tracking-[-0.025em] text-foreground sm:text-[2.25rem]">
         {post.title}
       </h1>
+      <PostStats key={post.slug} slug={post.slug} recordVisit className="mt-4" />
 
       {post.summary ? (
         <p className="mt-4 text-[16px] leading-7 text-foreground/70">
@@ -95,6 +100,7 @@ export function DevlogDoc({ post }: { post: DevlogPost }) {
         className={`mt-10 border-t border-ink/10 ${styles.prose}`}
         dangerouslySetInnerHTML={{ __html: post.html }}
       />
+      <PostComments key={post.slug} slug={post.slug} />
     </article>
   );
 }

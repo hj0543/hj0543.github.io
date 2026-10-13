@@ -1,0 +1,40 @@
+/* 공식 giscus의 HEART는 반응 선택기의 여섯 번째 항목이다. */
+.gsc-emoji-button:not(:nth-child(6)),
+.gsc-direct-reaction-button:not(:has([title*="하트"])),
+.gsc-reactions .gsc-reactions-count,
+.gsc-reactions .gsc-direct-reaction-buttons,
+.gsc-reactions .gsc-reactions-menu > summary,
+.gsc-reactions .gsc-reactions-popover > .border-t {
+  display: none !important;
+}
+
+/* 게시글에는 선택 메뉴 대신 하트 버튼을 바로 표시한다. */
+.gsc-reactions .gsc-reactions-menu::details-content {
+  content-visibility: visible;
+}
+
+.gsc-reactions .gsc-reactions-popover {
+  display: block !important;
+  position: static;
+  width: auto;
+  visibility: visible;
+  opacity: 1;
+  border: 0;
+  box-shadow: none;
+  background: transparent;
+}
+
+.gsc-reactions .gsc-reactions-popover:has(.gsc-emoji-button:not(.no-token)) > p {
+  display: none;
+}
+
+.gsc-reactions .gsc-emoji-button {
+  border: 1px solid var(--color-border-default);
+  border-radius: 999px;
+  padding: 8px 20px;
+}
+
+.gsc-reactions .gsc-emoji-button.has-reacted {
+  background: rgb(211 67 92 / 12%);
+  border-color: #d3435c;
+}

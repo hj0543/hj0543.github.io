@@ -9,6 +9,7 @@ import Link from "next/link";
 
 import type { DevlogPost } from "@/components/devlog-doc";
 import HomeDevlogList from "@/components/home-devlog-list";
+import PostStats from "@/components/post-stats";
 import { caseRows, type Project } from "@/components/project-doc";
 import { BlurText, FadeContent, ScrollReveal, SpotlightCard } from "@/components/react-bits/home-effects";
 import { readDevlogPosts, readProjects } from "@/lib/content";
@@ -361,6 +362,7 @@ function HomeNoteLink({ post }: { post: DevlogPost }) {
         <time dateTime={post.date} className={styles.noteDate}>
           {post.date.replaceAll("-", ".")}
         </time>
+        <PostStats slug={post.slug} className="sm:ml-auto" />
       </div>
     </Link>
   );
