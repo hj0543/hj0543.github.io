@@ -27,7 +27,7 @@ export default function HomeDevlogList({ items }: { items: ReactNode[] }) {
             onClick={() => setVisibleCount((count) => Math.min(count + BATCH_SIZE, items.length))}
             className="inline-flex min-h-11 cursor-pointer items-center justify-center rounded-md border border-ink/25 px-6 text-[14px] font-medium text-foreground/80 transition-colors hover:border-accent hover:bg-accent-soft hover:text-accent focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent"
           >
-            {nextCount}개 더 보기
+            이전 기록 {nextCount}개 더 보기
           </button>
         </div>
       ) : null}

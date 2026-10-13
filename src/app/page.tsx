@@ -450,7 +450,7 @@ export default async function Home() {
         {posts.length === 0 ? (
           <p className="text-sm text-foreground/70">아직 작성한 글이 없습니다.</p>
         ) : (
-          <FadeContent>
+          <FadeContent className="-mt-2 max-w-[800px]">
             <HomeDevlogList
               items={posts.map((post) => (
                 <li
