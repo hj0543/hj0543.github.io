@@ -1,6 +1,6 @@
 ---
 name: Ait
-tagline: 이력서·GitHub 기반 AI 모의면접과 실시간 화상 스터디를 한곳에서
+tagline: AI 모의면접과 화상 스터디를 한곳에서
 problem: 모의면접과 함께 연습할 스터디 경험이 여러 도구에 흩어져 있었습니다.
 result: AI 모의면접과 화상 스터디를 하나의 플랫폼으로 구현했습니다.
 thumbnail: /projects/Ait/thumbnail.jpg

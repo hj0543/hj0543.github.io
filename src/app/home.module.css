@@ -15,7 +15,7 @@
   --panel-color: #b7c7b0;
   position: relative;
   display: grid;
-  aspect-ratio: 16 / 11;
+  aspect-ratio: 16 / 9;
   padding: clamp(1.25rem, 3vw, 2rem);
   overflow: hidden;
   border-radius: 0.75rem;

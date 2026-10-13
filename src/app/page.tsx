@@ -325,16 +325,13 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
         <SpotlightCard>
           <Link href={`/projects/${project.slug}`} className="group flex h-full flex-col p-4 sm:p-5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-accent">
             <div className={`${styles.projectMeta} mb-4`}>
-              <span>{pad(index + 2)} / PROJECT</span>
-              <span>{[project.period.slice(0, 4), headcount(project.team)].filter(Boolean).join(" · ")}</span>
+              <span className="min-w-0">{pad(index + 2)} / {project.name}</span>
+              <span className="shrink-0">{[project.period.slice(0, 4), headcount(project.team)].filter(Boolean).join(" · ")}</span>
             </div>
-            <ProjectArtwork project={project} />
-            <h3 className="mt-5 text-xl font-bold tracking-[-0.03em] text-foreground transition-colors group-hover:text-accent">
-              {project.name}
-            </h3>
-            <p className="mt-1.5 line-clamp-2 text-[14px] leading-6 text-foreground/70">
+            <h3 className="mb-6 min-w-0 shrink-0 text-balance text-[20px] font-bold leading-[1.5] tracking-[-0.025em] text-foreground [overflow-wrap:anywhere] sm:text-[22px]">
               {project.tagline}
-            </p>
+            </h3>
+            <ProjectArtwork project={project} />
             <div className="mt-auto flex items-center justify-between gap-3 pt-5">
               <span className="truncate rounded-full bg-ink/6 px-3 py-1.5 text-[12px] text-foreground/75">
                 {project.role}

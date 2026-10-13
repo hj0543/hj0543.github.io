@@ -75,7 +75,7 @@ export function Thumb({ project }: { project: Project }) {
           src={project.thumbnail}
           alt=""
           fill
-          sizes="(max-width: 640px) 90vw, 320px"
+          sizes="(max-width: 768px) 90vw, 600px"
           className="object-contain p-2 transition-transform duration-300 group-hover:scale-[1.02]"
         />
       ) : (
@@ -174,8 +174,8 @@ export function ProjectDoc({ project }: { project: Project }) {
 
   return (
     <div className="pb-16">
-      <header className="mx-auto grid max-w-[1080px] gap-8 px-5 pb-10 pt-8 sm:px-8 sm:pt-10 @[48rem]:grid-cols-[minmax(230px,0.72fr)_minmax(0,1.28fr)] @[48rem]:items-start">
-        <div className="min-w-0">
+      <header className="mx-auto max-w-[1080px] px-5 pb-10 pt-8 sm:px-8 sm:pt-10">
+        <div className="min-w-0 border-b border-ink/20 pb-8 sm:pb-10">
           <Link
             href="/#projects"
             className="text-[13px] text-foreground/65 transition-colors hover:text-accent"
@@ -189,67 +189,71 @@ export function ProjectDoc({ project }: { project: Project }) {
               {project.award}
             </p>
           ) : null}
-          <h1 className="text-3xl font-bold leading-tight tracking-[-0.03em] text-foreground @[48rem]:text-[2rem]">
+          <h1 className="text-xl font-semibold leading-tight tracking-[-0.02em] text-accent sm:text-2xl">
             {project.name}
           </h1>
-          <p className="mt-4 text-[15px] leading-7 text-foreground/70">
+          <p className="mt-3 text-balance text-[26px] font-bold leading-[1.4] tracking-[-0.03em] text-foreground [overflow-wrap:anywhere] sm:text-[36px]">
             {project.tagline}
           </p>
-
-          {caseRows(project).length > 0 ? (
-            <dl className="mt-7 grid gap-3 border-t border-ink/10 pt-5 text-sm leading-6">
-              {caseRows(project).map(([label, value]) => (
-                <div key={label}>
-                  <dt className="text-[12px] font-medium text-label">{label}</dt>
-                  <dd className="mt-1 text-foreground/75">{value}</dd>
-                </div>
-              ))}
-            </dl>
-          ) : null}
-
-          <div className="mt-9">
-            <ProjectFacts project={project} />
-          </div>
-
-          {project.responsibilities.length > 0 ||
-          project.stack.length > 0 ||
-          project.links.length > 0 ? (
-            <div className="mt-5 grid gap-4">
-              {project.responsibilities.length > 0 ? (
-                <div className="flex min-w-0 items-baseline gap-4">
-                  <span className="shrink-0 text-[12px] font-medium text-foreground/65">
-                    담당
-                  </span>
-                  <p className="text-[14px] leading-relaxed text-foreground/70">
-                    {project.responsibilities.join(" · ")}
-                  </p>
-                </div>
-              ) : null}
-
-              {project.stack.length > 0 ? (
-                <div className="flex min-w-0 items-start gap-4">
-                  <span className="shrink-0 text-[12px] font-medium text-foreground/65">
-                    기술
-                  </span>
-                  <div className="flex flex-wrap gap-1.5">
-                    {project.stack.map((tech) => (
-                      <TechBadge key={tech} label={tech} />
-                    ))}
-                  </div>
-                </div>
-              ) : null}
-
-              <LinkButtons links={project.links} />
-            </div>
-          ) : null}
         </div>
 
-        <div className="min-w-0">
-          {project.screens.length > 0 ? (
-            <ProjectCarousel key={project.slug} screens={project.screens} />
-          ) : (
-            <Thumb project={project} />
-          )}
+        <div className="mt-8 grid gap-8 sm:mt-10 @[48rem]:grid-cols-[minmax(230px,0.72fr)_minmax(0,1.28fr)] @[48rem]:items-start">
+          <div className="min-w-0">
+            {caseRows(project).length > 0 ? (
+              <dl className="grid gap-3 text-sm leading-6">
+                {caseRows(project).map(([label, value]) => (
+                  <div key={label}>
+                    <dt className="text-[12px] font-medium text-label">{label}</dt>
+                    <dd className="mt-1 text-foreground/75">{value}</dd>
+                  </div>
+                ))}
+              </dl>
+            ) : null}
+
+            <div className={caseRows(project).length > 0 ? "mt-9" : ""}>
+              <ProjectFacts project={project} />
+            </div>
+
+            {project.responsibilities.length > 0 ||
+            project.stack.length > 0 ||
+            project.links.length > 0 ? (
+              <div className="mt-5 grid gap-4">
+                {project.responsibilities.length > 0 ? (
+                  <div className="flex min-w-0 items-baseline gap-4">
+                    <span className="shrink-0 text-[12px] font-medium text-foreground/65">
+                      담당
+                    </span>
+                    <p className="text-[14px] leading-relaxed text-foreground/70">
+                      {project.responsibilities.join(" · ")}
+                    </p>
+                  </div>
+                ) : null}
+
+                {project.stack.length > 0 ? (
+                  <div className="flex min-w-0 items-start gap-4">
+                    <span className="shrink-0 text-[12px] font-medium text-foreground/65">
+                      기술
+                    </span>
+                    <div className="flex flex-wrap gap-1.5">
+                      {project.stack.map((tech) => (
+                        <TechBadge key={tech} label={tech} />
+                      ))}
+                    </div>
+                  </div>
+                ) : null}
+
+                <LinkButtons links={project.links} />
+              </div>
+            ) : null}
+          </div>
+
+          <div className="min-w-0">
+            {project.screens.length > 0 ? (
+              <ProjectCarousel key={project.slug} screens={project.screens} />
+            ) : (
+              <Thumb project={project} />
+            )}
+          </div>
         </div>
       </header>
 
