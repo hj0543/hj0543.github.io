@@ -8,7 +8,8 @@ import {
 import Image from "next/image";
 import Link from "next/link";
 
-import { NoteLink } from "@/components/devlog-doc";
+import type { DevlogPost } from "@/components/devlog-doc";
+import HomeDevlogList from "@/components/home-devlog-list";
 import { caseRows, type Project } from "@/components/project-doc";
 import { BlurText, FadeContent, ScrollReveal, SpotlightCard } from "@/components/react-bits/home-effects";
 import { readDevlogPosts, readProjects } from "@/lib/content";
@@ -17,9 +18,8 @@ import { career, certificationLogo, certifications, profile } from "@/lib/profil
 import styles from "./home.module.css";
 
 const pad = (n: number) => String(n).padStart(2, "0");
-
-/** 홈에 미리 보여 줄 기록 수. 나머지는 /devlog에서 본다. */
-const NOTE_PREVIEW = 4;
+/** "5인 팀 (FE 2, ...)" → "5인", 숫자가 없으면 원문("개인") 그대로. */
+const headcount = (team: string) => team.match(/\d+인/)?.[0] ?? team;
 
 const PROCESS = [
   {
@@ -71,13 +71,11 @@ function Section({
   id,
   eyebrow,
   title,
-  action,
   children,
 }: {
   id: string;
   eyebrow: string;
   title: string;
-  action?: React.ReactNode;
   children: React.ReactNode;
 }) {
   return (
@@ -89,7 +87,6 @@ function Section({
             <ScrollReveal text={title} />
           </h2>
         </div>
-        {action}
       </FadeContent>
       <div className="mt-10">{children}</div>
     </section>
@@ -303,7 +300,7 @@ function FeaturedProject({ project }: { project: Project }) {
     <article>
       <FadeContent className={`${styles.projectMeta} mb-5`}>
         <span>01 / FEATURED WORK</span>
-        <span>{project.period}</span>
+        <span>{[project.period, headcount(project.team)].filter(Boolean).join(" · ")}</span>
       </FadeContent>
       <div className="grid gap-10 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,1fr)] lg:items-center lg:gap-14">
         <FadeContent className="relative">
@@ -363,7 +360,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
           <Link href={`/projects/${project.slug}`} className="group flex h-full flex-col p-4 sm:p-5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-accent">
             <div className={`${styles.projectMeta} mb-4`}>
               <span>{pad(index + 2)} / PROJECT</span>
-              <span>{project.period.slice(0, 4)}</span>
+              <span>{[project.period.slice(0, 4), headcount(project.team)].filter(Boolean).join(" · ")}</span>
             </div>
             <ProjectArtwork project={project} />
             <h3 className="mt-5 text-xl font-bold tracking-[-0.03em] text-foreground transition-colors group-hover:text-accent">
@@ -387,6 +384,22 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
         </SpotlightCard>
       </FadeContent>
     </li>
+  );
+}
+
+function HomeNoteLink({ post }: { post: DevlogPost }) {
+  const tags = post.tags.filter((tag) => tag.trim().toUpperCase() !== "SSAFY").slice(0, 2);
+
+  return (
+    <Link href={`/devlog/${post.slug}`} className={styles.noteLink}>
+      <h3 className={styles.noteTitle}>{post.title}</h3>
+      <div className={styles.noteMeta}>
+        {tags.length > 0 ? <span className={styles.noteTags}>{tags.join(" · ")}</span> : null}
+        <time dateTime={post.date} className={styles.noteDate}>
+          {post.date.replaceAll("-", ".")}
+        </time>
+      </div>
+    </Link>
   );
 }
 
@@ -433,32 +446,21 @@ export default async function Home() {
         id="devlog"
         eyebrow="Notes / 03"
         title="만들며 남긴 기록"
-        action={
-          posts.length > NOTE_PREVIEW ? (
-            <Link
-              href="/devlog/"
-              className="inline-flex shrink-0 items-center gap-1 border-b border-accent/60 pb-1 text-[14px] font-medium text-accent hover:border-accent"
-            >
-              모든 글 보기
-              <ArrowUpRight aria-hidden="true" size={14} />
-            </Link>
-          ) : null
-        }
       >
         {posts.length === 0 ? (
           <p className="text-sm text-foreground/70">아직 작성한 글이 없습니다.</p>
         ) : (
           <FadeContent>
-            <ol className={styles.notesList}>
-              {posts.slice(0, NOTE_PREVIEW).map((post) => (
+            <HomeDevlogList
+              items={posts.map((post) => (
                 <li
                   key={post.slug}
                   className="min-w-0"
                 >
-                  <NoteLink post={post} />
+                  <HomeNoteLink post={post} />
                 </li>
               ))}
-            </ol>
+            />
           </FadeContent>
         )}
       </Section>

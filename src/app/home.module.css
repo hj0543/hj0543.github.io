@@ -103,41 +103,73 @@
 }
 
 .notesList {
-  border-top: 1px solid color-mix(in srgb, var(--ink) 15%, transparent);
+  border-top: 1px solid color-mix(in srgb, var(--ink) 10%, transparent);
 }
 
 .notesList > li {
-  border-bottom: 1px solid color-mix(in srgb, var(--ink) 15%, transparent);
+  border-bottom: 1px solid color-mix(in srgb, var(--ink) 10%, transparent);
 }
 
-.notesList a {
-  grid-template-columns: 7.5rem minmax(0, 1fr) auto;
-  column-gap: 2rem;
-  padding: 2rem 0.75rem;
+.noteLink {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  column-gap: 1.5rem;
+  row-gap: 0.375rem;
+  padding: 1rem 0;
   border-radius: 0.25rem;
-  transition: background-color 200ms;
+  transition: background-color 200ms, color 200ms;
 }
 
-.notesList a:hover {
+.noteLink:hover {
   background: color-mix(in srgb, var(--accent-soft) 45%, transparent);
 }
 
-.notesList a:focus-visible {
+.noteLink:hover .noteTitle {
+  color: var(--accent);
+}
+
+.noteLink:focus-visible {
   outline: 2px solid var(--accent);
   outline-offset: 4px;
 }
 
-.notesList h3 {
-  overflow: visible;
-  white-space: normal;
-  font-size: 20px;
+.noteTitle {
+  grid-column: 1;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  overflow-wrap: anywhere;
+  font-size: 18px;
   font-weight: 600;
-  line-height: 1.6;
+  letter-spacing: -0.02em;
+  line-height: 1.5;
+  color: var(--foreground);
+  transition: color 200ms;
 }
 
-.notesList p {
-  margin-top: 0.25rem;
-  line-height: 1.8;
+.noteMeta {
+  display: contents;
+}
+
+.noteTags,
+.noteDate {
+  font-size: 12px;
+  line-height: 20px;
+  color: color-mix(in srgb, var(--foreground) 65%, transparent);
+}
+
+.noteTags {
+  grid-column: 1;
+  grid-row: 2;
+}
+
+.noteDate {
+  grid-column: 2;
+  grid-row: 1;
+  align-self: baseline;
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
 }
 
 @media (min-width: 1024px) {
@@ -147,23 +179,25 @@
 }
 
 @media (max-width: 639px) {
-  .notesList a {
-    grid-template-columns: minmax(0, 1fr) auto;
-    column-gap: 1rem;
-    padding: 1.5rem 0.25rem;
+  .noteLink {
+    display: block;
   }
 
-  .notesList a > span:first-child {
-    grid-column: 1 / -1;
-  }
-
-  .notesList h3 {
-    overflow: hidden;
+  .noteTitle {
     font-size: 17px;
   }
 
-  .notesList p {
-    grid-column: 1;
+  .noteMeta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.5rem;
+    margin-top: 0.375rem;
+  }
+
+  .noteTags + .noteDate::before {
+    content: "·";
+    margin-right: 0.5rem;
   }
 }
 
