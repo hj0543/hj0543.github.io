@@ -1,0 +1,141 @@
+/* 댓글 작성란을 블로그 톤에 맞춘다. 색은 light.css / dark.css의 --blog-* 값을 쓴다. */
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css");
+
+main,
+#__next .gsc-comment-box,
+#__next .gsc-comment-box button,
+#__next .gsc-comment-box textarea {
+  font-family: "Pretendard Variable", Pretendard, -apple-system, sans-serif;
+}
+
+#__next .gsc-comment-box:not(.gsc-comment-box-is-reply) {
+  overflow: hidden;
+  border-color: var(--blog-line);
+  border-radius: 16px;
+  background: var(--blog-paper);
+}
+
+/* 탭: GitHub식 박스 탭 대신 밑줄 탭 */
+#__next .gsc-comment-box-tabs {
+  padding: 0 8px;
+  border-color: var(--blog-line);
+  background: transparent;
+}
+
+#__next .gsc-comment-box-tabs > div:first-child {
+  display: flex;
+  gap: 4px;
+  margin: 0;
+}
+
+#__next .gsc-comment-box-tabs > div:first-child > button {
+  margin: 0;
+  padding: 12px 12px 10px;
+  border: 0;
+  border-bottom: 2px solid transparent;
+  border-radius: 0;
+  background: transparent;
+  color: var(--color-fg-muted);
+  font-size: 14px;
+  font-weight: 500;
+}
+
+#__next .gsc-comment-box-tabs > div:first-child > button.color-bg-canvas {
+  border-bottom-color: var(--blog-accent);
+  color: var(--color-fg-default);
+  font-weight: 700;
+}
+
+#__next .gsc-comment-box-main {
+  margin: 12px 12px 0;
+}
+
+/* 입력창: 점선 하단·이중 테두리를 한 덩어리로 정리 */
+#__next .gsc-comment-box-write {
+  border: 1px solid var(--blog-line);
+  border-radius: 12px;
+  background: var(--blog-input);
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+#__next .gsc-comment-box-write:focus-within {
+  border-color: var(--blog-accent);
+  box-shadow: 0 0 0 3px var(--blog-accent-ring);
+}
+
+#__next .gsc-comment-box-textarea,
+#__next .gsc-comment-box-textarea:focus {
+  min-height: 84px;
+  padding: 12px 14px;
+  border: 0;
+  border-radius: 12px 12px 0 0;
+  background: transparent;
+  box-shadow: none;
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+#__next .gsc-comment-box-textarea::placeholder {
+  color: var(--color-fg-subtle);
+}
+
+#__next .gsc-comment-box-textarea-extras {
+  padding: 6px 12px;
+  border: 0;
+  background: transparent;
+}
+
+#__next .gsc-comment-box-preview {
+  min-height: 112px;
+  padding: 12px 14px;
+  border: 1px solid var(--blog-line);
+  border-radius: 12px;
+}
+
+#__next .gsc-comment-box-bottom {
+  margin: 12px;
+}
+
+/* 버튼: GitHub 초록 대신 블로그 포인트 색 */
+#__next .gsc-comment-box-buttons .btn {
+  display: inline-flex;
+  align-items: center;
+  height: 38px;
+  padding: 0 18px;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 600;
+  box-shadow: none;
+}
+
+#__next .gsc-comment-box-buttons .btn:not(.btn-primary) {
+  border-color: var(--blog-line);
+  background: transparent;
+}
+
+#__next .gsc-comment-box-buttons .btn-primary {
+  border-color: var(--blog-accent);
+  background: var(--blog-accent);
+  color: var(--blog-on-accent);
+}
+
+#__next .gsc-comment-box-buttons .btn-primary:hover:enabled,
+#__next .gsc-comment-box-buttons a.btn-primary:hover {
+  border-color: var(--blog-accent-deep);
+  background: var(--blog-accent-deep);
+}
+
+#__next .gsc-comment-box-buttons .btn-primary:disabled {
+  opacity: 0.45;
+}
+
+/* 답글 입력 버튼도 같은 톤 */
+#__next .gsc-reply-box {
+  background: transparent;
+}
+
+#__next .gsc-reply-box > button {
+  border-color: var(--blog-line);
+  border-radius: 10px;
+  background: var(--blog-input);
+}

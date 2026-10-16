@@ -1,0 +1,134 @@
+1:"$Sreact.fragment"
+2:I[3020,["/_next/static/chunks/0h2qsuyze9ds1.js","/_next/static/chunks/1hqxyr06zq6ce.js"],"default"]
+3:I[39756,["/_next/static/chunks/0h2qsuyze9ds1.js","/_next/static/chunks/1hqxyr06zq6ce.js"],"default"]
+4:I[37457,["/_next/static/chunks/0h2qsuyze9ds1.js","/_next/static/chunks/1hqxyr06zq6ce.js"],"default"]
+5:I[66519,["/_next/static/chunks/0h2qsuyze9ds1.js","/_next/static/chunks/1hqxyr06zq6ce.js","/_next/static/chunks/36h9ts2bz7_q3.js"],"default"]
+6:I[22016,["/_next/static/chunks/0h2qsuyze9ds1.js","/_next/static/chunks/1hqxyr06zq6ce.js","/_next/static/chunks/0nqbc6ixe_0qu.js"],""]
+7:I[5014,["/_next/static/chunks/0h2qsuyze9ds1.js","/_next/static/chunks/1hqxyr06zq6ce.js","/_next/static/chunks/0nqbc6ixe_0qu.js"],"default"]
+11:I[68027,["/_next/static/chunks/0h2qsuyze9ds1.js","/_next/static/chunks/1hqxyr06zq6ce.js"],"default",1]
+:HL["/_next/static/chunks/0ot4_9wr9wcme.css","style"]
+:HL["/_next/static/media/70bc3e132a0a741e-s.p.3t6q91iet4nsy.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/_next/static/media/7ebf22b5a21034f8-s.p.3j3877k49yy0l.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/_next/static/media/PretendardVariable-s.p.0ztvx5mb7lxp4.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/_next/static/chunks/2b-2tives3t8w.css","style"]
+f:X
+0:{"P":null,"c":["","projects","discord-study-bot",""],"q":"","i":false,"f":[[["",{"children":["projects",{"children":[["slug","discord-study-bot","d",[]],{"children":["__PAGE__",{},"$undefined","$undefined",4608]},"$undefined","$undefined",4608]},"$undefined","$undefined",4608]},"$undefined","$undefined",4624],[["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/0ot4_9wr9wcme.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","script","script-0",{"src":"/_next/static/chunks/0h2qsuyze9ds1.js","async":true,"nonce":"$undefined"}],["$","script","script-1",{"src":"/_next/static/chunks/1hqxyr06zq6ce.js","async":true,"nonce":"$undefined"}]],["$","html",null,{"lang":"ko","data-scroll-behavior":"smooth","suppressHydrationWarning":true,"className":"jetbrains_mono_7d65b77b-module__VxV-Ta__variable instrument_serif_c1e8e483-module__u2UhdW__variable pretendard_97774a5-module__y_0gNq__variable h-full antialiased","children":[["$","head",null,{"children":["$","script",null,{"dangerouslySetInnerHTML":{"__html":"(function () {\n  try {\n    var theme = localStorage.getItem(\"theme\");\n    if (theme !== \"light\" && theme !== \"dark\") {\n      theme = window.matchMedia(\"(prefers-color-scheme: dark)\").matches\n        ? \"dark\"\n        : \"light\";\n    }\n    document.documentElement.dataset.theme = theme;\n  } catch (e) {\n    document.documentElement.dataset.theme = \"light\";\n  }\n})();"}}]}],["$","body",null,{"id":"top","className":"flex min-h-full flex-col","children":[["$","$L2",null,{}],["$","main",null,{"className":"flex-1","children":["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[["$","div",null,{"className":"mx-auto flex min-h-[70vh] max-w-[1080px] flex-col items-center justify-center px-5 py-20 text-center sm:px-8","children":[["$","p",null,{"className":"flex items-baseline gap-2.5 text-label","children":[["$","span",null,{"className":"section-label","children":"Not Found"}],["$","span",null,{"className":"font-mono text-[12px] tracking-[0.05em] text-foreground/65","children":"/ 404"}]]}],["$","h1",null,{"className":"mt-6","children":["$","$L5",null,{"text":"404","as":"span","fontSize":"clamp(6rem, 24vw, 13rem)","fontWeight":800,"letterSpacing":"-0.04em","lineHeight":1,"tensionColor":"#c96f4a","hint":true}]}],["$","p",null,{"className":"mt-8 max-w-[420px] text-[16px] leading-7 text-foreground/75","children":["찾으시는 페이지가 없거나 주소가 바뀌었어요.",["$","br",null,{}],"그동안 숫자를 잡아당겨 보셔도 좋아요."]}],["$","$L6",null,{"href":"/","className":"mt-10 inline-flex items-center gap-1.5 border-b border-accent/60 pb-1 text-[15px] font-medium text-accent transition-colors hover:border-accent","children":[["$","$L7",null,{"ref":"$undefined","iconNode":[["path",{"d":"m12 19-7-7 7-7","key":"1l729n"}],["path",{"d":"M19 12H5","key":"x3x0zl"}]],"className":"lucide-arrow-left","aria-hidden":"true","size":15}],"홈으로 돌아가기"]}]]}],[]],"forbidden":"$undefined","unauthorized":"$undefined"}]}],["$","footer",null,{"id":"contact","className":"scroll-mt-20","children":["$","div",null,{"className":"mx-auto max-w-[1080px] px-5 sm:px-8","children":[["$","div",null,{"className":"flex flex-wrap items-end justify-between gap-x-10 gap-y-6 border-t border-ink/15 py-12","children":[["$","div",null,{"children":[["$","p",null,{"className":"section-label","children":"Let's Connect"}],["$","h2",null,{"className":"mt-3 text-2xl font-bold tracking-[-0.025em] text-foreground sm:text-[1.75rem]","children":"함께 해결할 문제를 이야기해요."}]]}],["$","p",null,{"className":"flex flex-wrap gap-x-8 gap-y-3","children":[["$","a",null,{"href":"mailto:hj0543@gmail.com","className":"inline-flex items-center gap-2 border-b border-foreground/40 pb-1 text-[15px] font-medium text-foreground transition-colors hover:border-accent hover:text-accent","children":[["$","$L7",null,{"ref":"$undefined","iconNode":[["path",{"d":"m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7","key":"132q7q"}],["rect",{"x":"2","y":"4","width":"20","height":"16","rx":"2","key":"izxlao"}]],"className":"lucide-mail","aria-hidden":"true","size":17,"strokeWidth":1.8}],"hj0543@gmail.com",["$","$L7",null,{"ref":"$undefined","iconNode":[["path",{"d":"M7 7h10v10","key":"1tivn9"}],["path",{"d":"M7 17 17 7","key":"1vkiza"}]],"className":"lucide-arrow-up-right","aria-hidden":"true","size":14}]]}],["$","a",null,{"href":"https://github.com/hj0543","target":"_blank","rel":"noreferrer","className":"inline-flex items-center gap-2 border-b border-foreground/40 pb-1 text-[15px] font-medium text-foreground transition-colors hover:border-accent hover:text-accent","children":["$L8","GitHub","$L9"]}]]}]]}],"$La"]}]}],"$Lb"]}]]}]]}],{"children":["$Lc",{"children":["$Ld",{"children":["$Le",{},null,false,null]},null,false,"$f"]},null,false,"$f"]},null,false,null],"$L10",false]],"m":"$undefined","G":["$11",["$L12"]],"S":true,"h":null,"r":"$undefined","s":"$undefined","a":"$undefined","l":"$undefined","p":"$undefined","d":"$undefined","b":"tGeBGOWh4BDtlYf5O5qTq"}
+13:I[85437,["/_next/static/chunks/0h2qsuyze9ds1.js","/_next/static/chunks/1hqxyr06zq6ce.js","/_next/static/chunks/0nqbc6ixe_0qu.js"],"Image"]
+14:I[53759,["/_next/static/chunks/0h2qsuyze9ds1.js","/_next/static/chunks/1hqxyr06zq6ce.js"],"default"]
+15:I[11875,["/_next/static/chunks/0h2qsuyze9ds1.js","/_next/static/chunks/1hqxyr06zq6ce.js"],"default"]
+17:I[97367,["/_next/static/chunks/0h2qsuyze9ds1.js","/_next/static/chunks/1hqxyr06zq6ce.js"],"OutletBoundary"]
+18:"$Sreact.suspense"
+1a:I[97367,["/_next/static/chunks/0h2qsuyze9ds1.js","/_next/static/chunks/1hqxyr06zq6ce.js"],"ViewportBoundary"]
+1c:I[97367,["/_next/static/chunks/0h2qsuyze9ds1.js","/_next/static/chunks/1hqxyr06zq6ce.js"],"MetadataBoundary"]
+8:["$","$L13",null,{"src":"/icons/github.svg","alt":"","aria-hidden":"true","width":17,"height":17,"className":"brand-icon shrink-0 "}]
+9:["$","$L7",null,{"ref":"$undefined","iconNode":"$0:f:0:1:0:props:children:1:props:children:1:props:children:2:props:children:props:children:0:props:children:1:props:children:0:props:children:2:props:iconNode","className":"lucide-arrow-up-right","aria-hidden":"true","size":14}]
+a:["$","div",null,{"className":"flex flex-wrap items-center justify-between gap-3 border-t border-ink/15 py-6","children":[["$","a",null,{"href":"#top","className":"text-[17px] font-bold tracking-[-0.04em] text-foreground","children":["Belog",["$","span",null,{"className":"text-accent","children":"."}]]}],["$","span",null,{"className":"flex flex-wrap gap-x-4 gap-y-1 text-[12px] text-foreground/65","children":[["$","$L14",null,{}],["$","span",null,{"children":["© ",2026," ","HYEONJIN JEONG",". All rights reserved."]}]]}]]}]
+b:["$","$L15",null,{}]
+c:["$","$1","c",{"children":[null,["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}]
+d:["$","$1","c",{"children":[null,["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}]
+e:["$","$1","c",{"children":["$L16",[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/2b-2tives3t8w.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","script","script-0",{"src":"/_next/static/chunks/0nqbc6ixe_0qu.js","async":true,"nonce":"$undefined"}]],["$","$L17",null,{"children":["$","$18",null,{"name":"Next.MetadataOutlet","children":"$@19"}]}]]}]
+10:["$","$1","h",{"children":[null,["$","$L1a",null,{"children":"$L1b"}],["$","div",null,{"hidden":true,"children":["$","$L1c",null,{"children":["$","$18",null,{"name":"Next.Metadata","children":"$L1d"}]}]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}]
+12:["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/0ot4_9wr9wcme.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]
+f:C
+1b:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
+16:["$","div",null,{"className":"@container","children":["$","div",null,{"className":"pb-16","children":[["$","header",null,{"className":"mx-auto max-w-[1080px] px-5 pb-10 pt-8 sm:px-8 sm:pt-10","children":[["$","div",null,{"className":"min-w-0 border-b border-ink/20 pb-8 sm:pb-10","children":[["$","$L6",null,{"href":"/","scroll":false,"className":"text-[13px] text-foreground/65 transition-colors hover:text-accent","children":"← Projects"}],["$","div",null,{"className":"mt-8"}],null,["$","h1",null,{"className":"text-xl font-semibold leading-tight tracking-[-0.02em] text-accent sm:text-2xl","children":"Discord Algorithms Study Bot"}],["$","p",null,{"className":"mt-3 text-balance text-[26px] font-bold leading-[1.4] tracking-[-0.03em] text-foreground [overflow-wrap:anywhere] sm:text-[36px]","children":"알고리즘 스터디 운영 자동화 봇"}]]}],["$","div",null,{"className":"mt-8 grid gap-8 sm:mt-10 @[48rem]:grid-cols-[minmax(230px,0.72fr)_minmax(0,1.28fr)] @[48rem]:items-start","children":[["$","div",null,{"className":"min-w-0","children":[["$","dl",null,{"className":"grid gap-3 text-sm leading-6","children":[["$","div","문제",{"children":[["$","dt",null,{"className":"text-[12px] font-medium text-label","children":"문제"}],["$","dd",null,{"className":"mt-1 text-foreground/75","children":"반복되는 문제 선정과 공지 작성, 풀이 확인에 운영 시간이 들었습니다."}]]}],["$","div","결과",{"children":[["$","dt",null,{"className":"text-[12px] font-medium text-label","children":"결과"}],["$","dd",null,{"className":"mt-1 text-foreground/75","children":"문제 추천·공지 작성·풀이 현황 집계를 자동화했습니다."}]]}]]}],["$","div",null,{"className":"mt-9","children":["$","dl",null,{"className":"grid border-y border-ink/12 py-2 @[34rem]:grid-cols-4 @[34rem]:gap-x-6 @[34rem]:py-0 @[48rem]:grid-cols-1 @[48rem]:gap-x-0 @[48rem]:py-2","children":[["$","div","역할",{"className":"grid grid-cols-[3.5rem_minmax(0,1fr)] items-baseline gap-3 py-2 @[34rem]:block @[34rem]:py-3.5 @[48rem]:grid @[48rem]:py-2","children":[["$","dt",null,{"className":"text-[12px] font-medium text-foreground/65","children":"역할"}],["$","dd",null,{"className":"text-[14px] leading-relaxed text-foreground/80","children":"1인 기획 · 개발 · 배포"}]]}],["$","div","기간",{"className":"grid grid-cols-[3.5rem_minmax(0,1fr)] items-baseline gap-3 py-2 @[34rem]:block @[34rem]:py-3.5 @[48rem]:grid @[48rem]:py-2","children":[["$","dt",null,{"className":"text-[12px] font-medium text-foreground/65","children":"기간"}],["$","dd",null,{"className":"text-[14px] leading-relaxed text-foreground/80","children":"2026.02 ~ 2026.03"}]]}],["$","div","구성",{"className":"grid grid-cols-[3.5rem_minmax(0,1fr)] items-baseline gap-3 py-2 @[34rem]:block @[34rem]:py-3.5 @[48rem]:grid @[48rem]:py-2","children":[["$","dt",null,{"className":"text-[12px] font-medium text-foreground/65","children":"구성"}],["$","dd",null,{"className":"text-[14px] leading-relaxed text-foreground/80","children":"개인"}]]}]]}]}],["$","div",null,{"className":"mt-5 grid gap-4","children":[null,["$","div",null,{"className":"flex min-w-0 items-start gap-4","children":[["$","span",null,{"className":"shrink-0 text-[12px] font-medium text-foreground/65","children":"기술"}],["$","div",null,{"className":"flex flex-wrap gap-1.5","children":[["$","span","Python",{"className":"inline-flex items-center gap-1.5 rounded-full border border-ink/12 bg-ink/6 px-3 py-1 text-[12px] text-foreground/75","children":[["$","$L13",null,{"src":"/icons/python.svg","alt":"","aria-hidden":"true","width":14,"height":14,"className":"brand-icon shrink-0 "}],"Python"]}],["$","span","discord.py",{"className":"inline-flex items-center gap-1.5 rounded-full border border-ink/12 bg-ink/6 px-3 py-1 text-[12px] text-foreground/75","children":[["$","$L13",null,{"src":"/icons/discord.svg","alt":"","aria-hidden":"true","width":14,"height":14,"className":"brand-icon shrink-0 "}],"discord.py"]}],["$","span","Solved.ac API",{"className":"inline-flex items-center gap-1.5 rounded-full border border-ink/12 bg-ink/6 px-3 py-1 text-[12px] text-foreground/75","children":[null,"Solved.ac API"]}],["$","span","JSON",{"className":"inline-flex items-center gap-1.5 rounded-full border border-ink/12 bg-ink/6 px-3 py-1 text-[12px] text-foreground/75","children":["$L1e","JSON"]}],"$L1f","$L20","$L21"]}]]}],"$L22"]}]]}],"$L23"]}]]}],"$L24","$L25"]}]}]
+26:I[14830,["/_next/static/chunks/0h2qsuyze9ds1.js","/_next/static/chunks/1hqxyr06zq6ce.js","/_next/static/chunks/0nqbc6ixe_0qu.js"],"default"]
+27:I[43232,["/_next/static/chunks/0h2qsuyze9ds1.js","/_next/static/chunks/1hqxyr06zq6ce.js","/_next/static/chunks/0nqbc6ixe_0qu.js"],"default"]
+29:I[27201,["/_next/static/chunks/0h2qsuyze9ds1.js","/_next/static/chunks/1hqxyr06zq6ce.js"],"IconMark"]
+1e:["$","$L13",null,{"src":"/icons/json.svg","alt":"","aria-hidden":"true","width":14,"height":14,"className":"brand-icon shrink-0 "}]
+1f:["$","span","Oracle Cloud",{"className":"inline-flex items-center gap-1.5 rounded-full border border-ink/12 bg-ink/6 px-3 py-1 text-[12px] text-foreground/75","children":[["$","$L13",null,{"src":"/icons/oracle.svg","alt":"","aria-hidden":"true","width":14,"height":14,"className":"brand-icon shrink-0 "}],"Oracle Cloud"]}]
+20:["$","span","GitHub Actions",{"className":"inline-flex items-center gap-1.5 rounded-full border border-ink/12 bg-ink/6 px-3 py-1 text-[12px] text-foreground/75","children":[["$","$L13",null,{"src":"/icons/githubactions.svg","alt":"","aria-hidden":"true","width":14,"height":14,"className":"brand-icon shrink-0 "}],"GitHub Actions"]}]
+21:["$","span","pm2",{"className":"inline-flex items-center gap-1.5 rounded-full border border-ink/12 bg-ink/6 px-3 py-1 text-[12px] text-foreground/75","children":[["$","$L13",null,{"src":"/icons/pm2.svg","alt":"","aria-hidden":"true","width":14,"height":14,"className":"brand-icon shrink-0 "}],"pm2"]}]
+22:["$","div",null,{"className":"flex flex-wrap gap-x-5 gap-y-2","children":[["$","a","https://github.com/hj0543/Discord_Algorthms_StudyBot",{"href":"https://github.com/hj0543/Discord_Algorthms_StudyBot","target":"_blank","rel":"noreferrer","className":"group/link inline-flex items-center gap-1 border-b border-ink/25 pb-0.5 text-[14px] text-foreground/75 transition-colors hover:border-accent hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/60","children":["GitHub",["$","span",null,{"aria-hidden":"true","className":"text-[11px] transition-transform group-hover/link:-translate-y-0.5 group-hover/link:translate-x-0.5","children":"↗"}]]}]]}]
+23:["$","div",null,{"className":"min-w-0","children":["$","$L26","discord-study-bot",{"screens":[{"src":"/projects/discord_study_bot/problem-search.png","alt":"문제 검색 화면","caption":"알고리즘 문제 검색"},{"src":"/projects/discord_study_bot/problem-alarm.png","alt":"문제 풀이 알람","caption":"문제풀이 알람"},{"src":"/projects/discord_study_bot/problem-solved.png","alt":"스터디원 풀이 현황 화면","caption":"스터디원 풀이 현황"},{"src":"/projects/discord_study_bot/problem-notice.png","alt":"공지 등록 화면","caption":"알고리즘 문제풀이 공지 등록"},{"src":"/projects/discord_study_bot/probelm-vote.png","alt":"문제 투표 화면","caption":"스터디 문제 투표"}]}]}]
+24:["$","nav",null,{"aria-label":"프로젝트 문서 목차","className":"sticky top-16 z-20 mt-12 overflow-x-auto border-y border-ink/10 bg-background/90 backdrop-blur-md [&::-webkit-scrollbar]:hidden","children":["$","div",null,{"className":"mx-auto flex h-10 max-w-[1080px] items-center gap-6 px-5 sm:px-8","children":[["$","span",null,{"className":"flex h-5 shrink-0 items-center border-r border-ink/12 pr-5 text-[14px] font-medium leading-none text-foreground/65","children":"목차"}],[["$","a","project-discord-study-bot-section-0",{"href":"#project-discord-study-bot-section-0","className":"flex h-full shrink-0 items-center text-[14px] leading-none text-foreground/70 transition-colors hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/60","children":"요약"}],["$","a","project-discord-study-bot-section-1",{"href":"#project-discord-study-bot-section-1","className":"flex h-full shrink-0 items-center text-[14px] leading-none text-foreground/70 transition-colors hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/60","children":"배경"}],["$","a","project-discord-study-bot-section-2",{"href":"#project-discord-study-bot-section-2","className":"flex h-full shrink-0 items-center text-[14px] leading-none text-foreground/70 transition-colors hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/60","children":"주요 기능"}],["$","a","project-discord-study-bot-section-3",{"href":"#project-discord-study-bot-section-3","className":"flex h-full shrink-0 items-center text-[14px] leading-none text-foreground/70 transition-colors hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/60","children":"기여"}],["$","a","project-discord-study-bot-section-4",{"href":"#project-discord-study-bot-section-4","className":"flex h-full shrink-0 items-center text-[14px] leading-none text-foreground/70 transition-colors hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/60","children":"성과"}],["$","a","project-discord-study-bot-section-5",{"href":"#project-discord-study-bot-section-5","className":"flex h-full shrink-0 items-center text-[14px] leading-none text-foreground/70 transition-colors hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/60","children":"아키텍처"}],["$","a","project-discord-study-bot-section-6",{"href":"#project-discord-study-bot-section-6","className":"flex h-full shrink-0 items-center text-[14px] leading-none text-foreground/70 transition-colors hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/60","children":"문제 해결"}],["$","a","project-discord-study-bot-section-7",{"href":"#project-discord-study-bot-section-7","className":"flex h-full shrink-0 items-center text-[14px] leading-none text-foreground/70 transition-colors hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/60","children":"링크"}]]]}]}]
+28:T1f86,<h2 id="project-discord-study-bot-section-0">프로젝트 개요</h2>
+<p>SSAFY 과정 중 운영한 알고리즘 스터디에서 반복되던 문제 선정, 공지 작성, 풀이 여부 확인을 자동화하기 위해 개발한 Discord 봇입니다. Solved.ac API를 활용해 난이도·알고리즘 태그 기반 문제 추천, 공지 템플릿 자동 생성, 스터디원별 풀이 현황 집계 기능을 제공합니다.</p>
+<blockquote>
+<p>2026년 4월 28일 백준(BOJ) 서비스 종료로 현재는 운영을 중단했습니다.</p>
+</blockquote>
+<h2 id="project-discord-study-bot-section-1">개발 배경 및 필요성</h2>
+<ul>
+<li>스터디 규모: 8명 / 주 3회</li>
+<li>매번 문제를 고른 뒤 링크 복사, 마감 기한 기입, 투표 생성까지 수동으로 처리해야 해 준비 시간이 오래 걸렸습니다.</li>
+<li>기존 봇들은 세부 난이도(Tier)와 알고리즘 태그를 조합한 필터링이 부족해, 스터디 수준에 맞는 문제를 찾기 어려웠습니다.</li>
+<li>스터디원별로 공지 문제를 풀었는지 일일이 확인해야 했고, 주간·월간·누적 집계도 필요했습니다.</li>
+</ul>
+<h2 id="project-discord-study-bot-section-2">주요 기능</h2>
+<ul>
+<li><strong>맞춤형 문제 추천</strong>: <code>/추천</code>으로 난이도(Tier)와 알고리즘 태그(Tag)를 조합해 &quot;실버 1 수준의 BFS 문제&quot;처럼 조건에 맞는 한글 문제 5개를 추천하고, <code>/문제뽑기</code>로 난이도만 지정해 뽑기도 지원</li>
+<li><strong>공지 자동 생성</strong>: Slash Command <code>/공지</code>에 문제 번호(최대 3개)와 마감일(<code>0316</code> 형식)만 넣으면 문제 제목, 티어, 태그, BOJ 다이렉트 링크가 담긴 공지를 만들고 문제별 번호 이모지(1️⃣~3️⃣)를 달아 반응·투표에 활용</li>
+<li><strong>풀이 현황 자동 집계</strong>: 5분 주기로 Solved.ac API를 호출해 공지 문제 풀이 여부를 확인하고, 풀이 시 알림 채널에 알림 발송. 마감이 지난 문제는 감지 목록에서 자동 정리</li>
+<li><strong>풀이 통계·랭킹</strong>: <code>/문제풀이현황</code>으로 주간·월간·누적 공지 문제 풀이 수를, <code>/랭킹</code>·<code>/프로필</code>로 스터디원 티어와 순위를 확인</li>
+<li><strong>리마인드 알림</strong>: 매일 밤 9시(KST) 스케줄러로 스터디 참여 독려 알림 발송</li>
+</ul>
+<h2 id="project-discord-study-bot-section-3">담당 역할 및 기여</h2>
+<p>1인 프로젝트로 기획, 개발, 배포 전 과정을 담당했습니다.</p>
+<ul>
+<li>Solved.ac API v3 문서를 분석해 난이도·태그 조합 검색 쿼리 설계</li>
+<li>스터디 기능을 Cog로 묶어 봇 구동부(<code>main.py</code>)와 분리</li>
+<li>JSON 기반 데이터 저장 로직으로 봇 재시작 시에도 사용자 연동 정보와 집계 데이터 유지</li>
+<li>Oracle Cloud(Always Free) 인스턴스에서 24시간 운영하고, master 푸시 시 GitHub Actions가 서버에 접속해 코드 갱신·의존성 설치·pm2 재시작까지 자동 배포</li>
+<li>스터디원도 직접 배포할 수 있도록 단계별 배포 가이드(systemd 기준) 작성</li>
+</ul>
+<h2 id="project-discord-study-bot-section-4">성과</h2>
+<ul>
+<li>문제 선정부터 공지 작성까지 걸리는 시간 <strong>70% 이상 단축</strong></li>
+<li>스터디원 풀이 현황 파악 시간 <strong>50% 이상 단축</strong></li>
+<li>풀이 현황 집계 시각화로 스터디원 동기부여</li>
+</ul>
+<h2 id="project-discord-study-bot-section-5">시스템 아키텍처</h2>
+<ul>
+<li><strong>Discord 이벤트 처리</strong>: <code>main.py</code>에서 봇을 구동하고 시작 시 슬래시 명령을 동기화하며, 스터디 명령어는 <code>cogs/study.py</code>에 분리해 로드</li>
+<li><strong>문제 데이터 조회</strong>: <code>utils/solvedac.py</code>에서 Solved.ac API v3에 난이도·태그·<code>lang:ko</code>·정렬 쿼리를 조합해 요청하고, 모든 요청에 5초 타임아웃 적용</li>
+<li><strong>스케줄링</strong>: <code>discord.ext.tasks</code>로 5분 주기 풀이 현황 폴링, 매일 21시(KST) 리마인드 알림</li>
+<li><strong>데이터 저장</strong>: <code>study_data.json</code>에 사용자 연동 정보, 공지 문제와 마감일, 풀이 기록 영속화</li>
+<li><strong>배포</strong>: Oracle Cloud Ubuntu 인스턴스 + Python venv + <code>.env</code>로 토큰 분리, GitHub Actions(SSH) → <code>git pull</code> → <code>pip install</code> → pm2 재시작</li>
+</ul>
+<h2 id="project-discord-study-bot-section-6">기술적 고민 및 문제 해결</h2>
+<h3>추천 문제 중 중복 문제가 많았던 문제</h3>
+<ul>
+<li><p>상황: 동일한 난이도와 알고리즘 유형으로 여러 번 추천을 요청하면 이전에 추천된 문제가 다시 등장하는 경우가 많았습니다.</p>
+</li>
+<li><p>시도: API가 반환한 문제 중 <code>random.sample()</code>로 5개를 추출했지만, API에서 반환하는 후보 목록 자체가 비슷하게 유지되어 반복 추천을 충분히 줄이지 못했습니다.</p>
+</li>
+<li><p>해결: Solved.ac 검색 쿼리에 <code>sort:random</code>을 추가하고, 요청마다 무작위 쿼리 값을 전달해 캐시된 동일 응답이 반복되는 것을 방지했습니다. 이후 무작위로 정렬된 후보에서 다시 5개를 추출해 추천 결과가 더욱 다양하게 분산되도록 개선했습니다.</p>
+</li>
+<li><p>배운 점: 클라이언트에서 결과만 무작위로 선택해도 원본 후보가 고정되어 있다면 다양성을 확보하기 어렵다는 것을 배웠습니다. 외부 API의 정렬 방식과 캐시 동작까지 고려해야 한다는 점도 알게 되었습니다.</p>
+</li>
+</ul>
+<h3>반복적인 공지 작성 과정의 비효율</h3>
+<ul>
+<li><p>상황: 문제 선정 후 링크 복사, 날짜 기입, 투표 생성 등 매번 같은 수동 작업이 반복되었습니다.</p>
+</li>
+<li><p>해결: Slash Command <code>/공지</code>로 문제 제목, BOJ 링크, 마감 기한, 투표 이모지를 담은 템플릿을 자동 생성하도록 구현했습니다.</p>
+</li>
+<li><p>배운 점: 내가 겪는 불편함이 곧 팀 전체의 불편함이라는 점을 인지하고, 사용자 관점에서 반복 작업을 줄이는 기능이 가장 체감 효과가 크다는 것을 배웠습니다.</p>
+</li>
+</ul>
+<h3>봇 재시작 시 데이터 유실</h3>
+<ul>
+<li><p>상황: 서버 재시작이나 봇 재배포 시 메모리에만 있던 사용자 연동 정보와 풀이 집계가 사라질 수 있었습니다.</p>
+</li>
+<li><p>해결: 상태가 바뀔 때마다 JSON 파일에 저장하고 시작 시 다시 읽어 오도록 했습니다. 저장 형식이 바뀐 뒤에도 이전 형식의 데이터를 읽어 새 형식으로 변환하도록 호환 로직을 두었습니다.</p>
+</li>
+<li><p>배운 점: 소규모 서비스라도 상태 데이터의 영속성과 장애 복구를 처음부터 고려해야 안정적으로 운영할 수 있다는 것을 배웠습니다.</p>
+</li>
+</ul>
+<h3>응답 없는 외부 API에 봇이 멈추는 문제</h3>
+<ul>
+<li><p>상황: Solved.ac API가 응답하지 않으면 요청이 끝나지 않고 대기하면서 봇 전체가 멈출 수 있었습니다.</p>
+</li>
+<li><p>해결: 모든 외부 요청에 <code>timeout=5</code>를 지정해 5초가 지나면 포기하고 다음 작업으로 넘어가게 했고, 풀이 확인 루프는 스터디원 단위로 예외를 잡아 한 명의 실패가 전체 확인을 멈추지 않도록 했습니다.</p>
+</li>
+<li><p>배운 점: 외부 서비스에 기대는 기능은 &quot;응답이 오지 않을 때&quot;를 먼저 정해 두어야 한다는 것을 배웠습니다.</p>
+</li>
+</ul>
+<h2 id="project-discord-study-bot-section-7">관련 링크</h2>
+<ul>
+<li><a href="https://github.com/hj0543/Discord_Algorthms_StudyBot">GitHub</a></li>
+<li><a href="https://solved.ac/api/v3">Solved.ac API v3</a></li>
+</ul>
+25:["$","$L27",null,{"className":"doc-prose-module__rLTzAW__prose mx-auto max-w-[760px] px-5 sm:px-8","html":"$28"}]
+19:null
+1d:[["$","title","0",{"children":"Discord Algorithms Study Bot · Belog"}],["$","meta","1",{"name":"description","content":"알고리즘 스터디 운영 자동화 봇"}],["$","link","2",{"rel":"icon","href":"/icon.png?icon.3bup3hv08dkxp.png","sizes":"1254x1254","type":"image/png"}],["$","$L29","3",{}]]

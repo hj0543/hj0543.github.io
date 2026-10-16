@@ -1,0 +1,67 @@
+1:"$Sreact.fragment"
+2:I[22016,["/_next/static/chunks/0h2qsuyze9ds1.js","/_next/static/chunks/1hqxyr06zq6ce.js","/_next/static/chunks/0uri8sq5s_br9.js"],""]
+3:I[5014,["/_next/static/chunks/0h2qsuyze9ds1.js","/_next/static/chunks/1hqxyr06zq6ce.js","/_next/static/chunks/0uri8sq5s_br9.js"],"default"]
+4:I[73428,["/_next/static/chunks/0h2qsuyze9ds1.js","/_next/static/chunks/1hqxyr06zq6ce.js","/_next/static/chunks/0uri8sq5s_br9.js"],"default"]
+5:T2294,<p>1학기가 끝난 지 넉 달 남짓 지났다. 공통 프로젝트(웹 기술 팀 프로젝트)를 마치자마자 특화 프로젝트(핀테크 도메인 팀 프로젝트)에 들어가 정신없이 지내느라, 정작 처음 시작했던 반년은 돌아볼 틈이 없었다. 공통 프로젝트 회고를 먼저 남기고 나니, 그 앞자리가 비어 있는 게 계속 마음에 걸렸다. 늦었지만 순서대로 채워 두려 한다.</p>
+<p>SSAFY에 오기 전에는 수학학원에서 수학팀 팀장으로 일했다. 아르바이트로 들어가 팀장이 되기까지, 현장에서 불편한 게 보이면 어떻게든 손으로 고쳐 보려 했다. 학생마다 진도가 달라 손으로 적던 기록을 구글 스프레드시트로 옮겨 진도율이 자동으로 계산되게 했고, 진단평가 채점도 답안만 입력하면 성적표가 나오도록 바꿨다.</p>
+<p>그런데 거기까지였다. 학생들을 위해 만들고 싶은 건 계속 늘어나는데, 시트 밖으로 한 걸음만 나가려 해도 어디서부터 손대야 할지 몰랐다. 만들고 싶은 걸 직접 만들 수 있는 사람이 되고 싶었다. 가르치던 자리에서 벗어나, 대학 시절로 돌아간 듯 함께 부딪히며 배우는 곳에 가 보고 싶었다. SSAFY에 지원한 건 그래서였다.</p>
+<p>첫날 강의실에 들어설 때는 설렘보다 걱정이 조금 더 컸다. VS Code도 모르는 나는, 1년 뒤에 얼마나 달라져 있을까.</p>
+<h2>1. 바닥을 확인한 날</h2>
+<p>아침 9시에 시작해 저녁 6시에 끝나는 하루가 반복됐다. 오전에는 새로운 개념을 배우고, 오후에는 그것을 손으로 옮겨 보는 실습이 이어졌다. 파이썬에서 시작해 알고리즘, 웹, 프레임워크까지 매주 새로운 이름들이 쏟아졌다. 하루를 다 소화하기도 전에 다음 날이 왔다.</p>
+<p>가장 오래 남은 장면은 첫 월말평가 전날 밤이다. 아무리 붙잡고 있어도 풀리지 않는 문제 앞에서, 내가 여기 있어도 되는 사람인지 처음으로 의심했다. 결과는 생각보다 나빴다. 그런데 이상하게도 그 뒤로는 조금 덜 무서웠다. 바닥을 한 번 확인하고 나니, 거기서부터 올라가면 된다는 걸 알았다.</p>
+<h2>2. 수업이 끝난 뒤의 시간</h2>
+<p>월말평가 이후 바꾼 건 하나였다. 수업이 끝난 뒤의 시간. 6시에 강의가 끝나면 그날 배운 내용을 처음부터 다시 짚었다. 강의 중에 따라 치기만 했던 코드를 빈 화면에서 다시 써 보고, 막히는 곳은 따로 적어 두었다가 다음 날 다시 열었다.</p>
+<p>매일 아침 7시에 일어나 알고리즘 문제를 하나 더 풀고, 그날 배울 내용을 미리 정리한 뒤 집을 나섰다. 일과 중에는 공부에만 집중하고, 틈이 날 때마다 문제를 풀었다. 저녁을 먹고 나면 잠들기 전까지 그날 배운 내용을 복습하고 다시 문제를 풀었다. 그렇게 한 달쯤 지나 1학기 수료 조건인 IM 등급을 받았다. 그리고 그때 알았다. 정규 과정에서 배운 알고리즘만으로는 A 등급 문제에 닿을 수 없었다. 그날부터는 아직 배우지 않았거나 정규 과정에 나오지 않는 알고리즘을 하루에 하나씩 붙잡았다. 유니온 파인드, 크루스칼로 구하는 최소 신장 트리, 다익스트라, DP 같은 것들이다. 틀리거나 못 푼 문제는 노션에 정리해 두고 몇 번이고 다시 풀었다.</p>
+<p>특별한 방법은 아니었다. 학원에서 학생들에게 늘 일러 주던 방법을 그대로 실천했을 뿐이다. 약한 곳에 7, 익숙한 곳에 3. 학원에서 2년 넘게 30분 일찍 나오던 습관을, 장소만 바꿔 다시 꺼낸 것에 가까웠다. 그렇게 쌓인 시간은 1학기 반 1등으로, SW 역량테스트 IM에서 A+로 돌아왔다.</p>
+<div class="gallery">
+  <img src="/devlog/images/2026-10-13-ssafy-semester1/semester1-certificate.png" alt="SSAFY 1학기 교육이수증 — 이름 모자이크 처리" width="1191" height="1684" loading="lazy" />
+  <img src="/devlog/images/2026-10-13-ssafy-semester1/semester1-academic-award.png" alt="SSAFY 1학기 성적우수상 — 구미1반 1등, 이름 모자이크 처리" width="1191" height="1684" loading="lazy" />
+</div><p>다만 혼자 버티는 꾸준함에는 한계가 있었다. 피곤한 날엔 복습이 짧아졌고, 알고리즘 문제는 하루쯤 건너뛰기 쉬웠다. 그래서 알고리즘을 열심히 공부하는 동료들의 스터디에 들어갔다.</p>
+<h2>3. 처음으로 남이 쓰는 걸 만들다</h2>
+<p>여덟 명이 모여 일주일에 세 번 문제를 푸는 스터디였다. 스터디장은 보고서를 맡았고, 문제를 고르고, 링크를 붙이고, 마감을 적고, 누가 풀었는지 확인하는 일은 내가 맡았다. 그 일이 매번 반복됐다.</p>
+<p>익숙한 장면이었다. 학원에서 손으로 적던 진도 기록과 다르지 않았다. 다른 점은, 이번엔 그 반복을 시트가 아니라 내가 짠 코드에 넘길 수 있었다는 것이다. 2월에 Discord 봇을 만들기 시작했고, 공지에서 문제 추천, 풀이 집계까지 하나씩 봇에게 맡겼다. 만들고 운영한 이야기는 <a href="/devlog/2026-08-08-discord-study-bot">따로 정리해 두었다</a>.</p>
+<p>내 귀찮음을 덜려고 만든 것이었는데, 어느새 여덟 명이 매일 쓰는 도구가 되어 있었다. 처음으로 남이 쓰는 걸 만들어 본 셈이다.</p>
+<p>스터디가 남긴 건 숫자만이 아니었다. 처음엔 백준 기준 브론즈 상위 문제 앞에서도 한참을 머뭇거렸는데, 끝날 무렵에는 골드 상위 티어 근처까지 손이 닿았다. 하지만 더 크게 남은 건 매일 문제를 연다는 감각이었다. 혼자였다면 하루쯤 건너뛰었을 날에도, 누군가 먼저 풀었다는 알림이 뜨면 다시 책상 앞에 앉게 됐다.</p>
+<h2>4. 처음부터 끝까지</h2>
+<p>1학기의 마지막은 2인 프로젝트로 진행하는 관통 프로젝트(1학기 종합 프로젝트)였다. 보통은 두 명이서 백엔드와 프론트엔드를 나눠서 맡는다. 하지만 우리는 둘이서 기능 단위로 일을 나누고, 각자 맡은 기능의 프론트엔드와 백엔드를 모두 만들었다. Vue, Django, FastAPI를 오가며 화면부터 데이터 적재까지 한 사람이 끝까지 책임졌다.</p>
+<p>작은 서비스였지만, 처음으로 하나를 처음부터 끝까지 들고 가 봤다. 화면에서 버튼 하나가 눌리면 그 뒤에서 어떤 요청이 오가고, 데이터가 어디서 와서 어디로 가는지를 전부 내 손으로 이어 붙였다. 남이 만든 서비스를 쓸 때는 보이지 않던 수많은 연결이 그제야 눈에 들어왔다.</p>
+<p>둘이서 하는 프로젝트에는 숨을 곳이 없었다. 내가 맡은 기능이 멈추면 서비스의 절반이 멈췄다. 그래서 더 자주 이야기했다. 매일 진행 상황을 나누고, 막히는 곳이 있으면 바로 같은 화면을 들여다봤다. 아쉬웠던 건 기능 단위로 나눈 탓에 서로의 코드를 깊이 들여다보지 못했다는 점이다. 같은 프로젝트 안에서도 상대의 영역은 끝까지 조금 낯설었다.</p>
+<p>공공데이터를 다루며 배운 것들, 특히 학구도 폴리곤으로 학군을 판정한 이야기는 <a href="/devlog/2026-08-23-homefit-school-zone">다른 글</a>에 남겼다.</p>
+<h2>돌아보며</h2>
+<ul>
+<li>바닥을 한 번 확인하면, 거기서부터 올라가면 된다.</li>
+<li>꾸준함은 의지보다 환경에서 나온다.</li>
+<li>귀찮은 일은 넘기지 말고, 한 번 구조로 만든다.</li>
+<li>끝까지 들고 가 봐야 보이지 않던 연결이 보인다.</li>
+</ul>
+<p>첫날 던졌던 질문으로 돌아가 본다. 1년 뒤의 나는 얼마나 달라져 있을까. 아직 1년이 다 차지는 않았지만, 답은 조금 보인다. 예전엔 &quot;이런 게 있으면 좋겠다&quot;에서 생각이 멈췄다면, 이제는 그게 어떤 화면과 요청과 데이터로 이루어질지 먼저 그려 본다. 시트 앞에서 멈추던 자리에서, 한 걸음 더 들어갈 수 있게 됐다.</p>
+<p>그 한 걸음은 2학기에도 이어졌다. 공통 프로젝트에서는 6인 팀의 프론트엔드 리더를, 특화 프로젝트에서는 5인 팀의 팀장을 맡아 우수상(2등)을 받았다. 지금은 6인 팀의 팀장이자 AI 담당으로 자율 프로젝트(자유 주제 팀 프로젝트) 2주차를 보내고 있다. 1학기의 나에게 한마디를 건넬 수 있다면, 조급해하지 않아도 된다고 말해 주고 싶다. 그때 붙잡고 있던 것들은 하나도 버려지지 않았다고. 비워 두었던 앞자리를 이제야 채운다.</p>
+b:X
+10:X
+10:C
+0:{"buildId":"tGeBGOWh4BDtlYf5O5qTq","data":[{"rsc":["$","$1","c",{"children":[["$","div",null,{"className":"@container","children":["$","article",null,{"className":"mx-auto max-w-[760px] px-5 pb-24 pt-8 sm:px-8 sm:pt-10","children":[["$","div",null,{"children":["$","$L2",null,{"href":"/","scroll":false,"className":"text-[13px] text-foreground/65 transition-colors hover:text-accent","children":"← Devlog"}]}],["$","span",null,{"className":"mt-10 flex items-center gap-1.5 font-mono text-[12px] text-foreground/65","children":[["$","$L3",null,{"iconNode":[["path",{"d":"M8 2v3","key":"1ioesn"}],["path",{"d":"M16 2v3","key":"otl347"}],["rect",{"x":"3","y":"3","width":"18","height":"18","rx":"2","key":"h1oib"}],["path",{"d":"M3 9h18","key":"1pudct"}],["path",{"d":"M8 13h.01","key":"1sbv64"}],["path",{"d":"M12 13h.01","key":"y0uutt"}],["path",{"d":"M16 13h.01","key":"wip0gl"}],["path",{"d":"M8 17h.01","key":"p3bg7i"}],["path",{"d":"M12 17h.01","key":"p32p05"}],["path",{"d":"M16 17h.01","key":"ql8jdd"}]],"className":"lucide-calendar-days","aria-hidden":"true","size":13,"strokeWidth":1.7}],"2026-10-13"]}],["$","h1",null,{"className":"mt-4 text-3xl font-bold leading-tight tracking-[-0.025em] text-foreground sm:text-[2.25rem]","children":"비워 둔 앞자리 — SSAFY 1학기 회고"}],["$","$L4","2026-10-13-ssafy-semester1",{"slug":"2026-10-13-ssafy-semester1","recordVisit":true,"className":"mt-4"}],null,["$","div",null,{"className":"mt-6 flex flex-wrap gap-1.5","children":[["$","span","SSAFY",{"className":"rounded-full border border-ink/12 bg-ink/6 px-2.5 py-1 text-[12px] text-foreground/75","children":"SSAFY"}],["$","span","회고",{"className":"rounded-full border border-ink/12 bg-ink/6 px-2.5 py-1 text-[12px] text-foreground/75","children":"회고"}]]}],["$","div",null,{"className":"mt-10 border-t border-ink/10 doc-prose-module__rLTzAW__prose","dangerouslySetInnerHTML":{"__html":"$5"}}],"$L6"]}]}],["$L7","$L8"],"$L9"]}],"isPartial":"$@a","staleTime":"$b","varyParams":null},{"rsc":"$Lc","isPartial":"$@d","staleTime":"$b","varyParams":null},{"rsc":"$Le","isPartial":"$@f","staleTime":"$b","varyParams":"$10"},{"rsc":"$L11","isPartial":"$@12","staleTime":"$b","varyParams":"$10"}],"isUpgradeableISRFallback":false,"a":"$@13","rootVaryParams":null,"needsRuntimeRequest":"$@14"}
+15:I[97053,["/_next/static/chunks/0h2qsuyze9ds1.js","/_next/static/chunks/1hqxyr06zq6ce.js","/_next/static/chunks/0uri8sq5s_br9.js"],"default"]
+16:I[97367,["/_next/static/chunks/0h2qsuyze9ds1.js","/_next/static/chunks/1hqxyr06zq6ce.js"],"OutletBoundary"]
+17:"$Sreact.suspense"
+19:I[97367,["/_next/static/chunks/0h2qsuyze9ds1.js","/_next/static/chunks/1hqxyr06zq6ce.js"],"ViewportBoundary"]
+1a:I[97367,["/_next/static/chunks/0h2qsuyze9ds1.js","/_next/static/chunks/1hqxyr06zq6ce.js"],"MetadataBoundary"]
+1b:I[27201,["/_next/static/chunks/0h2qsuyze9ds1.js","/_next/static/chunks/1hqxyr06zq6ce.js"],"IconMark"]
+1c:I[39756,["/_next/static/chunks/0h2qsuyze9ds1.js","/_next/static/chunks/1hqxyr06zq6ce.js"],"default"]
+1d:I[37457,["/_next/static/chunks/0h2qsuyze9ds1.js","/_next/static/chunks/1hqxyr06zq6ce.js"],"default"]
+:HL["/_next/static/chunks/2b-2tives3t8w.css","style"]
+6:["$","$L15","2026-10-13-ssafy-semester1",{"slug":"2026-10-13-ssafy-semester1"}]
+7:["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/2b-2tives3t8w.css","precedence":"next"}]
+8:["$","script","script-0",{"src":"/_next/static/chunks/0uri8sq5s_br9.js","async":true}]
+9:["$","$L16",null,{"children":["$","$17",null,{"name":"Next.MetadataOutlet","children":"$@18"}]}]
+c:["$","$1","h",{"children":[null,["$","$L19",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]}],["$","div",null,{"hidden":true,"children":["$","$L1a",null,{"children":["$","$17",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"비워 둔 앞자리 — SSAFY 1학기 회고 · Belog"}],["$","meta","1",{"name":"giscus:backlink","content":"https://hj0543.github.io/devlog/2026-10-13-ssafy-semester1/"}],["$","link","2",{"rel":"icon","href":"/icon.png?icon.3bup3hv08dkxp.png","sizes":"1254x1254","type":"image/png"}],["$","$L1b","3",{}]]}]}]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}]
+e:["$","$1","c",{"children":[null,["$","$L1c",null,{"parallelRouterKey":"children","template":["$","$L1d",null,{}]}]]}]
+11:["$","$1","c",{"children":[null,["$","$L1c",null,{"parallelRouterKey":"children","template":["$","$L1d",null,{}]}]]}]
+14:true
+18:null
+b:300
+b:C
+13:0
+d:"$undefined"
+f:"$undefined"
+12:"$undefined"
+a:"$undefined"

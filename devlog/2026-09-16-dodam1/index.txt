@@ -1,0 +1,95 @@
+1:"$Sreact.fragment"
+2:I[3020,["/_next/static/chunks/0h2qsuyze9ds1.js","/_next/static/chunks/1hqxyr06zq6ce.js"],"default"]
+3:I[39756,["/_next/static/chunks/0h2qsuyze9ds1.js","/_next/static/chunks/1hqxyr06zq6ce.js"],"default"]
+4:I[37457,["/_next/static/chunks/0h2qsuyze9ds1.js","/_next/static/chunks/1hqxyr06zq6ce.js"],"default"]
+5:I[66519,["/_next/static/chunks/0h2qsuyze9ds1.js","/_next/static/chunks/1hqxyr06zq6ce.js","/_next/static/chunks/36h9ts2bz7_q3.js"],"default"]
+6:I[22016,["/_next/static/chunks/0h2qsuyze9ds1.js","/_next/static/chunks/1hqxyr06zq6ce.js","/_next/static/chunks/0uri8sq5s_br9.js"],""]
+7:I[5014,["/_next/static/chunks/0h2qsuyze9ds1.js","/_next/static/chunks/1hqxyr06zq6ce.js","/_next/static/chunks/0uri8sq5s_br9.js"],"default"]
+11:I[68027,["/_next/static/chunks/0h2qsuyze9ds1.js","/_next/static/chunks/1hqxyr06zq6ce.js"],"default",1]
+:HL["/_next/static/chunks/0ot4_9wr9wcme.css","style"]
+:HL["/_next/static/media/70bc3e132a0a741e-s.p.3t6q91iet4nsy.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/_next/static/media/7ebf22b5a21034f8-s.p.3j3877k49yy0l.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/_next/static/media/PretendardVariable-s.p.0ztvx5mb7lxp4.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/_next/static/chunks/2b-2tives3t8w.css","style"]
+f:X
+0:{"P":null,"c":["","devlog","2026-09-16-dodam1",""],"q":"","i":false,"f":[[["",{"children":["devlog",{"children":[["slug","2026-09-16-dodam1","d",[]],{"children":["__PAGE__",{},"$undefined","$undefined",4608]},"$undefined","$undefined",4608]},"$undefined","$undefined",4608]},"$undefined","$undefined",4624],[["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/0ot4_9wr9wcme.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","script","script-0",{"src":"/_next/static/chunks/0h2qsuyze9ds1.js","async":true,"nonce":"$undefined"}],["$","script","script-1",{"src":"/_next/static/chunks/1hqxyr06zq6ce.js","async":true,"nonce":"$undefined"}]],["$","html",null,{"lang":"ko","data-scroll-behavior":"smooth","suppressHydrationWarning":true,"className":"jetbrains_mono_7d65b77b-module__VxV-Ta__variable instrument_serif_c1e8e483-module__u2UhdW__variable pretendard_97774a5-module__y_0gNq__variable h-full antialiased","children":[["$","head",null,{"children":["$","script",null,{"dangerouslySetInnerHTML":{"__html":"(function () {\n  try {\n    var theme = localStorage.getItem(\"theme\");\n    if (theme !== \"light\" && theme !== \"dark\") {\n      theme = window.matchMedia(\"(prefers-color-scheme: dark)\").matches\n        ? \"dark\"\n        : \"light\";\n    }\n    document.documentElement.dataset.theme = theme;\n  } catch (e) {\n    document.documentElement.dataset.theme = \"light\";\n  }\n})();"}}]}],["$","body",null,{"id":"top","className":"flex min-h-full flex-col","children":[["$","$L2",null,{}],["$","main",null,{"className":"flex-1","children":["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[["$","div",null,{"className":"mx-auto flex min-h-[70vh] max-w-[1080px] flex-col items-center justify-center px-5 py-20 text-center sm:px-8","children":[["$","p",null,{"className":"flex items-baseline gap-2.5 text-label","children":[["$","span",null,{"className":"section-label","children":"Not Found"}],["$","span",null,{"className":"font-mono text-[12px] tracking-[0.05em] text-foreground/65","children":"/ 404"}]]}],["$","h1",null,{"className":"mt-6","children":["$","$L5",null,{"text":"404","as":"span","fontSize":"clamp(6rem, 24vw, 13rem)","fontWeight":800,"letterSpacing":"-0.04em","lineHeight":1,"tensionColor":"#c96f4a","hint":true}]}],["$","p",null,{"className":"mt-8 max-w-[420px] text-[16px] leading-7 text-foreground/75","children":["찾으시는 페이지가 없거나 주소가 바뀌었어요.",["$","br",null,{}],"그동안 숫자를 잡아당겨 보셔도 좋아요."]}],["$","$L6",null,{"href":"/","className":"mt-10 inline-flex items-center gap-1.5 border-b border-accent/60 pb-1 text-[15px] font-medium text-accent transition-colors hover:border-accent","children":[["$","$L7",null,{"ref":"$undefined","iconNode":[["path",{"d":"m12 19-7-7 7-7","key":"1l729n"}],["path",{"d":"M19 12H5","key":"x3x0zl"}]],"className":"lucide-arrow-left","aria-hidden":"true","size":15}],"홈으로 돌아가기"]}]]}],[]],"forbidden":"$undefined","unauthorized":"$undefined"}]}],["$","footer",null,{"id":"contact","className":"scroll-mt-20","children":["$","div",null,{"className":"mx-auto max-w-[1080px] px-5 sm:px-8","children":[["$","div",null,{"className":"flex flex-wrap items-end justify-between gap-x-10 gap-y-6 border-t border-ink/15 py-12","children":[["$","div",null,{"children":[["$","p",null,{"className":"section-label","children":"Let's Connect"}],["$","h2",null,{"className":"mt-3 text-2xl font-bold tracking-[-0.025em] text-foreground sm:text-[1.75rem]","children":"함께 해결할 문제를 이야기해요."}]]}],["$","p",null,{"className":"flex flex-wrap gap-x-8 gap-y-3","children":[["$","a",null,{"href":"mailto:hj0543@gmail.com","className":"inline-flex items-center gap-2 border-b border-foreground/40 pb-1 text-[15px] font-medium text-foreground transition-colors hover:border-accent hover:text-accent","children":[["$","$L7",null,{"ref":"$undefined","iconNode":[["path",{"d":"m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7","key":"132q7q"}],["rect",{"x":"2","y":"4","width":"20","height":"16","rx":"2","key":"izxlao"}]],"className":"lucide-mail","aria-hidden":"true","size":17,"strokeWidth":1.8}],"hj0543@gmail.com",["$","$L7",null,{"ref":"$undefined","iconNode":[["path",{"d":"M7 7h10v10","key":"1tivn9"}],["path",{"d":"M7 17 17 7","key":"1vkiza"}]],"className":"lucide-arrow-up-right","aria-hidden":"true","size":14}]]}],["$","a",null,{"href":"https://github.com/hj0543","target":"_blank","rel":"noreferrer","className":"inline-flex items-center gap-2 border-b border-foreground/40 pb-1 text-[15px] font-medium text-foreground transition-colors hover:border-accent hover:text-accent","children":["$L8","GitHub","$L9"]}]]}]]}],"$La"]}]}],"$Lb"]}]]}]]}],{"children":["$Lc",{"children":["$Ld",{"children":["$Le",{},null,false,null]},null,false,"$f"]},null,false,"$f"]},null,false,null],"$L10",false]],"m":"$undefined","G":["$11",["$L12"]],"S":true,"h":null,"r":"$undefined","s":"$undefined","a":"$undefined","l":"$undefined","p":"$undefined","d":"$undefined","b":"tGeBGOWh4BDtlYf5O5qTq"}
+13:I[85437,["/_next/static/chunks/0h2qsuyze9ds1.js","/_next/static/chunks/1hqxyr06zq6ce.js"],"Image"]
+14:I[53759,["/_next/static/chunks/0h2qsuyze9ds1.js","/_next/static/chunks/1hqxyr06zq6ce.js"],"default"]
+15:I[11875,["/_next/static/chunks/0h2qsuyze9ds1.js","/_next/static/chunks/1hqxyr06zq6ce.js"],"default"]
+17:I[97367,["/_next/static/chunks/0h2qsuyze9ds1.js","/_next/static/chunks/1hqxyr06zq6ce.js"],"OutletBoundary"]
+18:"$Sreact.suspense"
+1a:I[97367,["/_next/static/chunks/0h2qsuyze9ds1.js","/_next/static/chunks/1hqxyr06zq6ce.js"],"ViewportBoundary"]
+1c:I[97367,["/_next/static/chunks/0h2qsuyze9ds1.js","/_next/static/chunks/1hqxyr06zq6ce.js"],"MetadataBoundary"]
+8:["$","$L13",null,{"src":"/icons/github.svg","alt":"","aria-hidden":"true","width":17,"height":17,"className":"brand-icon shrink-0 "}]
+9:["$","$L7",null,{"ref":"$undefined","iconNode":"$0:f:0:1:0:props:children:1:props:children:1:props:children:2:props:children:props:children:0:props:children:1:props:children:0:props:children:2:props:iconNode","className":"lucide-arrow-up-right","aria-hidden":"true","size":14}]
+a:["$","div",null,{"className":"flex flex-wrap items-center justify-between gap-3 border-t border-ink/15 py-6","children":[["$","a",null,{"href":"#top","className":"text-[17px] font-bold tracking-[-0.04em] text-foreground","children":["Belog",["$","span",null,{"className":"text-accent","children":"."}]]}],["$","span",null,{"className":"flex flex-wrap gap-x-4 gap-y-1 text-[12px] text-foreground/65","children":[["$","$L14",null,{}],["$","span",null,{"children":["© ",2026," ","HYEONJIN JEONG",". All rights reserved."]}]]}]]}]
+b:["$","$L15",null,{}]
+c:["$","$1","c",{"children":[null,["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}]
+d:["$","$1","c",{"children":[null,["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}]
+e:["$","$1","c",{"children":["$L16",[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/2b-2tives3t8w.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","script","script-0",{"src":"/_next/static/chunks/0uri8sq5s_br9.js","async":true,"nonce":"$undefined"}]],["$","$L17",null,{"children":["$","$18",null,{"name":"Next.MetadataOutlet","children":"$@19"}]}]]}]
+10:["$","$1","h",{"children":[null,["$","$L1a",null,{"children":"$L1b"}],["$","div",null,{"hidden":true,"children":["$","$L1c",null,{"children":["$","$18",null,{"name":"Next.Metadata","children":"$L1d"}]}]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}]
+12:["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/0ot4_9wr9wcme.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]
+f:C
+1b:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
+1e:I[73428,["/_next/static/chunks/0h2qsuyze9ds1.js","/_next/static/chunks/1hqxyr06zq6ce.js","/_next/static/chunks/0uri8sq5s_br9.js"],"default"]
+21:I[27201,["/_next/static/chunks/0h2qsuyze9ds1.js","/_next/static/chunks/1hqxyr06zq6ce.js"],"IconMark"]
+1f:T1e4d,<p>도담은 금융 목표를 정하면 언제 이룰 수 있는지, 무엇을 바꾸면 얼마나 앞당길 수 있는지 알려주는 개인 금융 코치 앱이다. 나는 그 &quot;무엇을 바꾸면&quot;을 계산하는 시뮬레이션 엔진을 맡았다. 소비 감소, 저축 변경, 예적금 가입, 대출 추가상환과 대환, 할부·리볼빙·현금서비스, 그리고 이들을 묶은 복합 시나리오까지. 계산기는 하나씩 늘어 갔다.</p>
+<p>그런데 엔진이 커질수록 질문 하나가 따라왔다. <strong>사용자는 이걸 어떻게 쓰게 될까?</strong></p>
+<h2>1. 잘 만든 계산기, 쓰기 어려운 화면</h2>
+<p>시뮬레이션 화면은 정직했다. 유형을 고르고, 대출을 고르고, 금액을 넣으면 목표 달성일이 얼마나 당겨지는지 보여준다. 문제는 그 &quot;고르고, 넣는&quot; 과정이었다. 사용자가 실제로 궁금한 건 이런 문장이다.</p>
+<blockquote>
+<p>대출 100만 원 먼저 갚으면 여행 목표 언제쯤 이룰 수 있어?</p>
+</blockquote>
+<p>이 한 문장을 화면에서 확인하려면 시뮬레이션 메뉴에 들어가 유형을 고르고, 대출을 고르고, 금액을 입력하고, 목표를 찾아 결과를 읽어야 한다. 계산은 정확한데 질문까지 가는 길이 멀었다. 마침 중간 발표에서 &quot;AI 활용에 깊이가 없다&quot;는 피드백까지 받은 참이었다. 자연어로 묻고 답하는 AI 코치 &quot;토리&quot;에 시뮬레이션을 붙이자는 아이디어는 그렇게 나왔다.</p>
+<h2>2. 가장 쉬운 길: LLM에게 다 맡기기</h2>
+<p>처음 떠오른 건 가장 단순한 구조였다. 사용자의 대출, 목표, 저축 데이터를 프롬프트에 넣고 LLM에게 물어보는 것. 답은 분명 그럴듯하게 나올 것이다. 그런데 바로 그 &quot;그럴듯함&quot;이 문제였다.</p>
+<ul>
+<li>금리와 기간을 넣은 상환 계산을 LLM이 매번 똑같이 해낸다는 보장이 없다.</li>
+<li>틀린 숫자도 맞는 숫자와 똑같이 자신 있는 문장으로 나온다.</li>
+<li>같은 질문을 화면과 챗봇에 했을 때 숫자가 다르면, 사용자는 둘 다 믿지 않게 된다.</li>
+</ul>
+<p>금융에서 환각은 &quot;가끔 틀리는&quot; 수준으로 넘어갈 수 없다. 600만 원 목표에서 한 달이 어긋나면, 그건 틀린 서비스다.</p>
+<h2>3. 역할을 나눴다: 고르는 건 LLM, 계산은 서버</h2>
+<p>그래서 원칙을 하나 세웠다. <strong>LLM은 계산하지 않는다. 검증된 계산 결과를 설명할 뿐이다.</strong></p>
+<p>LLM에게 남긴 일은 두 가지뿐이다.</p>
+<ol>
+<li>사용자의 질문에 어떤 계산이 필요한지 <strong>고르기</strong></li>
+<li>서버가 계산한 결과를 쉬운 말로 <strong>풀어 쓰기</strong></li>
+</ol>
+<p>숫자는 전부 서버 엔진에서 나온다. 이게 가능했던 건 시뮬레이션 엔진이 이미 &quot;같은 입력이면 같은 결과&quot;를 지키도록 만들어져 있었기 때문이다. 정규화한 입력, 기준일, 계산 버전으로 지문을 만들어 같은 요청이면 같은 결과를 돌려주고, 계산 당시의 입력은 스냅샷으로 남긴다. 화면을 위해 다져 둔 재현성이, LLM이 믿고 부를 수 있는 도구의 조건이 되어 돌아왔다.</p>
+<h2>4. 질문 하나가 답이 되기까지</h2>
+<p>토리에게 질문이 들어오면 이 순서를 거친다.</p>
+<pre><code class="language-text">사용자 질문
+  → [서버] 입력 가드   : 계좌·카드번호, 이메일 같은 민감정보 차단
+  → [LLM]  도구 선택   : 8종 중 필요한 계산 하나 고르기
+  → [서버] 계산        : 진단·예측·시뮬레이션 엔진이 facts 생성
+  → [LLM]  답변 작성   : facts만 받아 3문장·200자 이내로 설명
+  → [서버] 출력 가드   : 답변 속 숫자를 facts와 대조
+  → [앱]   토리 말풍선
+</code></pre>
+<p><img src="/devlog/images/2026-09-16-dodam1/pipeline.png" alt="토리 AI 금융 에이전트 파이프라인"></p>
+<p>단계마다 지키고 싶었던 게 있다.</p>
+<p><strong>입력 가드: 개인정보는 LLM에 닿기 전에 거른다.</strong> 사용자가 무심코 계좌번호를 붙여 넣어도 외부 모델까지 가지 않는다.</p>
+<p><strong>도구 선택: 무엇을 계산할지만 고르게 한다.</strong> 도구는 소비 절감, 저축액 변경, 대출 중도상환, 대환, 복합 시뮬레이션과 목표 달성 예측, 최신 진단, 소비 예측 조회까지 8종이다. 이때 대출 ID나 계좌번호는 인자로 받지 않는다. 어떤 대출인지, 누구의 계좌인지는 서버가 로그인한 사용자 기준으로 찾는다. LLM이 남의 데이터를 가리킬 수 있는 길 자체를 없앴다.</p>
+<p><strong>계산: 숫자는 전부 여기서 나온다.</strong> 화면의 시뮬레이션과 토리가 같은 엔진을 부르니, 같은 질문에는 같은 숫자가 나온다.</p>
+<p><strong>답변 작성: 계산 결과만 넘긴다.</strong> 두 번째 LLM 호출에는 원본 거래 데이터가 아니라 엔진이 만든 facts만 들어간다. 모델이 볼 수 있는 숫자가 처음부터 검증된 숫자뿐이다.</p>
+<p><strong>출력 가드: 숫자 하나까지 다시 확인한다.</strong> 답변에 facts에 없는 숫자가 하나라도 섞이면 그 답변은 버리고 템플릿 문장으로 바꾼다. LLM이 응답하지 않을 때도 같은 템플릿으로 답한다. 말투는 조금 딱딱해져도, 틀린 숫자보다는 낫다.</p>
+<h2>5. 도구를 직접 붙여 보며 배운 것</h2>
+<p>나는 시뮬레이션 쪽 도구 몇 개를 직접 붙였다. 소비 예측 조회 도구, 그리고 대출 추가상환을 했을 때 다음 납입액이 어떻게 바뀌는지 답하는 기능이다. 붙여 보니 생각과 달랐던 점이 있었다.</p>
+<p><strong>답변 품질은 프롬프트보다 facts가 정한다.</strong> 프롬프트를 아무리 다듬어도 &quot;다음 달 납입액이 얼마 줄어드는지&quot; 같은 값이 facts에 없으면, LLM은 그걸 말할 수 없다. 출력 가드가 막기 때문이다. 결국 사용자가 궁금해할 숫자를 엔진 응답에 미리 담아 두는 일, 즉 <strong>도구의 응답 설계</strong>가 답변의 한계를 정했다.</p>
+<p><strong>제약이 오히려 답을 좋게 만든다.</strong> 3문장·200자라는 제한은 처음엔 답답해 보였다. 하지만 숫자가 많은 금융 답변일수록 짧아야 읽힌다. 핵심 숫자 하나와 그 의미만 남기니 말풍선이 오히려 친절해졌다.</p>
+<p><strong>엔진을 하나로 두면, 고칠 곳도 하나다.</strong> 계산식에 문제가 생겨도 엔진만 고치면 화면과 챗봇이 같이 고쳐진다. LLM 쪽에 계산 로직이 흩어져 있었다면, 같은 버그를 두 군데서 찾아야 했을 것이다.</p>
+<h2>정리</h2>
+<ul>
+<li>금융에서 LLM의 자리는 계산기가 아니라 통역사다. 무엇을 계산할지 고르고, 계산된 결과를 풀어 쓴다.</li>
+<li>서버 엔진의 재현성(같은 입력이면 같은 결과)이 LLM 도구의 전제 조건이다.</li>
+<li>개인정보와 식별자는 LLM이 다룰 수 없는 구조로 막는다. 인자로 받지 않으면 새어 나갈 수도 없다.</li>
+<li>답변 속 숫자는 출력 단계에서 한 번 더 대조한다. 실패하면 템플릿으로 물러선다.</li>
+<li>답변의 질은 프롬프트가 아니라, 도구가 돌려주는 facts의 설계에서 결정된다.</li>
+</ul>
+<p>결국 시뮬레이션 엔진은 그대로였다. 바뀐 건 사용자가 그 엔진에 닿는 방법이었다. 메뉴를 몇 번이나 거쳐야 닿던 답이, 이제 한 문장이면 된다.</p>
+16:["$","div",null,{"className":"@container","children":["$","article",null,{"className":"mx-auto max-w-[760px] px-5 pb-24 pt-8 sm:px-8 sm:pt-10","children":[["$","div",null,{"children":["$","$L6",null,{"href":"/","scroll":false,"className":"text-[13px] text-foreground/65 transition-colors hover:text-accent","children":"← Devlog"}]}],["$","span",null,{"className":"mt-10 flex items-center gap-1.5 font-mono text-[12px] text-foreground/65","children":[["$","$L7",null,{"ref":"$undefined","iconNode":[["path",{"d":"M8 2v3","key":"1ioesn"}],["path",{"d":"M16 2v3","key":"otl347"}],["rect",{"x":"3","y":"3","width":"18","height":"18","rx":"2","key":"h1oib"}],["path",{"d":"M3 9h18","key":"1pudct"}],["path",{"d":"M8 13h.01","key":"1sbv64"}],["path",{"d":"M12 13h.01","key":"y0uutt"}],["path",{"d":"M16 13h.01","key":"wip0gl"}],["path",{"d":"M8 17h.01","key":"p3bg7i"}],["path",{"d":"M12 17h.01","key":"p32p05"}],["path",{"d":"M16 17h.01","key":"ql8jdd"}]],"className":"lucide-calendar-days","aria-hidden":"true","size":13,"strokeWidth":1.7}],"2026-09-16"]}],["$","h1",null,{"className":"mt-4 text-3xl font-bold leading-tight tracking-[-0.025em] text-foreground sm:text-[2.25rem]","children":"LLM은 계산하지 않는다 — 시뮬레이션 엔진을 챗봇에 붙이기까지"}],["$","$L1e","2026-09-16-dodam1",{"slug":"2026-09-16-dodam1","recordVisit":true,"className":"mt-4"}],null,["$","div",null,{"className":"mt-6 flex flex-wrap gap-1.5","children":[["$","span","SSAFY",{"className":"rounded-full border border-ink/12 bg-ink/6 px-2.5 py-1 text-[12px] text-foreground/75","children":"SSAFY"}],["$","span","도담",{"className":"rounded-full border border-ink/12 bg-ink/6 px-2.5 py-1 text-[12px] text-foreground/75","children":"도담"}],["$","span","백엔드",{"className":"rounded-full border border-ink/12 bg-ink/6 px-2.5 py-1 text-[12px] text-foreground/75","children":"백엔드"}],["$","span","AI",{"className":"rounded-full border border-ink/12 bg-ink/6 px-2.5 py-1 text-[12px] text-foreground/75","children":"AI"}]]}],["$","div",null,{"className":"mt-10 border-t border-ink/10 doc-prose-module__rLTzAW__prose","dangerouslySetInnerHTML":{"__html":"$1f"}}],"$L20"]}]}]
+19:null
+1d:[["$","title","0",{"children":"LLM은 계산하지 않는다 — 시뮬레이션 엔진을 챗봇에 붙이기까지 · Belog"}],["$","meta","1",{"name":"giscus:backlink","content":"https://hj0543.github.io/devlog/2026-09-16-dodam1/"}],["$","link","2",{"rel":"icon","href":"/icon.png?icon.3bup3hv08dkxp.png","sizes":"1254x1254","type":"image/png"}],["$","$L21","3",{}]]
+22:I[97053,["/_next/static/chunks/0h2qsuyze9ds1.js","/_next/static/chunks/1hqxyr06zq6ce.js","/_next/static/chunks/0uri8sq5s_br9.js"],"default"]
+20:["$","$L22","2026-09-16-dodam1",{"slug":"2026-09-16-dodam1"}]
