@@ -1,0 +1,129 @@
+1:"$Sreact.fragment"
+2:I[22016,["/_next/static/chunks/0h2qsuyze9ds1.js","/_next/static/chunks/1qa79glashgql.js","/_next/static/chunks/0uri8sq5s_br9.js"],""]
+3:I[5014,["/_next/static/chunks/0h2qsuyze9ds1.js","/_next/static/chunks/1qa79glashgql.js","/_next/static/chunks/0uri8sq5s_br9.js"],"default"]
+4:I[73428,["/_next/static/chunks/0h2qsuyze9ds1.js","/_next/static/chunks/1qa79glashgql.js","/_next/static/chunks/0uri8sq5s_br9.js"],"default"]
+5:T3895,<blockquote>
+<p>블로그를 열기 전 노션에 정리해 두었던 기록을 옮겨 온 글이다. 날짜는 노션에 처음 적은 날을 따랐다.</p>
+</blockquote>
+<p>Homefit은 SSAFY 1학기 관통 프로젝트로 만든 부동산 추천 서비스다. 화면 구석에는 부동산·대출 질문을 받는 AI 챗봇이 떠 있었다. 마감을 며칠 앞두고 이 챗봇을 다시 열었다. 질문을 하면 답 대신 질문이 돌아왔다. 예산이 얼마인지, 어느 지역인지, 매매인지 전세인지. 대답해 주면 또 비슷한 질문이 돌아왔다.</p>
+<blockquote>
+<p><strong>나:</strong> 안양시 만안구에서 아파트를 사려고 하는데, 대출 받으면 어느 가격대까지 볼 수 있을까요?</p>
+<p><strong>챗봇:</strong> 정확히 안내해 드리려면 몇 가지 확인이 필요합니다. 연소득과 보유 자금은 어느 정도인가요? 생애 첫 주택 구입이신가요?</p>
+<p><strong>나:</strong> 부부 합산 연소득 1억 2천, 모아 둔 돈 2억이고 생애 첫 구입이에요.</p>
+<p><strong>챗봇:</strong> 감사합니다. 보다 정확한 안내를 위해 예산 범위와 희망 지역, 그리고 매매와 전세 중 어떤 거래를 고려하시는지 알려 주시겠어요?</p>
+<p><strong>나:</strong> 방금 말했는데요. 안양시 만안구, 매매고, 2억 있어요.</p>
+<p><strong>챗봇:</strong> 확인 감사합니다. 대출 가능 금액은 소득과 기존 대출, 금리 조건에 따라 달라집니다. 현재 보유하신 대출이 있는지, 희망 대출 기간은 어떻게 되는지 알려 주시겠어요?</p>
+</blockquote>
+<p>두 번을 대답했는데도 &quot;어느 가격대까지 볼 수 있는지&quot;라는 처음 질문에는 끝까지 답이 없었다. 방금 한 대답을 다시 묻기도 했다. 질문하면 &quot;정확한 확인을 위해 정보를 입력해 주세요&quot;만 돌려주는 고객센터 AI 상담사와 다를 게 없었다. 그런 상담사를 만나면 사용자는 몇 번 대답하다가 창을 닫는다. Homefit에 챗봇을 둔 건 매물을 보다 막힌 사람에게 바로 답을 주기 위해서였는데, 지금 상태로는 그 역할을 하지 못했다.</p>
+<h2>1. 묻기만 하는 이유는 두 가지였다</h2>
+<p>첫째는 시스템 프롬프트였다. 처음 챗봇을 만들 때 신중하게 답하라는 뜻으로 이렇게 적었다.</p>
+<pre><code class="language-text">확정적인 투자·대출·세금·법률 판단은 피하고, 필요한 확인사항을 짧게 덧붙입니다.
+정보가 부족하면 추측하지 말고 필요한 추가 정보만 1~3개 묻습니다.
+</code></pre>
+<p>질문 유형별 지침에도 &quot;소득/기존 대출/금리/기간 정보를 짧게 묻는다&quot; 같은 줄이 있었다. 부동산 질문은 대부분 소득이나 지역 같은 정보가 빠진 채로 들어오니, 모델은 답보다 질문을 먼저 골랐다.</p>
+<p>둘째는 대화 이력이었다. 화면에는 대화가 쌓여 보였지만, 서버로 가는 요청에는 방금 입력한 문장 하나뿐이었고 서버는 대화를 저장하지도 않았다. 서버 입장에서는 모든 요청이 첫 질문이었으니, 사용자가 앞에서 답한 내용을 알 수 없어 같은 질문을 반복했다.</p>
+<h2>2. 대화를 기억하게 하기</h2>
+<p>먼저 대화를 저장했다. 대화 세션(<code>AIConversation</code>)과 메시지(<code>AIMessage</code>) 모델을 만들고, 세션 ID는 브라우저가 만든 UUID를 그대로 기본 키로 썼다. 챗봇 창은 이 ID를 <code>sessionStorage</code>에 두고 요청마다 함께 보낸다.</p>
+<p>서버는 응답을 만들기 전에 최근 메시지를 꺼내 프롬프트 앞에 붙인다.</p>
+<pre><code class="language-python">def _load_history(conversation_id):
+    conversation = AIConversation.objects.get(id=conversation_id)
+    # 최신 10개를 역순으로 가져온 뒤 다시 뒤집어 시간 순으로 만든다(5턴 분량).
+    recent = list(conversation.messages.order_by(&#39;-created_at&#39;)[:10])
+    return [{&#39;role&#39;: m.role, &#39;content&#39;: m.content} for m in reversed(recent)]
+</code></pre>
+<p>여기서 1턴은 사용자 질문 하나와 챗봇 답 하나를 묶은 단위다. 처음에는 최근 3턴, 그러니까 메시지 6개만 기억하게 했다. 그런데 써 보니 금방 모자랐다. 예산을 묻고 답하고, 지역을 묻고 답하고, 거래유형을 묻고 답하면 그것만으로 3턴이 찬다. 다음 질문을 하는 순간 맨 처음에 말한 조건은 기억 밖으로 밀려난다. 앞의 대화 예시에서 &quot;안양시 만안구에서 매매&quot;라고 처음 밝힌 조건을 챗봇이 잊는 것과 같은 일이다. 그래서 다음 날 5턴(메시지 10개)으로 늘렸다.</p>
+<p>그렇다고 대화 전체를 매번 넣지는 않았다. 챗봇은 질문을 받을 때마다 기억할 대화를 통째로 모델에 다시 보낸다. 대화가 길어질수록 보내는 양이 늘고, 그만큼 비용과 응답 시간도 늘어난다. 조건을 주고받기에 충분하면서도 너무 길지 않은 선이 5턴이었다.</p>
+<h2>3. 먼저 답하게 하기</h2>
+<p>대화를 기억해도 프롬프트가 &quot;모르면 물어라&quot;인 이상 질문은 계속 나왔다. 그래서 시스템 프롬프트의 그 한 줄을 이렇게 바꿨다.</p>
+<pre><code class="language-text">정보가 부족해도 일반적인 기준으로 먼저 답변하고,
+더 정확한 답을 위해 필요한 정보를 마지막에 1개만 요청합니다.
+</code></pre>
+<p>질문 유형별 지침도 &quot;답하는 순서&quot;로 바꿨다. 추천 질문은 감당 가능한 가격대 → 후보 지역 → 비교 → 최종 추천 순으로, 대출 질문은 계산 기준 → 수치 대입 → 결론과 리스크 순으로. 대출 조건이 없으면 연소득 4,000만 원, 금리 4% 같은 기준값으로 예시 계산부터 하게 했다.</p>
+<p>그래도 &quot;마지막에 1개만&quot;은 결국 질문이었다. 7분 뒤 추천 지침에 이 줄들을 더했다.</p>
+<pre><code class="language-text">- 이전 대화에서 이미 확인된 정보(예산, 지역, 거래유형, 교통, 대출 등)는 절대 다시 묻지 않는다.
+- 예산·지역·거래유형 중 하나라도 파악됐으면 가정값을 보완해 바로 추천한다.
+</code></pre>
+<p>다음 날에는 추천과 대출 지침에서 질문을 아예 뺐다. &quot;추가 질문은 절대 하지 않는다. 가정값으로 바로 계산해 제시한다.&quot; 처음의 &quot;추측하지 말고 물어라&quot;와는 반대 방향이다. 대신 답의 첫머리에 어떤 가정값으로 계산했는지 밝히고, 마지막에 리스크를 덧붙이는 순서는 그대로 두었다. 가정이 실제 상황과 다르면 사용자가 그 값만 고쳐 다시 물으면 된다.</p>
+<h2>4. 지금 보고 있는 매물을 알려주기</h2>
+<p>사용자는 지도에서 매물을 보다가 &quot;여기 괜찮아?&quot;라고 묻는데, 챗봇에는 어떤 매물을 보고 있는지에 대한 정보가 넘어가지 않았다.</p>
+<p>프론트에 페이지 맥락을 담는 공용 상태(<code>useChatbotContext</code>)를 두고, 매물을 선택하면 단지명, 위치, 가격, 면적, 층, 준공 연도를 넣게 했다. 서버의 <code>_build_listing_context</code>는 이 값을 프롬프트용 텍스트로 바꾸고, 머리에 이렇게 적는다.</p>
+<pre><code class="language-text">[현재 사용자가 열람 중인 매물 — 이 매물에 대한 질문임.
+ 답변 첫 문장에 반드시 단지명과 핵심 조건(가격·면적)을 명시하라]
+</code></pre>
+<p>첫 문장에 단지명과 가격을 쓰게 한 건 확인용이다. 챗봇이 다른 매물로 착각했다면 첫 줄에서 바로 드러난다.</p>
+<h2>5. 용어는 사전에서 찾아 넣기</h2>
+<p>&quot;DSR이 뭐야?&quot;는 모델이 알아서 답해도 대체로 맞는다. 하지만 서비스에는 이미 &#39;부동산 알아가기&#39; 용어 사전이 있었고, 같은 용어를 사전과 챗봇이 다르게 설명하면 곤란했다.</p>
+<p>그래서 용어 사전을 근거로 답하도록 RAG를 붙였다. 사전의 용어명·별칭·요약을 <code>text-embedding-3-small</code>로 임베딩해 ChromaDB에 저장하고, 질문이 오면 가장 가까운 용어 3개의 정의를 프롬프트에 넣었다. 인덱스가 없거나 검색이 실패하면 용어명과 별칭으로 키워드 매칭을 한다.</p>
+<p>&quot;분당 전세 추천해줘&quot;에 전세의 정의를 붙일 필요는 없다. 그래서 &quot;뭐야&quot;, &quot;뜻&quot;, &quot;차이&quot; 같은 정의·계산 질문 패턴이 있을 때만 검색했고, 키워드 매칭에서는 전세, 매매, 아파트처럼 조건으로 흔히 쓰는 단어를 <code>_COMMON_WORDS</code>로 뺐다. 다만 벡터 검색에는 유사도 기준이 없어, 관련이 적어도 상위 3개를 항상 넣는다. 다시 한다면 거리 기준부터 둘 것이다.</p>
+<h2>6. 서버가 둘이 되었다</h2>
+<p>AI 요청은 Django가 아니라 따로 띄운 FastAPI 서버가 받았다. LLM 호출은 답이 오기까지 몇 초씩 걸리는데, 동기 방식인 Django가 받으면 기다리는 동안 워커가 묶여 다른 API까지 느려질 수 있다. 그래서 AI 요청만 비동기 서버로 떼어 냈다. FastAPI는 Django의 AI 서비스 코드와 ORM을 그대로 불러 쓰는 얇은 래퍼였고, 대화 이력을 붙이던 날 SSE 스트리밍도 더해 모델이 내놓는 글자를 바로바로 흘려보내게 했다.</p>
+<p>서버가 둘이 되니 한 서버에서는 당연하던 것들을 따로 챙겨야 했다. 메모리 캐시를 공유할 수 없어 매물 분석 리포트의 캐시를 DB에 둔 것이 그 예다. 인증도 그중 하나였는데, 이건 챙기지 못했다.</p>
+<h2>7. 인증 경계도 둘로 나뉘었다</h2>
+<p>이 글을 쓰려고 코드를 다시 읽다가 문제를 하나 찾았다.</p>
+<p>Django API는 JWT로 사용자를 확인한다. 프론트의 API 클라이언트가 요청마다 <code>Authorization: Bearer &lt;토큰&gt;</code> 헤더를 붙이고, Django는 토큰을 검증해 요청자를 정한다.</p>
+<p>그런데 챗봇은 스트리밍을 받으려고 이 클라이언트 대신 <code>fetch</code>를 직접 썼다. 헤더 없이 본문에 <code>user_id</code>만 담아 보냈고, FastAPI는 토큰을 확인하지 않고 그 값을 그대로 썼다. 그리고 그 ID로 사용자의 개인화 정보를 꺼내 프롬프트에 넣었다.</p>
+<pre><code class="language-python">user_context = _build_user_context(user_id) if user_id else &#39;&#39;
+# → 선호 지역, 연소득, 보유 자산, 기존 채무, 나이, 혼인 상태, 최근 관심 지역
+</code></pre>
+<p>본문의 <code>user_id</code>만 바꾸면 다른 사람의 소득과 자산이 들어간 프롬프트로 답을 받을 수 있었다. 요청자가 그 데이터의 주인인지 확인하지 않는 IDOR(Insecure Direct Object Reference) 취약점이다. 모델이 프롬프트 내용을 답에 옮겨 적으면 그대로 유출된다. 배포 전이라 실제 피해는 없었다.</p>
+<p>명세서에는 AI 응답 API의 인증을 &quot;선택&quot;으로 적었다. 로그인하면 개인화를 더한다는 뜻이었는데, FastAPI는 로그인 여부를 토큰이 아니라 클라이언트가 보낸 값으로 판단하고 있었다. 서버를 나눌 때 인증도 따로 챙겨야 했는데 놓쳤다.</p>
+<p>최대 출력 토큰 수도 클라이언트가 보낸 값을 따랐고, 대화 이력은 <code>conversation_id</code>만 맞으면 누구의 것이든 불러왔다.</p>
+<p>고치려면 사용자 확인을 서버가 토큰으로 하면 된다.</p>
+<pre><code class="language-python">from fastapi import Header, HTTPException
+from rest_framework_simplejwt.exceptions import TokenError
+from rest_framework_simplejwt.tokens import AccessToken
+
+def current_user_id(authorization: str | None = Header(default=None)) -&gt; int | None:
+    if not authorization or not authorization.startswith(&#39;Bearer &#39;):
+        return None  # 비로그인: 개인화 없이 답한다
+    try:
+        # Django와 같은 SECRET_KEY로 서명·만료를 검증한다
+        return AccessToken(authorization.removeprefix(&#39;Bearer &#39;))[&#39;user_id&#39;]
+    except TokenError:
+        raise HTTPException(status_code=401)
+</code></pre>
+<p>FastAPI는 이미 Django 설정을 불러와 쓰므로 같은 키로 JWT를 검증할 수 있다. 엔드포인트는 이 함수가 돌려준 ID만 쓰고, 본문의 <code>user_id</code>는 없앤다. 챗봇의 <code>fetch</code>에는 <code>Authorization</code> 헤더를 붙인다. 대화 이력은 주인을 확인한 뒤 불러오고, 출력 토큰 수는 서버가 정한다. 프록시를 거치지 않고 FastAPI에 직접 닿을 수 없도록 <code>127.0.0.1</code>에만 열어 둔다.</p>
+<h2>결과</h2>
+<ul>
+<li>챗봇이 이전 5턴을 기억하고, 이미 들은 예산과 지역을 다시 묻지 않는다.</li>
+<li>정보가 모자라도 가정값으로 먼저 답하고, 정해진 순서로 근거를 쌓는다.</li>
+<li>지도에서 보고 있는 매물을 알고, 첫 문장에서 어느 매물인지 밝힌다.</li>
+<li>용어 질문에는 서비스 용어 사전의 정의를 근거로 답한다.</li>
+<li>인증 구멍은 회고하며 찾았고, 프로젝트 저장소에는 고치지 못한 채 남아 있다.</li>
+</ul>
+<h2>돌아보며</h2>
+<ul>
+<li>신중하게 답하라고 쓴 프롬프트가 사용자에게는 답답함이 됐다. &quot;모르면 물어라&quot; 대신 &quot;가정하고 먼저 답하라&quot;로 바꾸자 대화가 앞으로 나아갔다.</li>
+<li>챗봇이 이상하게 굴 때는 프롬프트보다 모델이 실제로 받는 입력을 먼저 확인해야 했다. 화면에는 대화가 쌓여 있었지만 서버가 받은 건 마지막 문장 하나였다.</li>
+<li>서버를 나누면서 코드는 import로 공유했지만 인증은 따로 챙기지 않았다. 클라이언트가 보낸 사용자 ID를 그대로 믿은 게 문제였다.</li>
+</ul>
+<p>챗봇이 되묻지 않게 하는 데는 프롬프트 몇 줄과 테이블 두 개면 충분했다. 하지만 누구의 정보로 답하는지는 확인하지 않았다. 소득과 자산 같은 민감한 정보를 쓰는 기능이라면, 답의 품질만큼 그 정보를 본인에게만 쓰는지도 함께 확인해야 했다.</p>
+b:X
+10:X
+10:C
+0:{"buildId":"CJydaEvBKlu3W7coBDLFj","data":[{"rsc":["$","$1","c",{"children":[["$","div",null,{"className":"@container","children":["$","article",null,{"className":"mx-auto max-w-[760px] px-5 pb-24 pt-8 sm:px-8 sm:pt-10","children":[["$","div",null,{"children":["$","$L2",null,{"href":"/","scroll":false,"className":"text-[13px] text-foreground/65 transition-colors hover:text-accent","children":"← Devlog"}]}],["$","span",null,{"className":"mt-10 flex items-center gap-1.5 font-mono text-[12px] text-foreground/65","children":[["$","$L3",null,{"iconNode":[["path",{"d":"M8 2v3","key":"1ioesn"}],["path",{"d":"M16 2v3","key":"otl347"}],["rect",{"x":"3","y":"3","width":"18","height":"18","rx":"2","key":"h1oib"}],["path",{"d":"M3 9h18","key":"1pudct"}],["path",{"d":"M8 13h.01","key":"1sbv64"}],["path",{"d":"M12 13h.01","key":"y0uutt"}],["path",{"d":"M16 13h.01","key":"wip0gl"}],["path",{"d":"M8 17h.01","key":"p3bg7i"}],["path",{"d":"M12 17h.01","key":"p32p05"}],["path",{"d":"M16 17h.01","key":"ql8jdd"}]],"className":"lucide-calendar-days","aria-hidden":"true","size":13,"strokeWidth":1.7}],"2026-06-27"]}],["$","h1",null,{"className":"mt-4 text-3xl font-bold leading-tight tracking-[-0.025em] text-foreground sm:text-[2.25rem]","children":"되묻기만 하던 챗봇 — 대화를 기억시키고, 먼저 답하게 하고, 둘로 나뉜 인증을 돌아보기"}],["$","$L4","2026-06-27-homefit-chatbot",{"slug":"2026-06-27-homefit-chatbot","recordVisit":true,"className":"mt-4"}],["$","p",null,{"className":"mt-4 text-[16px] leading-7 text-foreground/70","children":"되묻기만 하던 Homefit AI 챗봇에 대화 기억, 먼저 답하는 흐름, 보고 있는 매물 맥락, 용어 사전을 붙이고, 둘로 나뉜 서버와 인증 경계를 돌아본 기록."}],["$","div",null,{"className":"mt-6 flex flex-wrap gap-1.5","children":[["$","span","SSAFY",{"className":"rounded-full border border-ink/12 bg-ink/6 px-2.5 py-1 text-[12px] text-foreground/75","children":"SSAFY"}],["$","span","Homefit",{"className":"rounded-full border border-ink/12 bg-ink/6 px-2.5 py-1 text-[12px] text-foreground/75","children":"Homefit"}],["$","span","백엔드",{"className":"rounded-full border border-ink/12 bg-ink/6 px-2.5 py-1 text-[12px] text-foreground/75","children":"백엔드"}],["$","span","AI",{"className":"rounded-full border border-ink/12 bg-ink/6 px-2.5 py-1 text-[12px] text-foreground/75","children":"AI"}]]}],["$","div",null,{"className":"mt-10 border-t border-ink/10 doc-prose-module__rLTzAW__prose","dangerouslySetInnerHTML":{"__html":"$5"}}],"$L6"]}]}],["$L7","$L8"],"$L9"]}],"isPartial":"$@a","staleTime":"$b","varyParams":null},{"rsc":"$Lc","isPartial":"$@d","staleTime":"$b","varyParams":null},{"rsc":"$Le","isPartial":"$@f","staleTime":"$b","varyParams":"$10"},{"rsc":"$L11","isPartial":"$@12","staleTime":"$b","varyParams":"$10"}],"isUpgradeableISRFallback":false,"a":"$@13","rootVaryParams":null,"needsRuntimeRequest":"$@14"}
+15:I[97053,["/_next/static/chunks/0h2qsuyze9ds1.js","/_next/static/chunks/1qa79glashgql.js","/_next/static/chunks/0uri8sq5s_br9.js"],"default"]
+16:I[97367,["/_next/static/chunks/0h2qsuyze9ds1.js","/_next/static/chunks/1qa79glashgql.js"],"OutletBoundary"]
+17:"$Sreact.suspense"
+19:I[97367,["/_next/static/chunks/0h2qsuyze9ds1.js","/_next/static/chunks/1qa79glashgql.js"],"ViewportBoundary"]
+1a:I[97367,["/_next/static/chunks/0h2qsuyze9ds1.js","/_next/static/chunks/1qa79glashgql.js"],"MetadataBoundary"]
+1b:I[27201,["/_next/static/chunks/0h2qsuyze9ds1.js","/_next/static/chunks/1qa79glashgql.js"],"IconMark"]
+1c:I[39756,["/_next/static/chunks/0h2qsuyze9ds1.js","/_next/static/chunks/1qa79glashgql.js"],"default"]
+1d:I[37457,["/_next/static/chunks/0h2qsuyze9ds1.js","/_next/static/chunks/1qa79glashgql.js"],"default"]
+:HL["/_next/static/chunks/2b-2tives3t8w.css","style"]
+6:["$","$L15","2026-06-27-homefit-chatbot",{"slug":"2026-06-27-homefit-chatbot"}]
+7:["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/2b-2tives3t8w.css","precedence":"next"}]
+8:["$","script","script-0",{"src":"/_next/static/chunks/0uri8sq5s_br9.js","async":true}]
+9:["$","$L16",null,{"children":["$","$17",null,{"name":"Next.MetadataOutlet","children":"$@18"}]}]
+c:["$","$1","h",{"children":[null,["$","$L19",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]}],["$","div",null,{"hidden":true,"children":["$","$L1a",null,{"children":["$","$17",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"되묻기만 하던 챗봇 — 대화를 기억시키고, 먼저 답하게 하고, 둘로 나뉜 인증을 돌아보기 · Belog"}],["$","meta","1",{"name":"description","content":"되묻기만 하던 Homefit AI 챗봇에 대화 기억, 먼저 답하는 흐름, 보고 있는 매물 맥락, 용어 사전을 붙이고, 둘로 나뉜 서버와 인증 경계를 돌아본 기록."}],["$","meta","2",{"name":"giscus:backlink","content":"https://hj0543.github.io/devlog/2026-06-27-homefit-chatbot/"}],["$","link","3",{"rel":"icon","href":"/icon.png?icon.3bup3hv08dkxp.png","sizes":"1254x1254","type":"image/png"}],["$","$L1b","4",{}]]}]}]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}]
+e:["$","$1","c",{"children":[null,["$","$L1c",null,{"parallelRouterKey":"children","template":["$","$L1d",null,{}]}]]}]
+11:["$","$1","c",{"children":[null,["$","$L1c",null,{"parallelRouterKey":"children","template":["$","$L1d",null,{}]}]]}]
+14:true
+18:null
+b:300
+b:C
+13:0
+d:"$undefined"
+f:"$undefined"
+12:"$undefined"
+a:"$undefined"

@@ -1,0 +1,123 @@
+1:"$Sreact.fragment"
+2:I[3020,["/_next/static/chunks/0h2qsuyze9ds1.js","/_next/static/chunks/1qa79glashgql.js"],"default"]
+3:I[39756,["/_next/static/chunks/0h2qsuyze9ds1.js","/_next/static/chunks/1qa79glashgql.js"],"default"]
+4:I[37457,["/_next/static/chunks/0h2qsuyze9ds1.js","/_next/static/chunks/1qa79glashgql.js"],"default"]
+5:I[66519,["/_next/static/chunks/0h2qsuyze9ds1.js","/_next/static/chunks/1qa79glashgql.js","/_next/static/chunks/36h9ts2bz7_q3.js"],"default"]
+6:I[22016,["/_next/static/chunks/0h2qsuyze9ds1.js","/_next/static/chunks/1qa79glashgql.js","/_next/static/chunks/0uri8sq5s_br9.js"],""]
+7:I[5014,["/_next/static/chunks/0h2qsuyze9ds1.js","/_next/static/chunks/1qa79glashgql.js","/_next/static/chunks/0uri8sq5s_br9.js"],"default"]
+11:I[68027,["/_next/static/chunks/0h2qsuyze9ds1.js","/_next/static/chunks/1qa79glashgql.js"],"default",1]
+:HL["/_next/static/chunks/0eq0t183zyjbt.css","style"]
+:HL["/_next/static/media/70bc3e132a0a741e-s.p.3t6q91iet4nsy.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/_next/static/media/7ebf22b5a21034f8-s.p.3j3877k49yy0l.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/_next/static/media/PretendardVariable-s.p.0ztvx5mb7lxp4.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/_next/static/chunks/2b-2tives3t8w.css","style"]
+f:X
+0:{"P":null,"c":["","devlog","2026-10-14-geomate-design",""],"q":"","i":false,"f":[[["",{"children":["devlog",{"children":[["slug","2026-10-14-geomate-design","d",[]],{"children":["__PAGE__",{},"$undefined","$undefined",4608]},"$undefined","$undefined",4608]},"$undefined","$undefined",4608]},"$undefined","$undefined",4624],[["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/0eq0t183zyjbt.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","script","script-0",{"src":"/_next/static/chunks/0h2qsuyze9ds1.js","async":true,"nonce":"$undefined"}],["$","script","script-1",{"src":"/_next/static/chunks/1qa79glashgql.js","async":true,"nonce":"$undefined"}]],["$","html",null,{"lang":"ko","data-scroll-behavior":"smooth","suppressHydrationWarning":true,"className":"jetbrains_mono_7d65b77b-module__VxV-Ta__variable instrument_serif_c1e8e483-module__u2UhdW__variable pretendard_97774a5-module__y_0gNq__variable h-full antialiased","children":[["$","head",null,{"children":["$","script",null,{"dangerouslySetInnerHTML":{"__html":"(function () {\n  var theme = \"dark\";\n  try {\n    if (/^\\/(projects|devlog)\\/[^/]+\\/?$/.test(window.location.pathname)\n        && localStorage.getItem(\"theme\") === \"light\") {\n      theme = \"light\";\n    }\n  } catch (e) {}\n  document.documentElement.dataset.theme = theme;\n})();"}}]}],["$","body",null,{"id":"top","className":"flex min-h-full flex-col","children":[["$","$L2",null,{}],["$","main",null,{"className":"flex-1","children":["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[["$","div",null,{"className":"mx-auto flex min-h-[70vh] max-w-[1080px] flex-col items-center justify-center px-5 py-20 text-center sm:px-8","children":[["$","p",null,{"className":"flex items-baseline gap-2.5 text-label","children":[["$","span",null,{"className":"section-label","children":"Not Found"}],["$","span",null,{"className":"font-mono text-[12px] tracking-[0.05em] text-foreground/65","children":"/ 404"}]]}],["$","h1",null,{"className":"mt-6","children":["$","$L5",null,{"text":"404","as":"span","fontSize":"clamp(6rem, 24vw, 13rem)","fontWeight":800,"letterSpacing":"-0.04em","lineHeight":1,"tensionColor":"#c96f4a","hint":true}]}],["$","p",null,{"className":"mt-8 max-w-[420px] text-[16px] leading-7 text-foreground/75","children":["찾으시는 페이지가 없거나 주소가 바뀌었어요.",["$","br",null,{}],"그동안 숫자를 잡아당겨 보셔도 좋아요."]}],["$","$L6",null,{"href":"/","className":"mt-10 inline-flex items-center gap-1.5 border-b border-accent/60 pb-1 text-[15px] font-medium text-accent transition-colors hover:border-accent","children":[["$","$L7",null,{"ref":"$undefined","iconNode":[["path",{"d":"m12 19-7-7 7-7","key":"1l729n"}],["path",{"d":"M19 12H5","key":"x3x0zl"}]],"className":"lucide-arrow-left","aria-hidden":"true","size":15}],"홈으로 돌아가기"]}]]}],[]],"forbidden":"$undefined","unauthorized":"$undefined"}]}],["$","footer",null,{"id":"contact","className":"scroll-mt-20","children":["$","div",null,{"className":"mx-auto max-w-[1080px] px-5 sm:px-8","children":[["$","div",null,{"className":"flex flex-wrap items-end justify-between gap-x-10 gap-y-6 border-t border-ink/15 py-12","children":[["$","div",null,{"children":[["$","p",null,{"className":"section-label","children":"Let's Connect"}],["$","h2",null,{"className":"mt-3 text-2xl font-bold tracking-[-0.025em] text-foreground sm:text-[1.75rem]","children":"함께 해결할 문제를 이야기해요."}]]}],["$","p",null,{"className":"flex flex-wrap gap-x-8 gap-y-3","children":[["$","a",null,{"href":"mailto:hj0543@gmail.com","className":"inline-flex items-center gap-2 border-b border-foreground/40 pb-1 text-[15px] font-medium text-foreground transition-colors hover:border-accent hover:text-accent","children":[["$","$L7",null,{"ref":"$undefined","iconNode":[["path",{"d":"m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7","key":"132q7q"}],["rect",{"x":"2","y":"4","width":"20","height":"16","rx":"2","key":"izxlao"}]],"className":"lucide-mail","aria-hidden":"true","size":17,"strokeWidth":1.8}],"hj0543@gmail.com",["$","$L7",null,{"ref":"$undefined","iconNode":[["path",{"d":"M7 7h10v10","key":"1tivn9"}],["path",{"d":"M7 17 17 7","key":"1vkiza"}]],"className":"lucide-arrow-up-right","aria-hidden":"true","size":14}]]}],["$","a",null,{"href":"https://github.com/hj0543","target":"_blank","rel":"noreferrer","className":"inline-flex items-center gap-2 border-b border-foreground/40 pb-1 text-[15px] font-medium text-foreground transition-colors hover:border-accent hover:text-accent","children":["$L8","GitHub","$L9"]}]]}]]}],"$La"]}]}],"$Lb"]}]]}]]}],{"children":["$Lc",{"children":["$Ld",{"children":["$Le",{},null,false,null]},null,false,"$f"]},null,false,"$f"]},null,false,null],"$L10",false]],"m":"$undefined","G":["$11",["$L12"]],"S":true,"h":null,"r":"$undefined","s":"$undefined","a":"$undefined","l":"$undefined","p":"$undefined","d":"$undefined","b":"CJydaEvBKlu3W7coBDLFj"}
+13:I[85437,["/_next/static/chunks/0h2qsuyze9ds1.js","/_next/static/chunks/1qa79glashgql.js"],"Image"]
+14:I[53759,["/_next/static/chunks/0h2qsuyze9ds1.js","/_next/static/chunks/1qa79glashgql.js"],"default"]
+15:I[11875,["/_next/static/chunks/0h2qsuyze9ds1.js","/_next/static/chunks/1qa79glashgql.js"],"default"]
+17:I[97367,["/_next/static/chunks/0h2qsuyze9ds1.js","/_next/static/chunks/1qa79glashgql.js"],"OutletBoundary"]
+18:"$Sreact.suspense"
+1a:I[97367,["/_next/static/chunks/0h2qsuyze9ds1.js","/_next/static/chunks/1qa79glashgql.js"],"ViewportBoundary"]
+1c:I[97367,["/_next/static/chunks/0h2qsuyze9ds1.js","/_next/static/chunks/1qa79glashgql.js"],"MetadataBoundary"]
+8:["$","$L13",null,{"src":"/icons/github.svg","alt":"","aria-hidden":"true","width":17,"height":17,"className":"brand-icon shrink-0 "}]
+9:["$","$L7",null,{"ref":"$undefined","iconNode":"$0:f:0:1:0:props:children:1:props:children:1:props:children:2:props:children:props:children:0:props:children:1:props:children:0:props:children:2:props:iconNode","className":"lucide-arrow-up-right","aria-hidden":"true","size":14}]
+a:["$","div",null,{"className":"flex flex-wrap items-center justify-between gap-3 border-t border-ink/15 py-6","children":[["$","a",null,{"href":"#top","className":"text-[17px] font-bold tracking-[-0.04em] text-foreground","children":["Belog",["$","span",null,{"className":"text-accent","children":"."}]]}],["$","span",null,{"className":"flex flex-wrap gap-x-4 gap-y-1 text-[12px] text-foreground/65","children":[["$","$L14",null,{}],["$","span",null,{"children":["© ",2026," ","HYEONJIN JEONG",". All rights reserved."]}]]}]]}]
+b:["$","$L15",null,{}]
+c:["$","$1","c",{"children":[null,["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}]
+d:["$","$1","c",{"children":[null,["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}]
+e:["$","$1","c",{"children":["$L16",[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/2b-2tives3t8w.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","script","script-0",{"src":"/_next/static/chunks/0uri8sq5s_br9.js","async":true,"nonce":"$undefined"}]],["$","$L17",null,{"children":["$","$18",null,{"name":"Next.MetadataOutlet","children":"$@19"}]}]]}]
+10:["$","$1","h",{"children":[null,["$","$L1a",null,{"children":"$L1b"}],["$","div",null,{"hidden":true,"children":["$","$L1c",null,{"children":["$","$18",null,{"name":"Next.Metadata","children":"$L1d"}]}]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}]
+12:["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/0eq0t183zyjbt.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]
+f:C
+1b:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
+1e:I[73428,["/_next/static/chunks/0h2qsuyze9ds1.js","/_next/static/chunks/1qa79glashgql.js","/_next/static/chunks/0uri8sq5s_br9.js"],"default"]
+21:I[27201,["/_next/static/chunks/0h2qsuyze9ds1.js","/_next/static/chunks/1qa79glashgql.js"],"IconMark"]
+1f:T3cde,<p>Geomate는 태블릿에서 펜으로 도형을 그리면, 그 흐름 안에서 보조선과 도형 사이의 관계, 적용할 공식을 제안하는 기하 학습 앱이다. 코드 어시스턴트가 다음 줄을 흐릿하게 띄워 주듯, 학생이 작도하는 캔버스 위에 &quot;이 점에서 수선을 내려 보세요&quot; 같은 다음 한 수를 띄우고 싶었다.</p>
+<p>아직 코드보다 설계 문서가 더 많은 단계다. 그래도 만들기 전에 정해 둔 것들이 앞으로의 코드를 결정할 것 같아서, 그 고민을 먼저 남겨 둔다. 나중에 이 글을 다시 열었을 때 무엇이 맞았고 무엇이 틀렸는지 확인해 보고 싶기도 하다.</p>
+<p><img src="/projects/geomate/geomate.png" alt="Geomate"></p>
+<h2>1. &quot;어디에 선을 그어야 해요?&quot;</h2>
+<p>수학학원에서 가르칠 때 기하 단원에서 가장 많이 들은 질문이다. 공식은 외우고 있는데 시작을 못 한다. 평면도형에서는 도형 안에 숨어 있는 평행, 닮음, 합동을 보지 못하고, 입체도형에서는 그림에 보이지 않는 면과 모서리를 떠올리지 못한다. 무엇을 봐야 할지 모르니 어떤 공식을 꺼내야 할지도 모른다.</p>
+<p>그럴 때 내가 해 줄 수 있던 건 답이 아니라 힌트였다. &quot;이 각이랑 같은 각이 어디 또 있을까?&quot; 정도의 한마디. 그 한마디가 학생 손에서 선 하나로 바뀌는 순간, 풀이가 굴러가기 시작했다.</p>
+<p>입체도형에서는 학생마다 차이가 더 크게 벌어졌다. 공간감각이 있는 학생은 금방 따라왔지만, 그렇지 않은 학생은 전개도를 접으면 어느 면끼리 맞닿는지, 입체를 평면으로 자르면 단면이 어떤 도형이 되는지, 머릿속에서 도형을 돌리면 어떻게 보이는지, 쌓기나무가 뒤에 몇 개 숨어 있는지에서 오래 막혔다. &quot;이 면을 접으면 어느 면이랑 붙을까?&quot;라고 물어도, 머릿속으로 접어 볼 수 없는 학생에게는 힌트가 닿지 않았다. 이때 필요한 건 말이 아니라 도형을 직접 펼치고, 돌리고, 잘라 보는 경험이었다.</p>
+<p>기존 풀이 앱은 사진을 찍으면 완성된 풀이를 보여 준다. 답은 빠르지만, 정작 학생이 연습해야 하는 과정이 통째로 빠진다. 평면에서는 선을 어디에 그을지 찾는 과정이고, 입체에서는 도형을 펼치고, 돌리고, 잘라 보며 숨은 관계를 확인하는 과정이다. Geomate는 그 과정에 끼어드는 도구로 만들고 싶었다.</p>
+<h2>2. 그림이 아니라 관계를 저장한다</h2>
+<p>가장 먼저 정해야 했던 건 도형을 어떤 데이터로 들고 있을지였다.</p>
+<p>캔버스 입장에서 선분은 좌표 두 개다. 그런데 Geomate가 다뤄야 하는 건 &quot;선분 AB와 CD가 평행하다&quot;, &quot;점 M은 BC의 중점이다&quot; 같은 문장이다. 좌표만 저장해 두면 이 문장은 매번 좌표에서 다시 추측해야 한다. 그리고 추측은 펜 오차 앞에서 쉽게 틀린다.</p>
+<p>그래서 도형을 <strong>객체와, 객체 사이의 관계</strong>로 저장하기로 했다.</p>
+<pre><code class="language-ts">type Point =
+  | { id: string; kind: &quot;free&quot;; x: number; y: number }
+  | { id: string; kind: &quot;midpoint&quot;; of: [string, string] }
+  | { id: string; kind: &quot;intersection&quot;; of: [string, string] }
+  | { id: string; kind: &quot;foot&quot;; from: string; to: string }; // 수선의 발
+
+type Shape =
+  | { id: string; kind: &quot;segment&quot;; p: string; q: string }
+  | { id: string; kind: &quot;circle&quot;; center: string; through: string };
+
+type Relation =
+  | { kind: &quot;parallel&quot;; a: string; b: string; source: &quot;user&quot; | &quot;detected&quot; }
+  | { kind: &quot;perpendicular&quot;; a: string; b: string; source: &quot;user&quot; | &quot;detected&quot; };
+</code></pre>
+<p>핵심은 점에도 종류가 있다는 것이다. 자유점만 좌표를 직접 갖고, 중점·교점·수선의 발은 <strong>무엇으로부터 만들어졌는지</strong>만 기억한다. 좌표는 그릴 때 계산한다.</p>
+<p>이렇게 두면 동적 작도가 자연스럽게 따라온다. 꼭짓점 B를 끌어서 옮기면 BC의 중점 M은 따로 손대지 않아도 따라온다. M은 &quot;B와 C의 중점&quot;이라는 관계로 존재하기 때문이다. 좌표를 저장했다면 B가 움직일 때마다 &quot;이 점이 원래 중점이었던가?&quot;를 다시 맞춰야 한다.</p>
+<p>입체도 같은 원칙으로 다룰 생각이다. 위 타입은 평면만 담았지만, 입체에서도 꼭짓점과 면에 이름을 붙이고 그 사이의 관계를 기억한다. 전개도는 각 면의 모양과 &quot;어느 면이 어느 면에 붙어 접히는지&quot;를 경첩처럼 저장하고, 단면은 &quot;어느 세 점을 지나는 평면으로 잘랐는지&quot;로 저장한다. 쌓기나무는 칸마다 쌓인 개수만 들고 있다가, 앞·옆·위에서 본 모양을 거기서 계산한다. 그러면 학생이 전개도를 접는 정도나 자르는 위치를 바꿔도, 맞닿는 면과 단면의 모양은 관계에서 다시 계산된다.</p>
+<p>앱과 서버가 이 구조를 그대로 주고받게 할 생각이다. 앱은 이 JSON으로 그리고, 서버는 같은 JSON으로 관계를 판정한다.</p>
+<h2>3. 펜은 삐뚤다</h2>
+<p>두 번째 고민은 오차다. 사람 손으로 그린 선은 완벽한 직선이 아니고, 평행하게 그리려 해도 정확히 평행하지 않다. 엄밀하게 비교하면 학생이 그린 도형에서 평행한 선은 영원히 나오지 않는다.</p>
+<p>반대로 너무 너그러우면 우연히 비슷하게 그려진 두 선을 평행이라고 우긴다. 학습 도구에서 이건 더 나쁘다. 학생은 앱이 말하면 믿는다.</p>
+<p>그래서 오차를 한 번에 해결하려 하지 않고, 세 단계로 나눠 받기로 했다.</p>
+<p><strong>획을 도형으로 바꾼다.</strong> 펜이 남긴 점 수백 개를 그대로 들고 있지 않고, 획이 끝나는 순간 직선인지 원인지 판단해 깨끗한 도형으로 바꾼다. 이 단계가 지나면 &quot;약간 휘어진 선분&quot; 같은 건 남지 않는다.</p>
+<p><strong>그릴 때 붙여 준다.</strong> 선 끝이 기존 점 근처에 오면 그 점에 붙인다. 교점이나 중점 근처도 마찬가지다. 학생이 &quot;이 점에서 시작하려고 했다&quot;는 의도를 그리는 순간에 받아 두면, 나중에 좌표로 추측할 일이 줄어든다.</p>
+<p><strong>판정할 때만 허용 오차를 쓴다.</strong> 그래도 남는 각도와 길이 차이는 허용 오차 안에서 비교한다. 다만 허용 오차로 찾은 관계는 <code>source: &quot;detected&quot;</code>로 표시하고, 학생이 명시한 관계(<code>source: &quot;user&quot;</code>)와 구분한다. 확신이 없는 관계는 단정하지 않고 &quot;두 선이 평행인가요?&quot;처럼 되묻는 쪽을 생각하고 있다.</p>
+<p>다만 붙여 주는 기능이 오히려 의도를 놓칠 때도 있다. 실제 문제에는 점끼리 가까이 모인 그림이 적지 않다. 학생이 교점 바로 옆에서 선을 시작하려 해도, 스냅이 그 선을 교점에 붙여 버린다. 그래서 붙일 곳이 애매할 때는 앱이 혼자 정하지 않고 &quot;교점에 붙이기&quot;와 &quot;이 자리에 새 점 두기&quot;, 두 가지 선택지를 보여 주려 한다. 의도를 추측하기 어려우면 학생에게 직접 묻는 것이다.</p>
+<p>결국 오차를 줄이는 가장 좋은 방법은 계산을 정교하게 다듬는 것보다, 학생의 의도를 가능한 한 일찍 받아 두는 것이라고 본다.</p>
+<h2>4. 그리는 일과 판정하는 일은 다른 시계로 돈다</h2>
+<p>펜 끝을 선이 늦게 따라오면, 종이에 그리는 느낌은 거기서 끝난다. 작도는 즉각적이어야 한다. 반면 관계 판정과 보조선 추천은 조금 늦어도 괜찮다. 학생이 선 하나를 다 그은 뒤에 힌트가 떠도 충분하다.</p>
+<p>그래서 두 일을 나눴다.</p>
+<ul>
+<li><strong>그리기</strong>는 react-native-skia와 Reanimated 워크렛으로 UI 스레드에서 처리한다. JS 스레드가 바빠도 선은 펜을 따라간다.</li>
+<li><strong>판정</strong>은 획이 끝난 뒤 서버에 비동기로 요청한다. 응답이 오기 전까지 캔버스는 아무것도 기다리지 않는다.</li>
+</ul>
+<p>이 구분은 데이터 구조와도 맞물린다. 그리는 동안에는 좌표만 움직이고, 획이 끝나 도형으로 확정되는 순간에만 관계 그래프가 바뀐다. 서버에 보낼 시점이 자연스럽게 정해진다.</p>
+<h2>5. 판단은 규칙이, 설명은 LLM이</h2>
+<p>보조선을 제안하는 일을 LLM에게 통째로 맡기면 편하다. 그런데 LLM은 존재하지 않는 닮음을 그럴듯하게 설명할 수 있다. <a href="/devlog/2026-09-16-dodam1">도담에서 금융 계산을 LLM에게 맡기지 않았던 것</a>과 같은 이유로, Geomate에서도 역할을 나눈다.</p>
+<ul>
+<li>관계 판정과 보조선 후보는 SymPy 기반 규칙 엔진이 정한다.</li>
+<li>LLM은 검증된 결과를 학생 눈높이의 힌트로 바꾸는 일만 한다.</li>
+</ul>
+<p>보조선 후보는 교과 과정에서 자주 쓰는 패턴(수선, 평행선, 중점 연결)으로 먼저 좁히고, 그중 <strong>새로운 관계를 만들어 내는 선</strong>만 제안할 생각이다. 선을 하나 그었는데 아무 관계도 새로 생기지 않는다면, 그건 힌트가 아니라 낙서다.</p>
+<h2>아직 모르는 것들</h2>
+<ul>
+<li>허용 오차를 얼마로 둬야 학생 손글씨를 너그럽게 받으면서도 틀린 관계를 말하지 않을까.</li>
+<li>힌트를 몇 단계로 나눠야 답을 알려 주지 않으면서도 막힌 학생을 움직일 수 있을까.</li>
+<li>중학교 &quot;삼각형의 성질&quot; 단원으로 시작한 범위를 원과 사각형까지 넓혔을 때, 관계 그래프는 버틸까.</li>
+</ul>
+<h2>돌아보며</h2>
+<p>학원에서 일할 때는 스프레드시트 밖으로 한 걸음도 나가지 못했다. 그때 만들고 싶었지만 만들 줄 몰랐던 것 중 하나를, 이제 처음부터 직접 설계하고 있다.</p>
+<p>SSAFY 면접에서 지원 이유를 물었을 때도 이 이야기를 했다. 학생들이 막히는 지점을 옆에서 봐 왔으니, 이제는 개발을 제대로 배워서 그 지점을 돕는 도구를 직접 만들어 보고 싶다고. 이번 프로젝트는 그때 한 다짐을 지키는 일이다.</p>
+<p>사실 처음에는 혼자 만들 생각이었다. 이 아이디어를 오래 품고 있었지만, 교육 분야 프로젝트에 흥미를 가진 사람을 만나기가 어려웠다. 다행히 이번 팀에는 수학과 출신 팀원이 두 명 있었다. 기하 문제를 어떻게 풀고 가르치는지 함께 이야기할 사람이 생기니, 혼자 그리던 그림이 훨씬 단단해졌다.</p>
+<p>나머지 팀원들도 함께해 주었다. 한 명은 처음부터 방향을 믿고 따라와 주었고, 두 명은 주제에 확신을 갖기까지 설득이 쉽지 않았다. 그래도 결국 같은 방향을 보고 따라와 준 것이 팀장으로서 가장 고맙다. 그래서 더더욱 코드보다 먼저 생각을 적어 두고 싶었다. 무엇을 왜 만드는지 팀원들이 언제든 다시 확인할 수 있어야 하니까.</p>
+<p>이번 프로젝트는 꼭 끝까지 완성해서 수상까지 해 보고 싶다. 욕심을 더 내자면 수상에서 멈추지 않고, 실제 학생들이 쓰는 서비스로 배포하고 싶다. 학원에서 만났던 학생들 같은 누군가가 이 앱으로 선 하나를 스스로 그어 보는 것, 그게 이 프로젝트의 진짜 목표다. 그리고 이 경험을 바탕으로, 학생이 스스로 배우게 돕는 도구를 계속 만들 수 있는 에듀테크 기업에서 일하고 싶다. 이 글의 예측이 얼마나 틀렸는지는 프로젝트가 마무리 되고 난 뒤 회고 글에서 확인하려 한다.</p>
+<h2>덧붙임: 사흘 뒤, PoC에서 확인한 것</h2>
+<p>이 글을 쓰고 사흘 뒤인 10월 17일부터 PoC를 만들었다. 과정은 <a href="/devlog/2026-10-24-geomate-p3-p4">다음 글</a>에 정리했고, 여기에는 이 글의 예측과 맞춰 본 결과만 남긴다.</p>
+<p><strong>맞았던 것</strong></p>
+<ul>
+<li><strong>관계로 저장한다.</strong> 평면 도형은 작도 단계의 목록으로 저장된다. 좌표를 갖는 건 자유점뿐이고, 나머지 점은 &quot;어느 두 점의 중점&quot;, &quot;어느 두 선의 교점&quot;처럼 만든 방법만 기억한다. 전개도도 면과 경첩으로 저장해서, 접는 정도만 바꾸면 맞닿는 꼭짓점이 다시 계산된다.</li>
+<li><strong>판단은 엔진이 한다.</strong> 계산과 관계 판정은 TypeScript 엔진과 SymPy를 쓰는 Python 엔진이 맡고, 두 엔진의 결과를 서로 대조한다. 앱과 서버가 같은 JSON을 주고받는다는 구상도 그대로 갔다.</li>
+<li><strong>새 관계를 만드는 선만 제안한다.</strong> 평행선, 연장선, 반지름, 수선, 두 점 잇기 같은 후보를 하나씩 넣어 보고, 규칙 추론으로 목표에 닿는 선만 고른다. 중1 보조선 34개를 교재 해설과 대조했더니 31개가 교재와 같은 선이었고, 나머지 3개는 다른 정리로 가는 경로였다.</li>
+<li><strong>펜 오차는 의도를 일찍 받아서 줄인다.</strong> 획이 끝나면 선분·꺾은선·곡선으로 분류하고, 끝점을 12px 안의 점에 붙인다. 화면에서 가깝다는 이유만으로 두 점을 같다고 판정하지 않고, 애매하면 학생에게 되묻는다.</li>
+</ul>
+<p><strong>달라진 것</strong></p>
+<ul>
+<li><strong>입체가 먼저였다.</strong> 이 글은 중학교 &quot;삼각형의 성질&quot; 단원부터 시작하려 했지만, 처음 엔진에 연결한 문제 사진 11장은 모두 입체도형이었다. 그래서 단면, 전개도, 회전체, 쌓기나무 엔진이 평면보다 먼저 자리를 잡았다.</li>
+<li><strong>PoC는 웹에서 먼저 만들었다.</strong> 제품은 계획대로 태블릿 앱으로 만들지만, 엔진과 학습 흐름을 빨리 확인하려고 PoC는 React와 Three.js로 브라우저에서 만들었다. 시험은 같은 와이파이에 연결한 갤럭시 탭에서 열어 했다. 엔진이 화면과 분리된 JSON 계약으로 동작하니, 앱으로 옮길 때도 화면 쪽만 다시 만들면 된다.</li>
+<li><strong>LLM은 힌트가 아니라 입력 초안을 적는다.</strong> 힌트와 근거 문장은 규칙이 만든다. LLM은 문제 사진을 읽어 엔진 입력의 초안을 적는 일을 맡았고, 그 초안도 엔진이 모순과 조건 부족을 먼저 검사한다.</li>
+<li><strong>범위를 정하려고 교재부터 셌다.</strong> 중1~3 교재 6권, 2,864문항을 분류해 엔진이 받아야 할 도형과 조건을 정했다. 중2·3 문항 중 보조선이 필요한 문제는 16%(297문항)였고, 3학년이 26%로 2학년(10%)보다 훨씬 많았다.</li>
+</ul>
+<p>&quot;아직 모르는 것들&quot;에 남긴 질문 중 힌트 단계는 &quot;관찰 질문 → 시도할 조작·보조선 → 새 관계와 이유 → 재시도&quot;의 사다리로 일단 정했다. 펜 허용 오차는 목표 태블릿 실측이 남아 있어 아직 실제 필기 데이터로 정하지 못했다.</p>
+16:["$","div",null,{"className":"@container","children":["$","article",null,{"className":"mx-auto max-w-[760px] px-5 pb-24 pt-8 sm:px-8 sm:pt-10","children":[["$","div",null,{"children":["$","$L6",null,{"href":"/","scroll":false,"className":"text-[13px] text-foreground/65 transition-colors hover:text-accent","children":"← Devlog"}]}],["$","span",null,{"className":"mt-10 flex items-center gap-1.5 font-mono text-[12px] text-foreground/65","children":[["$","$L7",null,{"ref":"$undefined","iconNode":[["path",{"d":"M8 2v3","key":"1ioesn"}],["path",{"d":"M16 2v3","key":"otl347"}],["rect",{"x":"3","y":"3","width":"18","height":"18","rx":"2","key":"h1oib"}],["path",{"d":"M3 9h18","key":"1pudct"}],["path",{"d":"M8 13h.01","key":"1sbv64"}],["path",{"d":"M12 13h.01","key":"y0uutt"}],["path",{"d":"M16 13h.01","key":"wip0gl"}],["path",{"d":"M8 17h.01","key":"p3bg7i"}],["path",{"d":"M12 17h.01","key":"p32p05"}],["path",{"d":"M16 17h.01","key":"ql8jdd"}]],"className":"lucide-calendar-days","aria-hidden":"true","size":13,"strokeWidth":1.7}],"2026-10-14"]}],["$","h1",null,{"className":"mt-4 text-3xl font-bold leading-tight tracking-[-0.025em] text-foreground sm:text-[2.25rem]","children":"내가 SSAFY에 오게 된 이유 — 면접 때 답변한 다짐을 지킬 때"}],["$","$L1e","2026-10-14-geomate-design",{"slug":"2026-10-14-geomate-design","recordVisit":true,"className":"mt-4"}],null,["$","div",null,{"className":"mt-6 flex flex-wrap gap-1.5","children":[["$","span","Geomate",{"className":"rounded-full border border-ink/12 bg-ink/6 px-2.5 py-1 text-[12px] text-foreground/75","children":"Geomate"}],["$","span","설계",{"className":"rounded-full border border-ink/12 bg-ink/6 px-2.5 py-1 text-[12px] text-foreground/75","children":"설계"}]]}],["$","div",null,{"className":"mt-10 border-t border-ink/10 doc-prose-module__rLTzAW__prose","dangerouslySetInnerHTML":{"__html":"$1f"}}],"$L20"]}]}]
+19:null
+1d:[["$","title","0",{"children":"내가 SSAFY에 오게 된 이유 — 면접 때 답변한 다짐을 지킬 때 · Belog"}],["$","meta","1",{"name":"giscus:backlink","content":"https://hj0543.github.io/devlog/2026-10-14-geomate-design/"}],["$","link","2",{"rel":"icon","href":"/icon.png?icon.3bup3hv08dkxp.png","sizes":"1254x1254","type":"image/png"}],["$","$L21","3",{}]]
+22:I[97053,["/_next/static/chunks/0h2qsuyze9ds1.js","/_next/static/chunks/1qa79glashgql.js","/_next/static/chunks/0uri8sq5s_br9.js"],"default"]
+20:["$","$L22","2026-10-14-geomate-design",{"slug":"2026-10-14-geomate-design"}]

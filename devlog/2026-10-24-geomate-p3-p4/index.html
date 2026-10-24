@@ -1,0 +1,460 @@
+<!DOCTYPE html><html lang="ko" data-scroll-behavior="smooth" class="jetbrains_mono_7d65b77b-module__VxV-Ta__variable instrument_serif_c1e8e483-module__u2UhdW__variable pretendard_97774a5-module__y_0gNq__variable h-full antialiased"><head><meta charSet="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="preload" href="/_next/static/media/70bc3e132a0a741e-s.p.3t6q91iet4nsy.woff2" as="font" crossorigin="" type="font/woff2"/><link rel="preload" href="/_next/static/media/7ebf22b5a21034f8-s.p.3j3877k49yy0l.woff2" as="font" crossorigin="" type="font/woff2"/><link rel="preload" href="/_next/static/media/PretendardVariable-s.p.0ztvx5mb7lxp4.woff2" as="font" crossorigin="" type="font/woff2"/><link rel="stylesheet" href="/_next/static/chunks/0eq0t183zyjbt.css" data-precedence="next"/><link rel="stylesheet" href="/_next/static/chunks/2b-2tives3t8w.css" data-precedence="next"/><link rel="preload" as="script" fetchPriority="low" href="/_next/static/chunks/3s6nzrbk-8mnv.js"/><script src="/_next/static/chunks/19mx3mg6lkumu.js" async=""></script><script src="/_next/static/chunks/4561u0v7ysn3r.js" async=""></script><script src="/_next/static/chunks/1f5ust74o0qp9.js" async=""></script><script src="/_next/static/chunks/turbopack-28mfh38016ipq.js" async=""></script><script src="/_next/static/chunks/0h2qsuyze9ds1.js" async="" crossorigin=""></script><script src="/_next/static/chunks/1qa79glashgql.js" async="" crossorigin=""></script><script src="/_next/static/chunks/36h9ts2bz7_q3.js" async="" crossorigin=""></script><script src="/_next/static/chunks/0uri8sq5s_br9.js" async="" crossorigin=""></script><meta name="next-size-adjust" content=""/><title>LLM은 입력 초안을 적는다 — 문제 사진 11장에서 시작한 기하 엔진 PoC · Belog</title><meta name="description" content="문제 사진 11장으로 시작한 기하 엔진 PoC를 힌트 사다리와 초등 도형까지 넓히고 본 프로젝트로 옮긴 과정. LLM에는 입력 초안만 맡기고, 계산은 TypeScript·Python 두 엔진으로 교차 검증했다."/><meta name="giscus:backlink" content="https://hj0543.github.io/devlog/2026-10-24-geomate-p3-p4/"/><link rel="icon" href="/icon.png?icon.3bup3hv08dkxp.png" sizes="1254x1254" type="image/png"/><script>(function () {
+  var theme = "dark";
+  try {
+    if (/^\/(projects|devlog)\/[^/]+\/?$/.test(window.location.pathname)
+        && localStorage.getItem("theme") === "light") {
+      theme = "light";
+    }
+  } catch (e) {}
+  document.documentElement.dataset.theme = theme;
+})();</script><script src="/_next/static/chunks/0cz1d0mv5g_q7.js" noModule=""></script></head><body id="top" class="flex min-h-full flex-col"><div hidden=""><!--$--><!--/$--></div><header class="sticky top-0 z-40 bg-background/90 backdrop-blur-md"><div class="mx-auto flex h-16 max-w-[1080px] items-center gap-6 px-5 sm:px-8"><a class="text-[20px] font-bold tracking-[-0.04em] text-foreground" href="/">Belog<span class="text-accent">.</span></a><nav aria-label="주요 메뉴" class="ml-auto hidden items-center gap-9 md:flex"><a class="text-sm font-medium text-foreground/80 transition-colors hover:text-accent" href="/#projects">프로젝트</a><a class="text-sm font-medium text-foreground/80 transition-colors hover:text-accent" href="/#devlog">기록</a><a class="text-sm font-medium text-foreground/80 transition-colors hover:text-accent" href="/#about">소개</a></nav><div class="ml-auto flex items-center gap-2 md:ml-3 md:gap-3"><a class="hidden h-9 items-center gap-1 rounded-md border border-foreground/80 px-4 text-sm font-medium text-foreground transition-colors hover:border-accent hover:bg-accent hover:text-on-accent md:inline-flex" href="/#contact">연락하기<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-up-right" aria-hidden="true"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg></a><button type="button" aria-label="라이트 테마" title="라이트 테마" class="flex size-8 cursor-pointer items-center justify-center rounded-full text-foreground/60 transition-colors hover:bg-ink/6 hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/60"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-moon" aria-hidden="true"><path d="M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.46.402.803a6 6 0 0 0 8.268 8.268c.344-.215.825-.004.803.401"></path></svg></button><button type="button" aria-label="메뉴 열기" aria-expanded="false" aria-controls="mobile-navigation" class="flex size-9 cursor-pointer items-center justify-center rounded-full text-foreground/75 hover:bg-ink/6 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent md:hidden"><svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-menu" aria-hidden="true"><path d="M4 5h16"></path><path d="M4 12h16"></path><path d="M4 19h16"></path></svg></button></div></div><nav id="mobile-navigation" aria-label="모바일 주요 메뉴" class="hidden absolute inset-x-0 top-full border-y border-ink/10 bg-background px-5 py-3 shadow-lg md:hidden"><div class="mx-auto grid max-w-[1080px]"><a class="flex min-h-11 items-center border-b border-ink/8 text-sm font-medium text-foreground/80 last:border-0 hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent" href="/#projects">프로젝트</a><a class="flex min-h-11 items-center border-b border-ink/8 text-sm font-medium text-foreground/80 last:border-0 hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent" href="/#devlog">기록</a><a class="flex min-h-11 items-center border-b border-ink/8 text-sm font-medium text-foreground/80 last:border-0 hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent" href="/#about">소개</a><a class="flex min-h-11 items-center text-sm font-medium text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent" href="/#contact">연락하기 ↗</a></div></nav></header><main class="flex-1"><div class="@container"><article class="mx-auto max-w-[760px] px-5 pb-24 pt-8 sm:px-8 sm:pt-10"><div><a class="text-[13px] text-foreground/65 transition-colors hover:text-accent" href="/">← Devlog</a></div><span class="mt-10 flex items-center gap-1.5 font-mono text-[12px] text-foreground/65"><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-calendar-days" aria-hidden="true"><path d="M8 2v3"></path><path d="M16 2v3"></path><rect x="3" y="3" width="18" height="18" rx="2"></rect><path d="M3 9h18"></path><path d="M8 13h.01"></path><path d="M12 13h.01"></path><path d="M16 13h.01"></path><path d="M8 17h.01"></path><path d="M12 17h.01"></path><path d="M16 17h.01"></path></svg>2026-10-24</span><h1 class="mt-4 text-3xl font-bold leading-tight tracking-[-0.025em] text-foreground sm:text-[2.25rem]">LLM은 입력 초안을 적는다 — 문제 사진 11장에서 시작한 기하 엔진 PoC</h1><span class="relative inline-flex flex-wrap items-center gap-3 text-[12px] tabular-nums text-foreground/65 mt-4"><span class="inline-flex items-center gap-1" title="댓글 수"><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-message-circle" aria-hidden="true"><path d="M2.992 16.342a2 2 0 0 1 .094 1.167l-1.065 3.29a1 1 0 0 0 1.236 1.168l3.413-.998a2 2 0 0 1 1.099.092 10 10 0 1 0-4.777-4.719"></path></svg><span class="sr-only">댓글<!-- --> </span><span>—</span></span><span class="inline-flex items-center gap-1" title="좋아요 수"><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-heart" aria-hidden="true"><path d="M2 9.5a5.5 5.5 0 0 1 9.591-3.676.56.56 0 0 0 .818 0A5.49 5.49 0 0 1 22 9.5c0 2.29-1.5 4-3 5.5l-5.492 5.313a2 2 0 0 1-3 .019L5 15c-1.5-1.5-3-3.2-3-5.5"></path></svg><span class="sr-only">좋아요<!-- --> </span><span>—</span></span><span class="inline-flex items-center gap-1" title="조회 수"><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-eye" aria-hidden="true"><path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0"></path><circle cx="12" cy="12" r="3"></circle></svg><span class="sr-only">조회<!-- --> </span><span>—</span></span></span><p class="mt-4 text-[16px] leading-7 text-foreground/70">문제 사진 11장으로 시작한 기하 엔진 PoC를 힌트 사다리와 초등 도형까지 넓히고 본 프로젝트로 옮긴 과정. LLM에는 입력 초안만 맡기고, 계산은 TypeScript·Python 두 엔진으로 교차 검증했다.</p><div class="mt-6 flex flex-wrap gap-1.5"><span class="rounded-full border border-ink/12 bg-ink/6 px-2.5 py-1 text-[12px] text-foreground/75">Geomate</span><span class="rounded-full border border-ink/12 bg-ink/6 px-2.5 py-1 text-[12px] text-foreground/75">AI</span><span class="rounded-full border border-ink/12 bg-ink/6 px-2.5 py-1 text-[12px] text-foreground/75">기하 엔진</span></div><div class="mt-10 border-t border-ink/10 doc-prose-module__rLTzAW__prose"><p>Geomate 기하 엔진 PoC에 문제 사진 11장을 연결했다. 10월 17일에는 마지막 두 단계인 P3·P4의 구현을 진행했고, 이후 평면 도형과 보조선, 힌트, 초등 도형까지 범위를 넓혔다. 10월 23일에는 엔진을 팀의 본 프로젝트 저장소로 옮겼다. 계산이 맞고 화면이 떠도, 학생이 혼자 쓸 수 있는 도구가 완성된 것은 아니었다.</p>
+<blockquote>
+<p>2026년 10월 23일까지의 코드와 진행 기록을 반영했다. 아래 수치는 각 실행 당시의 결과다. 이 글을 수정하면서 전체 테스트나 사진 해석 API를 다시 실행한 것은 아니다.</p>
+</blockquote>
+<h2>Situation — 상황</h2>
+<p>Geomate는 학생이 태블릿에서 도형을 돌려 보고, 자르고, 펼치며 관계를 이해하도록 돕는 기하 학습 앱이다. 본 개발에 앞서 기하 계산과 화면 조작을 어디까지 직접 구현할 수 있는지 PoC로 확인하고 있다.</p>
+<p>엔진 명세는 P0부터 P4까지 다섯 단계로 나누고, 단계마다 종료 조건을 적어 두었다. 코딩 에이전트에게 일을 맡길 때도 이 명세와 종료 조건을 기준으로 삼았다. P2까지는 Codex로 만들었고, P3·P4는 같은 명세를 넘겨 Claude Code로 이어받았다. 여기서 말하는 P3·P4는 초기 엔진 명세의 단계다. 이후 진행한 평면·힌트·보조선·답 형식 등의 중1-2 재검토 단계와는 별개다.</p>
+<p>P3에 들어가기 전에 에이전트에게 바로 구현을 시키지 않았다. 먼저 P4까지 가는 길에서 막힐 조건을 점검하게 했다. 코드로 풀 수 없는 일을 먼저 가려내야, 에이전트가 할 일과 내가 할 일을 나눌 수 있었다.</p>
+<ol>
+<li><strong>문제 사진:</strong> 명세에 첨부된 사진 11장이 아직 저장소에 없었다. 내가 직접 넣어야 했다.</li>
+<li><strong>문항 검수:</strong> 원본 조건 확인과 독립 풀이는 사람이 해야 검수 완료로 올릴 수 있다.</li>
+<li><strong>태블릿 실측:</strong> 실제 기기가 필요하다.</li>
+<li><strong>사진 해석:</strong> API 키가 필요하다.</li>
+</ol>
+<p>점검 결과를 보고 결정을 내렸다. 사진은 내가 폴더에 넣고, 기하 서비스는 Python으로 만들고, 해석 키는 <code>.env</code>로 주입하기로 했다. 목표 기기는 갤럭시 탭이지만 먼저 PC localhost에서 확인하기로 했다. 그리고 시작 전에 Codex가 만든 P2 상태를 첫 커밋으로 남겼다. 에이전트가 큰 변경을 하다 틀어져도 돌아갈 기준점이 필요했다.</p>
+<p>에이전트와 일하는 규칙도 문서로 남겼다. 엔진 기능을 하나 끝낼 때마다 교재 답지와 대조해 스스로 검수하게 했다. 단계를 마치면 내가 직접 테스트할 문항과 여는 법, 확인할 점을 함께 보고하게 했다. 버그는 바로 고치되 개선안은 선택지로 물어보게 하고, <code>.env</code>는 읽지 못하게 했다. 단계별 작업 기록과 인수인계 문서를 남겨, 다른 PC나 새 세션에서도 같은 기준으로 이어 가게 했다.</p>
+<h2>Task — 과제</h2>
+<table>
+<thead>
+<tr>
+<th>단계</th>
+<th>할 일</th>
+<th>명세가 정한 종료 조건</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>P3 · 실제 문제 통합</td>
+<td>문제 사진 11장을 엔진에 연결</td>
+<td>11문항을 사람이 검수해 확정</td>
+</tr>
+<tr>
+<td>P4 · 입력·기기 통합</td>
+<td>사진 해석, 펜 입력, 기하 서비스, 태블릿 연결</td>
+<td>사진 인식 오류와 계산 오류를 분리 측정하고 기기별 실행 증거 확보</td>
+</tr>
+</tbody></table>
+<p>사진 11장은 모두 입체도형 문제였다. 기존 엔진인 정육면체 단면, 회전체, 직육면체만으로는 부족했다.</p>
+<table>
+<thead>
+<tr>
+<th>문항</th>
+<th>내용</th>
+<th>추가로 필요한 계산</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>0847, 0850</td>
+<td>정사면체·정십이면체 전개도를 접었을 때 겹치는 꼭짓점</td>
+<td>정다각형 전개도 접기</td>
+</tr>
+<tr>
+<td>0863</td>
+<td>정육면체 전개도에 표시한 세 점으로 자른 단면의 각</td>
+<td>전개도 → 접기 → 단면</td>
+</tr>
+<tr>
+<td>0913</td>
+<td>원뿔을 다섯 평면으로 자른 단면의 모양</td>
+<td>원뿔 단면</td>
+</tr>
+<tr>
+<td>0925</td>
+<td>원뿔에 실을 한 바퀴 감은 최단 경로</td>
+<td>원뿔 옆면 전개</td>
+</tr>
+<tr>
+<td>1014</td>
+<td>반원기둥 홈을 판 직육면체의 부피</td>
+<td>직육면체에서 곡선 단면 기둥 빼기</td>
+</tr>
+<tr>
+<td>0861, 1006, 1019, 1020, 1063</td>
+<td>정육면체 단면, 구멍 뚫린 입체, 회전체</td>
+<td>기존 엔진 연결·보완</td>
+</tr>
+</tbody></table>
+<p>브라우저의 TypeScript 엔진과 Python 서비스에는 같은 입력을 보내 결과를 비교해야 했다. 사진을 잘못 읽은 것과, 읽은 입력을 잘못 계산한 것도 구분해 기록해야 했다.</p>
+<h2>Action — 행동</h2>
+<h3>1. 부족한 엔진 만들기</h3>
+<p>전개도 접기는 면들이 공유하는 변에서 경첩 트리를 만들고, 이웃한 두 면의 바깥 법선이 이루는 각만큼 접는다. 접은 뒤에는 목표 다면체에 맞춰 정렬하고, 닫혔는지와 면이 겹치지 않는지를 검사한다. 원뿔은 자르는 평면에 따라 단면을 분류하고, 옆면은 부채꼴로 펼쳐 최단 경로를 구한다.</p>
+<p><img src="/devlog/images/2026-10-24-geomate-p3-p4/0850-dodeca.png" alt="정십이면체 전개도를 접은 결과. 겹치는 꼭짓점은 F·G처럼 함께 표시된다"></p>
+<p>처음에는 정십이면체가 닫히지 않았다. 기준 정십이면체의 면 법선 좌표에서 성분의 순열 하나가 어긋나 있었다. 정상이라면 모서리가 30개여야 하는데 42개가 만들어졌다. 접는 코드뿐 아니라 <strong>기준 데이터도 검사해야 한다</strong>는 것을 여기서 배웠다.</p>
+<h3>2. 같은 입력을 두 구현으로 계산하기</h3>
+<p>Python 서비스는 같은 JSON 요청·결과 계약을 따른다. P3에서 다룬 계산 중에는 TypeScript와 다른 방법으로 검산한 것도 있다.</p>
+<ul>
+<li>정육면체 단면은 유리수로 판정한다.</li>
+<li>회전체 부피는 반지름 구간을 정확히 적분한다.</li>
+<li>원뿔 단면 넓이는 현의 길이를 적분하는 방법으로 계산한다.</li>
+</ul>
+<p>지원하는 입력에서는 84π, 280π/3, 90 − 10π, √6/2처럼 정확한 식도 돌려준다. 학생이 <code>84pi</code>라고 입력하면 SymPy로 수식의 동치를 비교한다.</p>
+<p>두 구현의 상태, 형상, 측정값을 비교하면 한쪽에만 있는 오류를 찾을 수 있다. 다만 <strong>같은 답이 나왔다고 정답이 증명되는 것은 아니다.</strong> 이후 만든 평면 <code>figure</code> 엔진은 TypeScript 구현을 Python으로 이식했다. 두 구현이 같은 가정이나 오류를 공유할 수 있으므로 교재 해설 대조, 불변량 검사, 반례도 함께 봐야 한다.</p>
+<h3>3. LLM에게는 입력 초안을 맡기기</h3>
+<p>중간에 이런 질문을 받았다.</p>
+<blockquote>
+<p>이거 Gemini API로만 구현한 3D 모델인가?</p>
+</blockquote>
+<p>역할은 이렇게 나눴다.</p>
+<table>
+<thead>
+<tr>
+<th>역할</th>
+<th>담당</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>접기, 단면, 회전체, 부피·겉넓이 계산</td>
+<td>TypeScript 기하 엔진</td>
+</tr>
+<tr>
+<td>정확식 계산과 수식 답 비교</td>
+<td>Python 기하 서비스와 SymPy</td>
+</tr>
+<tr>
+<td>입체 표시</td>
+<td>Three.js 기반 화면</td>
+</tr>
+<tr>
+<td>평면 도형 표시</td>
+<td>별도 2D SVG 화면</td>
+</tr>
+<tr>
+<td>사진 → 조건과 엔진 요청 초안</td>
+<td>비전 언어 모델</td>
+</tr>
+<tr>
+<td>입력 조건·원본 문항 확정</td>
+<td>학생 또는 검수자의 확인</td>
+</tr>
+</tbody></table>
+<p>처음에는 Gemini를 썼다. 모델은 사진에서 점 이름, 치수, 조건을 읽어 엔진 입력 JSON을 적는다. 정답과 3D 형상을 직접 생성하는 역할은 맡기지 않았다. 모델이 적은 입력을 엔진이 검사하고 계산한다.</p>
+<p>이후 정확도와 비용을 함께 비교해 사진 해석 모델을 OpenAI의 GPT-6.1 Sol(추론 강도 medium) 하나로 정했다. 비교 과정은 7번에 정리했다. 모델이 바뀌어도 엔진 입력 계약은 그대로다. 사진 해석 키가 없어도 기존 입력으로 도형을 보고 풀이를 검사하는 경로는 사용할 수 있다.</p>
+<p>LLM은 입력 초안을 적는다. 엔진은 <strong>그 입력에 대한</strong> 결과를 계산한다. 엔진이 통과시킨 입력이라도 사진과 다른 조건을 옮겼을 수 있으므로, 원본과 맞는지 확인하는 과정이 남는다.</p>
+<h3>4. 사진 해석을 평가하고 고치기</h3>
+<p>10월 17일에는 사진 11장을 Gemini 3.8 Flash, 추론 강도 low로 해석했다. 그 입력을 엔진에 돌려 미리 옮겨 둔 입력의 결과와 비교했다.</p>
+<p>숫자를 읽는 것과 숫자의 의미를 옮기는 것은 달랐다. 치수는 읽어도 엔진 요청을 구성하는 데서 실패했다.</p>
+<ul>
+<li><strong>여러 요청을 한 JSON 문자열에 담았다.</strong> 일부가 깨지면 전체를 잃어서 요청마다 따로 파싱하도록 바꿨다.</li>
+<li><strong>엔진 이름이나 단위를 빠뜨렸다.</strong> 기본값을 보정한 사실을 기록하고, 확인이 필요한 초안으로 남겼다.</li>
+<li><strong>기하 조건을 잘못 옮겼다.</strong> 원뿔 이음선을 점 A에 맞추지 않거나, 홈의 윤곽을 닫지 않았다.</li>
+<li><strong>입력을 만들지 못했다.</strong> 정십이면체 전개도 좌표를 구성하지 못한 경우도 있었다.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>10월 17일 실행</th>
+<th>평가한 사진</th>
+<th>치수 읽기</th>
+<th>답 검사 통과</th>
+<th>엔진·기대값 쪽 실패로 분류된 건수</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1차</td>
+<td>10장, 1장은 503 오류</td>
+<td>22/22</td>
+<td>8/16</td>
+<td>0</td>
+</tr>
+<tr>
+<td>2차 · 프롬프트 수정 후</td>
+<td>5장, 나머지 6장은 429 한도</td>
+<td>5/5</td>
+<td>5/6</td>
+<td>0</td>
+</tr>
+</tbody></table>
+<p>치수와 답 검사 항목 수는 사진 수와 다르다. 비교 기준도 아직 내가 직접 검수를 마치지 않은 전사 초안이었다. 두 실행은 표본과 평가 항목이 달라, 이 표만으로 정확도 개선 폭을 계산할 수는 없다. 당시 평가 범위에서 엔진·기대값 쪽 실패로 분류된 것이 없었다는 뜻이다.</p>
+<p>후속 작업에서는 엔진 검사가 실패하면 같은 사진, 이전 초안, 오류 문장을 모델에 보내 한 번 수정하게 했다. 재시도에서 실패 요청이 더 많아지거나 새 초안을 읽지 못하면 첫 초안을 유지하고, 어느 쪽을 사용했는지도 기록한다. 이 과정은 입력 형식 오류를 줄이는 장치다. 지름을 반지름으로 읽고도 계산이 성립하는 오독까지 잡지는 못한다.</p>
+<h3>5. 화면을 직접 보고 고치기</h3>
+<p>자동 테스트가 통과한 뒤에도 화면에서는 문제가 나왔다.</p>
+<blockquote>
+<p>861번 C-D, G-H 위치 바뀜 / 1014번 위 아래가 막혀 있음 / 925번은 잘 모르겠네... / 1006번은 수치 이런 것도 나타내고 뭔가 더 필요할 듯</p>
+</blockquote>
+<ul>
+<li><strong>0861:</strong> 라벨을 사진의 거울상으로 붙여 C·D와 G·H가 바뀌어 보였다. 단면은 어느 쪽이든 마름모라 답 검사는 통과하고 있었다.</li>
+<li><strong>1014:</strong> 위아래 면이 반원 홈을 덮었다. 구멍이 바깥 테두리에 닿는 경우의 면 분할을 고쳤다.</li>
+<li><strong>0925:</strong> 원뿔의 빨간 선이 옆면을 자르는 이음선이라는 설명이 없었다. 라벨과 안내를 붙였다.</li>
+</ul>
+<p>1006에는 치수선과 겉넓이 구성을, 회전체에는 회전 재생과 부피 분해를 넣었다.</p>
+<p><img src="/devlog/images/2026-10-24-geomate-p3-p4/1006-dims.png" alt="1006: 치수선과 함께 본 구멍 뚫린 직육면체. 10월 17일 구현 화면"></p>
+<p><img src="/devlog/images/2026-10-24-geomate-p3-p4/1019-volume.png" alt="1019: 회전체의 부피를 높이 구간별로 나눈 화면. 48π + 36π = 84π"></p>
+<p>당시에는 답을 드러내는 분해 결과를 결과 확인 뒤에 열도록 했다. 이후에는 잠금 기준 자체를 다시 검토했다. 학생이 답을 제출해야만 관찰 도구를 쓸 수 있다면, 막힌 학생은 도구를 사용하기도 어렵다. <strong>일반 관찰과 기본 조작은 제출 전에 사용할 수 있어야 한다.</strong> 목표 정답의 값·형상을 어디까지 보여 줄지는 활동별로 정할 문제로 남겼다. PoC의 현재 잠금 동작을 그대로 제품 정책으로 확정한 것은 아니다.</p>
+<h3>6. 입체 계산에서 평면·보조선·힌트로 넓히기</h3>
+<p>10월 20일부터는 계산 뒤에 무엇을 보여 줄지도 만들었다.</p>
+<table>
+<thead>
+<tr>
+<th>작업</th>
+<th>구현·검토한 내용</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>입체 그림 보완</td>
+<td>숨은선, 치수, 라벨, 기본 시점, 단면과 절삭 그림</td>
+</tr>
+<tr>
+<td>평면 좌표 도형</td>
+<td>작도 단계와 조건으로 좌표 생성, 모순·조건 부족 검사, 2D SVG</td>
+</tr>
+<tr>
+<td>규칙 추론과 힌트</td>
+<td>중1 정리로 각의 관계를 추론하고 단계별 근거 표시</td>
+</tr>
+<tr>
+<td>보조선</td>
+<td>답에 닿는 후보 추천, 학생이 그은 선의 효과 확인</td>
+</tr>
+<tr>
+<td>입체 학습 보조</td>
+<td>펼치기·부피 분해·면 분해를 힌트 단계와 연결</td>
+</tr>
+<tr>
+<td>오답·그리기 검사</td>
+<td>흔한 실수 33가지와 답 비교, 완성된 삼각형의 조건 검사</td>
+</tr>
+<tr>
+<td>추가 도형</td>
+<td>색칠 영역, 입체 안의 입체, 다각형 둘레를 도는 원</td>
+</tr>
+</tbody></table>
+<p>그리기 검사는 완성된 도형이 조건을 만족하는지 본다. 학생이 자와 컴퍼스를 올바른 순서로 사용했는지 채점하는 기능은 아니다. 힌트와 조작도 지원하는 유형 안에서 동작하며, 모든 도형을 자유롭게 편집하는 기능까지 갖춘 것은 아니다.</p>
+<p>원 굴리기는 계산과 학습 화면을 함께 만든 사례다. 반지름 1인 원이 변의 길이가 6, 8, 10인 직각삼각형 바깥을 한 바퀴 돌면 지나간 넓이는 48 + 4π다. 화면에서는 원을 움직여 보고, 지나간 자리를 변의 직사각형들과 꼭짓점의 부채꼴들로 나누어 볼 수 있게 했다. 사진에서 이 입력을 만드는 경로도 확인했지만, 브라우저 자동 테스트와 실제 학생 관찰은 남아 있다.</p>
+<h3>7. 해석 모델을 비교해 Gemini에서 GPT-6.1 Sol로 바꾸기</h3>
+<p>10월 22일에는 사진 해석 모델을 비교했다. 처음에는 Gemini 3.8 Flash와 Claude Sonnet 5.5 두 모델로 시작했다. 프롬프트를 다듬는 데 쓴 20문항과, 프롬프트에 쓰지 않은 처음 보는 20문항(평면 10, 입체 10)을 나눠 돌렸다.</p>
+<table>
+<thead>
+<tr>
+<th>1차 비교 · 각 1회 실행</th>
+<th>다듬은 20문항</th>
+<th>처음 보는 20문항</th>
+<th>평면</th>
+<th>입체</th>
+<th>그림 생성</th>
+<th>엔진 입력 실패</th>
+<th>평균 시간</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Gemini 3.8 Flash · low</td>
+<td>20/20</td>
+<td>9/20</td>
+<td>3/10</td>
+<td>6/10</td>
+<td>16/20</td>
+<td>1</td>
+<td>12초</td>
+</tr>
+<tr>
+<td>Claude Sonnet 5.5 · medium</td>
+<td>15/20</td>
+<td>11/20</td>
+<td>5/10</td>
+<td>6/10</td>
+<td>14/20</td>
+<td>5</td>
+<td>13초</td>
+</tr>
+</tbody></table>
+<p>다듬은 문항에서는 잘 맞혔지만, 처음 보는 문제에서는 두 모델 모두 절반 정도에 그쳤다. <strong>프롬프트를 다듬은 문항의 성공이 새 문항으로 그대로 이어지지 않았다.</strong> 특히 평면 작도 입력이 약했다. 정육각형과 정팔각형을 붙인 그림은 두 모델 모두 겹치게 만들었고, 반구와 원뿔을 합친 입체는 두 모델 모두 조각을 따로 만들었다. 여기서 &quot;그림 생성&quot;은 화면에 그림이 나왔다는 뜻이고, 원본과 같다는 뜻은 아니다.</p>
+<p>그래서 두 모델 중 하나라도 틀린 7문항을 골라 상위 모델로 다시 시험했다. 이번에는 값뿐 아니라 그려진 도형이 사진과 같은지도 직접 확인했다.</p>
+<table>
+<thead>
+<tr>
+<th>틀렸던 7문항 재시험</th>
+<th>값 정답</th>
+<th>그림 일치</th>
+<th>평균 시간</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Gemini 3.8 Flash · low</td>
+<td>1/7</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td>Claude Sonnet 5.5 · medium</td>
+<td>4/7</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td>Gemini 4 Argon · medium</td>
+<td>7/7</td>
+<td>6/7</td>
+<td>23초</td>
+</tr>
+<tr>
+<td><strong>GPT-6.1 Sol · medium</strong></td>
+<td><strong>7/7</strong></td>
+<td><strong>7/7</strong></td>
+<td>36초</td>
+</tr>
+<tr>
+<td>GPT-6.1 Sol · low</td>
+<td>7/7</td>
+<td>6/7</td>
+<td>23초</td>
+</tr>
+</tbody></table>
+<p>결정을 가른 건 그림이었다. 위를 잘라 낸 원뿔대 문제에서 Argon은 원뿔 두 개를, Flash는 원뿔 하나를 그렸다. 원뿔대로 그린 건 Sol medium뿐이었다. Geomate에서 학생이 돌리고 자르는 대상은 이 그림이라, 값이 맞아도 그림이 틀리면 학습 도구로 쓸 수 없다.</p>
+<p>정확도만으로 고르지 않고 비용도 같이 따졌다. 학생이 사진을 올릴 때마다 호출되는 모델이라, 문항당 몇십 원 차이도 사용자가 늘면 그대로 운영비가 된다. 공식 단가로 같은 토큰량(입력 약 1.15만, 출력·생각 약 0.95만)을 가정한 비용과, 실제 실행에 기록된 사용량으로 계산한 비용을 나란히 놓았다. 1달러는 1,400원으로 잡았다.</p>
+<table>
+<thead>
+<tr>
+<th>문항당 비용</th>
+<th>같은 토큰량 가정</th>
+<th>실제 기록 사용량</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>GPT-6 Luna</td>
+<td>약 8원</td>
+<td>시험 안 함</td>
+</tr>
+<tr>
+<td>Gemini 3.8 Flash (할인 기간)</td>
+<td>약 62원</td>
+<td>약 20원 이상 (생각 토큰 미기록)</td>
+</tr>
+<tr>
+<td>Claude Sonnet 5.5</td>
+<td>약 165원</td>
+<td>약 77원</td>
+</tr>
+<tr>
+<td><strong>GPT-6.1 Sol</strong></td>
+<td>약 165원</td>
+<td><strong>medium 약 52원</strong>, low 약 46원</td>
+</tr>
+<tr>
+<td>Gemini 4 Argon</td>
+<td>할인 기간 약 165원, 종료 후 약 331원</td>
+<td>확인 못 함 (생각 토큰 미기록)</td>
+</tr>
+<tr>
+<td>Claude Opus 5.5</td>
+<td>약 331원</td>
+<td>시험 안 함</td>
+</tr>
+<tr>
+<td>GPT-6 Astra</td>
+<td>약 826원</td>
+<td>시험 안 함</td>
+</tr>
+</tbody></table>
+<p>Sol의 단가는 Argon의 할인 기간 단가와 같고, 할인이 끝나면 Argon의 절반이다. 실제로는 생각 토큰을 적게 써서 문항당 약 52원이었다. Luna처럼 훨씬 싼 모델도 있었지만, 기하 그림을 복원하는 품질을 확인한 자료가 없어 후보로 두지 않았다.</p>
+<p>여러 모델을 함께 쓰는 방법도 검토했다. 틀렸던 7문항에서 Flash와 Sonnet 중 하나라도 맞힌 문항을 세면 5문항이라, 둘을 같이 부르면 나아 보였다. 하지만 그 5/7은 정답을 미리 알고 고른 결과다. 실제로는 두 답 중 어느 쪽이 맞는지 골라 줄 판별기가 없고, 방향이 틀린 그림은 엔진 검사도 통과해 버린다. 판별기까지 붙이면 호출이 늘 때마다 비용과 지연도 함께 쌓인다. 그래서 모델을 섞지 않고 <strong>GPT-6.1 Sol medium 하나로 해석</strong>하기로 했다. 가장 느리다는 단점은 있지만, 그림까지 맞힌 유일한 설정이었고 비용도 감당할 수 있는 수준이었다.</p>
+<p>비용을 줄이는 구조도 같이 정했다. 도형을 돌리고 자르고 펼치는 조작은 모두 엔진이 기기에서 계산하므로 AI를 부르지 않는다. AI 비용은 사진을 해석할 때만 든다(엔진 검사에 실패하면 수정 요청 한 번이 더해진다). 학생이 도형을 오래 만지며 공부해도 API 비용은 늘지 않는다.</p>
+<p>이 표들은 로컬 진행 기록의 관측값이다. 정답 기준은 에이전트의 직접 풀이이고, 기호 답을 수치로 채점하지 못해 오답으로 센 항목도 있다. 재시험은 이미 실패한 문항만 고른 결과라 새 문제 전체의 정확도로 볼 수도 없다. 손대지 않은 문항과 기존 실패 사례를 나눈 고정 평가 세트로 다시 확인할 계획이다.</p>
+<p>Sol low에서는 값이 7/7로 집계됐지만, 한 문항을 Python은 통과시키고 브라우저 TypeScript는 조건 부족으로 거절했다. 교차 검사에 없는 실제 입력에서는 두 구현이 갈릴 수 있었다. 입력 해석, 서비스 계산, 브라우저 계산, 그림을 따로 확인해야 하는 이유다.</p>
+<h3>8. 힌트를 사다리로 다시 세우기</h3>
+<p>10월 23일에는 중1-2 범위를 다시 훑으며 힌트와 도구를 정리했다. 기준은 학생이 혼자 다음 행동을 찾을 수 있는가였다.</p>
+<ul>
+<li><strong>힌트 사다리.</strong> 힌트는 관찰 질문 → 시도할 조작 → 새 관계와 이유 → 다시 해 보기 순서로 연다. 사다리는 단계마다 계산한 값이 엔진 값과 같을 때만 만들고, 다르면 내지 않는다. 교과서 문항 해석본에서 사다리가 없던 질문 47건 중 46건을 채웠다. 남은 1건은 엔진이 아직 계산하지 못하는 경우다.</li>
+<li><strong>도구는 묻는 값을 따른다.</strong> 예전에는 엔진 종류마다 보이는 도구가 정해져 있어서, 원기둥의 겉넓이를 묻는데 회전 도구가 보였다. 지금은 그 질문의 힌트 사다리가 쓰는 도구만 보인다. 원기둥 겉넓이에서는 회전 도구가 빠지고 옆면 펼치기가 들어간다.</li>
+<li><strong>답 형식.</strong> 수치 답 말고도 보기 고르기, 옳지 않은 것 고르기, O/X, 이름, 모두 쓰기, 해가 여러 개인 답을 엔진 값으로 채점한다. &quot;HE, GC, FG, DH&quot;처럼 순서를 바꿔 써도 맞게 본다.</li>
+<li><strong>빠진 도구.</strong> 컴퍼스와 자의 움직임을 재생하고 직접 따라 해 보는 작도판, 합동 판정과 겹쳐 보기, 공간 명제의 반례를 직육면체에서 찾는 판, 그릇에 담긴 물, 원환체까지 엔진을 늘렸다.</li>
+</ul>
+<p>정한 것도 있다. 작도는 채점하지 않는다. 회전 재생은 평면도형을 돌려 입체를 만드는 문제에서만 보인다. 합동 증명의 빈칸은 엔진이 판정할 값이 없어서, 채점 예외를 둘지 아직 정하지 못했다.</p>
+<h3>9. 초등 도형으로 넓히기</h3>
+<p>같은 날 초등 도형으로도 범위를 넓혔다. 초등 5·6학년 교재의 도형 8개 단원을 문항마다 분류하니 1,604행이었다. 지금 엔진으로 바로 계산되는 문항이 655행, 조금 늘리면 되는 문항이 440행, 새 엔진이 필요한 문항이 339행이었다.</p>
+<p>새 엔진이 가장 많이 필요한 단원은 쌓기나무였다. 6학년 &quot;공간과 입체&quot; 177행 중 167행이 새 기능을 요구했다. <a href="/devlog/2026-10-14-geomate-design">설계 글</a>에서 학생들이 특히 어려워했다고 적은 바로 그 단원이다. 쌓기나무 엔진은 칸마다 쌓인 개수를 저장해 앞·옆·위에서 본 모양을 계산하고, 반대로 본 모양에서 가장 많이 쌓은 경우와 가장 적게 쌓은 경우를 찾는다. 이어서 합동·대칭 판정, 직육면체·각기둥 전개도, 원기둥·원뿔 엔진을 TypeScript와 Python 양쪽에 추가했다.</p>
+<h3>10. 본 프로젝트로 옮기기</h3>
+<p>10월 23일에는 PoC 엔진을 팀의 본 프로젝트 저장소로 옮겼다. 요청 형식은 PoC 그대로 두고, 팀의 엔진 계약 문서를 PoC에 맞춰 다시 썼다.</p>
+<table>
+<thead>
+<tr>
+<th>옮긴 것</th>
+<th>확인한 것</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>TypeScript 계산 엔진 29개</td>
+<td>교차 검사 요청 423개의 결과가 PoC와 같음</td>
+</tr>
+<tr>
+<td>힌트·풀이·오답 진단 17개</td>
+<td>힌트 사다리 1,666개가 PoC와 같음</td>
+</tr>
+<tr>
+<td>Python 엔진 24개</td>
+<td>같은 423개 요청에서 TypeScript와 같음</td>
+</tr>
+<tr>
+<td>사진 해석 모듈과 내부 서비스</td>
+<td>각각 테스트 9개</td>
+</tr>
+</tbody></table>
+<p>구조도 제품에 맞췄다. 앱이 부르는 API는 모두 Spring Boot에 두고, Python 서비스는 Spring만 부르는 내부 API가 됐다. 권한, 시도 기록, 힌트 이력, 정답 공개 시점은 Spring이 맡는다. TypeScript 엔진은 앱이 바로 쓸 수 있도록 계산과 힌트까지 전부 옮겼고, Python은 서버 검증과 교차 검사를 맡는다.</p>
+<p>옮기면서 드러난 쟁점도 있다. 앱의 TypeScript 엔진은 제출 전에 정답 도형을 계산하므로, &quot;제출 전 데이터에 정답 형상을 넣지 않는다&quot;는 명세와 어긋난다. 값 채점은 서버가 하므로 결과에는 영향이 없지만, 정답을 미리 볼 수 있는 여지가 남는다. 보기·이름 답과 작도 그림 판정은 아직 TypeScript에만 있어서, 서버에서도 판정할지는 아직 결정하지 못했다.</p>
+<h2>Result — 결과</h2>
+<p><strong>10월 17일에는 P3·P4의 주요 코드 경로를 구현했다.</strong> 당시 실행 로그에는 다음 결과가 남아 있다.</p>
+<ul>
+<li>P3 엔진 검사 15개, 원본 문항 회귀 14개, 펜 인식 6개 통과</li>
+<li>브라우저 18개 통과</li>
+<li>Python 서비스 51개 통과</li>
+<li>TypeScript ↔ Python 교차 검사 134/134 일치</li>
+</ul>
+<p>이후 기능이 추가되면서 검사 범위도 넓어졌다. 10월 22일 원 굴리기 작업 기록에는 빌드·기하 검사 통과와 교차 검사 334/334 일치가 남아 있다. 같은 기록에서 Python은 101개 통과, OpenAI 공급자 테스트 1개는 패키지 미설치로 실패했고 이후 의존성을 설치했다고 되어 있다. 그 뒤 전체 재실행의 통과까지 이 글에서 확인한 것은 아니다. 앞선 실행의 브라우저 40/40과 이 수치를 합쳐 현재 전체 통과로 쓰지 않았다.</p>
+<p>10월 23일의 마지막 기록에는 타입 검사와 기하 테스트 전부 통과, Python 113개 통과, 교차 검사 458/458 일치가 남아 있다. 이 실행에서는 브라우저 테스트를 돌리지 않았다. 그 전 실행의 브라우저 58/58과 합쳐 전체 통과로 쓰지도 않았다.</p>
+<p>같은 날 작은 사고도 있었다. 데스크톱과 노트북에서 같은 단계를 따로 만든 뒤 병합했는데, 30개 파일에 충돌 표시가 남은 채로 푸시됐다. 파일을 노트북 쪽으로 되돌렸고, 데스크톱에서 만든 작업은 기록으로만 남았다. 이후로는 작업 PC를 하나로 정하고, 시작할 때 pull하고 끝낼 때 push한다.</p>
+<p><strong>구현된 계산과 학습 경험 사이에도 간격이 남았다.</strong> 10월 22일 중1-2 분류표 1,031행을 재검토한 기록에서는 답 형식, 점 끌기, 값 바꾸기, 결과 전 조작, 시작 예제의 공백이 드러났다. 이 검토는 에이전트의 내부 분석이며 실제 학생에게 학습 효과를 확인한 결과는 아니다. 계산할 수 있는 문항이 많아도 학생이 직접 관찰하고 관계를 찾아볼 수 있는지는 별도였다. 10월 23일까지 이 공백을 재검토 단계별로 메웠지만, 이것도 학생에게 확인한 결과는 아니다.</p>
+<p>남은 일은 초기 명세의 검수와 실기기 확인에 더해, 학습 도구로 사용할 수 있는지 확인하는 것이다.</p>
+<table>
+<thead>
+<tr>
+<th>확인할 것</th>
+<th>현재 확인한 상태</th>
+<th>다음 확인</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>원본 11문항 검수</td>
+<td>저장소 입력은 모두 <code>needs_confirmation</code></td>
+<td>원본 조건·독립 풀이 대조 후 검수 기록</td>
+</tr>
+<tr>
+<td>갤럭시 탭</td>
+<td>저장된 기기 기록은 Windows 헤드리스 브라우저</td>
+<td>실제 펜, 손바닥 접촉, 회전·스냅·화면 방향 테스트</td>
+</tr>
+<tr>
+<td>사진 해석</td>
+<td>오독·조건 표현 실패와 실행별 편차 존재</td>
+<td>새 표본에서 조건·값·그림·엔진 상태를 분리 평가</td>
+</tr>
+<tr>
+<td>학습 경험</td>
+<td>힌트 사다리·도구·답 형식 보완, 단계마다 직접 화면 테스트 반영</td>
+<td>학생이 혼자 시작하고, 예상·조작·비교를 이어가는지 관찰</td>
+</tr>
+<tr>
+<td>합동 증명 빈칸</td>
+<td>엔진이 판정할 값이 없음</td>
+<td>해석 초안의 정답으로 채점하는 예외를 둘지 결정</td>
+</tr>
+<tr>
+<td>제품 연결</td>
+<td>엔진·힌트·Python 서비스를 팀 저장소로 이관</td>
+<td>앱에서 엔진 실행 확인: 번들러가 앱 밖 패키지를 읽는지, 스키마 검사가 Hermes에서 동작하는지, UI 스레드 계산 시간</td>
+</tr>
+</tbody></table>
+<p>검수 화면에서는 검수자 이름, 원본과 독립 풀이를 직접 확인했다는 체크, 엔진 검사 통과를 요구한다. 사진을 옮긴 입력도 초안이고, 에이전트가 해설과 대조한 결과도 사람 검수와 구분한다. 입력이 틀리면 엔진은 다른 문제의 답을 정확하게 계산할 수 있다.</p>
+<p><strong>문항 재사용 방향도 바뀌었다.</strong> 처음에는 교재 번호로 문항을 등록해 다음 학생이 찾아 쓰는 방식을 생각했다. 현재 기획에서는 이 계획을 철회했다. 교재 자료와 대조 입력은 내부 검증에 사용하고, 서비스 예제·튜토리얼·시연은 팀이 새로 만든 문항을 사용한다. 개인 사진은 본인 학습에만 사용하며 타인 공유나 모델 학습에 쓰지 않는다. 캐시의 범위와 보관 정책은 별도 결정 사항이다.</p>
+<h2>돌아보며</h2>
+<p>사진 11장을 연결할 때는 엔진이 문제를 계산할 수 있는지가 가장 큰 질문이었다. 이후에는 그림이 조건과 맞는지, 보조선이 실제로 도움이 되는지, 학생이 다음 행동을 알 수 있는지를 보게 됐다.</p>
+<p>자동 테스트는 계산과 상태 흐름을 확인하고, 교차 검사는 구현 차이를 드러낸다. 원본 대조는 조건을 확인하고, 사람의 화면 검토는 라벨과 표현의 오류를 찾는다. 학생 관찰은 그 도구로 혼자 배울 수 있는지를 확인한다. 어느 하나의 통과가 나머지 검증을 대신하지는 않는다.</p>
+<p>이제 다음 작업은 본 프로젝트 앱에서 옮긴 엔진을 실제로 돌려 보는 것이다. 자체 예제로 학생이 혼자 시작할 수 있는지, 막혔을 때 힌트가 다음 시도로 이어지는지도 실제 태블릿에서 확인해야 한다.</p>
+<p>계산이 맞는 도형을 만드는 데서 시작했다. 그 도형을 학생이 직접 다루며 이해할 수 있도록 만드는 일이 남았다.</p>
+</div><section aria-label="댓글과 좋아요" class="mt-16 border-t border-ink/15 pt-8"><h2 class="text-xl font-bold tracking-[-0.02em] text-foreground">댓글과 좋아요</h2><p class="mt-2 text-[13px] leading-6 text-foreground/65">GitHub 계정으로 댓글과 하트 좋아요를 남길 수 있어요.</p><div class="mt-6"></div></section></article></div><!--$--><!--/$--></main><footer id="contact" class="scroll-mt-20"><div class="mx-auto max-w-[1080px] px-5 sm:px-8"><div class="flex flex-wrap items-end justify-between gap-x-10 gap-y-6 border-t border-ink/15 py-12"><div><p class="section-label">Let&#x27;s Connect</p><h2 class="mt-3 text-2xl font-bold tracking-[-0.025em] text-foreground sm:text-[1.75rem]">함께 해결할 문제를 이야기해요.</h2></div><p class="flex flex-wrap gap-x-8 gap-y-3"><a href="mailto:hj0543@gmail.com" class="inline-flex items-center gap-2 border-b border-foreground/40 pb-1 text-[15px] font-medium text-foreground transition-colors hover:border-accent hover:text-accent"><svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-mail" aria-hidden="true"><path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7"></path><rect x="2" y="4" width="20" height="16" rx="2"></rect></svg>hj0543@gmail.com<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-up-right" aria-hidden="true"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg></a><a href="https://github.com/hj0543" target="_blank" rel="noreferrer" class="inline-flex items-center gap-2 border-b border-foreground/40 pb-1 text-[15px] font-medium text-foreground transition-colors hover:border-accent hover:text-accent"><img alt="" aria-hidden="true" loading="lazy" width="17" height="17" decoding="async" data-nimg="1" class="brand-icon shrink-0 " style="color:transparent" src="/icons/github.svg"/>GitHub<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-up-right" aria-hidden="true"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg></a></p></div><div class="flex flex-wrap items-center justify-between gap-3 border-t border-ink/15 py-6"><a href="#top" class="text-[17px] font-bold tracking-[-0.04em] text-foreground">Belog<span class="text-accent">.</span></a><span class="flex flex-wrap gap-x-4 gap-y-1 text-[12px] text-foreground/65"><span class="tabular-nums ">Today <!-- -->—<!-- --> · Total <!-- -->—</span><span>© <!-- -->2026<!-- --> <!-- -->HYEONJIN JEONG<!-- -->. All rights reserved.</span></span></div></div></footer><div aria-hidden="true" class="noise-module__jZETgG__root" style="opacity:0.05"><div class="noise-module__jZETgG__grain"></div></div><script src="/_next/static/chunks/3s6nzrbk-8mnv.js" id="_R_" async=""></script><script>(self.__next_f=self.__next_f||[]).push([0])</script><script>self.__next_f.push([1,"1:\"$Sreact.fragment\"\n2:I[3020,[\"/_next/static/chunks/0h2qsuyze9ds1.js\",\"/_next/static/chunks/1qa79glashgql.js\"],\"default\"]\n3:I[39756,[\"/_next/static/chunks/0h2qsuyze9ds1.js\",\"/_next/static/chunks/1qa79glashgql.js\"],\"default\"]\n4:I[37457,[\"/_next/static/chunks/0h2qsuyze9ds1.js\",\"/_next/static/chunks/1qa79glashgql.js\"],\"default\"]\n5:I[66519,[\"/_next/static/chunks/0h2qsuyze9ds1.js\",\"/_next/static/chunks/1qa79glashgql.js\",\"/_next/static/chunks/36h9ts2bz7_q3.js\"],\"default\"]\n6:I[22016,[\"/_next/static/chunks/0h2qsuyze9ds1.js\",\"/_next/static/chunks/1qa79glashgql.js\",\"/_next/static/chunks/0uri8sq5s_br9.js\"],\"\"]\n7:I[5014,[\"/_next/static/chunks/0h2qsuyze9ds1.js\",\"/_next/static/chunks/1qa79glashgql.js\",\"/_next/static/chunks/0uri8sq5s_br9.js\"],\"default\"]\n11:I[68027,[\"/_next/static/chunks/0h2qsuyze9ds1.js\",\"/_next/static/chunks/1qa79glashgql.js\"],\"default\",1]\n:HL[\"/_next/static/chunks/0eq0t183zyjbt.css\",\"style\"]\n:HL[\"/_next/static/media/70bc3e132a0a741e-s.p.3t6q91iet4nsy.woff2\",\"font\",{\"crossOrigin\":\"\",\"type\":\"font/woff2\"}]\n:HL[\"/_next/static/media/7ebf22b5a21034f8-s.p.3j3877k49yy0l.woff2\",\"font\",{\"crossOrigin\":\"\",\"type\":\"font/woff2\"}]\n:HL[\"/_next/static/media/PretendardVariable-s.p.0ztvx5mb7lxp4.woff2\",\"font\",{\"crossOrigin\":\"\",\"type\":\"font/woff2\"}]\n:HL[\"/_next/static/chunks/2b-2tives3t8w.css\",\"style\"]\nf:X\n0:{\"P\":null,\"c\":[\"\",\"devlog\",\"2026-10-24-geomate-p3-p4\",\"\"],\"q\":\"\",\"i\":false,\"f\":[[[\"\",{\"children\":[\"devlog\",{\"children\":[[\"slug\",\"2026-10-24-geomate-p3-p4\",\"d\",[]],{\"children\":[\"__PAGE__\",{},\"$undefined\",\"$undefined\",4608]},\"$undefined\",\"$undefined\",4608]},\"$undefined\",\"$undefined\",4608]},\"$undefined\",\"$undefined\",4624],[[\"$\",\"$1\",\"c\",{\"children\":[[[\"$\",\"link\",\"0\",{\"rel\":\"stylesheet\",\"href\":\"/_next/static/chunks/0eq0t183zyjbt.css\",\"precedence\":\"next\",\"crossOrigin\":\"$undefined\",\"nonce\":\"$undefined\"}],[\"$\",\"script\",\"script-0\",{\"src\":\"/_next/static/chunks/0h2qsuyze9ds1.js\",\"async\":true,\"nonce\":\"$undefined\"}],[\"$\",\"script\",\"script-1\",{\"src\":\"/_next/static/chunks/1qa79glashgql.js\",\"async\":true,\"nonce\":\"$undefined\"}]],[\"$\",\"html\",null,{\"lang\":\"ko\",\"data-scroll-behavior\":\"smooth\",\"suppressHydrationWarning\":true,\"className\":\"jetbrains_mono_7d65b77b-module__VxV-Ta__variable instrument_serif_c1e8e483-module__u2UhdW__variable pretendard_97774a5-module__y_0gNq__variable h-full antialiased\",\"children\":[[\"$\",\"head\",null,{\"children\":[\"$\",\"script\",null,{\"dangerouslySetInnerHTML\":{\"__html\":\"(function () {\\n  var theme = \\\"dark\\\";\\n  try {\\n    if (/^\\\\/(projects|devlog)\\\\/[^/]+\\\\/?$/.test(window.location.pathname)\\n        \u0026\u0026 localStorage.getItem(\\\"theme\\\") === \\\"light\\\") {\\n      theme = \\\"light\\\";\\n    }\\n  } catch (e) {}\\n  document.documentElement.dataset.theme = theme;\\n})();\"}}]}],[\"$\",\"body\",null,{\"id\":\"top\",\"className\":\"flex min-h-full flex-col\",\"children\":[[\"$\",\"$L2\",null,{}],[\"$\",\"main\",null,{\"className\":\"flex-1\",\"children\":[\"$\",\"$L3\",null,{\"parallelRouterKey\":\"children\",\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"errorScripts\":\"$undefined\",\"template\":[\"$\",\"$L4\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":[[\"$\",\"div\",null,{\"className\":\"mx-auto flex min-h-[70vh] max-w-[1080px] flex-col items-center justify-center px-5 py-20 text-center sm:px-8\",\"children\":[[\"$\",\"p\",null,{\"className\":\"flex items-baseline gap-2.5 text-label\",\"children\":[[\"$\",\"span\",null,{\"className\":\"section-label\",\"children\":\"Not Found\"}],[\"$\",\"span\",null,{\"className\":\"font-mono text-[12px] tracking-[0.05em] text-foreground/65\",\"children\":\"/ 404\"}]]}],[\"$\",\"h1\",null,{\"className\":\"mt-6\",\"children\":[\"$\",\"$L5\",null,{\"text\":\"404\",\"as\":\"span\",\"fontSize\":\"clamp(6rem, 24vw, 13rem)\",\"fontWeight\":800,\"letterSpacing\":\"-0.04em\",\"lineHeight\":1,\"tensionColor\":\"#c96f4a\",\"hint\":true}]}],[\"$\",\"p\",null,{\"className\":\"mt-8 max-w-[420px] text-[16px] leading-7 text-foreground/75\",\"children\":[\"찾으시는 페이지가 없거나 주소가 바뀌었어요.\",[\"$\",\"br\",null,{}],\"그동안 숫자를 잡아당겨 보셔도 좋아요.\"]}],[\"$\",\"$L6\",null,{\"href\":\"/\",\"className\":\"mt-10 inline-flex items-center gap-1.5 border-b border-accent/60 pb-1 text-[15px] font-medium text-accent transition-colors hover:border-accent\",\"children\":[[\"$\",\"$L7\",null,{\"ref\":\"$undefined\",\"iconNode\":[[\"path\",{\"d\":\"m12 19-7-7 7-7\",\"key\":\"1l729n\"}],[\"path\",{\"d\":\"M19 12H5\",\"key\":\"x3x0zl\"}]],\"className\":\"lucide-arrow-left\",\"aria-hidden\":\"true\",\"size\":15}],\"홈으로 돌아가기\"]}]]}],[]],\"forbidden\":\"$undefined\",\"unauthorized\":\"$undefined\"}]}],[\"$\",\"footer\",null,{\"id\":\"contact\",\"className\":\"scroll-mt-20\",\"children\":[\"$\",\"div\",null,{\"className\":\"mx-auto max-w-[1080px] px-5 sm:px-8\",\"children\":[[\"$\",\"div\",null,{\"className\":\"flex flex-wrap items-end justify-between gap-x-10 gap-y-6 border-t border-ink/15 py-12\",\"children\":[[\"$\",\"div\",null,{\"children\":[[\"$\",\"p\",null,{\"className\":\"section-label\",\"children\":\"Let's Connect\"}],[\"$\",\"h2\",null,{\"className\":\"mt-3 text-2xl font-bold tracking-[-0.025em] text-foreground sm:text-[1.75rem]\",\"children\":\"함께 해결할 문제를 이야기해요.\"}]]}],[\"$\",\"p\",null,{\"className\":\"flex flex-wrap gap-x-8 gap-y-3\",\"children\":[[\"$\",\"a\",null,{\"href\":\"mailto:hj0543@gmail.com\",\"className\":\"inline-flex items-center gap-2 border-b border-foreground/40 pb-1 text-[15px] font-medium text-foreground transition-colors hover:border-accent hover:text-accent\",\"children\":[[\"$\",\"$L7\",null,{\"ref\":\"$undefined\",\"iconNode\":[[\"path\",{\"d\":\"m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7\",\"key\":\"132q7q\"}],[\"rect\",{\"x\":\"2\",\"y\":\"4\",\"width\":\"20\",\"height\":\"16\",\"rx\":\"2\",\"key\":\"izxlao\"}]],\"className\":\"lucide-mail\",\"aria-hidden\":\"true\",\"size\":17,\"strokeWidth\":1.8}],\"hj0543@gmail.com\",[\"$\",\"$L7\",null,{\"ref\":\"$undefined\",\"iconNode\":[[\"path\",{\"d\":\"M7 7h10v10\",\"key\":\"1tivn9\"}],[\"path\",{\"d\":\"M7 17 17 7\",\"key\":\"1vkiza\"}]],\"className\":\"lucide-arrow-up-right\",\"aria-hidden\":\"true\",\"size\":14}]]}],[\"$\",\"a\",null,{\"href\":\"https://github.com/hj0543\",\"target\":\"_blank\",\"rel\":\"noreferrer\",\"className\":\"inline-flex items-center gap-2 border-b border-foreground/40 pb-1 text-[15px] font-medium text-foreground transition-colors hover:border-accent hover:text-accent\",\"children\":[\"$L8\",\"GitHub\",\"$L9\"]}]]}]]}],\"$La\"]}]}],\"$Lb\"]}]]}]]}],{\"children\":[\"$Lc\",{\"children\":[\"$Ld\",{\"children\":[\"$Le\",{},null,false,null]},null,false,\"$f\"]},null,false,\"$f\"]},null,false,null],\"$L10\",false]],\"m\":\"$undefined\",\"G\":[\"$11\",[\"$L12\"]],\"S\":true,\"h\":null,\"r\":\"$undefined\",\"s\":\"$undefined\",\"a\":\"$undefined\",\"l\":\"$undefined\",\"p\":\"$undefined\",\"d\":\"$undefined\",\"b\":\"CJydaEvBKlu3W7coBDLFj\"}\n13:I[85437,[\"/_next/static/chunks/0h2qsuyze9ds1.js\",\"/_next/static/chunks/1qa79glashgql.js\"],\"Image\"]\n14:I[53759,[\"/_next/static/chunks/0h2qsuyze9ds1.js\",\"/_next/static/chunks/1qa79glashgql.js\"],\"default\"]\n15:I[11875,[\"/_next/static/chunks/0h2qsuyze9ds1.js\",\"/_next/static/chunks/1qa79glashgql.js\"],\"default\"]\n17:I[97367,[\"/_next/static/chunks/0h2qsuyze9ds1.js\",\"/_next/static/chunks/1qa79glashgql.js\"],\"OutletBoundary\"]\n18:\"$Sreact.suspense\"\n1a:I[97367,[\"/_next/static/chunks/0h2qsuyze9ds1.js\",\"/_next/static/chunks/1qa79glashgql.js\"],\"ViewportBoundary\"]\n1c:I[97367,[\"/_next/static/chunks/0h2qsuyze9ds1.js\",\"/_next/static/chunks/1qa79glashgql.js\"],\"MetadataBoundary\"]\n8:[\"$\",\"$L13\",null,{\"src\":\"/icons/github.svg\",\"alt\":\"\",\"aria-hidden\":\"true\",\"width\":17,\"height\":17,\"className\":\"brand-icon shrink-0 \"}]\n9:[\"$\",\"$L7\",null,{\"ref\":\"$undefined\",\"iconNode\":\"$0:f:0:1:0:props:children:1:props:children:1:props:children:2:props:children:props:children:0:props:children:1:props:children:0:props:children:2:props:iconNode\",\"className\":\"lucide-arrow-up-right\",\"aria-hidden\":\"true\",\"size\":14}]\na:[\"$\",\"div\",null,{\"className\":\"flex flex-wrap items-center justify-between gap-3 border-t border-ink/15 py-6\",\"children\":[[\"$\",\"a\",null,{\"href\":\"#top\",\"className\":\"text-[17px] font-bold tracking-[-0.04em] text-foreground\",\"children\":[\"Belog\",[\"$\",\"span\",null,{\"className\":\"text-accent\",\"children\":\".\"}]]}],[\"$\",\"span\",null,{\"className\":\"flex flex-wrap gap-x-4 gap-y-1 text-[12px] text-foreground/65\",\"children\":[[\"$\",\"$L14\",null,{}],[\"$\",\"span\",null,{\"children\":[\"© \",2026,\" \",\"HYEONJIN JEONG\",\". All rights reserved.\"]}]]}]]}]\nb:[\"$\",\"$L15\",null,{}]\nc:[\"$\",\"$1\",\"c\",{\"children\":[null,[\"$\",\"$L3\",null,{\"parallelRouterKey\":\"children\",\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"errorScripts\":\"$undefined\",\"template\":[\"$\",\"$L4\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":\"$undefined\",\"forbidden\":\"$undefined\",\"unauthorized\":\"$undefined\"}]]}]\nd:[\"$\",\"$1\",\"c\",{\"children\":[null,[\"$\",\"$L3\",null,{\"parallelRouterKey\":\"children\",\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"errorScripts\":\"$undefined\",\"template\":[\"$\",\"$L4\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":\"$undefined\",\"forbidden\":\"$undefined\",\"unauthorized\":\"$undefined\"}]]}]\ne:[\"$\",\"$1\",\"c\",{\"children\":[\"$L16\",[[\"$\",\"link\",\"0\",{\"rel\":\"stylesheet\",\"href\":\"/_next/static/chunks/2b-2tives3t8w.css\",\"precedence\":\"next\",\"crossOrigin\":\"$undefined\",\"nonce\":\"$undefined\"}],[\"$\",\"script\",\"script-0\",{\"src\":\"/_next/static/chunks/0uri8sq5s_br9.js\",\"async\":true,\"nonce\":\"$undefined\"}]],[\"$\",\"$L17\",null,{\"children\":[\"$\",\"$18\",null,{\"name\":\"Next.MetadataOutlet\",\"children\":\"$@19\"}]}]]}]\n10:[\"$\",\"$1\",\"h\",{\"children\":[null,[\"$\",\"$L1a\",null,{\"children\":\"$L1b\"}],[\"$\",\"div\",null,{\"hidden\":true,\"children\":[\"$\",\"$L1c\",null,{\"children\":[\"$\",\"$18\",null,{\"name\":\"Next.Metadata\",\"children\":\"$L1d\"}]}]}],[\"$\",\"meta\",null,{\"name\":\"next-size-adjust\",\"content\":\"\"}]]}]\n12:[\"$\",\"link\",\"0\",{\"rel\":\"stylesheet\",\"href\":\"/_next/static/chunks/0eq0t183zyjbt.css\",\"precedence\":\"next\",\"crossOrigin\":\"$undefined\",\"nonce\":\"$undefined\"}]\nf:C\n1b:[[\"$\",\"meta\",\"0\",{\"charSet\":\"utf-8\"}],[\"$\",\"meta\",\"1\",{\"name\":\"viewport\",\"content\":\"width=device-width, initial-scale=1\"}]]\n"])</script><script>self.__next_f.push([1,"1e:I[73428,[\"/_next/static/chunks/0h2qsuyze9ds1.js\",\"/_next/static/chunks/1qa79glashgql.js\",\"/_next/static/chunks/0uri8sq5s_br9.js\"],\"default\"]\n21:I[27201,[\"/_next/static/chunks/0h2qsuyze9ds1.js\",\"/_next/static/chunks/1qa79glashgql.js\"],\"IconMark\"]\n1f:T79bc,\u003cp\u003eGeomate 기하 엔진 PoC에 문제 사진 11장을 연결했다. 10월 17일에는 마지막 두 단계인 P3·P4의 구현을 진행했고, 이후 평면 도형과 보조선, 힌트, 초등 도형까지 범위를 넓혔다. 10월 23일에는 엔진을 팀의 본 프로젝트 저장소로 옮겼다. 계산이 맞고 화면이 떠도, 학생이 혼자 쓸 수 있는 도구가 완성된 것은 아니었다.\u003c/p\u003e\n\u003cblockquote\u003e\n\u003cp\u003e2026년 10월 23일까지의 코드와 진행 기록을 반영했다. 아래 수치는 각 실행 당시의 결과다. 이 글을 수정하면서 전체 테스트나 사진 해석 API를 다시 실행한 것은 아니다.\u003c/p\u003e\n\u003c/blockquote\u003e\n\u003ch2\u003eSituation — 상황\u003c/h2\u003e\n\u003cp\u003eGeomate는 학생이 태블릿에서 도형을 돌려 보고, 자르고, 펼치며 관계를 이해하도록 돕는 기하 학습 앱이다. 본 개발에 앞서 기하 계산과 화면 조작을 어디까지 직접 구현할 수 있는지 PoC로 확인하고 있다.\u003c/p\u003e\n\u003cp\u003e엔진 명세는 P0부터 P4까지 다섯 단계로 나누고, 단계마다 종료 조건을 적어 두었다. 코딩 에이전트에게 일을 맡길 때도 이 명세와 종료 조건을 기준으로 삼았다. P2까지는 Codex로 만들었고, P3·P4는 같은 명세를 넘겨 Claude Code로 이어받았다. 여기서 말하는 P3·P4는 초기 엔진 명세의 단계다. 이후 진행한 평면·힌트·보조선·답 형식 등의 중1-2 재검토 단계와는 별개다.\u003c/p\u003e\n\u003cp\u003eP3에 들어가기 전에 에이전트에게 바로 구현을 시키지 않았다. 먼저 P4까지 가는 길에서 막힐 조건을 점검하게 했다. 코드로 풀 수 없는 일을 먼저 가려내야, 에이전트가 할 일과 내가 할 일을 나눌 수 있었다.\u003c/p\u003e\n\u003col\u003e\n\u003cli\u003e\u003cstrong\u003e문제 사진:\u003c/strong\u003e 명세에 첨부된 사진 11장이 아직 저장소에 없었다. 내가 직접 넣어야 했다.\u003c/li\u003e\n\u003cli\u003e\u003cstrong\u003e문항 검수:\u003c/strong\u003e 원본 조건 확인과 독립 풀이는 사람이 해야 검수 완료로 올릴 수 있다.\u003c/li\u003e\n\u003cli\u003e\u003cstrong\u003e태블릿 실측:\u003c/strong\u003e 실제 기기가 필요하다.\u003c/li\u003e\n\u003cli\u003e\u003cstrong\u003e사진 해석:\u003c/strong\u003e API 키가 필요하다.\u003c/li\u003e\n\u003c/ol\u003e\n\u003cp\u003e점검 결과를 보고 결정을 내렸다. 사진은 내가 폴더에 넣고, 기하 서비스는 Python으로 만들고, 해석 키는 \u003ccode\u003e.env\u003c/code\u003e로 주입하기로 했다. 목표 기기는 갤럭시 탭이지만 먼저 PC localhost에서 확인하기로 했다. 그리고 시작 전에 Codex가 만든 P2 상태를 첫 커밋으로 남겼다. 에이전트가 큰 변경을 하다 틀어져도 돌아갈 기준점이 필요했다.\u003c/p\u003e\n\u003cp\u003e에이전트와 일하는 규칙도 문서로 남겼다. 엔진 기능을 하나 끝낼 때마다 교재 답지와 대조해 스스로 검수하게 했다. 단계를 마치면 내가 직접 테스트할 문항과 여는 법, 확인할 점을 함께 보고하게 했다. 버그는 바로 고치되 개선안은 선택지로 물어보게 하고, \u003ccode\u003e.env\u003c/code\u003e는 읽지 못하게 했다. 단계별 작업 기록과 인수인계 문서를 남겨, 다른 PC나 새 세션에서도 같은 기준으로 이어 가게 했다.\u003c/p\u003e\n\u003ch2\u003eTask — 과제\u003c/h2\u003e\n\u003ctable\u003e\n\u003cthead\u003e\n\u003ctr\u003e\n\u003cth\u003e단계\u003c/th\u003e\n\u003cth\u003e할 일\u003c/th\u003e\n\u003cth\u003e명세가 정한 종료 조건\u003c/th\u003e\n\u003c/tr\u003e\n\u003c/thead\u003e\n\u003ctbody\u003e\u003ctr\u003e\n\u003ctd\u003eP3 · 실제 문제 통합\u003c/td\u003e\n\u003ctd\u003e문제 사진 11장을 엔진에 연결\u003c/td\u003e\n\u003ctd\u003e11문항을 사람이 검수해 확정\u003c/td\u003e\n\u003c/tr\u003e\n\u003ctr\u003e\n\u003ctd\u003eP4 · 입력·기기 통합\u003c/td\u003e\n\u003ctd\u003e사진 해석, 펜 입력, 기하 서비스, 태블릿 연결\u003c/td\u003e\n\u003ctd\u003e사진 인식 오류와 계산 오류를 분리 측정하고 기기별 실행 증거 확보\u003c/td\u003e\n\u003c/tr\u003e\n\u003c/tbody\u003e\u003c/table\u003e\n\u003cp\u003e사진 11장은 모두 입체도형 문제였다. 기존 엔진인 정육면체 단면, 회전체, 직육면체만으로는 부족했다.\u003c/p\u003e\n\u003ctable\u003e\n\u003cthead\u003e\n\u003ctr\u003e\n\u003cth\u003e문항\u003c/th\u003e\n\u003cth\u003e내용\u003c/th\u003e\n\u003cth\u003e추가로 필요한 계산\u003c/th\u003e\n\u003c/tr\u003e\n\u003c/thead\u003e\n\u003ctbody\u003e\u003ctr\u003e\n\u003ctd\u003e0847, 0850\u003c/td\u003e\n\u003ctd\u003e정사면체·정십이면체 전개도를 접었을 때 겹치는 꼭짓점\u003c/td\u003e\n\u003ctd\u003e정다각형 전개도 접기\u003c/td\u003e\n\u003c/tr\u003e\n\u003ctr\u003e\n\u003ctd\u003e0863\u003c/td\u003e\n\u003ctd\u003e정육면체 전개도에 표시한 세 점으로 자른 단면의 각\u003c/td\u003e\n\u003ctd\u003e전개도 → 접기 → 단면\u003c/td\u003e\n\u003c/tr\u003e\n\u003ctr\u003e\n\u003ctd\u003e0913\u003c/td\u003e\n\u003ctd\u003e원뿔을 다섯 평면으로 자른 단면의 모양\u003c/td\u003e\n\u003ctd\u003e원뿔 단면\u003c/td\u003e\n\u003c/tr\u003e\n\u003ctr\u003e\n\u003ctd\u003e0925\u003c/td\u003e\n\u003ctd\u003e원뿔에 실을 한 바퀴 감은 최단 경로\u003c/td\u003e\n\u003ctd\u003e원뿔 옆면 전개\u003c/td\u003e\n\u003c/tr\u003e\n\u003ctr\u003e\n\u003ctd\u003e1014\u003c/td\u003e\n\u003ctd\u003e반원기둥 홈을 판 직육면체의 부피\u003c/td\u003e\n\u003ctd\u003e직육면체에서 곡선 단면 기둥 빼기\u003c/td\u003e\n\u003c/tr\u003e\n\u003ctr\u003e\n\u003ctd\u003e0861, 1006, 1019, 1020, 1063\u003c/td\u003e\n\u003ctd\u003e정육면체 단면, 구멍 뚫린 입체, 회전체\u003c/td\u003e\n\u003ctd\u003e기존 엔진 연결·보완\u003c/td\u003e\n\u003c/tr\u003e\n\u003c/tbody\u003e\u003c/table\u003e\n\u003cp\u003e브라우저의 TypeScript 엔진과 Python 서비스에는 같은 입력을 보내 결과를 비교해야 했다. 사진을 잘못 읽은 것과, 읽은 입력을 잘못 계산한 것도 구분해 기록해야 했다.\u003c/p\u003e\n\u003ch2\u003eAction — 행동\u003c/h2\u003e\n\u003ch3\u003e1. 부족한 엔진 만들기\u003c/h3\u003e\n\u003cp\u003e전개도 접기는 면들이 공유하는 변에서 경첩 트리를 만들고, 이웃한 두 면의 바깥 법선이 이루는 각만큼 접는다. 접은 뒤에는 목표 다면체에 맞춰 정렬하고, 닫혔는지와 면이 겹치지 않는지를 검사한다. 원뿔은 자르는 평면에 따라 단면을 분류하고, 옆면은 부채꼴로 펼쳐 최단 경로를 구한다.\u003c/p\u003e\n\u003cp\u003e\u003cimg src=\"/devlog/images/2026-10-24-geomate-p3-p4/0850-dodeca.png\" alt=\"정십이면체 전개도를 접은 결과. 겹치는 꼭짓점은 F·G처럼 함께 표시된다\"\u003e\u003c/p\u003e\n\u003cp\u003e처음에는 정십이면체가 닫히지 않았다. 기준 정십이면체의 면 법선 좌표에서 성분의 순열 하나가 어긋나 있었다. 정상이라면 모서리가 30개여야 하는데 42개가 만들어졌다. 접는 코드뿐 아니라 \u003cstrong\u003e기준 데이터도 검사해야 한다\u003c/strong\u003e는 것을 여기서 배웠다.\u003c/p\u003e\n\u003ch3\u003e2. 같은 입력을 두 구현으로 계산하기\u003c/h3\u003e\n\u003cp\u003ePython 서비스는 같은 JSON 요청·결과 계약을 따른다. P3에서 다룬 계산 중에는 TypeScript와 다른 방법으로 검산한 것도 있다.\u003c/p\u003e\n\u003cul\u003e\n\u003cli\u003e정육면체 단면은 유리수로 판정한다.\u003c/li\u003e\n\u003cli\u003e회전체 부피는 반지름 구간을 정확히 적분한다.\u003c/li\u003e\n\u003cli\u003e원뿔 단면 넓이는 현의 길이를 적분하는 방법으로 계산한다.\u003c/li\u003e\n\u003c/ul\u003e\n\u003cp\u003e지원하는 입력에서는 84π, 280π/3, 90 − 10π, √6/2처럼 정확한 식도 돌려준다. 학생이 \u003ccode\u003e84pi\u003c/code\u003e라고 입력하면 SymPy로 수식의 동치를 비교한다.\u003c/p\u003e\n\u003cp\u003e두 구현의 상태, 형상, 측정값을 비교하면 한쪽에만 있는 오류를 찾을 수 있다. 다만 \u003cstrong\u003e같은 답이 나왔다고 정답이 증명되는 것은 아니다.\u003c/strong\u003e 이후 만든 평면 \u003ccode\u003efigure\u003c/code\u003e 엔진은 TypeScript 구현을 Python으로 이식했다. 두 구현이 같은 가정이나 오류를 공유할 수 있으므로 교재 해설 대조, 불변량 검사, 반례도 함께 봐야 한다.\u003c/p\u003e\n\u003ch3\u003e3. LLM에게는 입력 초안을 맡기기\u003c/h3\u003e\n\u003cp\u003e중간에 이런 질문을 받았다.\u003c/p\u003e\n\u003cblockquote\u003e\n\u003cp\u003e이거 Gemini API로만 구현한 3D 모델인가?\u003c/p\u003e\n\u003c/blockquote\u003e\n\u003cp\u003e역할은 이렇게 나눴다.\u003c/p\u003e\n\u003ctable\u003e\n\u003cthead\u003e\n\u003ctr\u003e\n\u003cth\u003e역할\u003c/th\u003e\n\u003cth\u003e담당\u003c/th\u003e\n\u003c/tr\u003e\n\u003c/thead\u003e\n\u003ctbody\u003e\u003ctr\u003e\n\u003ctd\u003e접기, 단면, 회전체, 부피·겉넓이 계산\u003c/td\u003e\n\u003ctd\u003eTypeScript 기하 엔진\u003c/td\u003e\n\u003c/tr\u003e\n\u003ctr\u003e\n\u003ctd\u003e정확식 계산과 수식 답 비교\u003c/td\u003e\n\u003ctd\u003ePython 기하 서비스와 SymPy\u003c/td\u003e\n\u003c/tr\u003e\n\u003ctr\u003e\n\u003ctd\u003e입체 표시\u003c/td\u003e\n\u003ctd\u003eThree.js 기반 화면\u003c/td\u003e\n\u003c/tr\u003e\n\u003ctr\u003e\n\u003ctd\u003e평면 도형 표시\u003c/td\u003e\n\u003ctd\u003e별도 2D SVG 화면\u003c/td\u003e\n\u003c/tr\u003e\n\u003ctr\u003e\n\u003ctd\u003e사진 → 조건과 엔진 요청 초안\u003c/td\u003e\n\u003ctd\u003e비전 언어 모델\u003c/td\u003e\n\u003c/tr\u003e\n\u003ctr\u003e\n\u003ctd\u003e입력 조건·원본 문항 확정\u003c/td\u003e\n\u003ctd\u003e학생 또는 검수자의 확인\u003c/td\u003e\n\u003c/tr\u003e\n\u003c/tbody\u003e\u003c/table\u003e\n\u003cp\u003e처음에는 Gemini를 썼다. 모델은 사진에서 점 이름, 치수, 조건을 읽어 엔진 입력 JSON을 적는다. 정답과 3D 형상을 직접 생성하는 역할은 맡기지 않았다. 모델이 적은 입력을 엔진이 검사하고 계산한다.\u003c/p\u003e\n\u003cp\u003e이후 정확도와 비용을 함께 비교해 사진 해석 모델을 OpenAI의 GPT-6.1 Sol(추론 강도 medium) 하나로 정했다. 비교 과정은 7번에 정리했다. 모델이 바뀌어도 엔진 입력 계약은 그대로다. 사진 해석 키가 없어도 기존 입력으로 도형을 보고 풀이를 검사하는 경로는 사용할 수 있다.\u003c/p\u003e\n\u003cp\u003eLLM은 입력 초안을 적는다. 엔진은 \u003cstrong\u003e그 입력에 대한\u003c/strong\u003e 결과를 계산한다. 엔진이 통과시킨 입력이라도 사진과 다른 조건을 옮겼을 수 있으므로, 원본과 맞는지 확인하는 과정이 남는다.\u003c/p\u003e\n\u003ch3\u003e4. 사진 해석을 평가하고 고치기\u003c/h3\u003e\n\u003cp\u003e10월 17일에는 사진 11장을 Gemini 3.8 Flash, 추론 강도 low로 해석했다. 그 입력을 엔진에 돌려 미리 옮겨 둔 입력의 결과와 비교했다.\u003c/p\u003e\n\u003cp\u003e숫자를 읽는 것과 숫자의 의미를 옮기는 것은 달랐다. 치수는 읽어도 엔진 요청을 구성하는 데서 실패했다.\u003c/p\u003e\n\u003cul\u003e\n\u003cli\u003e\u003cstrong\u003e여러 요청을 한 JSON 문자열에 담았다.\u003c/strong\u003e 일부가 깨지면 전체를 잃어서 요청마다 따로 파싱하도록 바꿨다.\u003c/li\u003e\n\u003cli\u003e\u003cstrong\u003e엔진 이름이나 단위를 빠뜨렸다.\u003c/strong\u003e 기본값을 보정한 사실을 기록하고, 확인이 필요한 초안으로 남겼다.\u003c/li\u003e\n\u003cli\u003e\u003cstrong\u003e기하 조건을 잘못 옮겼다.\u003c/strong\u003e 원뿔 이음선을 점 A에 맞추지 않거나, 홈의 윤곽을 닫지 않았다.\u003c/li\u003e\n\u003cli\u003e\u003cstrong\u003e입력을 만들지 못했다.\u003c/strong\u003e 정십이면체 전개도 좌표를 구성하지 못한 경우도 있었다.\u003c/li\u003e\n\u003c/ul\u003e\n\u003ctable\u003e\n\u003cthead\u003e\n\u003ctr\u003e\n\u003cth\u003e10월 17일 실행\u003c/th\u003e\n\u003cth\u003e평가한 사진\u003c/th\u003e\n\u003cth\u003e치수 읽기\u003c/th\u003e\n\u003cth\u003e답 검사 통과\u003c/th\u003e\n\u003cth\u003e엔진·기대값 쪽 실패로 분류된 건수\u003c/th\u003e\n\u003c/tr\u003e\n\u003c/thead\u003e\n\u003ctbody\u003e\u003ctr\u003e\n\u003ctd\u003e1차\u003c/td\u003e\n\u003ctd\u003e10장, 1장은 503 오류\u003c/td\u003e\n\u003ctd\u003e22/22\u003c/td\u003e\n\u003ctd\u003e8/16\u003c/td\u003e\n\u003ctd\u003e0\u003c/td\u003e\n\u003c/tr\u003e\n\u003ctr\u003e\n\u003ctd\u003e2차 · 프롬프트 수정 후\u003c/td\u003e\n\u003ctd\u003e5장, 나머지 6장은 429 한도\u003c/td\u003e\n\u003ctd\u003e5/5\u003c/td\u003e\n\u003ctd\u003e5/6\u003c/td\u003e\n\u003ctd\u003e0\u003c/td\u003e\n\u003c/tr\u003e\n\u003c/tbody\u003e\u003c/table\u003e\n\u003cp\u003e치수와 답 검사 항목 수는 사진 수와 다르다. 비교 기준도 아직 내가 직접 검수를 마치지 않은 전사 초안이었다. 두 실행은 표본과 평가 항목이 달라, 이 표만으로 정확도 개선 폭을 계산할 수는 없다. 당시 평가 범위에서 엔진·기대값 쪽 실패로 분류된 것이 없었다는 뜻이다.\u003c/p\u003e\n\u003cp\u003e후속 작업에서는 엔진 검사가 실패하면 같은 사진, 이전 초안, 오류 문장을 모델에 보내 한 번 수정하게 했다. 재시도에서 실패 요청이 더 많아지거나 새 초안을 읽지 못하면 첫 초안을 유지하고, 어느 쪽을 사용했는지도 기록한다. 이 과정은 입력 형식 오류를 줄이는 장치다. 지름을 반지름으로 읽고도 계산이 성립하는 오독까지 잡지는 못한다.\u003c/p\u003e\n\u003ch3\u003e5. 화면을 직접 보고 고치기\u003c/h3\u003e\n\u003cp\u003e자동 테스트가 통과한 뒤에도 화면에서는 문제가 나왔다.\u003c/p\u003e\n\u003cblockquote\u003e\n\u003cp\u003e861번 C-D, G-H 위치 바뀜 / 1014번 위 아래가 막혀 있음 / 925번은 잘 모르겠네... / 1006번은 수치 이런 것도 나타내고 뭔가 더 필요할 듯\u003c/p\u003e\n\u003c/blockquote\u003e\n\u003cul\u003e\n\u003cli\u003e\u003cstrong\u003e0861:\u003c/strong\u003e 라벨을 사진의 거울상으로 붙여 C·D와 G·H가 바뀌어 보였다. 단면은 어느 쪽이든 마름모라 답 검사는 통과하고 있었다.\u003c/li\u003e\n\u003cli\u003e\u003cstrong\u003e1014:\u003c/strong\u003e 위아래 면이 반원 홈을 덮었다. 구멍이 바깥 테두리에 닿는 경우의 면 분할을 고쳤다.\u003c/li\u003e\n\u003cli\u003e\u003cstrong\u003e0925:\u003c/strong\u003e 원뿔의 빨간 선이 옆면을 자르는 이음선이라는 설명이 없었다. 라벨과 안내를 붙였다.\u003c/li\u003e\n\u003c/ul\u003e\n\u003cp\u003e1006에는 치수선과 겉넓이 구성을, 회전체에는 회전 재생과 부피 분해를 넣었다.\u003c/p\u003e\n\u003cp\u003e\u003cimg src=\"/devlog/images/2026-10-24-geomate-p3-p4/1006-dims.png\" alt=\"1006: 치수선과 함께 본 구멍 뚫린 직육면체. 10월 17일 구현 화면\"\u003e\u003c/p\u003e\n\u003cp\u003e\u003cimg src=\"/devlog/images/2026-10-24-geomate-p3-p4/1019-volume.png\" alt=\"1019: 회전체의 부피를 높이 구간별로 나눈 화면. 48π + 36π = 84π\"\u003e\u003c/p\u003e\n\u003cp\u003e당시에는 답을 드러내는 분해 결과를 결과 확인 뒤에 열도록 했다. 이후에는 잠금 기준 자체를 다시 검토했다. 학생이 답을 제출해야만 관찰 도구를 쓸 수 있다면, 막힌 학생은 도구를 사용하기도 어렵다. \u003cstrong\u003e일반 관찰과 기본 조작은 제출 전에 사용할 수 있어야 한다.\u003c/strong\u003e 목표 정답의 값·형상을 어디까지 보여 줄지는 활동별로 정할 문제로 남겼다. PoC의 현재 잠금 동작을 그대로 제품 정책으로 확정한 것은 아니다.\u003c/p\u003e\n\u003ch3\u003e6. 입체 계산에서 평면·보조선·힌트로 넓히기\u003c/h3\u003e\n\u003cp\u003e10월 20일부터는 계산 뒤에 무엇을 보여 줄지도 만들었다.\u003c/p\u003e\n\u003ctable\u003e\n\u003cthead\u003e\n\u003ctr\u003e\n\u003cth\u003e작업\u003c/th\u003e\n\u003cth\u003e구현·검토한 내용\u003c/th\u003e\n\u003c/tr\u003e\n\u003c/thead\u003e\n\u003ctbody\u003e\u003ctr\u003e\n\u003ctd\u003e입체 그림 보완\u003c/td\u003e\n\u003ctd\u003e숨은선, 치수, 라벨, 기본 시점, 단면과 절삭 그림\u003c/td\u003e\n\u003c/tr\u003e\n\u003ctr\u003e\n\u003ctd\u003e평면 좌표 도형\u003c/td\u003e\n\u003ctd\u003e작도 단계와 조건으로 좌표 생성, 모순·조건 부족 검사, 2D SVG\u003c/td\u003e\n\u003c/tr\u003e\n\u003ctr\u003e\n\u003ctd\u003e규칙 추론과 힌트\u003c/td\u003e\n\u003ctd\u003e중1 정리로 각의 관계를 추론하고 단계별 근거 표시\u003c/td\u003e\n\u003c/tr\u003e\n\u003ctr\u003e\n\u003ctd\u003e보조선\u003c/td\u003e\n\u003ctd\u003e답에 닿는 후보 추천, 학생이 그은 선의 효과 확인\u003c/td\u003e\n\u003c/tr\u003e\n\u003ctr\u003e\n\u003ctd\u003e입체 학습 보조\u003c/td\u003e\n\u003ctd\u003e펼치기·부피 분해·면 분해를 힌트 단계와 연결\u003c/td\u003e\n\u003c/tr\u003e\n\u003ctr\u003e\n\u003ctd\u003e오답·그리기 검사\u003c/td\u003e\n\u003ctd\u003e흔한 실수 33가지와 답 비교, 완성된 삼각형의 조건 검사\u003c/td\u003e\n\u003c/tr\u003e\n\u003ctr\u003e\n\u003ctd\u003e추가 도형\u003c/td\u003e\n\u003ctd\u003e색칠 영역, 입체 안의 입체, 다각형 둘레를 도는 원\u003c/td\u003e\n\u003c/tr\u003e\n\u003c/tbody\u003e\u003c/table\u003e\n\u003cp\u003e그리기 검사는 완성된 도형이 조건을 만족하는지 본다. 학생이 자와 컴퍼스를 올바른 순서로 사용했는지 채점하는 기능은 아니다. 힌트와 조작도 지원하는 유형 안에서 동작하며, 모든 도형을 자유롭게 편집하는 기능까지 갖춘 것은 아니다.\u003c/p\u003e\n\u003cp\u003e원 굴리기는 계산과 학습 화면을 함께 만든 사례다. 반지름 1인 원이 변의 길이가 6, 8, 10인 직각삼각형 바깥을 한 바퀴 돌면 지나간 넓이는 48 + 4π다. 화면에서는 원을 움직여 보고, 지나간 자리를 변의 직사각형들과 꼭짓점의 부채꼴들로 나누어 볼 수 있게 했다. 사진에서 이 입력을 만드는 경로도 확인했지만, 브라우저 자동 테스트와 실제 학생 관찰은 남아 있다.\u003c/p\u003e\n\u003ch3\u003e7. 해석 모델을 비교해 Gemini에서 GPT-6.1 Sol로 바꾸기\u003c/h3\u003e\n\u003cp\u003e10월 22일에는 사진 해석 모델을 비교했다. 처음에는 Gemini 3.8 Flash와 Claude Sonnet 5.5 두 모델로 시작했다. 프롬프트를 다듬는 데 쓴 20문항과, 프롬프트에 쓰지 않은 처음 보는 20문항(평면 10, 입체 10)을 나눠 돌렸다.\u003c/p\u003e\n\u003ctable\u003e\n\u003cthead\u003e\n\u003ctr\u003e\n\u003cth\u003e1차 비교 · 각 1회 실행\u003c/th\u003e\n\u003cth\u003e다듬은 20문항\u003c/th\u003e\n\u003cth\u003e처음 보는 20문항\u003c/th\u003e\n\u003cth\u003e평면\u003c/th\u003e\n\u003cth\u003e입체\u003c/th\u003e\n\u003cth\u003e그림 생성\u003c/th\u003e\n\u003cth\u003e엔진 입력 실패\u003c/th\u003e\n\u003cth\u003e평균 시간\u003c/th\u003e\n\u003c/tr\u003e\n\u003c/thead\u003e\n\u003ctbody\u003e\u003ctr\u003e\n\u003ctd\u003eGemini 3.8 Flash · low\u003c/td\u003e\n\u003ctd\u003e20/20\u003c/td\u003e\n\u003ctd\u003e9/20\u003c/td\u003e\n\u003ctd\u003e3/10\u003c/td\u003e\n\u003ctd\u003e6/10\u003c/td\u003e\n\u003ctd\u003e16/20\u003c/td\u003e\n\u003ctd\u003e1\u003c/td\u003e\n\u003ctd\u003e12초\u003c/td\u003e\n\u003c/tr\u003e\n\u003ctr\u003e\n\u003ctd\u003eClaude Sonnet 5.5 · medium\u003c/td\u003e\n\u003ctd\u003e15/20\u003c/td\u003e\n\u003ctd\u003e11/20\u003c/td\u003e\n\u003ctd\u003e5/10\u003c/td\u003e\n\u003ctd\u003e6/10\u003c/td\u003e\n\u003ctd\u003e14/20\u003c/td\u003e\n\u003ctd\u003e5\u003c/td\u003e\n\u003ctd\u003e13초\u003c/td\u003e\n\u003c/tr\u003e\n\u003c/tbody\u003e\u003c/table\u003e\n\u003cp\u003e다듬은 문항에서는 잘 맞혔지만, 처음 보는 문제에서는 두 모델 모두 절반 정도에 그쳤다. \u003cstrong\u003e프롬프트를 다듬은 문항의 성공이 새 문항으로 그대로 이어지지 않았다.\u003c/strong\u003e 특히 평면 작도 입력이 약했다. 정육각형과 정팔각형을 붙인 그림은 두 모델 모두 겹치게 만들었고, 반구와 원뿔을 합친 입체는 두 모델 모두 조각을 따로 만들었다. 여기서 \u0026quot;그림 생성\u0026quot;은 화면에 그림이 나왔다는 뜻이고, 원본과 같다는 뜻은 아니다.\u003c/p\u003e\n\u003cp\u003e그래서 두 모델 중 하나라도 틀린 7문항을 골라 상위 모델로 다시 시험했다. 이번에는 값뿐 아니라 그려진 도형이 사진과 같은지도 직접 확인했다.\u003c/p\u003e\n\u003ctable\u003e\n\u003cthead\u003e\n\u003ctr\u003e\n\u003cth\u003e틀렸던 7문항 재시험\u003c/th\u003e\n\u003cth\u003e값 정답\u003c/th\u003e\n\u003cth\u003e그림 일치\u003c/th\u003e\n\u003cth\u003e평균 시간\u003c/th\u003e\n\u003c/tr\u003e\n\u003c/thead\u003e\n\u003ctbody\u003e\u003ctr\u003e\n\u003ctd\u003eGemini 3.8 Flash · low\u003c/td\u003e\n\u003ctd\u003e1/7\u003c/td\u003e\n\u003ctd\u003e-\u003c/td\u003e\n\u003ctd\u003e-\u003c/td\u003e\n\u003c/tr\u003e\n\u003ctr\u003e\n\u003ctd\u003eClaude Sonnet 5.5 · medium\u003c/td\u003e\n\u003ctd\u003e4/7\u003c/td\u003e\n\u003ctd\u003e-\u003c/td\u003e\n\u003ctd\u003e-\u003c/td\u003e\n\u003c/tr\u003e\n\u003ctr\u003e\n\u003ctd\u003eGemini 4 Argon · medium\u003c/td\u003e\n\u003ctd\u003e7/7\u003c/td\u003e\n\u003ctd\u003e6/7\u003c/td\u003e\n\u003ctd\u003e23초\u003c/td\u003e\n\u003c/tr\u003e\n\u003ctr\u003e\n\u003ctd\u003e\u003cstrong\u003eGPT-6.1 Sol · medium\u003c/strong\u003e\u003c/td\u003e\n\u003ctd\u003e\u003cstrong\u003e7/7\u003c/strong\u003e\u003c/td\u003e\n\u003ctd\u003e\u003cstrong\u003e7/7\u003c/strong\u003e\u003c/td\u003e\n\u003ctd\u003e36초\u003c/td\u003e\n\u003c/tr\u003e\n\u003ctr\u003e\n\u003ctd\u003eGPT-6.1 Sol · low\u003c/td\u003e\n\u003ctd\u003e7/7\u003c/td\u003e\n\u003ctd\u003e6/7\u003c/td\u003e\n\u003ctd\u003e23초\u003c/td\u003e\n\u003c/tr\u003e\n\u003c/tbody\u003e\u003c/table\u003e\n\u003cp\u003e결정을 가른 건 그림이었다. 위를 잘라 낸 원뿔대 문제에서 Argon은 원뿔 두 개를, Flash는 원뿔 하나를 그렸다. 원뿔대로 그린 건 Sol medium뿐이었다. Geomate에서 학생이 돌리고 자르는 대상은 이 그림이라, 값이 맞아도 그림이 틀리면 학습 도구로 쓸 수 없다.\u003c/p\u003e\n\u003cp\u003e정확도만으로 고르지 않고 비용도 같이 따졌다. 학생이 사진을 올릴 때마다 호출되는 모델이라, 문항당 몇십 원 차이도 사용자가 늘면 그대로 운영비가 된다. 공식 단가로 같은 토큰량(입력 약 1.15만, 출력·생각 약 0.95만)을 가정한 비용과, 실제 실행에 기록된 사용량으로 계산한 비용을 나란히 놓았다. 1달러는 1,400원으로 잡았다.\u003c/p\u003e\n\u003ctable\u003e\n\u003cthead\u003e\n\u003ctr\u003e\n\u003cth\u003e문항당 비용\u003c/th\u003e\n\u003cth\u003e같은 토큰량 가정\u003c/th\u003e\n\u003cth\u003e실제 기록 사용량\u003c/th\u003e\n\u003c/tr\u003e\n\u003c/thead\u003e\n\u003ctbody\u003e\u003ctr\u003e\n\u003ctd\u003eGPT-6 Luna\u003c/td\u003e\n\u003ctd\u003e약 8원\u003c/td\u003e\n\u003ctd\u003e시험 안 함\u003c/td\u003e\n\u003c/tr\u003e\n\u003ctr\u003e\n\u003ctd\u003eGemini 3.8 Flash (할인 기간)\u003c/td\u003e\n\u003ctd\u003e약 62원\u003c/td\u003e\n\u003ctd\u003e약 20원 이상 (생각 토큰 미기록)\u003c/td\u003e\n\u003c/tr\u003e\n\u003ctr\u003e\n\u003ctd\u003eClaude Sonnet 5.5\u003c/td\u003e\n\u003ctd\u003e약 165원\u003c/td\u003e\n\u003ctd\u003e약 77원\u003c/td\u003e\n\u003c/tr\u003e\n\u003ctr\u003e\n\u003ctd\u003e\u003cstrong\u003eGPT-6.1 Sol\u003c/strong\u003e\u003c/td\u003e\n\u003ctd\u003e약 165원\u003c/td\u003e\n\u003ctd\u003e\u003cstrong\u003emedium 약 52원\u003c/strong\u003e, low 약 46원\u003c/td\u003e\n\u003c/tr\u003e\n\u003ctr\u003e\n\u003ctd\u003eGemini 4 Argon\u003c/td\u003e\n\u003ctd\u003e할인 기간 약 165원, 종료 후 약 331원\u003c/td\u003e\n\u003ctd\u003e확인 못 함 (생각 토큰 미기록)\u003c/td\u003e\n\u003c/tr\u003e\n\u003ctr\u003e\n\u003ctd\u003eClaude Opus 5.5\u003c/td\u003e\n\u003ctd\u003e약 331원\u003c/td\u003e\n\u003ctd\u003e시험 안 함\u003c/td\u003e\n\u003c/tr\u003e\n\u003ctr\u003e\n\u003ctd\u003eGPT-6 Astra\u003c/td\u003e\n\u003ctd\u003e약 826원\u003c/td\u003e\n\u003ctd\u003e시험 안 함\u003c/td\u003e\n\u003c/tr\u003e\n\u003c/tbody\u003e\u003c/table\u003e\n\u003cp\u003eSol의 단가는 Argon의 할인 기간 단가와 같고, 할인이 끝나면 Argon의 절반이다. 실제로는 생각 토큰을 적게 써서 문항당 약 52원이었다. Luna처럼 훨씬 싼 모델도 있었지만, 기하 그림을 복원하는 품질을 확인한 자료가 없어 후보로 두지 않았다.\u003c/p\u003e\n\u003cp\u003e여러 모델을 함께 쓰는 방법도 검토했다. 틀렸던 7문항에서 Flash와 Sonnet 중 하나라도 맞힌 문항을 세면 5문항이라, 둘을 같이 부르면 나아 보였다. 하지만 그 5/7은 정답을 미리 알고 고른 결과다. 실제로는 두 답 중 어느 쪽이 맞는지 골라 줄 판별기가 없고, 방향이 틀린 그림은 엔진 검사도 통과해 버린다. 판별기까지 붙이면 호출이 늘 때마다 비용과 지연도 함께 쌓인다. 그래서 모델을 섞지 않고 \u003cstrong\u003eGPT-6.1 Sol medium 하나로 해석\u003c/strong\u003e하기로 했다. 가장 느리다는 단점은 있지만, 그림까지 맞힌 유일한 설정이었고 비용도 감당할 수 있는 수준이었다.\u003c/p\u003e\n\u003cp\u003e비용을 줄이는 구조도 같이 정했다. 도형을 돌리고 자르고 펼치는 조작은 모두 엔진이 기기에서 계산하므로 AI를 부르지 않는다. AI 비용은 사진을 해석할 때만 든다(엔진 검사에 실패하면 수정 요청 한 번이 더해진다). 학생이 도형을 오래 만지며 공부해도 API 비용은 늘지 않는다.\u003c/p\u003e\n\u003cp\u003e이 표들은 로컬 진행 기록의 관측값이다. 정답 기준은 에이전트의 직접 풀이이고, 기호 답을 수치로 채점하지 못해 오답으로 센 항목도 있다. 재시험은 이미 실패한 문항만 고른 결과라 새 문제 전체의 정확도로 볼 수도 없다. 손대지 않은 문항과 기존 실패 사례를 나눈 고정 평가 세트로 다시 확인할 계획이다.\u003c/p\u003e\n\u003cp\u003eSol low에서는 값이 7/7로 집계됐지만, 한 문항을 Python은 통과시키고 브라우저 TypeScript는 조건 부족으로 거절했다. 교차 검사에 없는 실제 입력에서는 두 구현이 갈릴 수 있었다. 입력 해석, 서비스 계산, 브라우저 계산, 그림을 따로 확인해야 하는 이유다.\u003c/p\u003e\n\u003ch3\u003e8. 힌트를 사다리로 다시 세우기\u003c/h3\u003e\n\u003cp\u003e10월 23일에는 중1-2 범위를 다시 훑으며 힌트와 도구를 정리했다. 기준은 학생이 혼자 다음 행동을 찾을 수 있는가였다.\u003c/p\u003e\n\u003cul\u003e\n\u003cli\u003e\u003cstrong\u003e힌트 사다리.\u003c/strong\u003e 힌트는 관찰 질문 → 시도할 조작 → 새 관계와 이유 → 다시 해 보기 순서로 연다. 사다리는 단계마다 계산한 값이 엔진 값과 같을 때만 만들고, 다르면 내지 않는다. 교과서 문항 해석본에서 사다리가 없던 질문 47건 중 46건을 채웠다. 남은 1건은 엔진이 아직 계산하지 못하는 경우다.\u003c/li\u003e\n\u003cli\u003e\u003cstrong\u003e도구는 묻는 값을 따른다.\u003c/strong\u003e 예전에는 엔진 종류마다 보이는 도구가 정해져 있어서, 원기둥의 겉넓이를 묻는데 회전 도구가 보였다. 지금은 그 질문의 힌트 사다리가 쓰는 도구만 보인다. 원기둥 겉넓이에서는 회전 도구가 빠지고 옆면 펼치기가 들어간다.\u003c/li\u003e\n\u003cli\u003e\u003cstrong\u003e답 형식.\u003c/strong\u003e 수치 답 말고도 보기 고르기, 옳지 않은 것 고르기, O/X, 이름, 모두 쓰기, 해가 여러 개인 답을 엔진 값으로 채점한다. \u0026quot;HE, GC, FG, DH\u0026quot;처럼 순서를 바꿔 써도 맞게 본다.\u003c/li\u003e\n\u003cli\u003e\u003cstrong\u003e빠진 도구.\u003c/strong\u003e 컴퍼스와 자의 움직임을 재생하고 직접 따라 해 보는 작도판, 합동 판정과 겹쳐 보기, 공간 명제의 반례를 직육면체에서 찾는 판, 그릇에 담긴 물, 원환체까지 엔진을 늘렸다.\u003c/li\u003e\n\u003c/ul\u003e\n\u003cp\u003e정한 것도 있다. 작도는 채점하지 않는다. 회전 재생은 평면도형을 돌려 입체를 만드는 문제에서만 보인다. 합동 증명의 빈칸은 엔진이 판정할 값이 없어서, 채점 예외를 둘지 아직 정하지 못했다.\u003c/p\u003e\n\u003ch3\u003e9. 초등 도형으로 넓히기\u003c/h3\u003e\n\u003cp\u003e같은 날 초등 도형으로도 범위를 넓혔다. 초등 5·6학년 교재의 도형 8개 단원을 문항마다 분류하니 1,604행이었다. 지금 엔진으로 바로 계산되는 문항이 655행, 조금 늘리면 되는 문항이 440행, 새 엔진이 필요한 문항이 339행이었다.\u003c/p\u003e\n\u003cp\u003e새 엔진이 가장 많이 필요한 단원은 쌓기나무였다. 6학년 \u0026quot;공간과 입체\u0026quot; 177행 중 167행이 새 기능을 요구했다. \u003ca href=\"/devlog/2026-10-14-geomate-design\"\u003e설계 글\u003c/a\u003e에서 학생들이 특히 어려워했다고 적은 바로 그 단원이다. 쌓기나무 엔진은 칸마다 쌓인 개수를 저장해 앞·옆·위에서 본 모양을 계산하고, 반대로 본 모양에서 가장 많이 쌓은 경우와 가장 적게 쌓은 경우를 찾는다. 이어서 합동·대칭 판정, 직육면체·각기둥 전개도, 원기둥·원뿔 엔진을 TypeScript와 Python 양쪽에 추가했다.\u003c/p\u003e\n\u003ch3\u003e10. 본 프로젝트로 옮기기\u003c/h3\u003e\n\u003cp\u003e10월 23일에는 PoC 엔진을 팀의 본 프로젝트 저장소로 옮겼다. 요청 형식은 PoC 그대로 두고, 팀의 엔진 계약 문서를 PoC에 맞춰 다시 썼다.\u003c/p\u003e\n\u003ctable\u003e\n\u003cthead\u003e\n\u003ctr\u003e\n\u003cth\u003e옮긴 것\u003c/th\u003e\n\u003cth\u003e확인한 것\u003c/th\u003e\n\u003c/tr\u003e\n\u003c/thead\u003e\n\u003ctbody\u003e\u003ctr\u003e\n\u003ctd\u003eTypeScript 계산 엔진 29개\u003c/td\u003e\n\u003ctd\u003e교차 검사 요청 423개의 결과가 PoC와 같음\u003c/td\u003e\n\u003c/tr\u003e\n\u003ctr\u003e\n\u003ctd\u003e힌트·풀이·오답 진단 17개\u003c/td\u003e\n\u003ctd\u003e힌트 사다리 1,666개가 PoC와 같음\u003c/td\u003e\n\u003c/tr\u003e\n\u003ctr\u003e\n\u003ctd\u003ePython 엔진 24개\u003c/td\u003e\n\u003ctd\u003e같은 423개 요청에서 TypeScript와 같음\u003c/td\u003e\n\u003c/tr\u003e\n\u003ctr\u003e\n\u003ctd\u003e사진 해석 모듈과 내부 서비스\u003c/td\u003e\n\u003ctd\u003e각각 테스트 9개\u003c/td\u003e\n\u003c/tr\u003e\n\u003c/tbody\u003e\u003c/table\u003e\n\u003cp\u003e구조도 제품에 맞췄다. 앱이 부르는 API는 모두 Spring Boot에 두고, Python 서비스는 Spring만 부르는 내부 API가 됐다. 권한, 시도 기록, 힌트 이력, 정답 공개 시점은 Spring이 맡는다. TypeScript 엔진은 앱이 바로 쓸 수 있도록 계산과 힌트까지 전부 옮겼고, Python은 서버 검증과 교차 검사를 맡는다.\u003c/p\u003e\n\u003cp\u003e옮기면서 드러난 쟁점도 있다. 앱의 TypeScript 엔진은 제출 전에 정답 도형을 계산하므로, \u0026quot;제출 전 데이터에 정답 형상을 넣지 않는다\u0026quot;는 명세와 어긋난다. 값 채점은 서버가 하므로 결과에는 영향이 없지만, 정답을 미리 볼 수 있는 여지가 남는다. 보기·이름 답과 작도 그림 판정은 아직 TypeScript에만 있어서, 서버에서도 판정할지는 아직 결정하지 못했다.\u003c/p\u003e\n\u003ch2\u003eResult — 결과\u003c/h2\u003e\n\u003cp\u003e\u003cstrong\u003e10월 17일에는 P3·P4의 주요 코드 경로를 구현했다.\u003c/strong\u003e 당시 실행 로그에는 다음 결과가 남아 있다.\u003c/p\u003e\n\u003cul\u003e\n\u003cli\u003eP3 엔진 검사 15개, 원본 문항 회귀 14개, 펜 인식 6개 통과\u003c/li\u003e\n\u003cli\u003e브라우저 18개 통과\u003c/li\u003e\n\u003cli\u003ePython 서비스 51개 통과\u003c/li\u003e\n\u003cli\u003eTypeScript ↔ Python 교차 검사 134/134 일치\u003c/li\u003e\n\u003c/ul\u003e\n\u003cp\u003e이후 기능이 추가되면서 검사 범위도 넓어졌다. 10월 22일 원 굴리기 작업 기록에는 빌드·기하 검사 통과와 교차 검사 334/334 일치가 남아 있다. 같은 기록에서 Python은 101개 통과, OpenAI 공급자 테스트 1개는 패키지 미설치로 실패했고 이후 의존성을 설치했다고 되어 있다. 그 뒤 전체 재실행의 통과까지 이 글에서 확인한 것은 아니다. 앞선 실행의 브라우저 40/40과 이 수치를 합쳐 현재 전체 통과로 쓰지 않았다.\u003c/p\u003e\n\u003cp\u003e10월 23일의 마지막 기록에는 타입 검사와 기하 테스트 전부 통과, Python 113개 통과, 교차 검사 458/458 일치가 남아 있다. 이 실행에서는 브라우저 테스트를 돌리지 않았다. 그 전 실행의 브라우저 58/58과 합쳐 전체 통과로 쓰지도 않았다.\u003c/p\u003e\n\u003cp\u003e같은 날 작은 사고도 있었다. 데스크톱과 노트북에서 같은 단계를 따로 만든 뒤 병합했는데, 30개 파일에 충돌 표시가 남은 채로 푸시됐다. 파일을 노트북 쪽으로 되돌렸고, 데스크톱에서 만든 작업은 기록으로만 남았다. 이후로는 작업 PC를 하나로 정하고, 시작할 때 pull하고 끝낼 때 push한다.\u003c/p\u003e\n\u003cp\u003e\u003cstrong\u003e구현된 계산과 학습 경험 사이에도 간격이 남았다.\u003c/strong\u003e 10월 22일 중1-2 분류표 1,031행을 재검토한 기록에서는 답 형식, 점 끌기, 값 바꾸기, 결과 전 조작, 시작 예제의 공백이 드러났다. 이 검토는 에이전트의 내부 분석이며 실제 학생에게 학습 효과를 확인한 결과는 아니다. 계산할 수 있는 문항이 많아도 학생이 직접 관찰하고 관계를 찾아볼 수 있는지는 별도였다. 10월 23일까지 이 공백을 재검토 단계별로 메웠지만, 이것도 학생에게 확인한 결과는 아니다.\u003c/p\u003e\n\u003cp\u003e남은 일은 초기 명세의 검수와 실기기 확인에 더해, 학습 도구로 사용할 수 있는지 확인하는 것이다.\u003c/p\u003e\n\u003ctable\u003e\n\u003cthead\u003e\n\u003ctr\u003e\n\u003cth\u003e확인할 것\u003c/th\u003e\n\u003cth\u003e현재 확인한 상태\u003c/th\u003e\n\u003cth\u003e다음 확인\u003c/th\u003e\n\u003c/tr\u003e\n\u003c/thead\u003e\n\u003ctbody\u003e\u003ctr\u003e\n\u003ctd\u003e원본 11문항 검수\u003c/td\u003e\n\u003ctd\u003e저장소 입력은 모두 \u003ccode\u003eneeds_confirmation\u003c/code\u003e\u003c/td\u003e\n\u003ctd\u003e원본 조건·독립 풀이 대조 후 검수 기록\u003c/td\u003e\n\u003c/tr\u003e\n\u003ctr\u003e\n\u003ctd\u003e갤럭시 탭\u003c/td\u003e\n\u003ctd\u003e저장된 기기 기록은 Windows 헤드리스 브라우저\u003c/td\u003e\n\u003ctd\u003e실제 펜, 손바닥 접촉, 회전·스냅·화면 방향 테스트\u003c/td\u003e\n\u003c/tr\u003e\n\u003ctr\u003e\n\u003ctd\u003e사진 해석\u003c/td\u003e\n\u003ctd\u003e오독·조건 표현 실패와 실행별 편차 존재\u003c/td\u003e\n\u003ctd\u003e새 표본에서 조건·값·그림·엔진 상태를 분리 평가\u003c/td\u003e\n\u003c/tr\u003e\n\u003ctr\u003e\n\u003ctd\u003e학습 경험\u003c/td\u003e\n\u003ctd\u003e힌트 사다리·도구·답 형식 보완, 단계마다 직접 화면 테스트 반영\u003c/td\u003e\n\u003ctd\u003e학생이 혼자 시작하고, 예상·조작·비교를 이어가는지 관찰\u003c/td\u003e\n\u003c/tr\u003e\n\u003ctr\u003e\n\u003ctd\u003e합동 증명 빈칸\u003c/td\u003e\n\u003ctd\u003e엔진이 판정할 값이 없음\u003c/td\u003e\n\u003ctd\u003e해석 초안의 정답으로 채점하는 예외를 둘지 결정\u003c/td\u003e\n\u003c/tr\u003e\n\u003ctr\u003e\n\u003ctd\u003e제품 연결\u003c/td\u003e\n\u003ctd\u003e엔진·힌트·Python 서비스를 팀 저장소로 이관\u003c/td\u003e\n\u003ctd\u003e앱에서 엔진 실행 확인: 번들러가 앱 밖 패키지를 읽는지, 스키마 검사가 Hermes에서 동작하는지, UI 스레드 계산 시간\u003c/td\u003e\n\u003c/tr\u003e\n\u003c/tbody\u003e\u003c/table\u003e\n\u003cp\u003e검수 화면에서는 검수자 이름, 원본과 독립 풀이를 직접 확인했다는 체크, 엔진 검사 통과를 요구한다. 사진을 옮긴 입력도 초안이고, 에이전트가 해설과 대조한 결과도 사람 검수와 구분한다. 입력이 틀리면 엔진은 다른 문제의 답을 정확하게 계산할 수 있다.\u003c/p\u003e\n\u003cp\u003e\u003cstrong\u003e문항 재사용 방향도 바뀌었다.\u003c/strong\u003e 처음에는 교재 번호로 문항을 등록해 다음 학생이 찾아 쓰는 방식을 생각했다. 현재 기획에서는 이 계획을 철회했다. 교재 자료와 대조 입력은 내부 검증에 사용하고, 서비스 예제·튜토리얼·시연은 팀이 새로 만든 문항을 사용한다. 개인 사진은 본인 학습에만 사용하며 타인 공유나 모델 학습에 쓰지 않는다. 캐시의 범위와 보관 정책은 별도 결정 사항이다.\u003c/p\u003e\n\u003ch2\u003e돌아보며\u003c/h2\u003e\n\u003cp\u003e사진 11장을 연결할 때는 엔진이 문제를 계산할 수 있는지가 가장 큰 질문이었다. 이후에는 그림이 조건과 맞는지, 보조선이 실제로 도움이 되는지, 학생이 다음 행동을 알 수 있는지를 보게 됐다.\u003c/p\u003e\n\u003cp\u003e자동 테스트는 계산과 상태 흐름을 확인하고, 교차 검사는 구현 차이를 드러낸다. 원본 대조는 조건을 확인하고, 사람의 화면 검토는 라벨과 표현의 오류를 찾는다. 학생 관찰은 그 도구로 혼자 배울 수 있는지를 확인한다. 어느 하나의 통과가 나머지 검증을 대신하지는 않는다.\u003c/p\u003e\n\u003cp\u003e이제 다음 작업은 본 프로젝트 앱에서 옮긴 엔진을 실제로 돌려 보는 것이다. 자체 예제로 학생이 혼자 시작할 수 있는지, 막혔을 때 힌트가 다음 시도로 이어지는지도 실제 태블릿에서 확인해야 한다.\u003c/p\u003e\n\u003cp\u003e계산이 맞는 도형을 만드는 데서 시작했다. 그 도형을 학생이 직접 다루며 이해할 수 있도록 만드는 일이 남았다.\u003c/p\u003e\n16:[\"$\",\"div\",null,{\"className\":\"@container\",\"children\":[\"$\",\"article\",null,{\"className\":\"mx-auto max-w-[760px] px-5 pb-24 pt-8 sm:px-8 sm:pt-10\",\"children\":[[\"$\",\"div\",null,{\"children\":[\"$\",\"$L6\",null,{\"href\":\"/\",\"scroll\":false,\"className\":\"text-[13px] text-foreground/65 transition-colors hover:text-accent\",\"children\":\"← Devlog\"}]}],[\"$\",\"span\",null,{\"className\":\"mt-10 flex items-center gap-1.5 font-mono text-[12px] text-foreground/65\",\"children\":[[\"$\",\"$L7\",null,{\"ref\":\"$undefined\",\"iconNode\":[[\"path\",{\"d\":\"M8 2v3\",\"key\":\"1ioesn\"}],[\"path\",{\"d\":\"M16 2v3\",\"key\":\"otl347\"}],[\"rect\",{\"x\":\"3\",\"y\":\"3\",\"width\":\"18\",\"height\":\"18\",\"rx\":\"2\",\"key\":\"h1oib\"}],[\"path\",{\"d\":\"M3 9h18\",\"key\":\"1pudct\"}],[\"path\",{\"d\":\"M8 13h.01\",\"key\":\"1sbv64\"}],[\"path\",{\"d\":\"M12 13h.01\",\"key\":\"y0uutt\"}],[\"path\",{\"d\":\"M16 13h.01\",\"key\":\"wip0gl\"}],[\"path\",{\"d\":\"M8 17h.01\",\"key\":\"p3bg7i\"}],[\"path\",{\"d\":\"M12 17h.01\",\"key\":\"p32p05\"}],[\"path\",{\"d\":\"M16 17h.01\",\"key\":\"ql8jdd\"}]],\"className\":\"lucide-calendar-days\",\"aria-hidden\":\"true\",\"size\":13,\"strokeWidth\":1.7}],\"2026-10-24\"]}],[\"$\",\"h1\",null,{\"className\":\"mt-4 text-3xl font-bold leading-tight tracking-[-0.025em] text-foreground sm:text-[2.25rem]\",\"children\":\"LLM은 입력 초안을 적는다 — 문제 사진 11장에서 시작한 기하 엔진 PoC\"}],[\"$\",\"$L1e\",\"2026-10-24-geomate-p3-p4\",{\"slug\":\"2026-10-24-geomate-p3-p4\",\"recordVisit\":true,\"className\":\"mt-4\"}],[\"$\",\"p\",null,{\"className\":\"mt-4 text-[16px] leading-7 text-foreground/70\",\"children\":\"문제 사진 11장으로 시작한 기하 엔진 PoC를 힌트 사다리와 초등 도형까지 넓히고 본 프로젝트로 옮긴 과정. LLM에는 입력 초안만 맡기고, 계산은 TypeScript·Python 두 엔진으로 교차 검증했다.\"}],[\"$\",\"div\",null,{\"className\":\"mt-6 flex flex-wrap gap-1.5\",\"children\":[[\"$\",\"span\",\"Geomate\",{\"className\":\"rounded-full border border-ink/12 bg-ink/6 px-2.5 py-1 text-[12px] text-foreground/75\",\"children\":\"Geomate\"}],[\"$\",\"span\",\"AI\",{\"className\":\"rounded-full border border-ink/12 bg-ink/6 px-2.5 py-1 text-[12px] text-foreground/75\",\"children\":\"AI\"}],[\"$\",\"span\",\"기하 엔진\",{\"className\":\"rounded-full border border-ink/12 bg-ink/6 px-2.5 py-1 text-[12px] text-foreground/75\",\"children\":\"기하 엔진\"}]]}],[\"$\",\"div\",null,{\"className\":\"mt-10 border-t border-ink/10 doc-prose-module__rLTzAW__prose\",\"dangerouslySetInnerHTML\":{\"__html\":\"$1f\"}}],\"$L20\"]}]}]\n19:null\n1d:[[\"$\",\"title\",\"0\",{\"children\":\"LLM은 입력 초안을 적는다 — 문제 사진 11장에서 시작한 기하 엔진 PoC · Belog\"}],[\"$\",\"meta\",\"1\",{\"name\":\"description\",\"content\":\"문제 사진 11장으로 시작한 기하 엔진 PoC를 힌트 사다리와 초등 도형까지 넓히고 본 프로젝트로 옮긴 과정. LLM에는 입력 초안만 맡기고, 계산은 TypeScript·Python 두 엔진으로 교차 검증했다.\"}],[\"$\",\"meta\",\"2\",{\"name\":\"giscus:backlink\",\"content\":\"https://hj0543.github.io/devlog/2026-10-24-geomate-p3-p4/\"}],[\"$\",\"link\",\"3\",{\"rel\":\"icon\",\"href\":\"/icon.png?icon.3bup3hv08dkxp.png\",\"sizes\":\"1254x1254\",\"type\":\"image/png\"}],[\"$\",\"$L21\",\"4\",{}]]\n"])</script><script>self.__next_f.push([1,"22:I[97053,[\"/_next/static/chunks/0h2qsuyze9ds1.js\",\"/_next/static/chunks/1qa79glashgql.js\",\"/_next/static/chunks/0uri8sq5s_br9.js\"],\"default\"]\n20:[\"$\",\"$L22\",\"2026-10-24-geomate-p3-p4\",{\"slug\":\"2026-10-24-geomate-p3-p4\"}]\n"])</script></body></html>

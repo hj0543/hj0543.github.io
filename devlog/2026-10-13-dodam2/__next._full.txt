@@ -1,0 +1,98 @@
+1:"$Sreact.fragment"
+2:I[3020,["/_next/static/chunks/0h2qsuyze9ds1.js","/_next/static/chunks/1qa79glashgql.js"],"default"]
+3:I[39756,["/_next/static/chunks/0h2qsuyze9ds1.js","/_next/static/chunks/1qa79glashgql.js"],"default"]
+4:I[37457,["/_next/static/chunks/0h2qsuyze9ds1.js","/_next/static/chunks/1qa79glashgql.js"],"default"]
+5:I[66519,["/_next/static/chunks/0h2qsuyze9ds1.js","/_next/static/chunks/1qa79glashgql.js","/_next/static/chunks/36h9ts2bz7_q3.js"],"default"]
+6:I[22016,["/_next/static/chunks/0h2qsuyze9ds1.js","/_next/static/chunks/1qa79glashgql.js","/_next/static/chunks/0uri8sq5s_br9.js"],""]
+7:I[5014,["/_next/static/chunks/0h2qsuyze9ds1.js","/_next/static/chunks/1qa79glashgql.js","/_next/static/chunks/0uri8sq5s_br9.js"],"default"]
+11:I[68027,["/_next/static/chunks/0h2qsuyze9ds1.js","/_next/static/chunks/1qa79glashgql.js"],"default",1]
+:HL["/_next/static/chunks/0eq0t183zyjbt.css","style"]
+:HL["/_next/static/media/70bc3e132a0a741e-s.p.3t6q91iet4nsy.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/_next/static/media/7ebf22b5a21034f8-s.p.3j3877k49yy0l.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/_next/static/media/PretendardVariable-s.p.0ztvx5mb7lxp4.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/_next/static/chunks/2b-2tives3t8w.css","style"]
+f:X
+0:{"P":null,"c":["","devlog","2026-10-13-dodam2",""],"q":"","i":false,"f":[[["",{"children":["devlog",{"children":[["slug","2026-10-13-dodam2","d",[]],{"children":["__PAGE__",{},"$undefined","$undefined",4608]},"$undefined","$undefined",4608]},"$undefined","$undefined",4608]},"$undefined","$undefined",4624],[["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/0eq0t183zyjbt.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","script","script-0",{"src":"/_next/static/chunks/0h2qsuyze9ds1.js","async":true,"nonce":"$undefined"}],["$","script","script-1",{"src":"/_next/static/chunks/1qa79glashgql.js","async":true,"nonce":"$undefined"}]],["$","html",null,{"lang":"ko","data-scroll-behavior":"smooth","suppressHydrationWarning":true,"className":"jetbrains_mono_7d65b77b-module__VxV-Ta__variable instrument_serif_c1e8e483-module__u2UhdW__variable pretendard_97774a5-module__y_0gNq__variable h-full antialiased","children":[["$","head",null,{"children":["$","script",null,{"dangerouslySetInnerHTML":{"__html":"(function () {\n  var theme = \"dark\";\n  try {\n    if (/^\\/(projects|devlog)\\/[^/]+\\/?$/.test(window.location.pathname)\n        && localStorage.getItem(\"theme\") === \"light\") {\n      theme = \"light\";\n    }\n  } catch (e) {}\n  document.documentElement.dataset.theme = theme;\n})();"}}]}],["$","body",null,{"id":"top","className":"flex min-h-full flex-col","children":[["$","$L2",null,{}],["$","main",null,{"className":"flex-1","children":["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[["$","div",null,{"className":"mx-auto flex min-h-[70vh] max-w-[1080px] flex-col items-center justify-center px-5 py-20 text-center sm:px-8","children":[["$","p",null,{"className":"flex items-baseline gap-2.5 text-label","children":[["$","span",null,{"className":"section-label","children":"Not Found"}],["$","span",null,{"className":"font-mono text-[12px] tracking-[0.05em] text-foreground/65","children":"/ 404"}]]}],["$","h1",null,{"className":"mt-6","children":["$","$L5",null,{"text":"404","as":"span","fontSize":"clamp(6rem, 24vw, 13rem)","fontWeight":800,"letterSpacing":"-0.04em","lineHeight":1,"tensionColor":"#c96f4a","hint":true}]}],["$","p",null,{"className":"mt-8 max-w-[420px] text-[16px] leading-7 text-foreground/75","children":["찾으시는 페이지가 없거나 주소가 바뀌었어요.",["$","br",null,{}],"그동안 숫자를 잡아당겨 보셔도 좋아요."]}],["$","$L6",null,{"href":"/","className":"mt-10 inline-flex items-center gap-1.5 border-b border-accent/60 pb-1 text-[15px] font-medium text-accent transition-colors hover:border-accent","children":[["$","$L7",null,{"ref":"$undefined","iconNode":[["path",{"d":"m12 19-7-7 7-7","key":"1l729n"}],["path",{"d":"M19 12H5","key":"x3x0zl"}]],"className":"lucide-arrow-left","aria-hidden":"true","size":15}],"홈으로 돌아가기"]}]]}],[]],"forbidden":"$undefined","unauthorized":"$undefined"}]}],["$","footer",null,{"id":"contact","className":"scroll-mt-20","children":["$","div",null,{"className":"mx-auto max-w-[1080px] px-5 sm:px-8","children":[["$","div",null,{"className":"flex flex-wrap items-end justify-between gap-x-10 gap-y-6 border-t border-ink/15 py-12","children":[["$","div",null,{"children":[["$","p",null,{"className":"section-label","children":"Let's Connect"}],["$","h2",null,{"className":"mt-3 text-2xl font-bold tracking-[-0.025em] text-foreground sm:text-[1.75rem]","children":"함께 해결할 문제를 이야기해요."}]]}],["$","p",null,{"className":"flex flex-wrap gap-x-8 gap-y-3","children":[["$","a",null,{"href":"mailto:hj0543@gmail.com","className":"inline-flex items-center gap-2 border-b border-foreground/40 pb-1 text-[15px] font-medium text-foreground transition-colors hover:border-accent hover:text-accent","children":[["$","$L7",null,{"ref":"$undefined","iconNode":[["path",{"d":"m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7","key":"132q7q"}],["rect",{"x":"2","y":"4","width":"20","height":"16","rx":"2","key":"izxlao"}]],"className":"lucide-mail","aria-hidden":"true","size":17,"strokeWidth":1.8}],"hj0543@gmail.com",["$","$L7",null,{"ref":"$undefined","iconNode":[["path",{"d":"M7 7h10v10","key":"1tivn9"}],["path",{"d":"M7 17 17 7","key":"1vkiza"}]],"className":"lucide-arrow-up-right","aria-hidden":"true","size":14}]]}],["$","a",null,{"href":"https://github.com/hj0543","target":"_blank","rel":"noreferrer","className":"inline-flex items-center gap-2 border-b border-foreground/40 pb-1 text-[15px] font-medium text-foreground transition-colors hover:border-accent hover:text-accent","children":["$L8","GitHub","$L9"]}]]}]]}],"$La"]}]}],"$Lb"]}]]}]]}],{"children":["$Lc",{"children":["$Ld",{"children":["$Le",{},null,false,null]},null,false,"$f"]},null,false,"$f"]},null,false,null],"$L10",false]],"m":"$undefined","G":["$11",["$L12"]],"S":true,"h":null,"r":"$undefined","s":"$undefined","a":"$undefined","l":"$undefined","p":"$undefined","d":"$undefined","b":"CJydaEvBKlu3W7coBDLFj"}
+13:I[85437,["/_next/static/chunks/0h2qsuyze9ds1.js","/_next/static/chunks/1qa79glashgql.js"],"Image"]
+14:I[53759,["/_next/static/chunks/0h2qsuyze9ds1.js","/_next/static/chunks/1qa79glashgql.js"],"default"]
+15:I[11875,["/_next/static/chunks/0h2qsuyze9ds1.js","/_next/static/chunks/1qa79glashgql.js"],"default"]
+17:I[97367,["/_next/static/chunks/0h2qsuyze9ds1.js","/_next/static/chunks/1qa79glashgql.js"],"OutletBoundary"]
+18:"$Sreact.suspense"
+1a:I[97367,["/_next/static/chunks/0h2qsuyze9ds1.js","/_next/static/chunks/1qa79glashgql.js"],"ViewportBoundary"]
+1c:I[97367,["/_next/static/chunks/0h2qsuyze9ds1.js","/_next/static/chunks/1qa79glashgql.js"],"MetadataBoundary"]
+8:["$","$L13",null,{"src":"/icons/github.svg","alt":"","aria-hidden":"true","width":17,"height":17,"className":"brand-icon shrink-0 "}]
+9:["$","$L7",null,{"ref":"$undefined","iconNode":"$0:f:0:1:0:props:children:1:props:children:1:props:children:2:props:children:props:children:0:props:children:1:props:children:0:props:children:2:props:iconNode","className":"lucide-arrow-up-right","aria-hidden":"true","size":14}]
+a:["$","div",null,{"className":"flex flex-wrap items-center justify-between gap-3 border-t border-ink/15 py-6","children":[["$","a",null,{"href":"#top","className":"text-[17px] font-bold tracking-[-0.04em] text-foreground","children":["Belog",["$","span",null,{"className":"text-accent","children":"."}]]}],["$","span",null,{"className":"flex flex-wrap gap-x-4 gap-y-1 text-[12px] text-foreground/65","children":[["$","$L14",null,{}],["$","span",null,{"children":["© ",2026," ","HYEONJIN JEONG",". All rights reserved."]}]]}]]}]
+b:["$","$L15",null,{}]
+c:["$","$1","c",{"children":[null,["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}]
+d:["$","$1","c",{"children":[null,["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}]
+e:["$","$1","c",{"children":["$L16",[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/2b-2tives3t8w.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","script","script-0",{"src":"/_next/static/chunks/0uri8sq5s_br9.js","async":true,"nonce":"$undefined"}]],["$","$L17",null,{"children":["$","$18",null,{"name":"Next.MetadataOutlet","children":"$@19"}]}]]}]
+10:["$","$1","h",{"children":[null,["$","$L1a",null,{"children":"$L1b"}],["$","div",null,{"hidden":true,"children":["$","$L1c",null,{"children":["$","$18",null,{"name":"Next.Metadata","children":"$L1d"}]}]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}]
+12:["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/0eq0t183zyjbt.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]
+f:C
+1b:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
+1e:I[73428,["/_next/static/chunks/0h2qsuyze9ds1.js","/_next/static/chunks/1qa79glashgql.js","/_next/static/chunks/0uri8sq5s_br9.js"],"default"]
+21:I[27201,["/_next/static/chunks/0h2qsuyze9ds1.js","/_next/static/chunks/1qa79glashgql.js"],"IconMark"]
+1f:T1a1e,<p>SSAFY 금융 특화 프로젝트 도담에서 팀장·PM과 백엔드 개발, 최종 발표를 맡았다. 프로젝트를 마치고 돌아보니 내가 반복한 일은 <strong>흩어진 의견을 실행할 작업으로 바꾸고, 그 작업이 연결되도록 기준과 순서를 맞추는 것</strong>이었다.</p>
+<p><img src="/devlog/images/2026-10-13-dodam2/team.jpg" alt="도담 프로젝트 팀"></p>
+<h2>1. 인원이 줄자 구현과 검증의 순서를 다시 확인했다</h2>
+<p>기획을 마칠 무렵 팀원 한 명이 취업하면서 6명에서 5명이 됐다. 함께 정한 기능을 유지하고 싶은 마음이 있었지만, 남은 인원으로 개발과 검증을 마칠 수 있는지부터 봐야 했다.</p>
+<p>주말에도 작업할 수 있다는 팀원이 있었지만, 이를 팀 일정의 전제로 삼지는 않았다. 최종 발표일부터 부하 테스트·QA·버그 수정에 필요한 시간을 역산하고 개발 계획을 일 단위로 나눴다. 오전 9시부터 오후 6시까지를 공통 작업시간으로 두고, 서로 연결되는 작업을 이 시간에 해결하기로 했다.</p>
+<p>API 명세와 ERD를 기준으로 프론트엔드·백엔드의 범위를 맞추고 Jira 이슈와 연동 현황을 확인했다. 예를 들어 사용자 금융 데이터를 활용하는 후속 작업이 시작될 수 있도록 사용자 정보 데이터 생성 같은 선행 작업을 먼저 처리했다. 작업 순서를 정할 때 <strong>내 기능의 완료보다 다른 작업이 시작될 수 있는지</strong>를 함께 봤다.</p>
+<h2>2. 중간 피드백을 서비스의 방향을 다시 보는 기준으로</h2>
+<p>중간발표에서는 차별점이 부족하고 AI 활용에 깊이가 없다는 피드백을 받았다. 준비한 기능을 충분히 설명하지 못한 아쉬움도 있었지만, 사용자가 이 서비스를 통해 어떤 결정을 하게 되는지부터 다시 정리했다.</p>
+<p>핵심 가치를 ‘얼마를 썼는지 보여주는 가계부’에서 **‘무엇을 바꾸면 목표 달성일을 앞당길 수 있는지 알려주는 금융 코치’**로 구체화했다. 진단·추천·시뮬레이션을 목표 달성 시점의 변화로 연결하고, AI 코치에는 그 결과를 자연어로 확인하는 역할을 부여했다.</p>
+<p>저축 속도 예측이 불안정한 문제도 이 기준으로 다시 봤다. 입출금 계좌에는 생활비와 저축이 섞여 있었고, 모델을 추가해도 목표에 모이는 돈을 설명하기 어려웠다. 그래서 전용 계좌 안에서 목표별 금액을 배정하는 세이프박스로 바꿨다. 구체적인 결정과 구현은 <a href="/devlog/2026-09-28-dodam-safebox">세이프박스 글</a>에 정리했다.</p>
+<p>팀장으로서 해야 할 일은 피드백을 전달하는 데서 끝나지 않았다. 어떤 사용자 문제를 해결할지 정하고, 변경한 방향을 기능과 개발 작업에 연결해야 했다.</p>
+<h2>3. 준비와 정리가 팀의 실행을 이어 줬다</h2>
+<p>팀장의 일은 중요한 순간의 결정뿐 아니라 결정 전후의 준비와 정리에도 있었다.</p>
+<table>
+<thead>
+<tr>
+<th>필요한 일</th>
+<th>내가 한 행동</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>다음 작업 준비</td>
+<td>다음 날 스크럼과 주간 스프린트에 담을 작업 확인</td>
+</tr>
+<tr>
+<td>의견을 실행으로 연결</td>
+<td>회의 내용을 이슈로 정리하고 담당·선행 작업 확인</td>
+</tr>
+<tr>
+<td>파트 간 기준 맞추기</td>
+<td>API 명세와 ERD, 화면의 요청·응답을 함께 점검</td>
+</tr>
+<tr>
+<td>일정 조정</td>
+<td>연동 대기와 검증 시간을 확인하고 작업 순서 조율</td>
+</tr>
+<tr>
+<td>변경 이유 전달</td>
+<td>기획·구현 결정을 이슈와 회의록으로 남김</td>
+</tr>
+</tbody></table>
+<p>프론트엔드·AI·인프라가 서비스 흐름과 맞는지도 직접 살펴보고 테스트했다. 팀원들이 서로의 일정을 확인하고 조율을 요청하는 흐름을 만드는 데 이런 기록이 기준이 됐다.</p>
+<p>다만 팀의 일정과 개인의 작업량은 다른 문제였다. 낮에는 선행 작업과 협업을 우선했지만, 내 개발과 다음 날 준비는 집에서도 이어졌다. 다음에는 공통 일정뿐 아니라 내 역할의 수와 작업량도 함께 점검하고, 분담할 부분을 더 일찍 정해야겠다고 느꼈다.</p>
+<h2>4. 발표와 시연도 같은 핵심 가치를 전달하도록 구성</h2>
+<p>처음 슬라이드는 진단·추천·시뮬레이션·목표 관리 등 구현한 기능 목록에 가까웠다. 정해진 시간에 전부 설명하려 하니 핵심이 흐려졌다.</p>
+<p>발표는 세이프박스와 목표 달성 시점 비교를 중심으로 다시 구성했다. 왜 목표별 금액을 나눴는지, 그 결과 어떤 행동을 비교할 수 있는지를 먼저 설명했다. AI는 계산을 서버에 두고 결과를 설명하도록 나눈 이유를 전달하고, 나머지 기능과 기술 구조는 시연과 질의응답에서 보완했다.</p>
+<p>시연 계정과 사용자 시나리오를 준비하고 발표자와 시연자의 순서를 맞췄다. 오류에 대비한 대안도 준비하며 시나리오대로 반복해서 사용했다. <strong>기획·구현·발표가 같은 사용자 문제를 설명하도록 맞추는 것</strong>이 중요했다.</p>
+<h2>5. 결과와 다음 프로젝트에서 바꿀 점</h2>
+<p>계획한 발표 일정을 지켰고, 본선에 진출해 SSAFY 특화 프로젝트 우수상(2등)을 받았다.</p>
+<p><img src="/devlog/images/2026-10-13-dodam2/award.jpg" alt="SSAFY 특화 프로젝트 발표회 우수상"></p>
+<p>서비스 전반의 결정 이유를 살펴본 경험은 질의응답에도 도움이 됐다. 하지만 수상과 일정 준수만으로 작업 분담까지 적절했다고 보지는 않는다. 개인에게 몰린 역할과 후반 검증 부담은 다음에 개선할 부분이다.</p>
+<p>다음 프로젝트에서는 선행 작업과 완료 조건을 초기에 공유하고, 구현·연동·검증 시간을 구분해 계획하려고 한다. 관리 작업도 담당과 시간을 정하고, 팀 일정과 개인 작업량을 함께 보겠다. 이번 경험에서 남은 기준은 <strong>공동의 목표를 실행 가능한 작업과 설명 가능한 결정으로 이어 주는 것</strong>이다.</p>
+<h2>관련 글</h2>
+<ul>
+<li><a href="/projects/dodam">도담 프로젝트 소개</a></li>
+<li><a href="/devlog/2026-09-28-dodam-safebox">목표별 자금 흐름을 바꾼 세이프박스 설계</a></li>
+<li><a href="/devlog/2026-09-16-dodam1">AI 코치 토리의 응답 기준</a></li>
+</ul>
+16:["$","div",null,{"className":"@container","children":["$","article",null,{"className":"mx-auto max-w-[760px] px-5 pb-24 pt-8 sm:px-8 sm:pt-10","children":[["$","div",null,{"children":["$","$L6",null,{"href":"/","scroll":false,"className":"text-[13px] text-foreground/65 transition-colors hover:text-accent","children":"← Devlog"}]}],["$","span",null,{"className":"mt-10 flex items-center gap-1.5 font-mono text-[12px] text-foreground/65","children":[["$","$L7",null,{"ref":"$undefined","iconNode":[["path",{"d":"M8 2v3","key":"1ioesn"}],["path",{"d":"M16 2v3","key":"otl347"}],["rect",{"x":"3","y":"3","width":"18","height":"18","rx":"2","key":"h1oib"}],["path",{"d":"M3 9h18","key":"1pudct"}],["path",{"d":"M8 13h.01","key":"1sbv64"}],["path",{"d":"M12 13h.01","key":"y0uutt"}],["path",{"d":"M16 13h.01","key":"wip0gl"}],["path",{"d":"M8 17h.01","key":"p3bg7i"}],["path",{"d":"M12 17h.01","key":"p32p05"}],["path",{"d":"M16 17h.01","key":"ql8jdd"}]],"className":"lucide-calendar-days","aria-hidden":"true","size":13,"strokeWidth":1.7}],"2026-10-13"]}],["$","h1",null,{"className":"mt-4 text-3xl font-bold leading-tight tracking-[-0.025em] text-foreground sm:text-[2.25rem]","children":"팀장, 그리고 발표자 — 줄어든 인원으로 방향과 일정을 맞추기"}],["$","$L1e","2026-10-13-dodam2",{"slug":"2026-10-13-dodam2","recordVisit":true,"className":"mt-4"}],["$","p",null,{"className":"mt-4 text-[16px] leading-7 text-foreground/70","children":"6명에서 5명으로 줄어든 팀에서 선행 작업과 검증 시간을 정리하고, 서비스의 핵심 가치로 발표와 시연을 구성한 경험."}],["$","div",null,{"className":"mt-6 flex flex-wrap gap-1.5","children":[["$","span","SSAFY",{"className":"rounded-full border border-ink/12 bg-ink/6 px-2.5 py-1 text-[12px] text-foreground/75","children":"SSAFY"}],["$","span","도담",{"className":"rounded-full border border-ink/12 bg-ink/6 px-2.5 py-1 text-[12px] text-foreground/75","children":"도담"}],["$","span","PM",{"className":"rounded-full border border-ink/12 bg-ink/6 px-2.5 py-1 text-[12px] text-foreground/75","children":"PM"}],["$","span","협업",{"className":"rounded-full border border-ink/12 bg-ink/6 px-2.5 py-1 text-[12px] text-foreground/75","children":"협업"}],["$","span","회고",{"className":"rounded-full border border-ink/12 bg-ink/6 px-2.5 py-1 text-[12px] text-foreground/75","children":"회고"}]]}],["$","div",null,{"className":"mt-10 border-t border-ink/10 doc-prose-module__rLTzAW__prose","dangerouslySetInnerHTML":{"__html":"$1f"}}],"$L20"]}]}]
+19:null
+1d:[["$","title","0",{"children":"팀장, 그리고 발표자 — 줄어든 인원으로 방향과 일정을 맞추기 · Belog"}],["$","meta","1",{"name":"description","content":"6명에서 5명으로 줄어든 팀에서 선행 작업과 검증 시간을 정리하고, 서비스의 핵심 가치로 발표와 시연을 구성한 경험."}],["$","meta","2",{"name":"giscus:backlink","content":"https://hj0543.github.io/devlog/2026-10-13-dodam2/"}],["$","link","3",{"rel":"icon","href":"/icon.png?icon.3bup3hv08dkxp.png","sizes":"1254x1254","type":"image/png"}],["$","$L21","4",{}]]
+22:I[97053,["/_next/static/chunks/0h2qsuyze9ds1.js","/_next/static/chunks/1qa79glashgql.js","/_next/static/chunks/0uri8sq5s_br9.js"],"default"]
+20:["$","$L22","2026-10-13-dodam2",{"slug":"2026-10-13-dodam2"}]

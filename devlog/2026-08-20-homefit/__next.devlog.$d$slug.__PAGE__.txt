@@ -1,0 +1,69 @@
+1:"$Sreact.fragment"
+2:I[22016,["/_next/static/chunks/0h2qsuyze9ds1.js","/_next/static/chunks/1qa79glashgql.js","/_next/static/chunks/0uri8sq5s_br9.js"],""]
+3:I[5014,["/_next/static/chunks/0h2qsuyze9ds1.js","/_next/static/chunks/1qa79glashgql.js","/_next/static/chunks/0uri8sq5s_br9.js"],"default"]
+4:I[73428,["/_next/static/chunks/0h2qsuyze9ds1.js","/_next/static/chunks/1qa79glashgql.js","/_next/static/chunks/0uri8sq5s_br9.js"],"default"]
+5:T18ee,<p>Homefit은 SSAFY 1학기 종합 프로젝트로 만든 부동산 추천 서비스다. 2인 팀에서 기능을 나눠 각자 프론트엔드와 백엔드를 함께 구현했다. 나는 매물 검색과 비교, 대출 시뮬레이션 화면, 공공데이터 연동 등을 맡았다.</p>
+<p>출발점은 직접 집을 알아보던 경험이었다. 매물은 부동산 앱에서, 학교와 역은 지도에서, 대출 조건은 금융기관 사이트에서 찾아야 했다. 정보를 확인한 뒤에도 **‘그래서 이 집을 내가 감당할 수 있을까’**라는 질문은 남았다.</p>
+<p><img src="/projects/Homefit_old/home_search.png" alt="지도 기반 매물 찾기 화면"></p>
+<h2>1. 직접 만든 비교표를 서비스의 흐름으로 옮기기</h2>
+<p>당시 나는 Notion에 매물별 가격과 주변 환경, 대출 조건을 모아 비교표를 만들었다. 정보를 한곳에 놓고 나서야 후보의 차이가 보였다.</p>
+<p>이 경험을 바탕으로 <strong>매물 찾기 → 관심 매물 비교 → 대출 조건과 예상 부담 확인</strong>을 핵심 흐름으로 정했다. 사용자가 후보를 바꿀 때마다 다른 곳의 정보를 다시 찾아 연결하는 단계를 줄이고 싶었다.</p>
+<p>지도에서는 가격·면적과 주거 조건에 맞는 후보를 찾고 주변 시설을 확인한다. 관심 매물은 같은 기준의 표와 실거래가 추이로 비교한다. 그중 선택한 매물을 대출 시뮬레이션으로 연결해 사용자의 금융 조건과 함께 살펴보도록 구성했다.</p>
+<p>이는 내 경험에서 출발한 문제 가설이었다. 다른 주거 탐색자에게도 같은 흐름이 필요한지는 실제 사용 과제로 확인할 부분이다.</p>
+<h2>2. 대상 지역은 비교에 필요한 데이터를 기준으로 조정</h2>
+<p>처음에는 동탄을 대상으로 정했다. 하지만 신축 단지의 세대 수·주차 대수·용적률 등 정보가 비어 있었다. 지도에 매물을 표시해도 의도한 비교 경험을 만들기 어려웠다.</p>
+<p>그래서 데이터가 충분한 분당으로 대상을 바꾸고, 안양과 광명을 추가했다. 기획의 범위를 정할 때 지역의 이름뿐 아니라 <strong>사용자의 비교에 필요한 정보를 확보할 수 있는지</strong>를 기준으로 삼게 됐다.</p>
+<p>데이터를 제공하는 방식도 바꿨다. 외부 API는 응답이 느리거나 좌표가 없었고 형식도 제각각이었다. 화면에서 매번 호출하는 대신 미리 수집·전처리해 저장하고, 지도에서는 현재 영역의 데이터를 조회하도록 구현했다.</p>
+<p>어떤 정보를 보여줄지와 그 정보를 어떻게 확보하고 갱신할지는 함께 설계해야 했다. 원하는 화면만으로는 서비스를 완성할 수 없다는 점을 배웠다.</p>
+<h2>3. 가능 여부와 함께 판정 이유를 보여주기</h2>
+<p>대출 시뮬레이션은 프로젝트 당시 정책대출의 공시 기준을 규칙표로 정리하는 데서 시작했다. 무주택 여부와 소득·자산·주택 가격 등 입력 조건이 결과에 어떻게 연결되는지 먼저 문서화했다.</p>
+<p>화면에는 자격 충족 여부와 함께 충족한 핵심 조건과 불가 사유를 보여줬다. 결과가 ‘불가’ 한마디로 끝나면 사용자는 무엇을 다시 확인해야 할지 알기 어렵다고 봤기 때문이다.</p>
+<p>관심 매물 선택부터 자격 판정·예상 금리·월 상환 그래프까지 연결하며, <strong>결과를 이해하고 다음에 확인할 정보를 찾도록 하는 것</strong>을 화면의 기준으로 삼았다. 이 판정은 프로젝트에 반영한 조건에 따른 시뮬레이션이며, 실제 금융기관 심사 결과를 확인한 것은 아니다.</p>
+<h2>4. 한 기능을 끝까지 맡으면서 알게 된 연결</h2>
+<p>기능 단위로 역할을 나눠 Vue 화면과 Django API, FastAPI의 AI 응답을 오갔다. 내가 맡은 화면에서 필요한 정보가 데이터 수집과 저장, API 응답으로 이어지는 과정을 직접 확인했다.</p>
+<p>협업에서는 구현 전에 담당 기능과 API 이름을 맞추고, 상대가 작업 중인 파일을 수정해야 할 때 먼저 공유했다. 기획서·API 명세·ERD·정책대출 규칙표도 실제 모델에 맞춰 갱신했다.</p>
+<p>다만 날짜와 이름으로 나눈 브랜치는 어떤 기능의 변경인지 파악하기 어려웠다. 서로의 담당 코드를 깊이 검토하지 못한 점도 남았다. 다음에는 기능과 검토 가능한 변경 단위로 작업을 나누고, 연결되는 부분의 리뷰를 더 일찍 진행하려고 한다.</p>
+<h2>5. 동작하는 프로젝트에서 실제로 사용할 서비스로</h2>
+<p>당시에는 실거래 데이터를 바탕으로 만든 가상 매물로 화면을 구성했다. 추천 점수와 매물 API 일부는 테스트했지만, 화면 테스트와 외부 배포는 마치지 못했다.</p>
+<p>따라서 매물 검색·비교·대출 시뮬레이션을 연결한 구현과, 실제 사용자가 그 흐름으로 집을 판단할 수 있는지는 구분해서 봐야 했다. 다음 작업은 새 기능을 늘리기 전에 아래 순서로 진행하고 싶다.</p>
+<ol>
+<li><strong>코드와 데이터 확인:</strong> 페어가 맡은 기능까지 읽고, 실제 매물의 확보·갱신 방법을 정리한다.</li>
+<li><strong>핵심 흐름 점검:</strong> 검색·비교·대출 확인의 화면과 API를 정리하고 연결 구간을 테스트한다.</li>
+<li><strong>사용 과제와 배포:</strong> 후보를 비교하고 판정 이유를 이해하는지 확인한 뒤 실제로 접속해 볼 환경을 갖춘다.</li>
+<li><strong>확장 검토:</strong> 핵심 흐름을 확인한 뒤 청약 진단이나 총비용 계산의 필요성을 검토한다.</li>
+</ol>
+<p>Homefit에서 남은 질문은 <strong>내가 보여주고 싶은 정보가 아니라, 사용자가 비교하고 결정하는 데 필요한 정보를 연결했는가</strong>다. 이후 기술과 화면이 달라져도 이 질문을 기준으로 개선하려고 한다.</p>
+<h2>관련 글</h2>
+<ul>
+<li><a href="/projects/homefit">Homefit 프로젝트 소개와 담당 구현</a></li>
+<li><a href="/devlog/2026-08-23-homefit-school-zone">학군 정보와 화면 간 비교 기준을 정한 과정</a></li>
+</ul>
+b:X
+10:X
+10:C
+0:{"buildId":"CJydaEvBKlu3W7coBDLFj","data":[{"rsc":["$","$1","c",{"children":[["$","div",null,{"className":"@container","children":["$","article",null,{"className":"mx-auto max-w-[760px] px-5 pb-24 pt-8 sm:px-8 sm:pt-10","children":[["$","div",null,{"children":["$","$L2",null,{"href":"/","scroll":false,"className":"text-[13px] text-foreground/65 transition-colors hover:text-accent","children":"← Devlog"}]}],["$","span",null,{"className":"mt-10 flex items-center gap-1.5 font-mono text-[12px] text-foreground/65","children":[["$","$L3",null,{"iconNode":[["path",{"d":"M8 2v3","key":"1ioesn"}],["path",{"d":"M16 2v3","key":"otl347"}],["rect",{"x":"3","y":"3","width":"18","height":"18","rx":"2","key":"h1oib"}],["path",{"d":"M3 9h18","key":"1pudct"}],["path",{"d":"M8 13h.01","key":"1sbv64"}],["path",{"d":"M12 13h.01","key":"y0uutt"}],["path",{"d":"M16 13h.01","key":"wip0gl"}],["path",{"d":"M8 17h.01","key":"p3bg7i"}],["path",{"d":"M12 17h.01","key":"p32p05"}],["path",{"d":"M16 17h.01","key":"ql8jdd"}]],"className":"lucide-calendar-days","aria-hidden":"true","size":13,"strokeWidth":1.7}],"2026-08-20"]}],["$","h1",null,{"className":"mt-4 text-3xl font-bold leading-tight tracking-[-0.025em] text-foreground sm:text-[2.25rem]","children":"감당할 수 있는 집 — 데이터 제약 속에서 탐색 흐름을 설계하기"}],["$","$L4","2026-08-20-homefit",{"slug":"2026-08-20-homefit","recordVisit":true,"className":"mt-4"}],["$","p",null,{"className":"mt-4 text-[16px] leading-7 text-foreground/70","children":"여러 곳의 주거 정보를 직접 비교하던 경험에서 출발해, 데이터 확보에 맞춰 지역을 조정하고 대출 결과에 이유를 연결한 과정."}],["$","div",null,{"className":"mt-6 flex flex-wrap gap-1.5","children":[["$","span","SSAFY",{"className":"rounded-full border border-ink/12 bg-ink/6 px-2.5 py-1 text-[12px] text-foreground/75","children":"SSAFY"}],["$","span","Homefit",{"className":"rounded-full border border-ink/12 bg-ink/6 px-2.5 py-1 text-[12px] text-foreground/75","children":"Homefit"}],["$","span","서비스 기획",{"className":"rounded-full border border-ink/12 bg-ink/6 px-2.5 py-1 text-[12px] text-foreground/75","children":"서비스 기획"}],["$","span","데이터",{"className":"rounded-full border border-ink/12 bg-ink/6 px-2.5 py-1 text-[12px] text-foreground/75","children":"데이터"}],["$","span","회고",{"className":"rounded-full border border-ink/12 bg-ink/6 px-2.5 py-1 text-[12px] text-foreground/75","children":"회고"}]]}],["$","div",null,{"className":"mt-10 border-t border-ink/10 doc-prose-module__rLTzAW__prose","dangerouslySetInnerHTML":{"__html":"$5"}}],"$L6"]}]}],["$L7","$L8"],"$L9"]}],"isPartial":"$@a","staleTime":"$b","varyParams":null},{"rsc":"$Lc","isPartial":"$@d","staleTime":"$b","varyParams":null},{"rsc":"$Le","isPartial":"$@f","staleTime":"$b","varyParams":"$10"},{"rsc":"$L11","isPartial":"$@12","staleTime":"$b","varyParams":"$10"}],"isUpgradeableISRFallback":false,"a":"$@13","rootVaryParams":null,"needsRuntimeRequest":"$@14"}
+15:I[97053,["/_next/static/chunks/0h2qsuyze9ds1.js","/_next/static/chunks/1qa79glashgql.js","/_next/static/chunks/0uri8sq5s_br9.js"],"default"]
+16:I[97367,["/_next/static/chunks/0h2qsuyze9ds1.js","/_next/static/chunks/1qa79glashgql.js"],"OutletBoundary"]
+17:"$Sreact.suspense"
+19:I[97367,["/_next/static/chunks/0h2qsuyze9ds1.js","/_next/static/chunks/1qa79glashgql.js"],"ViewportBoundary"]
+1a:I[97367,["/_next/static/chunks/0h2qsuyze9ds1.js","/_next/static/chunks/1qa79glashgql.js"],"MetadataBoundary"]
+1b:I[27201,["/_next/static/chunks/0h2qsuyze9ds1.js","/_next/static/chunks/1qa79glashgql.js"],"IconMark"]
+1c:I[39756,["/_next/static/chunks/0h2qsuyze9ds1.js","/_next/static/chunks/1qa79glashgql.js"],"default"]
+1d:I[37457,["/_next/static/chunks/0h2qsuyze9ds1.js","/_next/static/chunks/1qa79glashgql.js"],"default"]
+:HL["/_next/static/chunks/2b-2tives3t8w.css","style"]
+6:["$","$L15","2026-08-20-homefit",{"slug":"2026-08-20-homefit"}]
+7:["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/2b-2tives3t8w.css","precedence":"next"}]
+8:["$","script","script-0",{"src":"/_next/static/chunks/0uri8sq5s_br9.js","async":true}]
+9:["$","$L16",null,{"children":["$","$17",null,{"name":"Next.MetadataOutlet","children":"$@18"}]}]
+c:["$","$1","h",{"children":[null,["$","$L19",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]}],["$","div",null,{"hidden":true,"children":["$","$L1a",null,{"children":["$","$17",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"감당할 수 있는 집 — 데이터 제약 속에서 탐색 흐름을 설계하기 · Belog"}],["$","meta","1",{"name":"description","content":"여러 곳의 주거 정보를 직접 비교하던 경험에서 출발해, 데이터 확보에 맞춰 지역을 조정하고 대출 결과에 이유를 연결한 과정."}],["$","meta","2",{"name":"giscus:backlink","content":"https://hj0543.github.io/devlog/2026-08-20-homefit/"}],["$","link","3",{"rel":"icon","href":"/icon.png?icon.3bup3hv08dkxp.png","sizes":"1254x1254","type":"image/png"}],["$","$L1b","4",{}]]}]}]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}]
+e:["$","$1","c",{"children":[null,["$","$L1c",null,{"parallelRouterKey":"children","template":["$","$L1d",null,{}]}]]}]
+11:["$","$1","c",{"children":[null,["$","$L1c",null,{"parallelRouterKey":"children","template":["$","$L1d",null,{}]}]]}]
+14:true
+18:null
+b:300
+b:C
+13:0
+d:"$undefined"
+f:"$undefined"
+12:"$undefined"
+a:"$undefined"
