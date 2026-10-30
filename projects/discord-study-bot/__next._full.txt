@@ -1,0 +1,203 @@
+1:"$Sreact.fragment"
+2:I[3020,["/_next/static/chunks/0q654p4lxvnny.js","/_next/static/chunks/343-pf7olm-a0.js"],"default"]
+3:I[39756,["/_next/static/chunks/0q654p4lxvnny.js","/_next/static/chunks/343-pf7olm-a0.js"],"default"]
+4:I[37457,["/_next/static/chunks/0q654p4lxvnny.js","/_next/static/chunks/343-pf7olm-a0.js"],"default"]
+5:I[66519,["/_next/static/chunks/0q654p4lxvnny.js","/_next/static/chunks/343-pf7olm-a0.js","/_next/static/chunks/36h9ts2bz7_q3.js"],"default"]
+6:I[22016,["/_next/static/chunks/0q654p4lxvnny.js","/_next/static/chunks/343-pf7olm-a0.js","/_next/static/chunks/1k-g9mxvu5fy9.js","/_next/static/chunks/2rejhzi-l24m3.js"],""]
+7:I[5014,["/_next/static/chunks/0q654p4lxvnny.js","/_next/static/chunks/343-pf7olm-a0.js","/_next/static/chunks/1k-g9mxvu5fy9.js","/_next/static/chunks/2rejhzi-l24m3.js"],"default"]
+8:I[18192,["/_next/static/chunks/0q654p4lxvnny.js","/_next/static/chunks/343-pf7olm-a0.js"],"default"]
+12:I[68027,["/_next/static/chunks/0q654p4lxvnny.js","/_next/static/chunks/343-pf7olm-a0.js"],"default",1]
+:HL["/_next/static/chunks/1sk89teqfbf_q.css","style"]
+:HL["/_next/static/media/70bc3e132a0a741e-s.p.3t6q91iet4nsy.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/_next/static/media/7ebf22b5a21034f8-s.p.3j3877k49yy0l.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/_next/static/media/PretendardVariable-s.p.0ztvx5mb7lxp4.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/_next/static/chunks/2b-2tives3t8w.css","style"]
+10:X
+0:{"P":null,"c":["","projects","discord-study-bot",""],"q":"","i":false,"f":[[["",{"children":["projects",{"children":[["slug","discord-study-bot","d",[]],{"children":["__PAGE__",{},"$undefined","$undefined",4608]},"$undefined","$undefined",4608]},"$undefined","$undefined",4608]},"$undefined","$undefined",4624],[["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/1sk89teqfbf_q.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","script","script-0",{"src":"/_next/static/chunks/0q654p4lxvnny.js","async":true,"nonce":"$undefined"}],["$","script","script-1",{"src":"/_next/static/chunks/343-pf7olm-a0.js","async":true,"nonce":"$undefined"}]],["$","html",null,{"lang":"ko","data-scroll-behavior":"smooth","suppressHydrationWarning":true,"className":"jetbrains_mono_7d65b77b-module__VxV-Ta__variable instrument_serif_c1e8e483-module__u2UhdW__variable pretendard_97774a5-module__y_0gNq__variable h-full antialiased","children":[["$","head",null,{"children":["$","script",null,{"dangerouslySetInnerHTML":{"__html":"(function () {\n  var theme = \"dark\";\n  try {\n    if (/^\\/(projects|devlog)\\/[^/]+\\/?$/.test(window.location.pathname)\n        && localStorage.getItem(\"theme\") === \"light\") {\n      theme = \"light\";\n    }\n  } catch (e) {}\n  document.documentElement.dataset.theme = theme;\n})();"}}]}],["$","body",null,{"id":"top","className":"flex min-h-full flex-col","children":[["$","$L2",null,{}],["$","main",null,{"className":"flex-1","children":["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[["$","div",null,{"className":"mx-auto flex min-h-[70vh] max-w-[1080px] flex-col items-center justify-center px-5 py-20 text-center sm:px-8","children":[["$","p",null,{"className":"flex items-baseline gap-2.5 text-label","children":[["$","span",null,{"className":"section-label","children":"Not Found"}],["$","span",null,{"className":"font-mono text-[12px] tracking-[0.05em] text-foreground/65","children":"/ 404"}]]}],["$","h1",null,{"className":"mt-6","children":["$","$L5",null,{"text":"404","as":"span","fontSize":"clamp(6rem, 24vw, 13rem)","fontWeight":800,"letterSpacing":"-0.04em","lineHeight":1,"tensionColor":"#c96f4a","hint":true}]}],["$","p",null,{"className":"mt-8 max-w-[420px] text-[16px] leading-7 text-foreground/75","children":["찾으시는 페이지가 없거나 주소가 바뀌었어요.",["$","br",null,{}],"그동안 숫자를 잡아당겨 보셔도 좋아요."]}],["$","$L6",null,{"href":"/","className":"mt-10 inline-flex items-center gap-1.5 border-b border-accent/60 pb-1 text-[15px] font-medium text-accent transition-colors hover:border-accent","children":[["$","$L7",null,{"ref":"$undefined","iconNode":[["path",{"d":"m12 19-7-7 7-7","key":"1l729n"}],["path",{"d":"M19 12H5","key":"x3x0zl"}]],"className":"lucide-arrow-left","aria-hidden":"true","size":15}],"홈으로 돌아가기"]}]]}],[]],"forbidden":"$undefined","unauthorized":"$undefined"}]}],["$","$L8",null,{"children":[["$","footer",null,{"id":"contact","className":"scroll-mt-20","children":["$","div",null,{"className":"mx-auto max-w-[1080px] px-5 sm:px-8","children":[["$","div",null,{"className":"flex flex-wrap items-end justify-between gap-x-10 gap-y-6 border-t border-ink/15 py-12","children":[["$","div",null,{"children":[["$","p",null,{"className":"section-label","children":"Let's Connect"}],["$","h2",null,{"className":"mt-3 text-2xl font-bold tracking-[-0.025em] text-foreground sm:text-[1.75rem]","children":"함께 해결할 문제를 이야기해요."}]]}],["$","p",null,{"className":"flex flex-wrap gap-x-8 gap-y-3","children":[["$","a",null,{"href":"mailto:hj0543@gmail.com","className":"inline-flex items-center gap-2 border-b border-foreground/40 pb-1 text-[15px] font-medium text-foreground transition-colors hover:border-accent hover:text-accent","children":[["$","$L7",null,{"ref":"$undefined","iconNode":[["path",{"d":"m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7","key":"132q7q"}],["rect",{"x":"2","y":"4","width":"20","height":"16","rx":"2","key":"izxlao"}]],"className":"lucide-mail","aria-hidden":"true","size":17,"strokeWidth":1.8}],"hj0543@gmail.com",["$","$L7",null,{"ref":"$undefined","iconNode":[["path",{"d":"M7 7h10v10","key":"1tivn9"}],["path",{"d":"M7 17 17 7","key":"1vkiza"}]],"className":"lucide-arrow-up-right","aria-hidden":"true","size":14}]]}],["$","a",null,{"href":"https://github.com/hj0543","target":"_blank","rel":"noreferrer","className":"inline-flex items-center gap-2 border-b border-foreground/40 pb-1 text-[15px] font-medium text-foreground transition-colors hover:border-accent hover:text-accent","children":["$L9","GitHub","$La"]}]]}]]}],"$Lb"]}]}],"$Lc"]}]]}]]}]]}],{"children":["$Ld",{"children":["$Le",{"children":["$Lf",{},null,false,null]},null,false,"$10"]},null,false,"$10"]},null,false,null],"$L11",false]],"m":"$undefined","G":["$12",["$L13"]],"S":true,"h":null,"r":"$undefined","s":"$undefined","a":"$undefined","l":"$undefined","p":"$undefined","d":"$undefined","b":"A1gsuDqWvAI0Sedafrvgx"}
+14:I[85437,["/_next/static/chunks/0q654p4lxvnny.js","/_next/static/chunks/343-pf7olm-a0.js","/_next/static/chunks/1k-g9mxvu5fy9.js","/_next/static/chunks/2rejhzi-l24m3.js"],"Image"]
+15:I[53759,["/_next/static/chunks/0q654p4lxvnny.js","/_next/static/chunks/343-pf7olm-a0.js"],"default"]
+16:I[11875,["/_next/static/chunks/0q654p4lxvnny.js","/_next/static/chunks/343-pf7olm-a0.js"],"default"]
+18:I[97367,["/_next/static/chunks/0q654p4lxvnny.js","/_next/static/chunks/343-pf7olm-a0.js"],"OutletBoundary"]
+19:"$Sreact.suspense"
+1b:I[97367,["/_next/static/chunks/0q654p4lxvnny.js","/_next/static/chunks/343-pf7olm-a0.js"],"ViewportBoundary"]
+1d:I[97367,["/_next/static/chunks/0q654p4lxvnny.js","/_next/static/chunks/343-pf7olm-a0.js"],"MetadataBoundary"]
+9:["$","$L14",null,{"src":"/icons/github.svg","alt":"","aria-hidden":"true","width":17,"height":17,"className":"brand-icon shrink-0 "}]
+a:["$","$L7",null,{"ref":"$undefined","iconNode":"$0:f:0:1:0:props:children:1:props:children:1:props:children:2:props:children:0:props:children:props:children:0:props:children:1:props:children:0:props:children:2:props:iconNode","className":"lucide-arrow-up-right","aria-hidden":"true","size":14}]
+b:["$","div",null,{"className":"flex flex-wrap items-center justify-between gap-3 border-t border-ink/15 py-6","children":[["$","a",null,{"href":"#top","className":"text-[17px] font-bold tracking-[-0.04em] text-foreground","children":["Belog",["$","span",null,{"className":"text-accent","children":"."}]]}],["$","span",null,{"className":"flex flex-wrap gap-x-4 gap-y-1 text-[12px] text-foreground/65","children":[["$","$L15",null,{}],["$","span",null,{"children":["© ",2026," ","HYEONJIN JEONG",". All rights reserved."]}]]}]]}]
+c:["$","$L16",null,{}]
+d:["$","$1","c",{"children":[null,["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}]
+e:["$","$1","c",{"children":[null,["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}]
+f:["$","$1","c",{"children":["$L17",[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/2b-2tives3t8w.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","script","script-0",{"src":"/_next/static/chunks/1k-g9mxvu5fy9.js","async":true,"nonce":"$undefined"}],["$","script","script-1",{"src":"/_next/static/chunks/2rejhzi-l24m3.js","async":true,"nonce":"$undefined"}]],["$","$L18",null,{"children":["$","$19",null,{"name":"Next.MetadataOutlet","children":"$@1a"}]}]]}]
+11:["$","$1","h",{"children":[null,["$","$L1b",null,{"children":"$L1c"}],["$","div",null,{"hidden":true,"children":["$","$L1d",null,{"children":["$","$19",null,{"name":"Next.Metadata","children":"$L1e"}]}]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}]
+13:["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/1sk89teqfbf_q.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]
+10:C
+1c:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
+28:I[27201,["/_next/static/chunks/0q654p4lxvnny.js","/_next/static/chunks/343-pf7olm-a0.js"],"IconMark"]
+17:["$","div",null,{"className":"@container","children":["$","div",null,{"className":"pb-16","children":[["$","header",null,{"className":"mx-auto max-w-[1080px] px-5 pb-10 pt-8 sm:px-8 sm:pt-10","children":[["$","div",null,{"className":"min-w-0 border-b border-ink/20 pb-8 sm:pb-10","children":[["$","$L6",null,{"href":"/","scroll":false,"className":"text-[13px] text-foreground/65 transition-colors hover:text-accent","children":"← Projects"}],["$","div",null,{"className":"mt-8"}],null,["$","h1",null,{"className":"text-xl font-semibold leading-tight tracking-[-0.02em] text-accent sm:text-2xl","children":"Discord Algorithms Study Bot"}],["$","p",null,{"className":"mt-3 text-balance text-[26px] font-bold leading-[1.4] tracking-[-0.03em] text-foreground [overflow-wrap:anywhere] sm:text-[36px]","children":"알고리즘 스터디 운영 자동화 디스코드 봇"}]]}],["$","div",null,{"className":"mt-8 grid gap-8 sm:mt-10 @[48rem]:grid-cols-[minmax(230px,0.72fr)_minmax(0,1.28fr)] @[48rem]:items-start","children":[["$","div",null,{"className":"min-w-0","children":[["$","dl",null,{"className":"grid gap-3 text-sm leading-6","children":[["$","div","문제",{"children":[["$","dt",null,{"className":"text-[12px] font-medium text-label","children":"문제"}],["$","dd",null,{"className":"mt-1 text-foreground/75","children":"스터디마다 문제를 고르고 공지를 작성한 뒤, 참여자의 풀이 여부를 일일이 확인해야 했습니다."}]]}],["$","div","결과",{"children":[["$","dt",null,{"className":"text-[12px] font-medium text-label","children":"결과"}],["$","dd",null,{"className":"mt-1 text-foreground/75","children":"조건별 문제 추천과 공지 생성, 풀이 알림·집계를 Discord 안에서 처리하도록 구현하고 운영했습니다."}]]}]]}],["$","div",null,{"className":"mt-9","children":["$","dl",null,{"className":"grid border-y border-ink/12 py-2 @[34rem]:grid-cols-4 @[34rem]:gap-x-6 @[34rem]:py-0 @[48rem]:grid-cols-1 @[48rem]:gap-x-0 @[48rem]:py-2","children":[["$","div","역할",{"className":"grid grid-cols-[3.5rem_minmax(0,1fr)] items-baseline gap-3 py-2 @[34rem]:block @[34rem]:py-3.5 @[48rem]:grid @[48rem]:py-2","children":[["$","dt",null,{"className":"text-[12px] font-medium text-foreground/65","children":"역할"}],["$","dd",null,{"className":"text-[14px] leading-relaxed text-foreground/80","children":"1인 기획 · 개발 · 배포"}]]}],["$","div","기간",{"className":"grid grid-cols-[3.5rem_minmax(0,1fr)] items-baseline gap-3 py-2 @[34rem]:block @[34rem]:py-3.5 @[48rem]:grid @[48rem]:py-2","children":[["$","dt",null,{"className":"text-[12px] font-medium text-foreground/65","children":"기간"}],["$","dd",null,{"className":"text-[14px] leading-relaxed text-foreground/80","children":"2026.02 ~ 2026.04"}]]}],["$","div","구성",{"className":"grid grid-cols-[3.5rem_minmax(0,1fr)] items-baseline gap-3 py-2 @[34rem]:block @[34rem]:py-3.5 @[48rem]:grid @[48rem]:py-2","children":[["$","dt",null,{"className":"text-[12px] font-medium text-foreground/65","children":"구성"}],["$","dd",null,{"className":"text-[14px] leading-relaxed text-foreground/80","children":"개인"}]]}]]}]}],["$","div",null,{"className":"mt-5 grid gap-4","children":[["$","div",null,{"className":"flex min-w-0 items-baseline gap-4","children":[["$","span",null,{"className":"shrink-0 text-[12px] font-medium text-foreground/65","children":"담당"}],["$","p",null,{"className":"text-[14px] leading-relaxed text-foreground/70","children":"스터디 운영 흐름 분석 · 공지 입력과 추천 조건 설계 · 풀이 집계·알림 · 배포·운영과 장애 대응"}]]}],["$","div",null,{"className":"flex min-w-0 items-start gap-4","children":[["$","span",null,{"className":"shrink-0 text-[12px] font-medium text-foreground/65","children":"기술"}],["$","div",null,{"className":"flex flex-wrap gap-1.5","children":[["$","span","Python",{"className":"inline-flex items-center gap-1.5 rounded-full border border-ink/12 bg-ink/6 px-3 py-1 text-[12px] text-foreground/75","children":[["$","$L14",null,{"src":"/icons/python.svg","alt":"","aria-hidden":"true","width":14,"height":14,"className":"brand-icon shrink-0 "}],"Python"]}],["$","span","discord.py",{"className":"inline-flex items-center gap-1.5 rounded-full border border-ink/12 bg-ink/6 px-3 py-1 text-[12px] text-foreground/75","children":[["$","$L14",null,{"src":"/icons/discord.svg","alt":"","aria-hidden":"true","width":14,"height":14,"className":"brand-icon shrink-0 "}],"discord.py"]}],"$L1f","$L20","$L21","$L22","$L23"]}]]}],"$L24"]}]]}],"$L25"]}]]}],"$L26","$L27"]}]}]
+1a:null
+1e:[["$","title","0",{"children":"Discord Algorithms Study Bot · Belog"}],["$","meta","1",{"name":"description","content":"알고리즘 스터디 운영 자동화 디스코드 봇"}],["$","link","2",{"rel":"icon","href":"/icon.png?icon.3bup3hv08dkxp.png","sizes":"1254x1254","type":"image/png"}],["$","$L28","3",{}]]
+29:I[14830,["/_next/static/chunks/0q654p4lxvnny.js","/_next/static/chunks/343-pf7olm-a0.js","/_next/static/chunks/1k-g9mxvu5fy9.js","/_next/static/chunks/2rejhzi-l24m3.js"],"default"]
+2a:I[43232,["/_next/static/chunks/0q654p4lxvnny.js","/_next/static/chunks/343-pf7olm-a0.js","/_next/static/chunks/1k-g9mxvu5fy9.js","/_next/static/chunks/2rejhzi-l24m3.js"],"default"]
+1f:["$","span","Solved.ac API",{"className":"inline-flex items-center gap-1.5 rounded-full border border-ink/12 bg-ink/6 px-3 py-1 text-[12px] text-foreground/75","children":[null,"Solved.ac API"]}]
+20:["$","span","JSON",{"className":"inline-flex items-center gap-1.5 rounded-full border border-ink/12 bg-ink/6 px-3 py-1 text-[12px] text-foreground/75","children":[["$","$L14",null,{"src":"/icons/json.svg","alt":"","aria-hidden":"true","width":14,"height":14,"className":"brand-icon shrink-0 "}],"JSON"]}]
+21:["$","span","Oracle Cloud",{"className":"inline-flex items-center gap-1.5 rounded-full border border-ink/12 bg-ink/6 px-3 py-1 text-[12px] text-foreground/75","children":[["$","$L14",null,{"src":"/icons/oracle.svg","alt":"","aria-hidden":"true","width":14,"height":14,"className":"brand-icon shrink-0 "}],"Oracle Cloud"]}]
+22:["$","span","GitHub Actions",{"className":"inline-flex items-center gap-1.5 rounded-full border border-ink/12 bg-ink/6 px-3 py-1 text-[12px] text-foreground/75","children":[["$","$L14",null,{"src":"/icons/githubactions.svg","alt":"","aria-hidden":"true","width":14,"height":14,"className":"brand-icon shrink-0 "}],"GitHub Actions"]}]
+23:["$","span","pm2",{"className":"inline-flex items-center gap-1.5 rounded-full border border-ink/12 bg-ink/6 px-3 py-1 text-[12px] text-foreground/75","children":[["$","$L14",null,{"src":"/icons/pm2.svg","alt":"","aria-hidden":"true","width":14,"height":14,"className":"brand-icon shrink-0 "}],"pm2"]}]
+24:["$","div",null,{"className":"flex flex-wrap gap-x-5 gap-y-2","children":[["$","a","https://github.com/hj0543/Discord_Algorthms_StudyBot",{"href":"https://github.com/hj0543/Discord_Algorthms_StudyBot","target":"_blank","rel":"noreferrer","className":"group/link inline-flex items-center gap-1 border-b border-ink/25 pb-0.5 text-[14px] text-foreground/75 transition-colors hover:border-accent hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/60","children":["GitHub",["$","span",null,{"aria-hidden":"true","className":"text-[11px] transition-transform group-hover/link:-translate-y-0.5 group-hover/link:translate-x-0.5","children":"↗"}]]}]]}]
+25:["$","div",null,{"className":"min-w-0","children":["$","$L29","discord-study-bot",{"screens":[{"src":"/projects/discord_study_bot/problem-search.png","alt":"문제 검색 화면","caption":"알고리즘 문제 검색"},{"src":"/projects/discord_study_bot/problem-alarm.png","alt":"문제 풀이 알람","caption":"문제풀이 알람"},{"src":"/projects/discord_study_bot/problem-solved.png","alt":"스터디원 풀이 현황 화면","caption":"스터디원 풀이 현황"},{"src":"/projects/discord_study_bot/problem-notice.png","alt":"공지 등록 화면","caption":"알고리즘 문제풀이 공지 등록"},{"src":"/projects/discord_study_bot/probelm-vote.png","alt":"문제 투표 화면","caption":"스터디 문제 투표"}]}]}]
+26:["$","nav",null,{"aria-label":"프로젝트 문서 목차","className":"sticky top-16 z-20 mt-12 overflow-x-auto border-y border-ink/10 bg-background/90 backdrop-blur-md [&::-webkit-scrollbar]:hidden","children":["$","div",null,{"className":"mx-auto flex h-10 max-w-[1080px] items-center gap-6 px-5 sm:px-8","children":[["$","span",null,{"className":"flex h-5 shrink-0 items-center border-r border-ink/12 pr-5 text-[14px] font-medium leading-none text-foreground/65","children":"목차"}],[["$","a","project-discord-study-bot-section-0",{"href":"#project-discord-study-bot-section-0","className":"flex h-full shrink-0 items-center text-[14px] leading-none text-foreground/70 transition-colors hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/60","children":"요약"}],["$","a","project-discord-study-bot-section-1",{"href":"#project-discord-study-bot-section-1","className":"flex h-full shrink-0 items-center text-[14px] leading-none text-foreground/70 transition-colors hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/60","children":"문제 정의와 목표"}],["$","a","project-discord-study-bot-section-2",{"href":"#project-discord-study-bot-section-2","className":"flex h-full shrink-0 items-center text-[14px] leading-none text-foreground/70 transition-colors hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/60","children":"핵심 기획 결정"}],["$","a","project-discord-study-bot-section-3",{"href":"#project-discord-study-bot-section-3","className":"flex h-full shrink-0 items-center text-[14px] leading-none text-foreground/70 transition-colors hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/60","children":"사용자 흐름과 운영 정책"}],["$","a","project-discord-study-bot-section-4",{"href":"#project-discord-study-bot-section-4","className":"flex h-full shrink-0 items-center text-[14px] leading-none text-foreground/70 transition-colors hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/60","children":"담당 역할과 개선 과정"}],["$","a","project-discord-study-bot-section-5",{"href":"#project-discord-study-bot-section-5","className":"flex h-full shrink-0 items-center text-[14px] leading-none text-foreground/70 transition-colors hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/60","children":"결과와 검증 범위"}],["$","a","project-discord-study-bot-section-6",{"href":"#project-discord-study-bot-section-6","className":"flex h-full shrink-0 items-center text-[14px] leading-none text-foreground/70 transition-colors hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/60","children":"구현 상세"}],["$","a","project-discord-study-bot-section-7",{"href":"#project-discord-study-bot-section-7","className":"flex h-full shrink-0 items-center text-[14px] leading-none text-foreground/70 transition-colors hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/60","children":"관련 글과 링크"}]]]}]}]
+2b:T3b2b,<h2 id="project-discord-study-bot-section-0">프로젝트 개요</h2>
+<p><strong>Discord Algorithms Study Bot</strong>은 직접 운영하던 8인 알고리즘 스터디의 반복 작업을 줄이기 위해 만든 Discord 봇입니다. 주 3회 스터디를 준비하면서 반복하던 문제 선정, 공지 작성, 풀이 확인과 집계를 하나의 흐름으로 연결했습니다.</p>
+<p>1인 프로젝트로 문제 정의와 기능 설계, 개발·배포·운영을 맡았습니다. 실제 스터디에 적용한 뒤 추천 문제의 반복, 기록 유실, 외부 API 무응답 같은 문제를 발견하고 개선했습니다.</p>
+<blockquote>
+<p>백준 서비스 종료(2026.04)로 봇 운영을 중단했습니다. 아래 내용은 당시 스터디에서 구현하고 운영한 경험을 정리한 것입니다.</p>
+</blockquote>
+<h2 id="project-discord-study-bot-section-1">문제 정의와 목표</h2>
+<p>스터디를 한 번 진행할 때마다 문제를 고르고 제목과 링크를 복사한 뒤, 마감 기한과 투표를 붙여 공지해야 했습니다. 공지 이후에는 참여자별 풀이 기록을 확인하고, 주간·월간 현황을 다시 집계했습니다.</p>
+<p>운영자가 하던 일을 세 가지로 나눴습니다.</p>
+<ul>
+<li><strong>준비:</strong> 스터디 수준과 학습 주제에 맞는 문제를 찾는다.</li>
+<li><strong>전달:</strong> 정해진 형식으로 문제와 마감 정보를 공유한다.</li>
+<li><strong>확인:</strong> 누가 풀었는지 확인하고 참여 현황을 정리한다.</li>
+</ul>
+<p>목표는 <strong>반복해서 입력하거나 확인하는 단계를 줄이고, 스터디원도 자신의 진행 상황을 볼 수 있게 하는 것</strong>이었습니다. Discord 안에서 명령어를 입력하고 결과를 확인하도록 구성했습니다.</p>
+<h2 id="project-discord-study-bot-section-2">핵심 기획 결정</h2>
+<h3>1. 공지에 필요한 입력과 자동으로 채울 정보를 구분</h3>
+<p>문제가 바뀌어도 공지의 형식은 같았습니다. 운영자가 결정해야 하는 것은 문제와 마감일이고, 문제 제목·난이도·태그·링크는 외부 데이터에서 가져올 수 있었습니다.</p>
+<p>그래서 <strong>문제 번호 최대 3개와 마감일을 입력하면 공지를 생성하는 방식</strong>으로 설계했습니다. 문제별 번호 이모지도 자동으로 붙여 반응·투표에 활용하도록 했습니다. 같은 정보를 여러 곳에서 복사해 붙이던 작업을 명령어 입력으로 바꾼 것입니다.</p>
+<h3>2. 스터디에서 쓰는 언어로 추천 조건을 입력</h3>
+<p>문제 선정에는 난이도와 알고리즘 유형이 함께 필요했습니다. ‘실버 1 수준의 BFS 문제’처럼 스터디의 수준과 그날의 주제를 조합해 찾도록 했습니다.</p>
+<p>‘실1’, ‘BFS’, ‘너비우선탐색’처럼 실제로 쓰는 표현을 API의 난이도 번호와 태그로 변환하고, 한글 문제 중 후보 5개를 추천하도록 구성했습니다. 사용자가 외부 API의 검색 문법을 익히지 않아도 평소의 표현으로 조건을 전달하게 한 것입니다.</p>
+<p>운영 중 같은 문제가 반복 추천되자 결과를 무작위로 고르는 부분뿐 아니라 원본 후보 목록도 확인했습니다. 후보 자체가 비슷하게 돌아오는 문제를 찾아 검색 정렬과 캐시 응답을 고려하도록 수정했습니다. 추천 기능은 동작 여부와 함께 <strong>다시 사용할 때도 탐색에 도움이 되는지</strong> 확인해야 한다는 것을 배웠습니다.</p>
+<h3>3. 공지 이후의 확인과 알림까지 운영 흐름에 포함</h3>
+<p>공지 작성이 끝나도 풀이 여부를 확인하는 일이 남았습니다. 봇이 5분마다 공지 문제의 풀이 기록을 확인하고 알림을 보내며, 마감이 지난 문제는 감지 목록에서 정리하도록 했습니다.</p>
+<p>쌓인 기록은 주간·월간·누적 현황으로 볼 수 있게 하고, 매일 밤 9시에는 리마인드 알림을 보냈습니다. 운영자가 한 명씩 조회하던 정보를 채널과 명령어로 함께 확인하게 했습니다.</p>
+<p>운영 과정에서는 누군가의 풀이 알림을 보고 다른 스터디원이 문제를 여는 모습을 관찰했습니다. 이 반응은 정량적인 참여율 개선과 구분해 운영 중 관찰로 정리했습니다.</p>
+<h2 id="project-discord-study-bot-section-3">사용자 흐름과 운영 정책</h2>
+<table>
+<thead>
+<tr>
+<th>단계</th>
+<th>사용자와 작업</th>
+<th>설계·구현한 내용</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>문제 선정</td>
+<td>운영자가 수준과 주제를 정한다</td>
+<td>난이도·알고리즘 태그를 조합한 문제 추천</td>
+</tr>
+<tr>
+<td>공지</td>
+<td>운영자가 문제와 마감일을 전달한다</td>
+<td>제목·난이도·태그·링크·번호 이모지 자동 생성</td>
+</tr>
+<tr>
+<td>풀이 확인</td>
+<td>운영자와 참여자가 진행 상황을 본다</td>
+<td>5분 주기 확인, 풀이 알림과 마감 문제 정리</td>
+</tr>
+<tr>
+<td>참여 안내</td>
+<td>참여자가 예정된 학습을 떠올린다</td>
+<td>매일 밤 9시 리마인드 알림</td>
+</tr>
+<tr>
+<td>현황 점검</td>
+<td>스터디 기록을 모아 본다</td>
+<td>주간·월간·누적 풀이 현황 조회</td>
+</tr>
+</tbody></table>
+<p>기록이 유지되는 것도 운영 경험의 일부였습니다. 업데이트 후 집계가 초기화되는 일을 겪고 나서는 상태가 바뀔 때마다 파일에 저장하고, 재시작 시 복원하도록 바꿨습니다. 저장 형식이 바뀌어도 기존 기록을 읽을 수 있도록 호환 처리도 두었습니다.</p>
+<p>외부 API가 응답하지 않아 확인 작업이 멈췄을 때는 요청 대기 시간을 5초로 제한하고, 한 참여자의 조회 실패가 나머지 확인까지 중단시키지 않도록 처리했습니다. 주기적으로 수행하는 작업일수록 실패가 전체 흐름에 미치는 범위를 정해야 했습니다.</p>
+<h2 id="project-discord-study-bot-section-4">담당 역할과 개선 과정</h2>
+<p>1인 프로젝트로 운영자와 개발자의 역할을 함께 맡아, 실제 사용 중 드러난 문제를 직접 수정했습니다.</p>
+<ul>
+<li><strong>기획:</strong> 반복 업무를 준비·전달·확인으로 나누고, 명령어 입력과 결과 형식 설계</li>
+<li><strong>개발:</strong> 조건별 추천, 공지 생성, 풀이 감지·알림·통계와 데이터 저장 구현</li>
+<li><strong>배포:</strong> Oracle Cloud 인스턴스에서 운영하고 프로세스 재시작·자동 배포 구성</li>
+<li><strong>개선:</strong> 중복 추천 원인 확인, 기록 유실 방지, 외부 요청 타임아웃과 실패 처리</li>
+<li><strong>문서화:</strong> 스터디원도 직접 배포할 수 있도록 단계별 가이드 작성</li>
+</ul>
+<p>처음에는 공지 작성의 반복을 줄이기 위해 시작했지만, 사용하면서 추천과 풀이 확인, 기록 유지가 연결된다는 것을 확인했습니다. 이후에는 기능을 추가할 때 결과가 어떤 기록으로 남고 다음 작업에 어떻게 쓰이는지도 함께 살폈습니다.</p>
+<h2 id="project-discord-study-bot-section-5">결과와 검증 범위</h2>
+<ul>
+<li><strong>적용 환경:</strong> 8명이 참여한 주 3회 알고리즘 스터디에서 사용</li>
+<li><strong>작업 방식의 변화:</strong> 문제 정보를 복사해 공지를 작성하던 작업을 명령어로 처리하고, 개별 풀이 조회를 자동 확인·알림·집계로 전환</li>
+<li><strong>운영 개선:</strong> 재배포 후 기록 복원, 추천 후보 구성 개선, 외부 API 무응답 시 대기 제한과 개별 실패 처리</li>
+</ul>
+<p>운영 중의 반응과 문제를 바탕으로 개선했으며, 시간 절감률이나 참여율 변화는 측정 조건을 갖춰 다시 확인할 과제로 남겼습니다. 다시 운영한다면 공지 작성에 걸린 시간, 집계 확인 시간, 반복 추천 빈도와 조회 실패 기록을 측정 지표로 남겨 개선 전후를 비교하고 싶습니다.</p>
+<p>이 프로젝트에서 배운 것은 <strong>반복 업무를 발견하는 데서 시작해 입력 방식·결과 전달·기록 유지·실패 처리까지 연결해야 실제로 쓰이는 도구가 된다는 것</strong>입니다.</p>
+<h2 id="project-discord-study-bot-section-6">구현 상세</h2>
+<details>
+<summary>명령어와 세부 기능, 배포 구조, 기술적 문제 해결 펼치기</summary><h3>명령어와 세부 기능</h3>
+<ul>
+<li><strong>맞춤형 문제 추천</strong>: <code>/추천</code>으로 난이도(Tier)와 알고리즘 태그(Tag)를 조합해 &quot;실버 1 수준의 BFS 문제&quot;처럼 조건에 맞는 한글 문제 5개를 추천하고, <code>/문제뽑기</code>로 난이도만 지정해 뽑기도 지원</li>
+<li><strong>공지 자동 생성</strong>: Slash Command <code>/공지</code>에 문제 번호(최대 3개)와 마감일(<code>0316</code> 형식)만 넣으면 문제 제목, 티어, 태그, BOJ 다이렉트 링크가 담긴 공지를 만들고 문제별 번호 이모지(1️⃣~3️⃣)를 달아 반응·투표에 활용</li>
+<li><strong>풀이 현황 자동 집계</strong>: 5분 주기로 Solved.ac API를 호출해 공지 문제 풀이 여부를 확인하고, 풀이 시 알림 채널에 알림 발송. 마감이 지난 문제는 감지 목록에서 자동 정리</li>
+<li><strong>풀이 통계·랭킹</strong>: <code>/문제풀이현황</code>으로 주간·월간·누적 공지 문제 풀이 수를, <code>/랭킹</code>·<code>/프로필</code>로 스터디원 티어와 순위를 확인</li>
+<li><strong>리마인드 알림</strong>: 매일 밤 9시(KST) 스케줄러로 스터디 참여 독려 알림 발송</li>
+</ul>
+<h3>담당 구현 범위</h3>
+<p>1인 프로젝트로 기획, 개발, 배포 전 과정을 담당했습니다.</p>
+<ul>
+<li>Solved.ac API v3 문서를 분석해 난이도·태그 조합 검색 쿼리 설계</li>
+<li>스터디 기능을 Cog로 묶어 봇 구동부(<code>main.py</code>)와 분리</li>
+<li>JSON 기반 데이터 저장 로직으로 봇 재시작 시에도 사용자 연동 정보와 집계 데이터 유지</li>
+<li>Oracle Cloud(Always Free) 인스턴스에서 24시간 운영하고, master 푸시 시 GitHub Actions가 서버에 접속해 코드 갱신·의존성 설치·pm2 재시작까지 자동 배포</li>
+<li>스터디원도 직접 배포할 수 있도록 단계별 배포 가이드(systemd 기준) 작성</li>
+</ul>
+<h3>시스템 아키텍처</h3>
+<ul>
+<li><strong>Discord 이벤트 처리</strong>: <code>main.py</code>에서 봇을 구동하고 시작 시 슬래시 명령을 동기화하며, 스터디 명령어는 <code>cogs/study.py</code>에 분리해 로드</li>
+<li><strong>문제 데이터 조회</strong>: <code>utils/solvedac.py</code>에서 Solved.ac API v3에 난이도·태그·<code>lang:ko</code>·정렬 쿼리를 조합해 요청하고, 모든 요청에 5초 타임아웃 적용</li>
+<li><strong>스케줄링</strong>: <code>discord.ext.tasks</code>로 5분 주기 풀이 현황 폴링, 매일 21시(KST) 리마인드 알림</li>
+<li><strong>데이터 저장</strong>: <code>study_data.json</code>에 사용자 연동 정보, 공지 문제와 마감일, 풀이 기록 영속화</li>
+<li><strong>배포</strong>: Oracle Cloud Ubuntu 인스턴스 + Python venv + <code>.env</code>로 토큰 분리, GitHub Actions(SSH) → <code>git pull</code> → <code>pip install</code> → pm2 재시작</li>
+</ul>
+<h3>기술적 고민 및 문제 해결</h3>
+<h4>추천 문제 중 중복 문제가 많았던 문제</h4>
+<ul>
+<li><p>상황: 동일한 난이도와 알고리즘 유형으로 여러 번 추천을 요청하면 이전에 추천된 문제가 다시 등장하는 경우가 많았습니다.</p>
+</li>
+<li><p>시도: API가 반환한 문제 중 <code>random.sample()</code>로 5개를 추출했지만, API에서 반환하는 후보 목록 자체가 비슷하게 유지되어 반복 추천을 충분히 줄이지 못했습니다.</p>
+</li>
+<li><p>해결: Solved.ac 검색 쿼리에 <code>sort:random</code>을 추가하고, 요청마다 무작위 쿼리 값을 전달해 캐시된 동일 응답이 반복되는 것을 방지했습니다. 이후 무작위로 정렬된 후보에서 다시 5개를 추출해 추천 결과가 더욱 다양하게 분산되도록 개선했습니다.</p>
+</li>
+<li><p>배운 점: 클라이언트에서 결과만 무작위로 선택해도 원본 후보가 고정되어 있다면 다양성을 확보하기 어렵다는 것을 배웠습니다. 외부 API의 정렬 방식과 캐시 동작까지 고려해야 한다는 점도 알게 되었습니다.</p>
+</li>
+</ul>
+<h4>반복적인 공지 작성 과정의 비효율</h4>
+<ul>
+<li><p>상황: 문제 선정 후 링크 복사, 날짜 기입, 투표 생성 등 매번 같은 수동 작업이 반복되었습니다.</p>
+</li>
+<li><p>해결: Slash Command <code>/공지</code>로 문제 제목, BOJ 링크, 마감 기한, 투표 이모지를 담은 템플릿을 자동 생성하도록 구현했습니다.</p>
+</li>
+<li><p>배운 점: 내가 겪는 불편함이 곧 팀 전체의 불편함이라는 점을 인지하고, 사용자 관점에서 반복 작업을 줄이는 기능이 가장 체감 효과가 크다는 것을 배웠습니다.</p>
+</li>
+</ul>
+<h4>봇 재시작 시 데이터 유실</h4>
+<ul>
+<li><p>상황: 서버 재시작이나 봇 재배포 시 메모리에만 있던 사용자 연동 정보와 풀이 집계가 사라질 수 있었습니다.</p>
+</li>
+<li><p>해결: 상태가 바뀔 때마다 JSON 파일에 저장하고 시작 시 다시 읽어 오도록 했습니다. 저장 형식이 바뀐 뒤에도 이전 형식의 데이터를 읽어 새 형식으로 변환하도록 호환 로직을 두었습니다.</p>
+</li>
+<li><p>배운 점: 소규모 서비스라도 상태 데이터의 영속성과 장애 복구를 처음부터 고려해야 안정적으로 운영할 수 있다는 것을 배웠습니다.</p>
+</li>
+</ul>
+<h4>응답 없는 외부 API에 봇이 멈추는 문제</h4>
+<ul>
+<li><p>상황: Solved.ac API가 응답하지 않으면 요청이 끝나지 않고 대기하면서 봇 전체가 멈출 수 있었습니다.</p>
+</li>
+<li><p>해결: 모든 외부 요청에 <code>timeout=5</code>를 지정해 5초가 지나면 포기하고 다음 작업으로 넘어가게 했고, 풀이 확인 루프는 스터디원 단위로 예외를 잡아 한 명의 실패가 전체 확인을 멈추지 않도록 했습니다.</p>
+</li>
+<li><p>배운 점: 외부 서비스에 기대는 기능은 &quot;응답이 오지 않을 때&quot;를 먼저 정해 두어야 한다는 것을 배웠습니다.</p>
+</li>
+</ul>
+</details><h2 id="project-discord-study-bot-section-7">관련 글과 링크</h2>
+<ul>
+<li><a href="/devlog/2026-08-08-discord-study-bot">스터디장의 반복 작업을 봇에게 넘기기</a></li>
+<li><a href="https://github.com/hj0543/Discord_Algorthms_StudyBot">GitHub</a></li>
+<li><a href="https://solved.ac/api/v3">Solved.ac API v3</a></li>
+</ul>
+27:["$","$L2a",null,{"className":"doc-prose-module__rLTzAW__prose mx-auto max-w-[760px] px-5 sm:px-8","html":"$2b"}]

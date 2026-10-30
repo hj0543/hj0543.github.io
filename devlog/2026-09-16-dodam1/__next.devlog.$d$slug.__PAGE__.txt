@@ -1,0 +1,86 @@
+1:"$Sreact.fragment"
+2:I[22016,["/_next/static/chunks/0q654p4lxvnny.js","/_next/static/chunks/343-pf7olm-a0.js","/_next/static/chunks/0uri8sq5s_br9.js"],""]
+3:I[5014,["/_next/static/chunks/0q654p4lxvnny.js","/_next/static/chunks/343-pf7olm-a0.js","/_next/static/chunks/0uri8sq5s_br9.js"],"default"]
+4:I[73428,["/_next/static/chunks/0q654p4lxvnny.js","/_next/static/chunks/343-pf7olm-a0.js","/_next/static/chunks/0uri8sq5s_br9.js"],"default"]
+5:T1e96,<p>도담은 금융 목표를 기준으로 현재 상태를 진단하고, 소비나 저축 방식을 바꾸면 목표 달성 시점이 어떻게 달라지는지 비교하는 개인 금융 코치 앱이다. 나는 팀장·PM과 백엔드 개발을 맡았고, 진단·추천·시뮬레이션 엔진을 구현했다.</p>
+<p>계산할 수 있는 항목은 늘어났지만, 그만큼 사용자가 선택해야 할 항목도 늘어났다. <strong>사용자는 자신의 질문을 우리 서비스의 메뉴와 입력 항목으로 바꿔야 했다.</strong> AI 코치 토리는 이 간격을 줄이는 데서 출발했다.</p>
+<h2>1. 사용자의 질문과 화면의 입력 순서가 달랐다</h2>
+<p>사용자가 궁금한 것은 이런 문장이다.</p>
+<blockquote>
+<p>대출 100만 원 먼저 갚으면 여행 목표 언제쯤 이룰 수 있어?</p>
+</blockquote>
+<p>기존 화면에서는 시뮬레이션 메뉴에 들어가 유형과 대출을 고르고, 금액을 입력한 뒤 목표별 결과를 확인해야 했다. 계산 기능이 있어도 어떤 시뮬레이션을 선택해야 하는지 먼저 알아야 답을 얻을 수 있었다.</p>
+<p>마침 중간발표에서 AI 활용에 깊이가 부족하다는 피드백도 받았다. 이 피드백을 계기로, 사용자가 자기 말로 질문하면 필요한 계산으로 연결해 주는 방식을 검토했다. <strong>목표는 사용자의 질문에서 결과까지 이어지는 경로를 짧게 만드는 것</strong>이었다.</p>
+<h2>2. 편리한 입력과 신뢰할 수 있는 결과를 함께 기준으로 삼았다</h2>
+<p>처음 떠올린 방식은 사용자의 대출·목표·저축 정보를 LLM에 전달하고 답변 전체를 맡기는 것이었다. 하지만 잘못된 수치가 사용자의 금융 판단에 영향을 줄 수 있었다. 같은 질문을 화면과 챗봇에 했을 때 서로 다른 숫자가 나오는 문제도 피해야 했다.</p>
+<p>그래서 대화 기능의 기준을 세 가지로 정리했다.</p>
+<ul>
+<li><strong>접근성:</strong> 사용자가 시뮬레이션 유형을 먼저 알지 못해도 자신의 질문으로 시작할 수 있어야 한다.</li>
+<li><strong>일관성:</strong> 같은 입력값·기준일·계산 버전이라면 화면과 대화에서 같은 결과를 전달해야 한다.</li>
+<li><strong>응답 범위:</strong> 계산 근거가 없는 숫자는 답변에 포함하지 않고, 실패했을 때의 안내 방식도 정해야 한다.</li>
+</ul>
+<p>이에 따라 <strong>AI는 질문에 맞는 도구를 선택하고 결과를 설명하며, 수치 계산은 서버가 담당</strong>하도록 역할을 나눴다. 기존 엔진이 계산 당시 입력과 결과를 스냅샷으로 보존하는 구조도 이 원칙을 뒷받침했다.</p>
+<h2>3. 답변이 만들어지는 단계마다 정책을 정했다</h2>
+<p>토리의 흐름은 다음과 같다.</p>
+<pre><code class="language-text">사용자 질문
+  → [서버] 입력 가드   : 민감정보로 감지한 입력 차단
+  → [LLM]  도구 선택   : 질문에 필요한 계산 도구 선택
+  → [서버] 계산        : 진단·예측·시뮬레이션 결과 생성
+  → [LLM]  답변 작성   : 계산 결과를 3문장·200자 이내로 설명
+  → [서버] 출력 가드   : 답변의 숫자를 계산 근거와 대조
+  → [앱]   토리 말풍선
+</code></pre>
+<p><img src="/devlog/images/2026-09-16-dodam1/pipeline.png" alt="질문 의도에 따른 도구 선택과 서버 계산, 답변 검증으로 이어지는 토리의 처리 흐름"></p>
+<p><strong>입력과 조회 대상의 경계를 정했다.</strong> 계좌·카드번호나 이메일이 포함된 것으로 감지한 입력은 모델 호출 전에 차단했다. 도구 인자에서도 대출 ID와 계좌번호를 제외하고, 서버가 로그인한 사용자를 조회 조건으로 삼도록 했다. 모델이 조회 대상 사용자를 직접 지정하지 않게 한 것이다.</p>
+<p><strong>답변에 필요한 정보만 전달했다.</strong> 도구는 소비 절감, 저축액 변경, 대출 중도상환, 대환, 복합 시뮬레이션, 목표 달성 예측, 최신 진단, 소비 예측 조회의 8종으로 구성했다. 도구 선택 후 서버가 계산한 결과를 facts로 묶어 전달하고, 답변 생성 단계에는 원본 거래 데이터 대신 이 결과를 사용했다.</p>
+<p><strong>설명 길이와 실패 응답도 서비스 정책으로 다뤘다.</strong> 말풍선에서 핵심 수치와 의미를 읽을 수 있도록 3문장·200자 이내로 설명하게 했다. facts에 없는 숫자가 포함되면 생성된 답변을 템플릿 문장으로 대체하고, LLM이 응답하지 않을 때도 같은 방식으로 안내하도록 했다.</p>
+<h2>4. 도구를 연결하면서 사용자가 필요한 답을 다시 정의했다</h2>
+<p>토리의 전체 처리 흐름 안에서 내가 직접 연결한 기능은 소비 예측 조회와, 대출 추가 상환 시 다음 납입액이 어떻게 바뀌는지 설명하는 도구였다. 진단·추천·시뮬레이션 엔진도 내가 담당했다.</p>
+<p>도구를 연결하며 가장 분명해진 것은 <strong>답변에 필요한 수치가 서버 응답에 있어야 한다는 점</strong>이었다. 예를 들어 사용자가 궁금한 것이 다음 달 납입액의 변화라면, 추가 상환 결과에 그 수치가 포함되어야 했다. facts에 없는 숫자는 출력 단계에서 막히므로 프롬프트를 바꾸는 것만으로는 해결할 수 없었다.</p>
+<p>결국 질문에서 시작해 <strong>필요한 판단 → 계산 항목 → 도구의 응답 필드 → 설명 문장</strong>을 거꾸로 짚어야 했다. 이 과정에서 도구의 응답 설계가 사용자가 받을 수 있는 답의 범위를 정한다는 것을 배웠다.</p>
+<p>화면과 대화에 같은 엔진을 연결한 것도 중요했다. 계산식이 바뀌면 한 곳을 수정해 두 경로에 반영할 수 있었고, 서로 다른 계산 기준을 따로 관리하는 부담을 줄일 수 있었다.</p>
+<h2>5. 구현한 결과와 앞으로 확인할 것</h2>
+<p>시뮬레이션 메뉴와 입력 항목을 순서대로 선택하던 경로에 더해, 자연어 질문으로 계산 도구를 호출하고 결과를 설명받는 경로를 구현했다. 계산·설명·입력 및 출력 검증의 책임도 구분했다.</p>
+<p>다만 이 구조를 구현했다는 사실만으로 사용자가 더 쉽게 답을 얻었다고 단정할 수는 없다. 숫자를 계산 근거와 대조하는 방식 역시 설명의 모든 오류를 검증하는 것은 아니다. 다음에는 실제 과제로 아래 항목을 확인하고 싶다.</p>
+<ul>
+<li>같은 질문을 화면과 토리에서 해결할 때, 원하는 결과에 도달할 수 있는가?</li>
+<li>질문 의도에 맞는 도구가 선택되고, 필요한 정보가 답변에 담기는가?</li>
+<li>사용자가 계산 결과와 안내 문장의 의미를 이해하고 다음 행동을 정할 수 있는가?</li>
+<li>도구 호출이나 답변 생성에 실패했을 때, 안내를 읽고 다시 시도할 수 있는가?</li>
+</ul>
+<p>토리를 설계하며 배운 것은 <strong>AI 서비스를 기획하려면 입력의 편의성부터 계산과 설명의 경계, 실패 응답까지 하나의 이용 흐름으로 연결해야 한다는 것</strong>이다. 사용자가 어떤 질문을 할지 구체화할수록 필요한 도구와 데이터, 응답 기준도 더 명확해졌다.</p>
+<h2>관련 글</h2>
+<ul>
+<li><a href="/projects/dodam">도담 프로젝트: 문제 정의와 핵심 기획 결정</a></li>
+<li><a href="/devlog/2026-09-28-dodam-safebox">목표별 계좌 연동에서 세이프박스로 전환한 과정</a></li>
+<li><a href="/devlog/2026-10-13-dodam2">팀장과 발표자로서의 프로젝트 회고</a></li>
+</ul>
+b:X
+10:X
+10:C
+0:{"buildId":"A1gsuDqWvAI0Sedafrvgx","data":[{"rsc":["$","$1","c",{"children":[["$","div",null,{"className":"@container","children":["$","article",null,{"className":"mx-auto max-w-[760px] px-5 pb-24 pt-8 sm:px-8 sm:pt-10","children":[["$","div",null,{"children":["$","$L2",null,{"href":"/","scroll":false,"className":"text-[13px] text-foreground/65 transition-colors hover:text-accent","children":"← Devlog"}]}],["$","span",null,{"className":"mt-10 flex items-center gap-1.5 font-mono text-[12px] text-foreground/65","children":[["$","$L3",null,{"iconNode":[["path",{"d":"M8 2v3","key":"1ioesn"}],["path",{"d":"M16 2v3","key":"otl347"}],["rect",{"x":"3","y":"3","width":"18","height":"18","rx":"2","key":"h1oib"}],["path",{"d":"M3 9h18","key":"1pudct"}],["path",{"d":"M8 13h.01","key":"1sbv64"}],["path",{"d":"M12 13h.01","key":"y0uutt"}],["path",{"d":"M16 13h.01","key":"wip0gl"}],["path",{"d":"M8 17h.01","key":"p3bg7i"}],["path",{"d":"M12 17h.01","key":"p32p05"}],["path",{"d":"M16 17h.01","key":"ql8jdd"}]],"className":"lucide-calendar-days","aria-hidden":"true","size":13,"strokeWidth":1.7}],"2026-09-16"]}],["$","h1",null,{"className":"mt-4 text-3xl font-bold leading-tight tracking-[-0.025em] text-foreground sm:text-[2.25rem]","children":"질문 한 문장으로 금융 시뮬레이션에 닿도록 — AI 코치 토리 설계"}],["$","$L4","2026-09-16-dodam1",{"slug":"2026-09-16-dodam1","recordVisit":true,"className":"mt-4"}],["$","p",null,{"className":"mt-4 text-[16px] leading-7 text-foreground/70","children":"시뮬레이션의 입력 부담을 줄이기 위해 대화형 코치를 연결하고, 계산·설명·예외 응답의 기준을 나눈 과정."}],["$","div",null,{"className":"mt-6 flex flex-wrap gap-1.5","children":[["$","span","SSAFY",{"className":"rounded-full border border-ink/12 bg-ink/6 px-2.5 py-1 text-[12px] text-foreground/75","children":"SSAFY"}],["$","span","도담",{"className":"rounded-full border border-ink/12 bg-ink/6 px-2.5 py-1 text-[12px] text-foreground/75","children":"도담"}],["$","span","서비스 기획",{"className":"rounded-full border border-ink/12 bg-ink/6 px-2.5 py-1 text-[12px] text-foreground/75","children":"서비스 기획"}],["$","span","AI",{"className":"rounded-full border border-ink/12 bg-ink/6 px-2.5 py-1 text-[12px] text-foreground/75","children":"AI"}],["$","span","챗봇",{"className":"rounded-full border border-ink/12 bg-ink/6 px-2.5 py-1 text-[12px] text-foreground/75","children":"챗봇"}]]}],["$","div",null,{"className":"mt-10 border-t border-ink/10 doc-prose-module__rLTzAW__prose","dangerouslySetInnerHTML":{"__html":"$5"}}],"$L6"]}]}],["$L7","$L8"],"$L9"]}],"isPartial":"$@a","staleTime":"$b","varyParams":null},{"rsc":"$Lc","isPartial":"$@d","staleTime":"$b","varyParams":null},{"rsc":"$Le","isPartial":"$@f","staleTime":"$b","varyParams":"$10"},{"rsc":"$L11","isPartial":"$@12","staleTime":"$b","varyParams":"$10"}],"isUpgradeableISRFallback":false,"a":"$@13","rootVaryParams":null,"needsRuntimeRequest":"$@14"}
+15:I[97053,["/_next/static/chunks/0q654p4lxvnny.js","/_next/static/chunks/343-pf7olm-a0.js","/_next/static/chunks/0uri8sq5s_br9.js"],"default"]
+16:I[97367,["/_next/static/chunks/0q654p4lxvnny.js","/_next/static/chunks/343-pf7olm-a0.js"],"OutletBoundary"]
+17:"$Sreact.suspense"
+19:I[97367,["/_next/static/chunks/0q654p4lxvnny.js","/_next/static/chunks/343-pf7olm-a0.js"],"ViewportBoundary"]
+1a:I[97367,["/_next/static/chunks/0q654p4lxvnny.js","/_next/static/chunks/343-pf7olm-a0.js"],"MetadataBoundary"]
+1b:I[27201,["/_next/static/chunks/0q654p4lxvnny.js","/_next/static/chunks/343-pf7olm-a0.js"],"IconMark"]
+1c:I[39756,["/_next/static/chunks/0q654p4lxvnny.js","/_next/static/chunks/343-pf7olm-a0.js"],"default"]
+1d:I[37457,["/_next/static/chunks/0q654p4lxvnny.js","/_next/static/chunks/343-pf7olm-a0.js"],"default"]
+:HL["/_next/static/chunks/2b-2tives3t8w.css","style"]
+6:["$","$L15","2026-09-16-dodam1",{"slug":"2026-09-16-dodam1"}]
+7:["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/2b-2tives3t8w.css","precedence":"next"}]
+8:["$","script","script-0",{"src":"/_next/static/chunks/0uri8sq5s_br9.js","async":true}]
+9:["$","$L16",null,{"children":["$","$17",null,{"name":"Next.MetadataOutlet","children":"$@18"}]}]
+c:["$","$1","h",{"children":[null,["$","$L19",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]}],["$","div",null,{"hidden":true,"children":["$","$L1a",null,{"children":["$","$17",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"질문 한 문장으로 금융 시뮬레이션에 닿도록 — AI 코치 토리 설계 · Belog"}],["$","meta","1",{"name":"description","content":"시뮬레이션의 입력 부담을 줄이기 위해 대화형 코치를 연결하고, 계산·설명·예외 응답의 기준을 나눈 과정."}],["$","meta","2",{"name":"giscus:backlink","content":"https://hj0543.github.io/devlog/2026-09-16-dodam1/"}],["$","link","3",{"rel":"icon","href":"/icon.png?icon.3bup3hv08dkxp.png","sizes":"1254x1254","type":"image/png"}],["$","$L1b","4",{}]]}]}]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}]
+e:["$","$1","c",{"children":[null,["$","$L1c",null,{"parallelRouterKey":"children","template":["$","$L1d",null,{}]}]]}]
+11:["$","$1","c",{"children":[null,["$","$L1c",null,{"parallelRouterKey":"children","template":["$","$L1d",null,{}]}]]}]
+14:true
+18:null
+b:300
+b:C
+13:0
+d:"$undefined"
+f:"$undefined"
+12:"$undefined"
+a:"$undefined"

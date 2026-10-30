@@ -1,0 +1,328 @@
+1:"$Sreact.fragment"
+2:I[3020,["/_next/static/chunks/0q654p4lxvnny.js","/_next/static/chunks/343-pf7olm-a0.js"],"default"]
+3:I[39756,["/_next/static/chunks/0q654p4lxvnny.js","/_next/static/chunks/343-pf7olm-a0.js"],"default"]
+4:I[37457,["/_next/static/chunks/0q654p4lxvnny.js","/_next/static/chunks/343-pf7olm-a0.js"],"default"]
+5:I[66519,["/_next/static/chunks/0q654p4lxvnny.js","/_next/static/chunks/343-pf7olm-a0.js","/_next/static/chunks/36h9ts2bz7_q3.js"],"default"]
+6:I[22016,["/_next/static/chunks/0q654p4lxvnny.js","/_next/static/chunks/343-pf7olm-a0.js","/_next/static/chunks/1k-g9mxvu5fy9.js","/_next/static/chunks/2rejhzi-l24m3.js"],""]
+7:I[5014,["/_next/static/chunks/0q654p4lxvnny.js","/_next/static/chunks/343-pf7olm-a0.js","/_next/static/chunks/1k-g9mxvu5fy9.js","/_next/static/chunks/2rejhzi-l24m3.js"],"default"]
+8:I[18192,["/_next/static/chunks/0q654p4lxvnny.js","/_next/static/chunks/343-pf7olm-a0.js"],"default"]
+12:I[68027,["/_next/static/chunks/0q654p4lxvnny.js","/_next/static/chunks/343-pf7olm-a0.js"],"default",1]
+:HL["/_next/static/chunks/1sk89teqfbf_q.css","style"]
+:HL["/_next/static/media/70bc3e132a0a741e-s.p.3t6q91iet4nsy.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/_next/static/media/7ebf22b5a21034f8-s.p.3j3877k49yy0l.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/_next/static/media/PretendardVariable-s.p.0ztvx5mb7lxp4.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/_next/static/chunks/2b-2tives3t8w.css","style"]
+10:X
+0:{"P":null,"c":["","projects","geomate",""],"q":"","i":false,"f":[[["",{"children":["projects",{"children":[["slug","geomate","d",[]],{"children":["__PAGE__",{},"$undefined","$undefined",4608]},"$undefined","$undefined",4608]},"$undefined","$undefined",4608]},"$undefined","$undefined",4624],[["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/1sk89teqfbf_q.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","script","script-0",{"src":"/_next/static/chunks/0q654p4lxvnny.js","async":true,"nonce":"$undefined"}],["$","script","script-1",{"src":"/_next/static/chunks/343-pf7olm-a0.js","async":true,"nonce":"$undefined"}]],["$","html",null,{"lang":"ko","data-scroll-behavior":"smooth","suppressHydrationWarning":true,"className":"jetbrains_mono_7d65b77b-module__VxV-Ta__variable instrument_serif_c1e8e483-module__u2UhdW__variable pretendard_97774a5-module__y_0gNq__variable h-full antialiased","children":[["$","head",null,{"children":["$","script",null,{"dangerouslySetInnerHTML":{"__html":"(function () {\n  var theme = \"dark\";\n  try {\n    if (/^\\/(projects|devlog)\\/[^/]+\\/?$/.test(window.location.pathname)\n        && localStorage.getItem(\"theme\") === \"light\") {\n      theme = \"light\";\n    }\n  } catch (e) {}\n  document.documentElement.dataset.theme = theme;\n})();"}}]}],["$","body",null,{"id":"top","className":"flex min-h-full flex-col","children":[["$","$L2",null,{}],["$","main",null,{"className":"flex-1","children":["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[["$","div",null,{"className":"mx-auto flex min-h-[70vh] max-w-[1080px] flex-col items-center justify-center px-5 py-20 text-center sm:px-8","children":[["$","p",null,{"className":"flex items-baseline gap-2.5 text-label","children":[["$","span",null,{"className":"section-label","children":"Not Found"}],["$","span",null,{"className":"font-mono text-[12px] tracking-[0.05em] text-foreground/65","children":"/ 404"}]]}],["$","h1",null,{"className":"mt-6","children":["$","$L5",null,{"text":"404","as":"span","fontSize":"clamp(6rem, 24vw, 13rem)","fontWeight":800,"letterSpacing":"-0.04em","lineHeight":1,"tensionColor":"#c96f4a","hint":true}]}],["$","p",null,{"className":"mt-8 max-w-[420px] text-[16px] leading-7 text-foreground/75","children":["찾으시는 페이지가 없거나 주소가 바뀌었어요.",["$","br",null,{}],"그동안 숫자를 잡아당겨 보셔도 좋아요."]}],["$","$L6",null,{"href":"/","className":"mt-10 inline-flex items-center gap-1.5 border-b border-accent/60 pb-1 text-[15px] font-medium text-accent transition-colors hover:border-accent","children":[["$","$L7",null,{"ref":"$undefined","iconNode":[["path",{"d":"m12 19-7-7 7-7","key":"1l729n"}],["path",{"d":"M19 12H5","key":"x3x0zl"}]],"className":"lucide-arrow-left","aria-hidden":"true","size":15}],"홈으로 돌아가기"]}]]}],[]],"forbidden":"$undefined","unauthorized":"$undefined"}]}],["$","$L8",null,{"children":[["$","footer",null,{"id":"contact","className":"scroll-mt-20","children":["$","div",null,{"className":"mx-auto max-w-[1080px] px-5 sm:px-8","children":[["$","div",null,{"className":"flex flex-wrap items-end justify-between gap-x-10 gap-y-6 border-t border-ink/15 py-12","children":[["$","div",null,{"children":[["$","p",null,{"className":"section-label","children":"Let's Connect"}],["$","h2",null,{"className":"mt-3 text-2xl font-bold tracking-[-0.025em] text-foreground sm:text-[1.75rem]","children":"함께 해결할 문제를 이야기해요."}]]}],["$","p",null,{"className":"flex flex-wrap gap-x-8 gap-y-3","children":[["$","a",null,{"href":"mailto:hj0543@gmail.com","className":"inline-flex items-center gap-2 border-b border-foreground/40 pb-1 text-[15px] font-medium text-foreground transition-colors hover:border-accent hover:text-accent","children":[["$","$L7",null,{"ref":"$undefined","iconNode":[["path",{"d":"m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7","key":"132q7q"}],["rect",{"x":"2","y":"4","width":"20","height":"16","rx":"2","key":"izxlao"}]],"className":"lucide-mail","aria-hidden":"true","size":17,"strokeWidth":1.8}],"hj0543@gmail.com",["$","$L7",null,{"ref":"$undefined","iconNode":[["path",{"d":"M7 7h10v10","key":"1tivn9"}],["path",{"d":"M7 17 17 7","key":"1vkiza"}]],"className":"lucide-arrow-up-right","aria-hidden":"true","size":14}]]}],["$","a",null,{"href":"https://github.com/hj0543","target":"_blank","rel":"noreferrer","className":"inline-flex items-center gap-2 border-b border-foreground/40 pb-1 text-[15px] font-medium text-foreground transition-colors hover:border-accent hover:text-accent","children":["$L9","GitHub","$La"]}]]}]]}],"$Lb"]}]}],"$Lc"]}]]}]]}]]}],{"children":["$Ld",{"children":["$Le",{"children":["$Lf",{},null,false,null]},null,false,"$10"]},null,false,"$10"]},null,false,null],"$L11",false]],"m":"$undefined","G":["$12",["$L13"]],"S":true,"h":null,"r":"$undefined","s":"$undefined","a":"$undefined","l":"$undefined","p":"$undefined","d":"$undefined","b":"A1gsuDqWvAI0Sedafrvgx"}
+14:I[85437,["/_next/static/chunks/0q654p4lxvnny.js","/_next/static/chunks/343-pf7olm-a0.js","/_next/static/chunks/1k-g9mxvu5fy9.js","/_next/static/chunks/2rejhzi-l24m3.js"],"Image"]
+15:I[53759,["/_next/static/chunks/0q654p4lxvnny.js","/_next/static/chunks/343-pf7olm-a0.js"],"default"]
+16:I[11875,["/_next/static/chunks/0q654p4lxvnny.js","/_next/static/chunks/343-pf7olm-a0.js"],"default"]
+18:I[97367,["/_next/static/chunks/0q654p4lxvnny.js","/_next/static/chunks/343-pf7olm-a0.js"],"OutletBoundary"]
+19:"$Sreact.suspense"
+1b:I[97367,["/_next/static/chunks/0q654p4lxvnny.js","/_next/static/chunks/343-pf7olm-a0.js"],"ViewportBoundary"]
+1d:I[97367,["/_next/static/chunks/0q654p4lxvnny.js","/_next/static/chunks/343-pf7olm-a0.js"],"MetadataBoundary"]
+9:["$","$L14",null,{"src":"/icons/github.svg","alt":"","aria-hidden":"true","width":17,"height":17,"className":"brand-icon shrink-0 "}]
+a:["$","$L7",null,{"ref":"$undefined","iconNode":"$0:f:0:1:0:props:children:1:props:children:1:props:children:2:props:children:0:props:children:props:children:0:props:children:1:props:children:0:props:children:2:props:iconNode","className":"lucide-arrow-up-right","aria-hidden":"true","size":14}]
+b:["$","div",null,{"className":"flex flex-wrap items-center justify-between gap-3 border-t border-ink/15 py-6","children":[["$","a",null,{"href":"#top","className":"text-[17px] font-bold tracking-[-0.04em] text-foreground","children":["Belog",["$","span",null,{"className":"text-accent","children":"."}]]}],["$","span",null,{"className":"flex flex-wrap gap-x-4 gap-y-1 text-[12px] text-foreground/65","children":[["$","$L15",null,{}],["$","span",null,{"children":["© ",2026," ","HYEONJIN JEONG",". All rights reserved."]}]]}]]}]
+c:["$","$L16",null,{}]
+d:["$","$1","c",{"children":[null,["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}]
+e:["$","$1","c",{"children":[null,["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}]
+f:["$","$1","c",{"children":["$L17",[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/2b-2tives3t8w.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","script","script-0",{"src":"/_next/static/chunks/1k-g9mxvu5fy9.js","async":true,"nonce":"$undefined"}],["$","script","script-1",{"src":"/_next/static/chunks/2rejhzi-l24m3.js","async":true,"nonce":"$undefined"}]],["$","$L18",null,{"children":["$","$19",null,{"name":"Next.MetadataOutlet","children":"$@1a"}]}]]}]
+11:["$","$1","h",{"children":[null,["$","$L1b",null,{"children":"$L1c"}],["$","div",null,{"hidden":true,"children":["$","$L1d",null,{"children":["$","$19",null,{"name":"Next.Metadata","children":"$L1e"}]}]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}]
+13:["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/1sk89teqfbf_q.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]
+10:C
+1c:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
+2c:I[27201,["/_next/static/chunks/0q654p4lxvnny.js","/_next/static/chunks/343-pf7olm-a0.js"],"IconMark"]
+17:["$","div",null,{"className":"@container","children":["$","div",null,{"className":"pb-16","children":[["$","header",null,{"className":"mx-auto max-w-[1080px] px-5 pb-10 pt-8 sm:px-8 sm:pt-10","children":[["$","div",null,{"className":"min-w-0 border-b border-ink/20 pb-8 sm:pb-10","children":[["$","$L6",null,{"href":"/","scroll":false,"className":"text-[13px] text-foreground/65 transition-colors hover:text-accent","children":"← Projects"}],["$","div",null,{"className":"mt-8"}],null,["$","h1",null,{"className":"text-xl font-semibold leading-tight tracking-[-0.02em] text-accent sm:text-2xl","children":"GEOMATE"}],["$","p",null,{"className":"mt-3 text-balance text-[26px] font-bold leading-[1.4] tracking-[-0.03em] text-foreground [overflow-wrap:anywhere] sm:text-[36px]","children":"도형의 관계를 이해하기 어려운 학생을 위한 기하 학습 서비스"}]]}],["$","div",null,{"className":"mt-8 grid gap-8 sm:mt-10 @[48rem]:grid-cols-[minmax(230px,0.72fr)_minmax(0,1.28fr)] @[48rem]:items-start","children":[["$","div",null,{"className":"min-w-0","children":[["$","dl",null,{"className":"grid gap-3 text-sm leading-6","children":[["$","div","문제",{"children":[["$","dt",null,{"className":"text-[12px] font-medium text-label","children":"문제"}],["$","dd",null,{"className":"mt-1 text-foreground/75","children":"도형의 관계를 이해하거나 풀이를 시작하기 어려울 때, 혼자서 무엇을 관찰하고 조작해야 할지 알기 어렵습니다."}]]}],["$","div","결과",{"children":[["$","dt",null,{"className":"text-[12px] font-medium text-label","children":"결과"}],["$","dd",null,{"className":"mt-1 text-foreground/75","children":"기하 엔진·모델·보조도구 PoC를 구현하고 사진 해석을 평가했으며, 독립 학습과 공간감각 효과를 검증할 계획입니다."}]]}]]}],["$","div",null,{"className":"mt-9","children":["$","dl",null,{"className":"grid border-y border-ink/12 py-2 @[34rem]:grid-cols-4 @[34rem]:gap-x-6 @[34rem]:py-0 @[48rem]:grid-cols-1 @[48rem]:gap-x-0 @[48rem]:py-2","children":[["$","div","역할",{"className":"grid grid-cols-[3.5rem_minmax(0,1fr)] items-baseline gap-3 py-2 @[34rem]:block @[34rem]:py-3.5 @[48rem]:grid @[48rem]:py-2","children":[["$","dt",null,{"className":"text-[12px] font-medium text-foreground/65","children":"역할"}],["$","dd",null,{"className":"text-[14px] leading-relaxed text-foreground/80","children":"PM · Frontend · AI"}]]}],["$","div","기간",{"className":"grid grid-cols-[3.5rem_minmax(0,1fr)] items-baseline gap-3 py-2 @[34rem]:block @[34rem]:py-3.5 @[48rem]:grid @[48rem]:py-2","children":[["$","dt",null,{"className":"text-[12px] font-medium text-foreground/65","children":"기간"}],["$","dd",null,{"className":"text-[14px] leading-relaxed text-foreground/80","children":"2026.10 ~ 2026.11"}]]}],["$","div","구성",{"className":"grid grid-cols-[3.5rem_minmax(0,1fr)] items-baseline gap-3 py-2 @[34rem]:block @[34rem]:py-3.5 @[48rem]:grid @[48rem]:py-2","children":[["$","dt",null,{"className":"text-[12px] font-medium text-foreground/65","children":"구성"}],["$","dd",null,{"className":"text-[14px] leading-relaxed text-foreground/80","children":"6인 팀 (FE 3 · BE 3 — FE 1명 AI, BE 1명 Infra 겸임)"}]]}]]}]}],["$","div",null,{"className":"mt-5 grid gap-4","children":[["$","div",null,{"className":"flex min-w-0 items-baseline gap-4","children":[["$","span",null,{"className":"shrink-0 text-[12px] font-medium text-foreground/65","children":"담당"}],["$","p",null,{"className":"text-[14px] leading-relaxed text-foreground/70","children":"문제 정의·학습 경험 설계 · 기능 범위·일정 관리 · 태블릿 화면과 보조도구 연결 · 사진 해석·모델 검증 기준"}]]}],["$","div",null,{"className":"flex min-w-0 items-start gap-4","children":[["$","span",null,{"className":"shrink-0 text-[12px] font-medium text-foreground/65","children":"기술"}],["$","div",null,{"className":"flex flex-wrap gap-1.5","children":[["$","span","React",{"className":"inline-flex items-center gap-1.5 rounded-full border border-ink/12 bg-ink/6 px-3 py-1 text-[12px] text-foreground/75","children":[["$","$L14",null,{"src":"/icons/react.svg","alt":"","aria-hidden":"true","width":14,"height":14,"className":"brand-icon shrink-0 "}],"React"]}],["$","span","TypeScript",{"className":"inline-flex items-center gap-1.5 rounded-full border border-ink/12 bg-ink/6 px-3 py-1 text-[12px] text-foreground/75","children":["$L1f","TypeScript"]}],"$L20","$L21","$L22","$L23","$L24","$L25","$L26","$L27"]}]]}],"$L28"]}]]}],"$L29"]}]]}],"$L2a","$L2b"]}]}]
+1a:null
+1e:[["$","title","0",{"children":"GEOMATE · Belog"}],["$","meta","1",{"name":"description","content":"도형의 관계를 이해하기 어려운 학생을 위한 기하 학습 서비스"}],["$","link","2",{"rel":"icon","href":"/icon.png?icon.3bup3hv08dkxp.png","sizes":"1254x1254","type":"image/png"}],["$","$L2c","3",{}]]
+2d:I[14830,["/_next/static/chunks/0q654p4lxvnny.js","/_next/static/chunks/343-pf7olm-a0.js","/_next/static/chunks/1k-g9mxvu5fy9.js","/_next/static/chunks/2rejhzi-l24m3.js"],"default"]
+2e:I[43232,["/_next/static/chunks/0q654p4lxvnny.js","/_next/static/chunks/343-pf7olm-a0.js","/_next/static/chunks/1k-g9mxvu5fy9.js","/_next/static/chunks/2rejhzi-l24m3.js"],"default"]
+1f:["$","$L14",null,{"src":"/icons/typescript.svg","alt":"","aria-hidden":"true","width":14,"height":14,"className":"brand-icon shrink-0 "}]
+20:["$","span","Three.js",{"className":"inline-flex items-center gap-1.5 rounded-full border border-ink/12 bg-ink/6 px-3 py-1 text-[12px] text-foreground/75","children":[null,"Three.js"]}]
+21:["$","span","Python",{"className":"inline-flex items-center gap-1.5 rounded-full border border-ink/12 bg-ink/6 px-3 py-1 text-[12px] text-foreground/75","children":[["$","$L14",null,{"src":"/icons/python.svg","alt":"","aria-hidden":"true","width":14,"height":14,"className":"brand-icon shrink-0 "}],"Python"]}]
+22:["$","span","FastAPI",{"className":"inline-flex items-center gap-1.5 rounded-full border border-ink/12 bg-ink/6 px-3 py-1 text-[12px] text-foreground/75","children":[["$","$L14",null,{"src":"/icons/fastapi.svg","alt":"","aria-hidden":"true","width":14,"height":14,"className":"brand-icon shrink-0 "}],"FastAPI"]}]
+23:["$","span","SymPy",{"className":"inline-flex items-center gap-1.5 rounded-full border border-ink/12 bg-ink/6 px-3 py-1 text-[12px] text-foreground/75","children":[["$","$L14",null,{"src":"/icons/sympy.svg","alt":"","aria-hidden":"true","width":14,"height":14,"className":"brand-icon shrink-0 "}],"SymPy"]}]
+24:["$","span","Gemini API",{"className":"inline-flex items-center gap-1.5 rounded-full border border-ink/12 bg-ink/6 px-3 py-1 text-[12px] text-foreground/75","children":[null,"Gemini API"]}]
+25:["$","span","Java",{"className":"inline-flex items-center gap-1.5 rounded-full border border-ink/12 bg-ink/6 px-3 py-1 text-[12px] text-foreground/75","children":[["$","$L14",null,{"src":"/icons/java.svg","alt":"","aria-hidden":"true","width":14,"height":14,"className":"brand-icon shrink-0 "}],"Java"]}]
+26:["$","span","Spring",{"className":"inline-flex items-center gap-1.5 rounded-full border border-ink/12 bg-ink/6 px-3 py-1 text-[12px] text-foreground/75","children":[null,"Spring"]}]
+27:["$","span","PostgreSQL",{"className":"inline-flex items-center gap-1.5 rounded-full border border-ink/12 bg-ink/6 px-3 py-1 text-[12px] text-foreground/75","children":[null,"PostgreSQL"]}]
+28:null
+29:["$","div",null,{"className":"min-w-0","children":["$","$L2d","geomate",{"screens":[{"src":"/projects/geomate/app-cube-section.png","alt":"정육면체의 꼭짓점 D와 F 모서리 중점 M을 잇는 단면 선을 그린 화면","caption":"꼭짓점과 모서리에 닿게 그리는 단면 선"},{"src":"/projects/geomate/app-cylinder-unroll.png","alt":"원기둥 옆면을 절반 넘게 펼친 화면과 펼치기 안내 문구","caption":"슬라이더로 원기둥 옆면 펼치기"},{"src":"/projects/geomate/app-fold.png","alt":"직사각형 종이 ABCD를 선분 GF를 따라 접는 중간 상태 화면","caption":"종이를 접는 중간 상태 확인"},{"src":"/projects/geomate/app-roll.png","alt":"정사각형 둘레를 따라 원을 굴릴 때 원이 지나간 영역을 표시한 화면","caption":"원 굴리기와 지나간 영역 표시"}]}]}]
+2a:["$","nav",null,{"aria-label":"프로젝트 문서 목차","className":"sticky top-16 z-20 mt-12 overflow-x-auto border-y border-ink/10 bg-background/90 backdrop-blur-md [&::-webkit-scrollbar]:hidden","children":["$","div",null,{"className":"mx-auto flex h-10 max-w-[1080px] items-center gap-6 px-5 sm:px-8","children":[["$","span",null,{"className":"flex h-5 shrink-0 items-center border-r border-ink/12 pr-5 text-[14px] font-medium leading-none text-foreground/65","children":"목차"}],[["$","a","project-geomate-section-0",{"href":"#project-geomate-section-0","className":"flex h-full shrink-0 items-center text-[14px] leading-none text-foreground/70 transition-colors hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/60","children":"요약"}],["$","a","project-geomate-section-1",{"href":"#project-geomate-section-1","className":"flex h-full shrink-0 items-center text-[14px] leading-none text-foreground/70 transition-colors hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/60","children":"문제 정의와 설문 근거"}],["$","a","project-geomate-section-2",{"href":"#project-geomate-section-2","className":"flex h-full shrink-0 items-center text-[14px] leading-none text-foreground/70 transition-colors hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/60","children":"핵심 기획 결정"}],["$","a","project-geomate-section-3",{"href":"#project-geomate-section-3","className":"flex h-full shrink-0 items-center text-[14px] leading-none text-foreground/70 transition-colors hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/60","children":"사용자 흐름과 제공 범위"}],["$","a","project-geomate-section-4",{"href":"#project-geomate-section-4","className":"flex h-full shrink-0 items-center text-[14px] leading-none text-foreground/70 transition-colors hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/60","children":"담당 역할과 현재 검증"}],["$","a","project-geomate-section-5",{"href":"#project-geomate-section-5","className":"flex h-full shrink-0 items-center text-[14px] leading-none text-foreground/70 transition-colors hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/60","children":"다음 검증과 완료 기준"}],["$","a","project-geomate-section-6",{"href":"#project-geomate-section-6","className":"flex h-full shrink-0 items-center text-[14px] leading-none text-foreground/70 transition-colors hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/60","children":"설계·구현 상세"}]]]}]}]
+2f:T63c4,<h2 id="project-geomate-section-0">프로젝트 개요</h2>
+<p>**GEOMATE(지오메이트)**는 학생이 자기 문제의 도형을 돌리고, 펼치고, 잘라 보고, 보조선을 그으면서 관계를 이해하도록 돕는 2D·3D 기하 학습 앱입니다. <strong>혼자서 학습을 시작하고, 막혔을 때 다음 시도를 찾아가는 경험</strong>을 목표로 합니다.</p>
+<p>수학학원 지도 경험에서 출발해 현재 6인 팀으로 개발하고 있습니다. 저는 <strong>PM·프론트엔드·AI</strong>를 맡아 문제 정의와 학습 흐름, 기능 우선순위와 검수 기준을 정리하고, 태블릿 화면과 사진 해석을 개발·검증하고 있습니다.</p>
+<p>주 대상은 중학교 1학년 도형과 초등 도형 학습 학생입니다. 중2·3의 닮음·피타고라스·원의 성질 등은 후속 확장으로 두고 있으며, 초등 활동과 추가 기능의 첫 배포 범위는 아직 확정하지 않았습니다.</p>
+<p><strong>진행 상태는 2026년 10월 22일 기록 기준</strong>입니다. 팀 제품 개발과 별도의 PoC 검증을 병행하고 있으며, 아래 영상은 기획 단계의 모션 시안입니다. 기술 스택은 PoC와 팀 앱 개발 기준입니다.</p>
+<p>상단 화면은 2026년 10월 27~28일 개발 중인 태블릿 앱에서 서로 다른 예제를 개발자가 조작한 캡처입니다. 사진 해석의 연속 과정이나 학생 사용 기록은 아닙니다.</p>
+<p><video src="/projects/geomate/motion-photo-to-shape.mp4" autoplay muted loop playsinline preload="metadata" aria-label="직육면체를 세 점을 지나는 평면으로 잘라 단면을 확인하는 기획 모션"></video></p>
+<h2 id="project-geomate-section-1">문제 정의와 설문 근거</h2>
+<p>학원에서 학생을 지도하며, 공식을 알고 있어도 도형 속 관계를 찾지 못해 풀이를 시작하지 못하는 모습을 봤습니다. 입체 문제에서는 고정된 평면 그림만으로 가려진 면이나 단면, 전개도를 떠올려야 하는 부담도 있었습니다.</p>
+<p>문제를 **‘정답을 모른다’에서 ‘무엇을 관찰하고 어떤 조작을 시도해야 할지 모른다’**로 구체화했습니다. 주 사용자는 스스로 문제를 탐색하는 학생이고, 강사는 학생이 어떤 관찰·조작·도움에서 막혔는지 확인하는 보조 사용자로 정했습니다.</p>
+<p>자체 설문의 2026년 10월 15일 중간 집계는 응답자 92명이며, 학생 70%·성인 30%로 구성됐습니다.</p>
+<table>
+<thead>
+<tr>
+<th>확인한 내용</th>
+<th>설문에서 확인한 응답</th>
+<th>기획에 연결한 점</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>막히는 지점</td>
+<td>도형에서 막히는 이유 질문에서 ‘어떤 성질·공식을 쓸지 모름’ 43.9%(이 문항 응답자 57명 중 25명)</td>
+<td>관계를 관찰할 방향과 다음 시도를 안내</td>
+</tr>
+<tr>
+<td>기능 선호</td>
+<td>‘그린 선·식의 잘못된 부분 확인’과 ‘막힌 단계에서 다음 힌트’ 각각 32명</td>
+<td>학생의 작업을 유지하며 진단·재시도하도록 설계</td>
+</tr>
+<tr>
+<td>사용 기대</td>
+<td>사용 의향 74명, 학습에 도움이 될 것이라는 응답 77명</td>
+<td>실제로 혼자 사용할 수 있는지 후속 검증</td>
+</tr>
+</tbody></table>
+<p>복수응답 문항은 문항마다 응답자 수(분모)가 달라 이를 구분해 해석하고, 이 결과는 어려움과 사용 기대의 근거로 활용했습니다. 학습 효과는 실제 학생의 조작과 설명을 관찰해 별도로 확인할 계획입니다.</p>
+<p><img src="/projects/geomate/survey-difficulty.png" alt="도형에서 막히는 이유 설문 결과"></p>
+<h2 id="project-geomate-section-2">핵심 기획 결정</h2>
+<h3>1. 관찰과 조작을 학습의 시작점으로 배치</h3>
+<p>정답 제출 이후에만 도구를 열면, 막힌 학생은 탐색을 시작하기도 어렵습니다. 그래서 <strong>회전·확대·기본 관찰과 도움 요청은 제출 전에도 사용할 수 있도록</strong> 설계했습니다.</p>
+<p>반면 문제의 목표 정답을 직접 드러내는 단면이나 접기 결과는 먼저 예상한 뒤 비교하도록 하고, 공개 조건은 활동별로 정하기로 했습니다. 학생이 멈추고 되돌리고 시점을 바꿔 자신의 예상을 시험할 수 있는지가 중요한 기준입니다.</p>
+<h3>2. 힌트를 받은 뒤 학생의 시도로 돌아오도록 설계</h3>
+<p>힌트는 <strong>관찰 질문 → 시도할 조작·보조도구 → 새 관계와 이유 → 학생의 재시도</strong>로 이어지게 했습니다. ‘어느 두 면이 평행할까요?’, ‘옆면을 펼쳐 보면 경로가 어떻게 바뀔까요?’처럼 다음 행동을 선택하도록 돕는 방식입니다.</p>
+<p>잘못 그린 선을 진단하더라도 맞은 선과 기존 작업을 유지하고 일부를 고쳐 다시 시도할 수 있어야 합니다. 곧바로 답에 닿지 않는 보조선도 어떤 관계를 만들었고 어디에 한계가 있는지 비교하도록 계획했습니다.</p>
+<p>PoC에는 규칙 추론·각 근거·보조선과 입체 단계형 힌트가 있습니다. 현재 상태에 맞춘 AI 방향 안내와 학생의 독립적인 재시도까지 이어지는지는 다음 검증 과제입니다.</p>
+<h3>3. 계산의 정답과 학습 가능한 모델을 따로 평가</h3>
+<p>원기둥 안에 공 네 개가 들어가는 문제를 사진으로 해석했을 때, 계산값은 맞았지만 원기둥과 공 하나가 별도 탭에 표시된 사례가 있었습니다. 학생이 살펴봐야 하는 배치와 접촉 관계가 화면에 드러나지 않았습니다.</p>
+<p>이 사례를 계기로 평가 기준을 <strong>정답 일치에서 도형의 배치·관계 보존, 관찰할 보조도구와 다음 행동의 적절성까지</strong> 넓혔습니다. 여러 입체를 한 장면에 배치하고, 반투명·단면·분해 보기로 관계를 보여주는 기능을 보완하고 있습니다.</p>
+<p>사진 해석도 같은 기준으로 다룹니다. AI는 조건과 엔진 입력의 초안을 만들고, 엔진 검증과 학생 확인을 거쳐 모델에 연결합니다. 입력 형식이 맞아도 원본 조건을 잘못 옮겼을 수 있으므로 원문·생성 그림의 대조를 별도 검증 항목으로 뒀습니다.</p>
+<h2 id="project-geomate-section-3">사용자 흐름과 제공 범위</h2>
+<p><strong>자체 예제 또는 개인 사진 → 조건 확인 → 관찰·예상·자유 조작 → 방향 도움 → 재시도 → 관계와 이유 비교 → 다른 배치에 적용</strong></p>
+<table>
+<thead>
+<tr>
+<th>단계</th>
+<th>학생이 하려는 일</th>
+<th>설계 기준</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>시작</td>
+<td>내 문제를 조작 가능한 도형으로 보고 싶다</td>
+<td>자체 예제로 시작하거나 사진 해석 초안의 조건을 확인</td>
+</tr>
+<tr>
+<td>탐색</td>
+<td>다른 방향에서 보거나 변화를 시험하고 싶다</td>
+<td>회전·확대와 지원되는 접기·펼치기·절단·분해 사용</td>
+</tr>
+<tr>
+<td>도움</td>
+<td>막힌 지점에서 다음 시도를 찾고 싶다</td>
+<td>관찰 질문과 보조도구, 단계형 힌트 연결</td>
+</tr>
+<tr>
+<td>수정</td>
+<td>기존 작업을 살리면서 다시 시도하고 싶다</td>
+<td>맞은 선·필기·조건 보존과 수정·되돌리기</td>
+</tr>
+<tr>
+<td>비교</td>
+<td>내 예상과 실제 관계가 어떻게 다른지 알고 싶다</td>
+<td>예상과 결과를 비교하고 관계·이유 확인</td>
+</tr>
+<tr>
+<td>적용</td>
+<td>다른 시점이나 배치에서도 이해했는지 확인하고 싶다</td>
+<td>가려진 요소·단면·대응 관계를 새 조건에서 예상</td>
+</tr>
+</tbody></table>
+<p>이 표는 제품의 설계 기준입니다. PoC의 현재 구현 범위와 구분해 관리합니다. 특히 자유 그리기, 도형 수치 편집, 저장·복원·내보내기 등 독립 작업 공간의 추가 요구사항은 배포 시점이 미정입니다.</p>
+<p>학생의 회전·확대·조작은 엔진과 렌더러에서 처리하고, AI 호출은 사진 해석과 필요한 방향 안내로 제한하도록 설계했습니다. 조작 반응과 사진 해석의 대기·비용을 함께 고려하기 위한 결정입니다.</p>
+<h2 id="project-geomate-section-4">담당 역할과 현재 검증</h2>
+<ul>
+<li><strong>PM:</strong> 현장 경험과 설문을 문제 정의에 연결하고, 독립 학습·자유 조작·공간감각의 우선순위를 기능과 검수 기준으로 구체화</li>
+<li><strong>프론트엔드:</strong> 도형 표시·조작·펜 입력과 보조도구를 태블릿의 탐색 흐름으로 연결</li>
+<li><strong>AI:</strong> 사진의 조건·관계를 엔진 입력 초안으로 옮기고, 해석 오류·그림 품질·응답 시간·비용을 별도 평가 지표로 나눠 평가</li>
+</ul>
+<p>현재 PoC에는 평면·입체 표시, 규칙 추론과 단계형 힌트, 보조선 후보 검증, 접기·펼치기·회전·분해, 흔한 실수 진단과 완성 도형 검사가 있습니다. 팀 제품의 계정·저장·반 현황 등과의 연결은 별도 상태로 관리합니다.</p>
+<p>자동 테스트·TypeScript와 Python 교차 검사·브라우저 검사·사진 해석 평가를 진행했습니다. 각 결과는 해당 실행 범위의 기록으로 관리하며, 학생의 독립 학습이나 공간감각 향상과는 별도로 검증합니다. 세부 구현과 실행 수치는 아래 상세 영역에 정리했습니다.</p>
+<h2 id="project-geomate-section-5">다음 검증과 완료 기준</h2>
+<table>
+<thead>
+<tr>
+<th>확인할 것</th>
+<th>완료를 판단할 기준</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>혼자 시작하기</td>
+<td>교사 설명 없이 예제를 시작하고 필요한 도구를 찾는가</td>
+</tr>
+<tr>
+<td>예상과 조작</td>
+<td>스스로 시점·중간 상태·보조도구를 골라 예상을 시험하는가</td>
+</tr>
+<tr>
+<td>도움과 재시도</td>
+<td>막혔을 때 힌트를 이해하고 자기 시도로 돌아오는가</td>
+</tr>
+<tr>
+<td>다른 배치에 적용</td>
+<td>다른 방향에서도 가려진 요소·단면·대응 관계를 예상하고 이유를 설명하는가</td>
+</tr>
+<tr>
+<td>사진·모델 일치</td>
+<td>원본 조건과 생성된 모델의 배치·관계를 대조할 수 있는가</td>
+</tr>
+<tr>
+<td>태블릿 사용</td>
+<td>실제 기기에서 펜·손바닥·손 조작과 화면 방향·접근성을 확인했는가</td>
+</tr>
+</tbody></table>
+<p>원본 문항의 사람 검수와 목표 태블릿 검증도 남아 있습니다. 자체 문항으로 튜토리얼·시연을 구성하고, 개인 사진은 본인 학습에만 사용하며 타인 공유나 모델 학습에는 사용하지 않는 방향으로 이용 범위를 정했습니다.</p>
+<p>GEOMATE에서 기획의 기준은 <strong>학생이 도형을 보고, 직접 시도하고, 도움을 받아 다시 탐색할 수 있는가</strong>입니다. 다음 개발과 검증에서도 이 흐름이 실제로 이어지는지를 확인하려고 합니다.</p>
+<h2 id="project-geomate-section-6">설계·구현 상세</h2>
+<details>
+<summary>학습 인터랙션, PoC 구현·검수 기록, 시스템 구성과 모델·비용 검토 펼치기</summary><h3>학습 인터랙션과 추가 요구사항</h3>
+<h4>혼자 시작하고 탐색을 이어가는 흐름</h4>
+<p><strong>자체 예제 또는 개인 사진 → 조건 확인 → 관찰·예상·자유 조작 → 방향 도움 → 재시도 → 관계와 이유 비교 → 다른 배치에 적용</strong></p>
+<p>관찰·예상·도움·재시도는 반복할 수 있습니다. 기본 회전·확대·관찰과 도움 요청을 정답 제출 뒤로 일괄 잠그지 않습니다. 문제의 목표 정답을 직접 드러내는 단면·접기 결과는 먼저 예상한 뒤 비교하도록 설계하며, 활동별 공개 조건은 별도로 정합니다.</p>
+<p><video src="/projects/geomate/motion-section-diagnosis.mp4" autoplay muted loop playsinline preload="metadata" aria-label="학생이 펜으로 단면을 예측하고, 규칙 위반을 진단받고, 실제 단면을 겹쳐 확인하는 모션"></video></p>
+<h4>자유로운 모델 조작과 공간 관계 비교</h4>
+<p>학생이 시점을 바꾸고, 지원되는 접기·펼치기·절단·분해의 중간 상태를 오가며 같은 점·선·면을 추적하도록 합니다. 완성된 애니메이션을 보는 데서 그치지 않고 멈추고 되돌리고 다른 방향에서 자신의 예상을 시험하는 경험이 핵심입니다.</p>
+<p>문제의 조건을 유지하는 조작과 조건을 바꾸는 탐구를 구분하고, 원래 시점·상태로 돌아갈 수 있어야 합니다. 가려진 면 예상, 전개도와 입체 대응, 절단 전 단면 예상, 부분과 전체의 관계를 공간감각 검수 대상으로 삼습니다. 모든 도형·임의 절단·범용 3D 편집을 지원한다는 의미는 아닙니다.</p>
+<h4>단면·전개도·보조선</h4>
+<p>단면에서는 학생이 그린 선의 평면성·닫힌 경계·평행 관계 등 지원 규칙을 확인하고, 관련 부분과 다시 시도할 방향을 제시합니다. 맞은 선은 유지하고 일부만 고칠 수 있어야 합니다.</p>
+<p><img src="/projects/geomate/section-diagnosis.png" alt="단면 진단 예시"></p>
+<p>전개도에서는 접기 전후의 면·모서리·꼭짓점 대응을 비교합니다. 입체를 펼치면 어떤 관계가 보이는지 학생이 직접 확인하게 합니다.</p>
+<p><video src="/projects/geomate/motion-net-shortest-path.mp4" autoplay muted loop playsinline preload="metadata" aria-label="직육면체 옆면을 펼쳐 최단 경로가 한 직선이 되는 것을 보여 주는 모션"></video></p>
+<p>평면에서는 학생이 보조선을 고르고 그어 새 관계를 만들거나 다른 선과 비교합니다. 바로 답에 닿지 않는 시도도 생긴 관계와 한계를 설명하고, 유효한 다른 탐색을 허용합니다.</p>
+<h4>관찰과 다음 행동을 돕는 힌트</h4>
+<p>힌트는 <strong>관찰 질문 → 시도할 조작·보조도구 → 새 관계와 이유 → 학생의 재시도</strong>로 이어지도록 합니다. 예를 들어 &quot;어느 두 면이 평행할까요?&quot;, &quot;옆면을 펼쳐 보면 경로가 어떻게 바뀔까요?&quot;처럼 학생이 다음 행동을 선택하도록 돕습니다.</p>
+<p>PoC에는 평면 규칙 추론·각 근거·보조선과 입체 단계형 힌트가 있습니다. 현재 상태에 맞춘 AI 방향 안내는 다음 검증 과제입니다. 계산 과정의 나열이나 완성된 풀이를 보여 주는 것만으로 학습 기능을 완료했다고 보지 않습니다.</p>
+<h4>직접 그리기와 독립 작업 공간</h4>
+<p>현재 PoC의 문제 연결 그림판은 학생이 완성한 도형의 길이·각·관계를 검사합니다. 내부 작도 단계가 나타내는 관계를 검사하는 것이며, 학생의 자·컴퍼스 사용 순서를 채점하지 않습니다.</p>
+<p>추가 요구사항에는 문제 없이 시작하는 자유 그리기, 손으로 그린 사각형의 편집 도형 변환, 정육면체·직육면체·직사각형 프리셋, 변·각 수치 수정, 작업 저장·복원·실행 취소·PNG 내보내기가 있습니다. 풀이 영역 배치·크기 조정과 방향별 저장도 포함합니다. 기존 그림판이 이 전체 요구를 충족한 것은 아니며 배포 시점은 미정입니다.</p>
+<h3>PoC 구현과 검수 기록</h3>
+<p>1~5단계에 걸쳐 구현한 PoC를 같은 학습 기준으로 다시 검토하고 있습니다. 아래 구현 상태와 <strong>학생이 혼자 쓸 수 있는가·공간감각 향상에 도움이 되는가</strong>의 검증은 구분합니다.</p>
+<table>
+<thead>
+<tr>
+<th>단계</th>
+<th>PoC에서 구현한 것</th>
+<th>학습 관점의 보완·검수</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1 · 도형·그림</td>
+<td>평면 좌표 엔진·2D SVG, 입체 표시·치수·시점 개선</td>
+<td>학생이 모델을 읽고 다른 방향에서도 같은 관계를 찾는가</td>
+</tr>
+<tr>
+<td>2 · 규칙·근거·힌트</td>
+<td>규칙 추론·각 근거·단계형 힌트</td>
+<td>도움을 찾아 다음 관찰·조작을 스스로 선택하는가</td>
+</tr>
+<tr>
+<td>3 · 보조선</td>
+<td>보조선 후보 검증과 학생 선의 관계·도달 가능성 피드백</td>
+<td>다른 시도를 비교·되돌리며 새 관계를 이해하는가</td>
+</tr>
+<tr>
+<td>4 · 입체 학습</td>
+<td>접기·펼치기·회전·분해와 입체 힌트</td>
+<td>중간 상태·새 시점에서도 대응·단면·부분/전체를 예상하는가</td>
+</tr>
+<tr>
+<td>5 · 피드백·학생 그리기</td>
+<td>흔한 실수 33가지 진단, 삼각형 조건·완성 도형 검사</td>
+<td>작업을 보존하며 수정하고 다른 배치에 독립 적용하는가</td>
+</tr>
+</tbody></table>
+<p>TS·Python 교차 검사와 교재 유형 대조, 브라우저 검사를 진행했습니다. 예를 들어 0~5단계 마무리 당시 교차 검사 318/318, 브라우저 40/40 통과 기록이 있습니다. 이후 변경은 별도 실행 범위로 검증했으며, 이 수치를 최신 제품 전체의 통과율이나 학습 효과로 해석하지 않습니다. 원본 문항의 사람 검수와 목표 태블릿의 펜·손바닥·접근성 검증도 남아 있습니다.</p>
+<h3>시스템 구성</h3>
+<p>현재 PoC는 React·TypeScript·Three.js 화면, 브라우저 Worker의 기하 엔진, FastAPI·SymPy 기반 Python 서비스로 구성합니다. 사진은 VLM이 조건·관계와 엔진 요청 초안으로 해석하고, 엔진 검증과 학생 확인을 거쳐 모델에 연결합니다.</p>
+<p>회전·확대·접기·단면 표시 등 지원되는 조작은 엔진·렌더러에서 처리합니다. 자유 조작마다 AI를 호출하지 않고, 사진 해석과 필요한 방향 안내에 AI를 사용하도록 설계합니다. PoC 구현과 계정·저장·반 현황 등의 팀 제품 연동은 별도 상태로 관리합니다.</p>
+<h3>기술적 검토와 실행 당시 기록</h3>
+<p>아래 모델 비교와 비용은 원문에 기록된 실행·단가 기준의 자료입니다. 이번 문서 수정에서 모델 평가나 API 비용 측정을 다시 실행한 것은 아닙니다.</p>
+<p><img src="/projects/geomate/tech-matrix.png" alt="기획 당시 기능별 적용 기술 시안"></p>
+<p>위 이미지는 초기 기술 검토 시안입니다. 표시된 후보 라이브러리·모델을 모두 도입한 것은 아니며, 현재 PoC 구성과 후속 계획은 아래 내용을 기준으로 구분합니다.</p>
+<h4>값이 맞아도 학습할 그림이 없으면 실패</h4>
+<p>원기둥 안에 공 네 개가 꼭 맞게 들어가는 문제를 사진으로 해석했을 때 계산값은 맞았지만, 원기둥과 공 하나가 별도 탭에 표시됐습니다. 학생이 발견해야 하는 공의 배치·접촉·바깥 입체와의 관계가 보이지 않았습니다.</p>
+<p>이 사례를 계기로 평가 기준을 <strong>정답 일치에서 학습 가능한 모델과 도구 생성</strong>까지 넓혔습니다. 여러 입체를 한 장면에 배치하고, 반투명·세로 단면·분해 보기로 관계를 드러내는 기능을 보완하고 있습니다. 맞는 계산이 그림·학습 경험의 성공을 보장하지 않는다는 사례입니다.</p>
+<h4>사진 해석은 초안, 바른 관계는 엔진으로 확인</h4>
+<p>사진에서 지름을 반지름으로 읽거나, 점 이름·작도 순서·색칠 영역을 계약과 다르게 생성하는 실패가 발생했습니다. VLM 출력은 초안으로 두고 조건과 불확실한 부분을 확인하게 하며, 기하 관계·측정값·판정은 엔진으로 검증합니다.</p>
+<p>현재는 엔진 오류가 발생하면 같은 사진·이전 초안·오류 정보를 보내 한 번 수정 요청하고, 실패 요청 수가 더 많아지면 첫 초안을 유지하는 경로가 있습니다. 형식 검사를 통과해도 사진을 바르게 읽었다는 보장은 없으므로 그림·원문 조건의 대조가 필요합니다. 렌더링한 그림을 원본과 비교해 되묻는 경로는 후속 검증 과제입니다.</p>
+<h4>더 오래 생각하는 모델이 항상 더 낫지는 않았다</h4>
+<p>Gemini 3.8 Flash로 같은 12문항을 비교했습니다. 아래는 엔진 오류 재시도를 포함한 기존 평가 결과이며 학생 학습 효과나 전체 문항 정확도가 아닙니다.</p>
+<table>
+<thead>
+<tr>
+<th>추론 설정</th>
+<th>평가 통과</th>
+<th>평균 시간</th>
+<th>출력·생각 토큰 합계</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>medium</td>
+<td>11/12</td>
+<td>73초</td>
+<td>약 11.4만</td>
+</tr>
+<tr>
+<td>high</td>
+<td>10/12</td>
+<td>131초</td>
+<td>약 20.7만</td>
+</tr>
+</tbody></table>
+<p>현재는 medium을 기준으로 유지합니다. 모델 교체도 정답률만으로 결정하지 않고 모델의 배치·관계 보존, 보조도구와 다음 행동의 적절성, 반복 실행의 일관성과 지연으로 비교할 계획입니다. 혼자 탐색하는 흐름에서 긴 대기는 해결해야 할 문제입니다.</p>
+<h4>API 비용은 실제 생각 토큰·재시도까지 계산</h4>
+<p>medium 실험에서 문항당 평균 입력 약 11,490토큰, 출력·생각 약 9,507토큰이 기록됐습니다. 2026년 10월 22일의 일반 유료 단가를 적용하면 Gemini 3.8 Flash는 문항당 약 <strong>62원</strong>입니다. 캐시 할인·세금은 제외하고 1달러=1,400원으로 환산한 추정이며 실제 청구액은 아닙니다.</p>
+<table>
+<thead>
+<tr>
+<th>모델</th>
+<th>입력 / 출력 100만 토큰당</th>
+<th>같은 토큰량을 가정한 문항당 비용</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Gemini 3.8 Flash</td>
+<td>$0.75 / $3.75</td>
+<td>약 62원</td>
+</tr>
+<tr>
+<td>Claude Sonnet 5.5</td>
+<td>$2 / $10</td>
+<td>약 165원</td>
+</tr>
+<tr>
+<td>Claude Opus 5.5</td>
+<td>$4 / $20</td>
+<td>약 331원</td>
+</tr>
+</tbody></table>
+<p>다른 모델은 실제 비교 호출을 하지 않았으므로 토큰량·품질·지연이 달라질 수 있습니다. Gemini의 위 단가는 2026년 12월 31일까지이며, 2027년 1월 1일부터 입력 $1.50·출력 $7.50으로 안내되어 있습니다. <a href="https://ai.google.dev/gemini-api/docs/pricing">Google 공식 가격</a>, <a href="https://platform.claude.com/docs/en/about-claude/pricing">Anthropic 공식 가격</a></p>
+<p>비용을 줄이는 핵심은 학생의 회전·확대·조작을 로컬 엔진에서 처리하고, AI 호출을 해석과 필요한 도움으로 제한하는 것입니다. 처음부터 전체 모델을 고가 모델로 바꾸기보다 같은 학습 기준에서 품질과 비용을 함께 비교합니다.</p>
+<h4>펜 입력과 학생 작업 보존</h4>
+<p>PoC에서는 2D 획의 끝점을 화면상의 꼭짓점·모서리 후보에 스냅하고 기하 참조에 연결합니다. 후보가 모호하면 학생이 확인하게 하며, 화면상 가까움만으로 기하 동치를 확정하지 않습니다. 임의의 면 위 획 전체를 인식하는 범용 기능과는 구분합니다.</p>
+<p><video src="/projects/geomate/motion-3d-pen.mp4" autoplay muted loop playsinline preload="metadata" aria-label="손 획이 면과 모서리에 스냅되어 입체 위에 고정되는 기획 모션"></video></p>
+<p>학생이 다른 시도를 할 때 기존 선·필기·조건을 보존하고, 되돌리기·재시도가 가능한 경험을 목표로 합니다. 실제 태블릿의 펜·손바닥·손 조작은 별도 검수가 필요합니다.</p>
+<h4>자체 예제와 개인 업로드의 이용 범위</h4>
+<p>교재 문항·정답·해설·이미지를 서비스 문항 은행에 탑재하지 않습니다. 튜토리얼·시연은 팀이 새로 만든 자체 문항으로 구성하고, 교재 분석은 내부 지원 유형·검증 자료로만 사용합니다.</p>
+<p>학생이 올린 사진은 본인 학습에만 사용하며 다른 학생에게 공유하거나 모델 학습에 사용하지 않습니다. 기존의 타인 간 공유 모델 캐시 계획은 제외했습니다. 검증된 입력의 완전 일치 재사용은 본인 문제·자체 예제 범위의 제안이며, 라벨·치수·조건·목표 일치와 오류·수정 시 무효화 정책을 확정해야 합니다.</p>
+<h3>기획 당시 서비스 비교 시안</h3>
+<p>학생이 <strong>지금 학습하는 문제의 도형</strong>을 조작 가능한 모델로 옮기고, 관계를 발견할 보조도구와 다음 시도의 방향을 함께 제공하는 데 집중합니다. 직접 조작·규칙 진단·방향 안내가 하나의 탐색 흐름으로 이어져야 합니다.</p>
+<p><img src="/projects/geomate/positioning.png" alt="기획 당시 기존 서비스 대비 Geomate의 위치"></p>
+<p>위 이미지는 기획 당시의 비교 시안입니다. 현재 경쟁 서비스의 전체 기능이나 Geomate만의 독점 기능을 검증한 자료는 아닙니다.</p>
+<h3>기능 선호도 설문 시각화</h3>
+<p><img src="/projects/geomate/survey-demand.png" alt="사용 의향과 기능 선호도를 정리한 기존 설문 시각화"></p>
+<p>설문 응답 인원은 앞의 표를 기준으로 읽습니다. 사용 의향 74/92명은 약 80.4%로 계산됩니다. 기존 시각화의 80.5% 표기는 재확인이 필요해 본문에는 응답 인원을 기재했습니다.</p>
+</details>
+2b:["$","$L2e",null,{"className":"doc-prose-module__rLTzAW__prose mx-auto max-w-[760px] px-5 sm:px-8","html":"$2f"}]

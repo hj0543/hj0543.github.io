@@ -1,0 +1,182 @@
+1:"$Sreact.fragment"
+2:I[3020,["/_next/static/chunks/0q654p4lxvnny.js","/_next/static/chunks/343-pf7olm-a0.js"],"default"]
+3:I[39756,["/_next/static/chunks/0q654p4lxvnny.js","/_next/static/chunks/343-pf7olm-a0.js"],"default"]
+4:I[37457,["/_next/static/chunks/0q654p4lxvnny.js","/_next/static/chunks/343-pf7olm-a0.js"],"default"]
+5:I[66519,["/_next/static/chunks/0q654p4lxvnny.js","/_next/static/chunks/343-pf7olm-a0.js","/_next/static/chunks/36h9ts2bz7_q3.js"],"default"]
+6:I[22016,["/_next/static/chunks/0q654p4lxvnny.js","/_next/static/chunks/343-pf7olm-a0.js","/_next/static/chunks/0uri8sq5s_br9.js"],""]
+7:I[5014,["/_next/static/chunks/0q654p4lxvnny.js","/_next/static/chunks/343-pf7olm-a0.js","/_next/static/chunks/0uri8sq5s_br9.js"],"default"]
+8:I[18192,["/_next/static/chunks/0q654p4lxvnny.js","/_next/static/chunks/343-pf7olm-a0.js"],"default"]
+12:I[68027,["/_next/static/chunks/0q654p4lxvnny.js","/_next/static/chunks/343-pf7olm-a0.js"],"default",1]
+:HL["/_next/static/chunks/1sk89teqfbf_q.css","style"]
+:HL["/_next/static/media/70bc3e132a0a741e-s.p.3t6q91iet4nsy.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/_next/static/media/7ebf22b5a21034f8-s.p.3j3877k49yy0l.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/_next/static/media/PretendardVariable-s.p.0ztvx5mb7lxp4.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/_next/static/chunks/2b-2tives3t8w.css","style"]
+10:X
+0:{"P":null,"c":["","devlog","2026-08-08-discord-study-bot",""],"q":"","i":false,"f":[[["",{"children":["devlog",{"children":[["slug","2026-08-08-discord-study-bot","d",[]],{"children":["__PAGE__",{},"$undefined","$undefined",4608]},"$undefined","$undefined",4608]},"$undefined","$undefined",4608]},"$undefined","$undefined",4624],[["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/1sk89teqfbf_q.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","script","script-0",{"src":"/_next/static/chunks/0q654p4lxvnny.js","async":true,"nonce":"$undefined"}],["$","script","script-1",{"src":"/_next/static/chunks/343-pf7olm-a0.js","async":true,"nonce":"$undefined"}]],["$","html",null,{"lang":"ko","data-scroll-behavior":"smooth","suppressHydrationWarning":true,"className":"jetbrains_mono_7d65b77b-module__VxV-Ta__variable instrument_serif_c1e8e483-module__u2UhdW__variable pretendard_97774a5-module__y_0gNq__variable h-full antialiased","children":[["$","head",null,{"children":["$","script",null,{"dangerouslySetInnerHTML":{"__html":"(function () {\n  var theme = \"dark\";\n  try {\n    if (/^\\/(projects|devlog)\\/[^/]+\\/?$/.test(window.location.pathname)\n        && localStorage.getItem(\"theme\") === \"light\") {\n      theme = \"light\";\n    }\n  } catch (e) {}\n  document.documentElement.dataset.theme = theme;\n})();"}}]}],["$","body",null,{"id":"top","className":"flex min-h-full flex-col","children":[["$","$L2",null,{}],["$","main",null,{"className":"flex-1","children":["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[["$","div",null,{"className":"mx-auto flex min-h-[70vh] max-w-[1080px] flex-col items-center justify-center px-5 py-20 text-center sm:px-8","children":[["$","p",null,{"className":"flex items-baseline gap-2.5 text-label","children":[["$","span",null,{"className":"section-label","children":"Not Found"}],["$","span",null,{"className":"font-mono text-[12px] tracking-[0.05em] text-foreground/65","children":"/ 404"}]]}],["$","h1",null,{"className":"mt-6","children":["$","$L5",null,{"text":"404","as":"span","fontSize":"clamp(6rem, 24vw, 13rem)","fontWeight":800,"letterSpacing":"-0.04em","lineHeight":1,"tensionColor":"#c96f4a","hint":true}]}],["$","p",null,{"className":"mt-8 max-w-[420px] text-[16px] leading-7 text-foreground/75","children":["찾으시는 페이지가 없거나 주소가 바뀌었어요.",["$","br",null,{}],"그동안 숫자를 잡아당겨 보셔도 좋아요."]}],["$","$L6",null,{"href":"/","className":"mt-10 inline-flex items-center gap-1.5 border-b border-accent/60 pb-1 text-[15px] font-medium text-accent transition-colors hover:border-accent","children":[["$","$L7",null,{"ref":"$undefined","iconNode":[["path",{"d":"m12 19-7-7 7-7","key":"1l729n"}],["path",{"d":"M19 12H5","key":"x3x0zl"}]],"className":"lucide-arrow-left","aria-hidden":"true","size":15}],"홈으로 돌아가기"]}]]}],[]],"forbidden":"$undefined","unauthorized":"$undefined"}]}],["$","$L8",null,{"children":[["$","footer",null,{"id":"contact","className":"scroll-mt-20","children":["$","div",null,{"className":"mx-auto max-w-[1080px] px-5 sm:px-8","children":[["$","div",null,{"className":"flex flex-wrap items-end justify-between gap-x-10 gap-y-6 border-t border-ink/15 py-12","children":[["$","div",null,{"children":[["$","p",null,{"className":"section-label","children":"Let's Connect"}],["$","h2",null,{"className":"mt-3 text-2xl font-bold tracking-[-0.025em] text-foreground sm:text-[1.75rem]","children":"함께 해결할 문제를 이야기해요."}]]}],["$","p",null,{"className":"flex flex-wrap gap-x-8 gap-y-3","children":[["$","a",null,{"href":"mailto:hj0543@gmail.com","className":"inline-flex items-center gap-2 border-b border-foreground/40 pb-1 text-[15px] font-medium text-foreground transition-colors hover:border-accent hover:text-accent","children":[["$","$L7",null,{"ref":"$undefined","iconNode":[["path",{"d":"m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7","key":"132q7q"}],["rect",{"x":"2","y":"4","width":"20","height":"16","rx":"2","key":"izxlao"}]],"className":"lucide-mail","aria-hidden":"true","size":17,"strokeWidth":1.8}],"hj0543@gmail.com",["$","$L7",null,{"ref":"$undefined","iconNode":[["path",{"d":"M7 7h10v10","key":"1tivn9"}],["path",{"d":"M7 17 17 7","key":"1vkiza"}]],"className":"lucide-arrow-up-right","aria-hidden":"true","size":14}]]}],["$","a",null,{"href":"https://github.com/hj0543","target":"_blank","rel":"noreferrer","className":"inline-flex items-center gap-2 border-b border-foreground/40 pb-1 text-[15px] font-medium text-foreground transition-colors hover:border-accent hover:text-accent","children":["$L9","GitHub","$La"]}]]}]]}],"$Lb"]}]}],"$Lc"]}]]}]]}]]}],{"children":["$Ld",{"children":["$Le",{"children":["$Lf",{},null,false,null]},null,false,"$10"]},null,false,"$10"]},null,false,null],"$L11",false]],"m":"$undefined","G":["$12",["$L13"]],"S":true,"h":null,"r":"$undefined","s":"$undefined","a":"$undefined","l":"$undefined","p":"$undefined","d":"$undefined","b":"A1gsuDqWvAI0Sedafrvgx"}
+14:I[85437,["/_next/static/chunks/0q654p4lxvnny.js","/_next/static/chunks/343-pf7olm-a0.js"],"Image"]
+15:I[53759,["/_next/static/chunks/0q654p4lxvnny.js","/_next/static/chunks/343-pf7olm-a0.js"],"default"]
+16:I[11875,["/_next/static/chunks/0q654p4lxvnny.js","/_next/static/chunks/343-pf7olm-a0.js"],"default"]
+18:I[97367,["/_next/static/chunks/0q654p4lxvnny.js","/_next/static/chunks/343-pf7olm-a0.js"],"OutletBoundary"]
+19:"$Sreact.suspense"
+1b:I[97367,["/_next/static/chunks/0q654p4lxvnny.js","/_next/static/chunks/343-pf7olm-a0.js"],"ViewportBoundary"]
+1d:I[97367,["/_next/static/chunks/0q654p4lxvnny.js","/_next/static/chunks/343-pf7olm-a0.js"],"MetadataBoundary"]
+9:["$","$L14",null,{"src":"/icons/github.svg","alt":"","aria-hidden":"true","width":17,"height":17,"className":"brand-icon shrink-0 "}]
+a:["$","$L7",null,{"ref":"$undefined","iconNode":"$0:f:0:1:0:props:children:1:props:children:1:props:children:2:props:children:0:props:children:props:children:0:props:children:1:props:children:0:props:children:2:props:iconNode","className":"lucide-arrow-up-right","aria-hidden":"true","size":14}]
+b:["$","div",null,{"className":"flex flex-wrap items-center justify-between gap-3 border-t border-ink/15 py-6","children":[["$","a",null,{"href":"#top","className":"text-[17px] font-bold tracking-[-0.04em] text-foreground","children":["Belog",["$","span",null,{"className":"text-accent","children":"."}]]}],["$","span",null,{"className":"flex flex-wrap gap-x-4 gap-y-1 text-[12px] text-foreground/65","children":[["$","$L15",null,{}],["$","span",null,{"children":["© ",2026," ","HYEONJIN JEONG",". All rights reserved."]}]]}]]}]
+c:["$","$L16",null,{}]
+d:["$","$1","c",{"children":[null,["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}]
+e:["$","$1","c",{"children":[null,["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}]
+f:["$","$1","c",{"children":["$L17",[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/2b-2tives3t8w.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","script","script-0",{"src":"/_next/static/chunks/0uri8sq5s_br9.js","async":true,"nonce":"$undefined"}]],["$","$L18",null,{"children":["$","$19",null,{"name":"Next.MetadataOutlet","children":"$@1a"}]}]]}]
+11:["$","$1","h",{"children":[null,["$","$L1b",null,{"children":"$L1c"}],["$","div",null,{"hidden":true,"children":["$","$L1d",null,{"children":["$","$19",null,{"name":"Next.Metadata","children":"$L1e"}]}]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}]
+13:["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/1sk89teqfbf_q.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]
+10:C
+1c:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
+1f:I[73428,["/_next/static/chunks/0q654p4lxvnny.js","/_next/static/chunks/343-pf7olm-a0.js","/_next/static/chunks/0uri8sq5s_br9.js"],"default"]
+22:I[27201,["/_next/static/chunks/0q654p4lxvnny.js","/_next/static/chunks/343-pf7olm-a0.js"],"IconMark"]
+20:T28dd,<p>SSAFY 1학기 동안 8명이 참여하는 알고리즘 스터디를 주 3회 운영했다. 문제를 고르고 링크를 붙이고 마감을 적은 뒤, 누가 풀었는지 확인하는 일이 매번 반복됐다.</p>
+<p>Discord 봇은 이 공지 작성을 줄이는 데서 시작했다. 이후 추천과 집계, 기록 유지와 장애 처리로 범위가 넓어졌다. 이 글은 기능 목록보다 <strong>사용하면서 어떤 문제를 발견했고 왜 다음 기능이나 정책이 필요해졌는지</strong>를 정리한 기록이다. 현재 봇 운영은 중단한 상태다.</p>
+<h2>1. 매번 바뀌는 정보와 반복되는 형식을 구분</h2>
+<p>공지의 내용은 달라져도 필요한 항목은 같았다. 문제 제목과 링크, 마감일, 참여자가 반응할 이모지였다. 그중 운영자가 직접 결정할 정보는 문제와 마감일이고, 제목·난이도·태그는 API에서 가져올 수 있었다.</p>
+<p>그래서 문제 번호 최대 3개와 마감일을 입력하면 나머지를 채우는 공지 명령어를 만들었다. 문제별 번호 이모지도 자동으로 붙였다.</p>
+<p><img src="/projects/discord_study_bot/problem-notice.png" alt="/공지 명령어로 만든 스터디 공지"></p>
+<p>처음 사용한 날 스터디원 한 명이 ‘다른 스터디에서도 쓸 수 있느냐’고 물었다. 이 반응으로 다른 운영자에게도 비슷한 반복 작업이 있을 수 있다는 가설을 세웠다. 다만 다른 스터디의 요구와 사용 방식까지 확인한 것은 아니므로, 우선 우리 스터디의 흐름을 개선하는 데 집중했다.</p>
+<h2>2. 추천 조건은 스터디가 쓰는 표현으로 입력</h2>
+<p>문제를 찾을 때 필요한 조건은 난이도와 알고리즘 주제였다. ‘실버 1 수준의 BFS 문제’처럼 두 조건을 함께 고르고 싶었다.</p>
+<p>‘실1’, ‘골5’, ‘BFS’, ‘너비우선탐색’ 같은 표현을 API의 난이도 번호와 태그로 바꾸고, 한글 문제 중 후보 5개를 추천하게 했다. 외부 서비스의 검색 문법을 사용자가 직접 조합하지 않아도 되도록 입력을 설계했다.</p>
+<p><img src="/projects/discord_study_bot/problem-search.png" alt="난이도와 알고리즘 유형을 조합한 추천 결과"></p>
+<h2>3. 반복 사용에서 드러난 추천의 문제</h2>
+<p>같은 조건으로 여러 번 추천받으면 이전 문제가 자주 다시 나왔다. 처음에는 응답으로 받은 목록에서 무작위로 다섯 개를 골랐지만, 원본 후보가 비슷하면 결과도 크게 달라지지 않았다.</p>
+<p>원인을 후보 목록까지 거슬러 확인하고, 검색 정렬과 캐시 응답을 고려하도록 바꿨다. 무작위로 정렬된 후보에서 다시 뽑는 방식으로 추천 구성을 개선했다.</p>
+<p>추천은 한 번 조건에 맞는 결과를 보여주는 것뿐 아니라 <strong>다시 눌렀을 때도 탐색할 후보를 제공하는지</strong> 살펴봐야 했다. 기능이 작동한다는 확인과 반복 사용의 경험은 다른 기준이었다.</p>
+<h2>4. 공지 이후의 확인과 참여 안내도 연결</h2>
+<p>공지 뒤에는 누가 풀었는지 확인하는 일이 남았다. 봇이 5분마다 공지 문제의 풀이 기록을 조회하고, 풀이 알림을 보내게 했다. 마감이 지난 문제는 감지 목록에서 정리했다.</p>
+<p>주간·월간·누적 현황은 명령어로 확인하고 매일 밤 9시에는 리마인드를 보냈다. 운영자가 개별 기록을 찾아보던 일을 스터디원도 함께 볼 수 있는 정보로 바꿨다.</p>
+<p><img src="/projects/discord_study_bot/problem-alarm.png" alt="풀이 알림과 밤 9시 리마인드"></p>
+<p><img src="/projects/discord_study_bot/problem-solved.png" alt="/문제풀이현황 조회 결과"></p>
+<p>누군가의 풀이 알림이 올라오면 다른 스터디원이 문제를 여는 모습을 봤다. 이 반응은 참여율의 정량적 개선과 구분해 운영 중 관찰로 남겼다. 진행 상황을 보여주는 기능이 어떤 행동과 연결되는지 계속 살펴볼 필요가 있었다.</p>
+<h2>5. 기록 유실과 무응답을 겪고 운영 기준을 추가</h2>
+<p>업데이트 후 봇을 다시 띄웠더니 일주일간 쌓인 집계가 초기화된 적이 있었다. 결과를 보여주는 기능을 만들었지만, 재배포 뒤에도 그 기록이 남아 있어야 한다는 요구를 충분히 반영하지 못했다.</p>
+<p>작은 규모에 맞춰 JSON 파일에 상태를 저장하고 시작할 때 복원하도록 바꿨다. 저장 형식이 달라진 뒤에도 이전 기록을 읽어 변환하도록 했다.</p>
+<p>또 한 번은 프로세스가 실행 중인데 알림이 오지 않았다. 외부 API 요청이 끝나지 않아 확인 작업이 대기하고 있었다. 프로세스 재시작 설정만으로는 이 문제를 해결할 수 없었다.</p>
+<p>모든 요청에 5초 타임아웃을 두고, 한 명의 조회 실패가 나머지 참여자의 확인까지 중단시키지 않게 처리했다. 이후 기능을 볼 때는 <strong>정상 결과뿐 아니라 기록 유지와 실패가 영향을 미치는 범위</strong>도 함께 확인하게 됐다.</p>
+<h2>6. 실제로 쓰이는 도구를 운영하며 남긴 기준</h2>
+<p>공지 생성에서 시작해 조건별 추천, 풀이 확인·알림·집계와 기록 복원까지 연결했다. Oracle Cloud에서 운영하고 GitHub Actions와 프로세스 관리 도구로 배포·재시작을 구성했으며, 스터디원이 직접 배포할 수 있도록 가이드도 작성했다.</p>
+<p>이 경험에서 확인한 변화는 반복 수작업을 명령어와 주기적 확인으로 바꿨다는 것이다. 다시 운영한다면 공지 작성·현황 확인에 걸린 시간, 반복 추천 빈도, 외부 조회 실패와 복구 기록을 측정 지표로 정해 남기고 개선 전후를 비교하고 싶다.</p>
+<p>기획의 출발점은 내 반복 작업이었지만, 사용한 뒤에는 <strong>어떤 입력이 번거로운지, 어떤 결과가 다시 쓰이는지, 어디서 흐름이 끊기는지</strong>가 다음 작업을 정하는 기준이 됐다.</p>
+<h2>구현 예시</h2>
+<details>
+<summary>공지 생성·입력 변환·추천·기록 저장·자동 배포 코드 펼치기</summary><h3>공지 생성</h3>
+<pre><code class="language-python">p_ids = [pid for pid in [문제1, 문제2, 문제3] if pid and pid.isdigit()]
+...
+for i, pid in enumerate(p_ids):
+    p_info = get_problem_by_id(int(pid))
+    ...
+    description.append(
+        f&quot;**{i+1}.** [{tier_name}] [{pid}. {title}](https://www.acmicpc.net/problem/{pid})\n&quot;
+        f&quot;&gt; 🏷️ {tag_str}&quot;
+    )
+
+embed = discord.Embed(
+    title=f&quot;📅 {today.strftime(&#39;%m/%d&#39;)} 📃오늘의 스터디 문제 공지 (~{기한})&quot;,
+    description=&quot;\n\n&quot;.join(description),
+    color=discord.Color.blue(),
+)
+msg = await interaction.channel.send(embed=embed)
+reaction_emojis = [&quot;1️⃣&quot;, &quot;2️⃣&quot;, &quot;3️⃣&quot;]
+for i in range(len(description)):
+    await msg.add_reaction(reaction_emojis[i])
+</code></pre>
+<h3>난이도·태그 입력 변환</h3>
+<pre><code class="language-python">TIER_MAP = {
+    &quot;실버1&quot;: 10, &quot;실1&quot;: 10, &quot;s1&quot;: 10,
+    &quot;골드5&quot;: 11, &quot;골5&quot;: 11, &quot;g5&quot;: 11,
+    # 다른 티어 매핑은 생략
+}
+TAG_MAP = {
+    &quot;BFS&quot;: &quot;bfs&quot;,
+    &quot;너비우선탐색&quot;: &quot;bfs&quot;,
+    &quot;DP&quot;: &quot;dp&quot;,
+    # 다른 태그 매핑은 생략
+}
+
+def search_problems(tier_query, tag_query):
+    tier_val = TIER_MAP.get(tier_query, None)
+    tag_key = TAG_MAP.get(tag_query, tag_query)
+
+    query_parts = []
+    if tier_val:
+        query_parts.append(f&quot;tier:{tier_val}&quot;)
+    if tag_key:
+        query_parts.append(f&quot;tag:{tag_key}&quot;)
+    query_parts.append(&quot;lang:ko&quot;)
+    ...
+</code></pre>
+<h3>추천 후보 구성</h3>
+<pre><code class="language-python"># utils/solvedac.py
+full_query = &quot; &quot;.join(query_parts) + &quot; sort:random&quot;
+
+params = {
+    &quot;query&quot;: full_query,
+    &quot;direction&quot;: &quot;asc&quot;,
+    &quot;page&quot;: 1,
+    &quot;c&quot;: random.randint(1, 1000000)  # CDN 캐시를 우회하기 위한 무작위 값
+}
+
+# cogs/study.py
+selected_problems = random.sample(ko_problems, min(len(ko_problems), 5))
+</code></pre>
+<h3>기록 저장과 이전 형식 호환</h3>
+<pre><code class="language-python">def save_data(self):
+    with open(self.data_file, &#39;w&#39;, encoding=&#39;utf-8&#39;) as f:
+        json.dump({
+            &#39;members&#39;: {str(k): v for k, v in self.members.items()},
+            &#39;announced_problems&#39;: self.announced_problems,
+            &#39;solved_log&#39;: {str(k): v for k, v in self.solved_log.items()},
+            # 다른 저장 필드는 생략
+        }, f, ensure_ascii=False, indent=4)
+
+def load_data(self):
+    ...
+    # 이전 버전 호환 (문자열 리스트였던 걸 딕셔너리로 변환)
+    self.announced_problems = []
+    for p in data.get(&#39;announced_problems&#39;, []):
+        if isinstance(p, dict):
+            self.announced_problems.append(p)
+        else:
+            self.announced_problems.append({&#39;pid&#39;: p, &#39;deadline&#39;: (datetime.now() + timedelta(days=1)).strftime(&quot;%Y-%m-%d %H:%M:%S&quot;)})
+</code></pre>
+<h3>당시 자동 배포 설정</h3>
+<pre><code class="language-yaml">on:
+  push:
+    branches:
+      - master
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 오라클 서버 접속 및 봇 업데이트
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.SSH_KEY }}
+          script: |
+            cd ~/Discord_Algorthms_StudyBot
+            git pull origin master
+            source venv/bin/activate
+            pip install -r requirements.txt
+            pm2 restart study-bot --update-env || pm2 start /home/ubuntu/Discord_Algorthms_StudyBot/venv/bin/python3 --name &quot;study-bot&quot; -- main.py
+            pm2 save
+</code></pre>
+</details><h2>관련 글과 자료</h2>
+<ul>
+<li><a href="/projects/discord-study-bot">Discord 스터디 봇 프로젝트 소개</a></li>
+<li><a href="https://github.com/hj0543/Discord_Algorthms_StudyBot">GitHub</a></li>
+</ul>
+17:["$","div",null,{"className":"@container","children":["$","article",null,{"className":"mx-auto max-w-[760px] px-5 pb-24 pt-8 sm:px-8 sm:pt-10","children":[["$","div",null,{"children":["$","$L6",null,{"href":"/","scroll":false,"className":"text-[13px] text-foreground/65 transition-colors hover:text-accent","children":"← Devlog"}]}],["$","span",null,{"className":"mt-10 flex items-center gap-1.5 font-mono text-[12px] text-foreground/65","children":[["$","$L7",null,{"ref":"$undefined","iconNode":[["path",{"d":"M8 2v3","key":"1ioesn"}],["path",{"d":"M16 2v3","key":"otl347"}],["rect",{"x":"3","y":"3","width":"18","height":"18","rx":"2","key":"h1oib"}],["path",{"d":"M3 9h18","key":"1pudct"}],["path",{"d":"M8 13h.01","key":"1sbv64"}],["path",{"d":"M12 13h.01","key":"y0uutt"}],["path",{"d":"M16 13h.01","key":"wip0gl"}],["path",{"d":"M8 17h.01","key":"p3bg7i"}],["path",{"d":"M12 17h.01","key":"p32p05"}],["path",{"d":"M16 17h.01","key":"ql8jdd"}]],"className":"lucide-calendar-days","aria-hidden":"true","size":13,"strokeWidth":1.7}],"2026-08-08"]}],["$","h1",null,{"className":"mt-4 text-3xl font-bold leading-tight tracking-[-0.025em] text-foreground sm:text-[2.25rem]","children":"스터디장의 반복 작업을 봇에게 넘기기 — 사용하며 바꾼 운영 흐름"}],["$","$L1f","2026-08-08-discord-study-bot",{"slug":"2026-08-08-discord-study-bot","recordVisit":true,"className":"mt-4"}],["$","p",null,{"className":"mt-4 text-[16px] leading-7 text-foreground/70","children":"8인 스터디의 반복 업무를 명령어와 알림으로 바꾸고, 사용 중 드러난 중복 추천·기록 유실·조회 장애를 개선한 과정."}],["$","div",null,{"className":"mt-6 flex flex-wrap gap-1.5","children":[["$","span","개인 프로젝트",{"className":"rounded-full border border-ink/12 bg-ink/6 px-2.5 py-1 text-[12px] text-foreground/75","children":"개인 프로젝트"}],["$","span","Discord Bot",{"className":"rounded-full border border-ink/12 bg-ink/6 px-2.5 py-1 text-[12px] text-foreground/75","children":"Discord Bot"}],["$","span","서비스 기획",{"className":"rounded-full border border-ink/12 bg-ink/6 px-2.5 py-1 text-[12px] text-foreground/75","children":"서비스 기획"}],["$","span","운영 개선",{"className":"rounded-full border border-ink/12 bg-ink/6 px-2.5 py-1 text-[12px] text-foreground/75","children":"운영 개선"}]]}],["$","div",null,{"className":"mt-10 border-t border-ink/10 doc-prose-module__rLTzAW__prose","dangerouslySetInnerHTML":{"__html":"$20"}}],"$L21"]}]}]
+1a:null
+1e:[["$","title","0",{"children":"스터디장의 반복 작업을 봇에게 넘기기 — 사용하며 바꾼 운영 흐름 · Belog"}],["$","meta","1",{"name":"description","content":"8인 스터디의 반복 업무를 명령어와 알림으로 바꾸고, 사용 중 드러난 중복 추천·기록 유실·조회 장애를 개선한 과정."}],["$","meta","2",{"name":"giscus:backlink","content":"https://hj0543.github.io/devlog/2026-08-08-discord-study-bot/"}],["$","link","3",{"rel":"icon","href":"/icon.png?icon.3bup3hv08dkxp.png","sizes":"1254x1254","type":"image/png"}],["$","$L22","4",{}]]
+23:I[97053,["/_next/static/chunks/0q654p4lxvnny.js","/_next/static/chunks/343-pf7olm-a0.js","/_next/static/chunks/0uri8sq5s_br9.js"],"default"]
+21:["$","$L23","2026-08-08-discord-study-bot",{"slug":"2026-08-08-discord-study-bot"}]

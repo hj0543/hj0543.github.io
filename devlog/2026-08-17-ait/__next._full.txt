@@ -1,0 +1,100 @@
+1:"$Sreact.fragment"
+2:I[3020,["/_next/static/chunks/0q654p4lxvnny.js","/_next/static/chunks/343-pf7olm-a0.js"],"default"]
+3:I[39756,["/_next/static/chunks/0q654p4lxvnny.js","/_next/static/chunks/343-pf7olm-a0.js"],"default"]
+4:I[37457,["/_next/static/chunks/0q654p4lxvnny.js","/_next/static/chunks/343-pf7olm-a0.js"],"default"]
+5:I[66519,["/_next/static/chunks/0q654p4lxvnny.js","/_next/static/chunks/343-pf7olm-a0.js","/_next/static/chunks/36h9ts2bz7_q3.js"],"default"]
+6:I[22016,["/_next/static/chunks/0q654p4lxvnny.js","/_next/static/chunks/343-pf7olm-a0.js","/_next/static/chunks/0uri8sq5s_br9.js"],""]
+7:I[5014,["/_next/static/chunks/0q654p4lxvnny.js","/_next/static/chunks/343-pf7olm-a0.js","/_next/static/chunks/0uri8sq5s_br9.js"],"default"]
+8:I[18192,["/_next/static/chunks/0q654p4lxvnny.js","/_next/static/chunks/343-pf7olm-a0.js"],"default"]
+12:I[68027,["/_next/static/chunks/0q654p4lxvnny.js","/_next/static/chunks/343-pf7olm-a0.js"],"default",1]
+:HL["/_next/static/chunks/1sk89teqfbf_q.css","style"]
+:HL["/_next/static/media/70bc3e132a0a741e-s.p.3t6q91iet4nsy.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/_next/static/media/7ebf22b5a21034f8-s.p.3j3877k49yy0l.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/_next/static/media/PretendardVariable-s.p.0ztvx5mb7lxp4.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/_next/static/chunks/2b-2tives3t8w.css","style"]
+10:X
+0:{"P":null,"c":["","devlog","2026-08-17-ait",""],"q":"","i":false,"f":[[["",{"children":["devlog",{"children":[["slug","2026-08-17-ait","d",[]],{"children":["__PAGE__",{},"$undefined","$undefined",4608]},"$undefined","$undefined",4608]},"$undefined","$undefined",4608]},"$undefined","$undefined",4624],[["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/1sk89teqfbf_q.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","script","script-0",{"src":"/_next/static/chunks/0q654p4lxvnny.js","async":true,"nonce":"$undefined"}],["$","script","script-1",{"src":"/_next/static/chunks/343-pf7olm-a0.js","async":true,"nonce":"$undefined"}]],["$","html",null,{"lang":"ko","data-scroll-behavior":"smooth","suppressHydrationWarning":true,"className":"jetbrains_mono_7d65b77b-module__VxV-Ta__variable instrument_serif_c1e8e483-module__u2UhdW__variable pretendard_97774a5-module__y_0gNq__variable h-full antialiased","children":[["$","head",null,{"children":["$","script",null,{"dangerouslySetInnerHTML":{"__html":"(function () {\n  var theme = \"dark\";\n  try {\n    if (/^\\/(projects|devlog)\\/[^/]+\\/?$/.test(window.location.pathname)\n        && localStorage.getItem(\"theme\") === \"light\") {\n      theme = \"light\";\n    }\n  } catch (e) {}\n  document.documentElement.dataset.theme = theme;\n})();"}}]}],["$","body",null,{"id":"top","className":"flex min-h-full flex-col","children":[["$","$L2",null,{}],["$","main",null,{"className":"flex-1","children":["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[["$","div",null,{"className":"mx-auto flex min-h-[70vh] max-w-[1080px] flex-col items-center justify-center px-5 py-20 text-center sm:px-8","children":[["$","p",null,{"className":"flex items-baseline gap-2.5 text-label","children":[["$","span",null,{"className":"section-label","children":"Not Found"}],["$","span",null,{"className":"font-mono text-[12px] tracking-[0.05em] text-foreground/65","children":"/ 404"}]]}],["$","h1",null,{"className":"mt-6","children":["$","$L5",null,{"text":"404","as":"span","fontSize":"clamp(6rem, 24vw, 13rem)","fontWeight":800,"letterSpacing":"-0.04em","lineHeight":1,"tensionColor":"#c96f4a","hint":true}]}],["$","p",null,{"className":"mt-8 max-w-[420px] text-[16px] leading-7 text-foreground/75","children":["찾으시는 페이지가 없거나 주소가 바뀌었어요.",["$","br",null,{}],"그동안 숫자를 잡아당겨 보셔도 좋아요."]}],["$","$L6",null,{"href":"/","className":"mt-10 inline-flex items-center gap-1.5 border-b border-accent/60 pb-1 text-[15px] font-medium text-accent transition-colors hover:border-accent","children":[["$","$L7",null,{"ref":"$undefined","iconNode":[["path",{"d":"m12 19-7-7 7-7","key":"1l729n"}],["path",{"d":"M19 12H5","key":"x3x0zl"}]],"className":"lucide-arrow-left","aria-hidden":"true","size":15}],"홈으로 돌아가기"]}]]}],[]],"forbidden":"$undefined","unauthorized":"$undefined"}]}],["$","$L8",null,{"children":[["$","footer",null,{"id":"contact","className":"scroll-mt-20","children":["$","div",null,{"className":"mx-auto max-w-[1080px] px-5 sm:px-8","children":[["$","div",null,{"className":"flex flex-wrap items-end justify-between gap-x-10 gap-y-6 border-t border-ink/15 py-12","children":[["$","div",null,{"children":[["$","p",null,{"className":"section-label","children":"Let's Connect"}],["$","h2",null,{"className":"mt-3 text-2xl font-bold tracking-[-0.025em] text-foreground sm:text-[1.75rem]","children":"함께 해결할 문제를 이야기해요."}]]}],["$","p",null,{"className":"flex flex-wrap gap-x-8 gap-y-3","children":[["$","a",null,{"href":"mailto:hj0543@gmail.com","className":"inline-flex items-center gap-2 border-b border-foreground/40 pb-1 text-[15px] font-medium text-foreground transition-colors hover:border-accent hover:text-accent","children":[["$","$L7",null,{"ref":"$undefined","iconNode":[["path",{"d":"m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7","key":"132q7q"}],["rect",{"x":"2","y":"4","width":"20","height":"16","rx":"2","key":"izxlao"}]],"className":"lucide-mail","aria-hidden":"true","size":17,"strokeWidth":1.8}],"hj0543@gmail.com",["$","$L7",null,{"ref":"$undefined","iconNode":[["path",{"d":"M7 7h10v10","key":"1tivn9"}],["path",{"d":"M7 17 17 7","key":"1vkiza"}]],"className":"lucide-arrow-up-right","aria-hidden":"true","size":14}]]}],["$","a",null,{"href":"https://github.com/hj0543","target":"_blank","rel":"noreferrer","className":"inline-flex items-center gap-2 border-b border-foreground/40 pb-1 text-[15px] font-medium text-foreground transition-colors hover:border-accent hover:text-accent","children":["$L9","GitHub","$La"]}]]}]]}],"$Lb"]}]}],"$Lc"]}]]}]]}]]}],{"children":["$Ld",{"children":["$Le",{"children":["$Lf",{},null,false,null]},null,false,"$10"]},null,false,"$10"]},null,false,null],"$L11",false]],"m":"$undefined","G":["$12",["$L13"]],"S":true,"h":null,"r":"$undefined","s":"$undefined","a":"$undefined","l":"$undefined","p":"$undefined","d":"$undefined","b":"A1gsuDqWvAI0Sedafrvgx"}
+14:I[85437,["/_next/static/chunks/0q654p4lxvnny.js","/_next/static/chunks/343-pf7olm-a0.js"],"Image"]
+15:I[53759,["/_next/static/chunks/0q654p4lxvnny.js","/_next/static/chunks/343-pf7olm-a0.js"],"default"]
+16:I[11875,["/_next/static/chunks/0q654p4lxvnny.js","/_next/static/chunks/343-pf7olm-a0.js"],"default"]
+18:I[97367,["/_next/static/chunks/0q654p4lxvnny.js","/_next/static/chunks/343-pf7olm-a0.js"],"OutletBoundary"]
+19:"$Sreact.suspense"
+1b:I[97367,["/_next/static/chunks/0q654p4lxvnny.js","/_next/static/chunks/343-pf7olm-a0.js"],"ViewportBoundary"]
+1d:I[97367,["/_next/static/chunks/0q654p4lxvnny.js","/_next/static/chunks/343-pf7olm-a0.js"],"MetadataBoundary"]
+9:["$","$L14",null,{"src":"/icons/github.svg","alt":"","aria-hidden":"true","width":17,"height":17,"className":"brand-icon shrink-0 "}]
+a:["$","$L7",null,{"ref":"$undefined","iconNode":"$0:f:0:1:0:props:children:1:props:children:1:props:children:2:props:children:0:props:children:props:children:0:props:children:1:props:children:0:props:children:2:props:iconNode","className":"lucide-arrow-up-right","aria-hidden":"true","size":14}]
+b:["$","div",null,{"className":"flex flex-wrap items-center justify-between gap-3 border-t border-ink/15 py-6","children":[["$","a",null,{"href":"#top","className":"text-[17px] font-bold tracking-[-0.04em] text-foreground","children":["Belog",["$","span",null,{"className":"text-accent","children":"."}]]}],["$","span",null,{"className":"flex flex-wrap gap-x-4 gap-y-1 text-[12px] text-foreground/65","children":[["$","$L15",null,{}],["$","span",null,{"children":["© ",2026," ","HYEONJIN JEONG",". All rights reserved."]}]]}]]}]
+c:["$","$L16",null,{}]
+d:["$","$1","c",{"children":[null,["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}]
+e:["$","$1","c",{"children":[null,["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}]
+f:["$","$1","c",{"children":["$L17",[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/2b-2tives3t8w.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","script","script-0",{"src":"/_next/static/chunks/0uri8sq5s_br9.js","async":true,"nonce":"$undefined"}]],["$","$L18",null,{"children":["$","$19",null,{"name":"Next.MetadataOutlet","children":"$@1a"}]}]]}]
+11:["$","$1","h",{"children":[null,["$","$L1b",null,{"children":"$L1c"}],["$","div",null,{"hidden":true,"children":["$","$L1d",null,{"children":["$","$19",null,{"name":"Next.Metadata","children":"$L1e"}]}]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}]
+13:["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/1sk89teqfbf_q.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]
+10:C
+1c:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
+1f:I[73428,["/_next/static/chunks/0q654p4lxvnny.js","/_next/static/chunks/343-pf7olm-a0.js","/_next/static/chunks/0uri8sq5s_br9.js"],"default"]
+22:I[27201,["/_next/static/chunks/0q654p4lxvnny.js","/_next/static/chunks/343-pf7olm-a0.js"],"IconMark"]
+20:T18b2,<p>Ait는 개발자의 이력서·GitHub를 바탕으로 질문하는 AI 모의면접과 화상 스터디를 연결한 서비스다. 나는 6인 팀의 프론트엔드 리더를 맡았다.</p>
+<p>면접과 스터디 화면을 구현하면서 반복해서 마주한 문제는 <strong>여러 사람이 만든 화면을 사용자가 하나의 서비스로 이해할 수 있게 하는 것</strong>이었다. 같은 상태를 다르게 부르거나 화면에 필요한 정보가 API에 없을 때, 공통 기준과 요청을 구체화하는 일이 필요했다.</p>
+<h2>1. 화면을 만들기 전에 상태와 다음 행동을 정했다</h2>
+<p>첫 커밋은 화면이 아니라 작업 규칙 문서였다. 이어 디자인 시스템과 도메인 규칙을 정리했다.</p>
+<table>
+<thead>
+<tr>
+<th>공통으로 맞출 것</th>
+<th>문서화한 내용</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>시각적 기준</td>
+<td>색상·간격·그림자·타이포·모션과 공통 컴포넌트</td>
+</tr>
+<tr>
+<td>면접의 상태</td>
+<td>예정·준비 완료·진행 중·분석 중·완료의 용어와 단계</td>
+</tr>
+<tr>
+<td>빈 화면과 오류</td>
+<td>현재 상태에서 사용자가 취할 다음 행동</td>
+</tr>
+<tr>
+<td>구현 판단 기준</td>
+<td>요구사항·Figma·디자인 문서·기존 구현을 확인할 순서</td>
+</tr>
+</tbody></table>
+<p>Figma 가이드를 개발에서 재사용할 수 있는 공통 값으로 옮기고, 디자인 시스템과 도메인 규칙을 팀원과 AI 코딩 에이전트에게 함께 전달했다. 사용자에게 같은 의미의 상태와 행동을 보여주려면, 구현하는 쪽의 해석도 맞아야 했다.</p>
+<p>다만 문서를 공유하는 것만으로 일관성이 완성되지는 않았다. 실제 화면을 보며 기준과 어긋나는 부분을 다시 조정해야 했다.</p>
+<h2>2. 화면에서 발견한 차이를 규칙의 보완으로 연결</h2>
+<p>Ait의 강조색은 골드였다. 처음에는 카드 테두리와 칩, 진행 표시 등 여러 곳에 색이 들어가 강조가 분산됐다. 그래서 섹션 하나에 한두 곳만 사용하고, 나머지는 짙기나 그림자로 표현하도록 기준을 정했다. 규칙을 만든 나도 같은 기준으로 화면을 다시 봐야 했다.</p>
+<p>반대의 문제도 있었다. 어떤 화면에는 가이드 밖의 표현이 필요했는데, 에이전트가 기존 문서를 근거로 변경을 거부했다. 규칙에 없는 상황을 처리할 방법이 부족했던 것이다.</p>
+<p>이 경험을 통해 <strong>공통 기준과 예외를 판단할 기준을 함께 정해야 한다</strong>는 과제를 얻었다. 화면마다 임의로 바꾸는 것과, 기존 기준이 맞지 않는 상황을 검토해 보완하는 것은 구분할 필요가 있었다.</p>
+<h2>3. ‘연동이 안 된다’를 필요한 정보와 조건으로 바꿨다</h2>
+<p>API 연동이 시작되자 목업과 실제 데이터가 섞인 화면이 생겼다. 나는 API 명세 35개를 기준으로 화면을 대조하고, 누락 항목을 연동 요청 문서로 정리했다.</p>
+<p>예를 들어 스터디 목록에는 현재 인원수 필드가 없었다. 그래서 현재 응답으로 표시할 수 있는 ‘정원 6명’을 먼저 보여주고, ‘3/6명’처럼 표시하려면 필요한 현재 인원수 필드를 요청했다. 같은 필드가 다른 API에 있다는 점도 함께 전달하고, 프론트엔드는 해당 응답이 들어오면 연결할 수 있도록 준비했다.</p>
+<p>파일 업로드가 실패할 때도 요청 형식이 명세와 일치하는지 확인하고, 로컬 Windows와 배포 Linux의 경로 차이 등 백엔드에서 확인할 항목을 문서로 넘겼다.</p>
+<p>요청에는 다음 정보를 담으려 했다.</p>
+<ul>
+<li>어느 화면에서 어떤 정보나 동작이 필요한가?</li>
+<li>현재 응답과 구현으로 어디까지 가능한가?</li>
+<li>프론트엔드에서 확인한 범위는 어디까지인가?</li>
+<li>상대 파트에서 무엇을 확인하거나 추가하면 되는가?</li>
+</ul>
+<p><strong>기능 이름만 전달하는 것보다 화면의 요구와 현재 계약의 차이를 구체화하는 일</strong>이 협업의 기준이 됐다. 다른 파트의 코드를 바로 수정하는 대신 필요한 변경과 담당 범위를 공유했다. 에이전트의 작업 범위도 문서에 명시했다.</p>
+<h2>4. 완성도와 실제 상태를 기준으로 보여줄 내용을 정리</h2>
+<p>랜딩 페이지에는 모션과 3D 연출을 만들었지만, 완성도가 부족한 회차별 리포트 비교 섹션은 제거했다. 카드 틸트와 일부 배경 효과도 덜어냈다. 실사용자가 없는 프로젝트에 사용자 후기를 넣지도 않았다.</p>
+<p>도메인 규칙에는 목업 데이터와 미연동 기능을 실제 완료된 결과처럼 표현하지 않는 기준을 남겼다. 어떤 화면을 보여줄지 결정할 때 시각적인 완성도와 함께 <strong>사용자에게 전달하는 상태가 실제와 맞는지</strong> 확인했다.</p>
+<p>이 선택이 사용성을 높였는지는 별도 검증이 필요하다. 당시에는 보여줄 수 있는 기능과 설명을 실제 구현 상태에 맞추는 데 집중했다.</p>
+<h2>5. 결과와 남은 협업 과제</h2>
+<p>면접·스터디·리포트 화면을 구현하고, 디자인과 상태 기준, API 연동 요청을 문서로 남겼다. 최종 발표에서는 자료 제작과 시연을 맡았다. 수상으로 이어지지는 않았다.</p>
+<p>마감 직전에 연동과 확인 작업이 몰렸고, 팀 안에서 개발과 관리의 역할이 한쪽에 집중된 점도 돌아보게 됐다. 프론트엔드 리더로서 관리 작업을 더 일찍 나눠 맡고, 구현 후 연결하고 검증하는 시간까지 계획했어야 했다.</p>
+<p>다음에는 화면별로 입력·상태·예외·완료 조건을 먼저 맞추고, API 연동 확인을 일정에 포함하려고 한다. 문서의 수보다 <strong>다른 사람이 같은 의미로 이해하고 다음 작업을 시작할 수 있는지</strong>를 기준으로 정리하겠다.</p>
+<h2>관련 글과 자료</h2>
+<ul>
+<li><a href="/projects/ait">Ait 프로젝트 소개와 담당 구현</a></li>
+<li><a href="https://youtu.be/IB8Yz5kkJ9s">영상 포트폴리오</a></li>
+</ul>
+17:["$","div",null,{"className":"@container","children":["$","article",null,{"className":"mx-auto max-w-[760px] px-5 pb-24 pt-8 sm:px-8 sm:pt-10","children":[["$","div",null,{"children":["$","$L6",null,{"href":"/","scroll":false,"className":"text-[13px] text-foreground/65 transition-colors hover:text-accent","children":"← Devlog"}]}],["$","span",null,{"className":"mt-10 flex items-center gap-1.5 font-mono text-[12px] text-foreground/65","children":[["$","$L7",null,{"ref":"$undefined","iconNode":[["path",{"d":"M8 2v3","key":"1ioesn"}],["path",{"d":"M16 2v3","key":"otl347"}],["rect",{"x":"3","y":"3","width":"18","height":"18","rx":"2","key":"h1oib"}],["path",{"d":"M3 9h18","key":"1pudct"}],["path",{"d":"M8 13h.01","key":"1sbv64"}],["path",{"d":"M12 13h.01","key":"y0uutt"}],["path",{"d":"M16 13h.01","key":"wip0gl"}],["path",{"d":"M8 17h.01","key":"p3bg7i"}],["path",{"d":"M12 17h.01","key":"p32p05"}],["path",{"d":"M16 17h.01","key":"ql8jdd"}]],"className":"lucide-calendar-days","aria-hidden":"true","size":13,"strokeWidth":1.7}],"2026-08-17"]}],["$","h1",null,{"className":"mt-4 text-3xl font-bold leading-tight tracking-[-0.025em] text-foreground sm:text-[2.25rem]","children":"화면보다 먼저 쓴 문서 — Ait의 화면 정책과 연동 기준"}],["$","$L1f","2026-08-17-ait",{"slug":"2026-08-17-ait","recordVisit":true,"className":"mt-4"}],["$","p",null,{"className":"mt-4 text-[16px] leading-7 text-foreground/70","children":"면접 상태와 디자인 기준을 문서화하고, 화면에 필요한 정보와 API 응답의 차이를 실행 가능한 협업 요청으로 바꾼 경험."}],["$","div",null,{"className":"mt-6 flex flex-wrap gap-1.5","children":[["$","span","SSAFY",{"className":"rounded-full border border-ink/12 bg-ink/6 px-2.5 py-1 text-[12px] text-foreground/75","children":"SSAFY"}],["$","span","Ait",{"className":"rounded-full border border-ink/12 bg-ink/6 px-2.5 py-1 text-[12px] text-foreground/75","children":"Ait"}],["$","span","서비스 기획",{"className":"rounded-full border border-ink/12 bg-ink/6 px-2.5 py-1 text-[12px] text-foreground/75","children":"서비스 기획"}],["$","span","화면 정책",{"className":"rounded-full border border-ink/12 bg-ink/6 px-2.5 py-1 text-[12px] text-foreground/75","children":"화면 정책"}],["$","span","협업",{"className":"rounded-full border border-ink/12 bg-ink/6 px-2.5 py-1 text-[12px] text-foreground/75","children":"협업"}]]}],["$","div",null,{"className":"mt-10 border-t border-ink/10 doc-prose-module__rLTzAW__prose","dangerouslySetInnerHTML":{"__html":"$20"}}],"$L21"]}]}]
+1a:null
+1e:[["$","title","0",{"children":"화면보다 먼저 쓴 문서 — Ait의 화면 정책과 연동 기준 · Belog"}],["$","meta","1",{"name":"description","content":"면접 상태와 디자인 기준을 문서화하고, 화면에 필요한 정보와 API 응답의 차이를 실행 가능한 협업 요청으로 바꾼 경험."}],["$","meta","2",{"name":"giscus:backlink","content":"https://hj0543.github.io/devlog/2026-08-17-ait/"}],["$","link","3",{"rel":"icon","href":"/icon.png?icon.3bup3hv08dkxp.png","sizes":"1254x1254","type":"image/png"}],["$","$L22","4",{}]]
+23:I[97053,["/_next/static/chunks/0q654p4lxvnny.js","/_next/static/chunks/343-pf7olm-a0.js","/_next/static/chunks/0uri8sq5s_br9.js"],"default"]
+21:["$","$L23","2026-08-17-ait",{"slug":"2026-08-17-ait"}]
