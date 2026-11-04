@@ -1,0 +1,30 @@
+@import url("https://giscus.app/themes/dark.css");
+@import url("./heart.css");
+@import url("./comment-box.css");
+@import url("./comments.css");
+
+main {
+  --color-canvas-default: transparent;
+  /* GitHub의 차가운 회색 글자·선을 블로그 톤으로 바꾼다. */
+  --color-fg-default: #ece8df;
+  --color-fg-muted: #a8a398;
+  --color-fg-subtle: #827d73;
+  --color-border-default: rgb(236 232 223 / 14%);
+  --color-border-muted: rgb(236 232 223 / 10%);
+  --color-accent-fg: #e09272;
+  --color-canvas-subtle: #1c1b19;
+  --color-canvas-inset: #1c1b19;
+  --color-btn-bg: #262420;
+  --color-btn-border: rgb(236 232 223 / 14%);
+  --color-btn-hover-bg: #2d2a26;
+  --color-btn-hover-border: rgb(236 232 223 / 22%);
+  --blog-paper: #211f1c;
+  --blog-sunken: #1c1b19;
+  --blog-input: #1b1a18;
+  --blog-line: rgb(236 232 223 / 14%);
+  --blog-accent: #e09272;
+  --blog-accent-deep: #c97a59;
+  --blog-accent-soft: #3a2a22;
+  --blog-accent-ring: rgb(224 146 114 / 28%);
+  --blog-on-accent: #1d1c19;
+}

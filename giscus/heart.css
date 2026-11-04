@@ -1,0 +1,187 @@
+/*
+  giscus 반응 영역을 [♡ 0 Like] 버튼 하나로 바꾼다.
+  giscus 클래스는 #__next 아래로 우선순위가 올라가 있어 같은 접두사를 붙인다.
+
+  - 하트가 0개: 반응 선택기의 HEART 버튼(.gsc-emoji-button)만 보인다. 개수가 없으므로 "0"을 직접 그린다.
+  - 하트가 1개 이상: 개수가 붙은 직접 반응 버튼만 남긴다.
+  두 버튼을 같은 모양·같은 칸으로 그려 개수가 바뀌어도 위치가 흔들리지 않게 한다.
+*/
+
+/* 공식 giscus의 HEART는 반응 선택기의 여섯 번째 항목이다. */
+#__next .gsc-emoji-button:not(:nth-child(6)),
+#__next .gsc-direct-reaction-button:not(:has([title*="하트"])),
+#__next .gsc-reactions .gsc-reactions-count,
+#__next .gsc-reactions .gsc-reactions-menu > summary,
+#__next .gsc-reactions .gsc-reactions-popover > .border-t {
+  display: none !important;
+}
+
+#__next .gsc-reactions {
+  padding: 2px 0 8px;
+}
+
+/* 버튼을 가운데에 두고 로그인 안내는 그 아래에 둔다. */
+#__next .gsc-reactions > div {
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 0;
+  font-size: 14px;
+}
+
+/* 게시글에는 선택 메뉴 대신 하트 버튼을 바로 표시한다. */
+#__next .gsc-reactions .gsc-reactions-menu::details-content {
+  content-visibility: visible;
+}
+
+/* 닫힌 팝오버의 고정 폭·말풍선 꼬리를 걷어내고 본문 흐름에 놓는다. */
+#__next .gsc-reactions .gsc-reactions-popover {
+  display: flex !important;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  position: static;
+  width: auto;
+  margin: 0;
+  transform: none;
+  transition: none;
+  visibility: visible;
+  opacity: 1;
+  border: 0;
+  box-shadow: none;
+  background: transparent;
+}
+
+#__next .gsc-reactions .gsc-reactions-popover::before,
+#__next .gsc-reactions .gsc-reactions-popover::after {
+  display: none;
+}
+
+#__next .gsc-reactions .gsc-reactions-popover > div {
+  margin: 0;
+}
+
+/* 로그인 안내는 버튼 아래에 둔다. */
+#__next .gsc-reactions .gsc-reactions-popover > p {
+  order: 1;
+  margin: 0;
+  font-size: 13px;
+  color: var(--color-fg-muted);
+}
+
+#__next .gsc-reactions .gsc-reactions-popover:has(.gsc-emoji-button:not(.no-token)) > p {
+  display: none;
+}
+
+/* 개수가 붙은 버튼은 로그인 안내보다 앞에 둔다. */
+#__next .gsc-reactions .gsc-direct-reaction-buttons {
+  order: -1;
+}
+
+/* 하트가 0개면 빈 묶음이 간격만 차지해 버튼이 밀리므로 뺀다. */
+#__next .gsc-reactions .gsc-direct-reaction-buttons:not(:has(.gsc-direct-reaction-button [title*="하트"])) {
+  display: none;
+}
+
+/* 하트가 하나라도 있으면 개수가 보이는 직접 반응 버튼만 남긴다. */
+#__next .gsc-reactions:has(.gsc-direct-reaction-button [title*="하트"]) .gsc-reactions-popover > div {
+  display: none !important;
+}
+
+/* ── 버튼 공통 모양 ── */
+#__next .gsc-reactions .gsc-emoji-button,
+#__next .gsc-reactions .gsc-direct-reaction-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  width: auto;
+  height: 36px;
+  margin: 0;
+  padding: 0 16px 0 14px;
+  border: 1px solid var(--color-border-default);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--color-fg-muted);
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1;
+  cursor: pointer;
+  transition: border-color 0.15s, background-color 0.15s, color 0.15s;
+}
+
+#__next .gsc-reactions .gsc-emoji-button.no-token {
+  cursor: not-allowed;
+}
+
+/* 오른쪽 Like 문구 */
+#__next .gsc-reactions .gsc-emoji-button::after,
+#__next .gsc-reactions .gsc-direct-reaction-button::after {
+  content: "Like";
+  font-weight: 500;
+}
+
+/* 이모지 글자는 숨기고 윤곽선 하트를 그린다. */
+#__next .gsc-reactions .gsc-emoji,
+#__next .gsc-reactions .gsc-direct-reaction-button-emoji {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  width: auto;
+  height: auto;
+  font-size: 0;
+  transform: none !important;
+}
+
+#__next .gsc-reactions .gsc-emoji::before,
+#__next .gsc-reactions .gsc-direct-reaction-button-emoji::before {
+  content: "";
+  width: 17px;
+  height: 17px;
+  background: currentColor;
+  -webkit-mask: var(--heart-outline) center / contain no-repeat;
+  mask: var(--heart-outline) center / contain no-repeat;
+}
+
+#__next .gsc-reactions {
+  --heart-filled: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='black' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z'/%3E%3C/svg%3E");
+  --heart-outline: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z'/%3E%3C/svg%3E");
+}
+
+/* 개수 칸: 폭을 고정해 0 ↔ 1 ↔ 10이 바뀌어도 Like 위치가 그대로다. */
+#__next .gsc-reactions .gsc-emoji::after,
+#__next .gsc-reactions .gsc-social-reaction-summary-item-count {
+  min-width: 2ch;
+  margin: 0;
+  padding: 0;
+  font-size: 14px;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  text-align: left;
+}
+
+#__next .gsc-reactions .gsc-emoji::after {
+  content: "0";
+}
+
+/* ── 상태 ── */
+#__next .gsc-reactions .gsc-emoji-button:hover:enabled,
+#__next .gsc-reactions .gsc-direct-reaction-button:hover:enabled {
+  border-color: #d3435c;
+  background: rgb(211 67 92 / 6%);
+  color: #d3435c;
+}
+
+#__next .gsc-reactions .gsc-emoji-button.has-reacted,
+#__next .gsc-reactions .gsc-direct-reaction-button.has-reacted {
+  border-color: #d3435c;
+  background: rgb(211 67 92 / 10%);
+  color: #d3435c;
+}
+
+/* 내가 누른 하트는 안을 채운다. */
+#__next .gsc-reactions .gsc-emoji-button.has-reacted .gsc-emoji::before,
+#__next .gsc-reactions .gsc-direct-reaction-button.has-reacted .gsc-direct-reaction-button-emoji::before {
+  -webkit-mask-image: var(--heart-filled);
+  mask-image: var(--heart-filled);
+}
