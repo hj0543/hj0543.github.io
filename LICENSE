@@ -1,0 +1,22 @@
+Copyright (c) 2026 Hyeonjin Jeong (정현진). All rights reserved.
+
+This repository contains the built output of https://hj0543.github.io.
+The source code is not published.
+
+No license is granted. You may view this site in a web browser, but you
+may not copy, modify, redistribute, or reuse its code, design, writing,
+or images, in whole or in part, without prior written permission.
+
+Third-party material keeps its own license and is not covered above:
+- Fonts (Pretendard, Instrument Serif, JetBrains Mono): SIL Open Font License 1.1
+- UI effects adapted from React Bits (https://reactbits.dev): used under
+  their respective licenses; they are not offered for reuse here
+- Libraries bundled into the JavaScript files: their own open-source licenses
+
+Contact: hj0543@gmail.com
+
+---
+
+이 저장소는 https://hj0543.github.io 의 빌드 결과물입니다. 소스 코드는 공개하지 않습니다.
+사이트의 코드, 디자인, 글, 이미지를 사전 서면 허락 없이 복제·수정·재배포·재사용할 수 없습니다.
+위에 적은 제3자 자료(폰트, React Bits 효과, 번들된 라이브러리)는 각자의 라이선스를 따릅니다.

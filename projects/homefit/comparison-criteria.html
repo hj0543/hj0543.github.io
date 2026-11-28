@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="ko">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="color-scheme" content="light"><title>Homefit 비교 기준</title><link rel="stylesheet" href="/projects/_shared/case-widget.css"><script src="/projects/_shared/case-explorer.js" defer></script></head>
+<body class="map-body" data-active="education">
+  <nav class="controls" aria-label="비교 기준 선택">
+    <button type="button" data-select="education" aria-pressed="true" aria-controls="panel-education">학군</button>
+    <button type="button" data-select="mobility" aria-pressed="false" aria-controls="panel-mobility">교통</button>
+    <button type="button" data-select="finance" aria-pressed="false" aria-controls="panel-finance">자금</button>
+  </nav>
+  <div class="map-layout">
+    <svg class="map" viewBox="0 0 420 300" role="img" aria-labelledby="map-title map-description">
+      <title id="map-title">Homefit 비교 기준 개념도</title><desc id="map-description">같은 관심 매물에 학구도, 교통 정보, 자금 확인 기준을 연결하는 설명용 도식. 실제 위치가 아닙니다.</desc>
+      <g fill="none" stroke="#e5e4e0" stroke-width="5"><path d="m-10 60 110 30 90-55 100 25 140-20M0 170l120-40 100 50 210-30M30 310l90-110 150 70 170-30M60-10l60 140 0 180M250-10l-30 190 80 130M370-10l-40 130 40 190"/></g>
+      <g data-layer="education"><path d="m170 65 100-30 55 70 40 70-40 90-120-5-65-80Z" fill="#efe1d5" fill-opacity=".7" stroke="#bc987e" stroke-width="1.5"/><path d="m96 178 174-38" fill="none" stroke="#a06d53" stroke-width="2" stroke-dasharray="3 6"/><circle cx="270" cy="140" r="19" fill="#a06d53"/><path d="m258 146 12-19 12 19m-20-4h16m-12 4v-9m8 9v-9" fill="none" stroke="#fff" stroke-width="1.7"/><text x="270" y="178" text-anchor="middle" fill="#79513c">학교</text><rect x="18" y="242" width="113" height="38" rx="5" fill="white" stroke="#e4d8ce"/><text x="29" y="266" fill="#79513c">통학구역 판정</text></g>
+      <g data-layer="mobility"><path d="M96 178h72V92h148" fill="none" stroke="#a06d53" stroke-width="3" stroke-dasharray="6 5"/><circle cx="316" cy="92" r="20" fill="#a06d53"/><rect x="306" y="79" width="20" height="23" rx="4" fill="none" stroke="white" stroke-width="1.6"/><path d="M309 88h14m-14 9h2m10 0h2m-12 5-3 5m13-5 3 5" stroke="white" stroke-width="1.6"/><text x="316" y="131" text-anchor="middle" fill="#79513c">역</text><text x="180" y="210" fill="#79513c">도보 · 대중교통 이동시간</text></g>
+      <g data-layer="finance"><path d="M117 178h128" stroke="#a06d53" stroke-width="1.5"/><rect x="230" y="115" width="160" height="123" rx="8" fill="white" stroke="#bf9f87"/><text x="247" y="144" fill="#79513c">선택한 관심 매물</text><path d="M246 155h127" stroke="#e4d8ce"/><text x="247" y="179" fill="#5d615a">주택 조건</text><text x="247" y="203" fill="#5d615a">개인 금융 조건</text><text x="247" y="227" fill="#79513c">판정 이유 · 예상 부담</text></g>
+      <circle cx="96" cy="178" r="22" fill="#a06d53"/><path d="m81 176 15-13 15 13m-25-4v20h20v-20m-14 20v-9h8v9" fill="none" stroke="white" stroke-width="1.8"/><text x="96" y="221" text-anchor="middle" fill="#79513c">관심 매물</text>
+    </svg>
+    <div class="map-detail" aria-live="polite" aria-atomic="true">
+      <section id="panel-education" data-panel="education"><h2>학구도 기반 판정</h2><p>학교가 가까운지와 해당 학교의 통학구역에 속하는지를 구분했습니다.</p><dl><dt>판정 기준</dt><dd>학구도 폴리곤과 매물 좌표</dd><dt>공통 점수 서비스</dt><dd>매물 찾기·비교·AI 추천에서 같은 계산 기준 사용</dd><dt>화면과 AI에 같은 기준</dt><dd>학군과 학교 거리 정보를 AI 설명에도 전달</dd></dl></section>
+      <section id="panel-mobility" data-panel="mobility" hidden><h2>거리에서 이동시간으로</h2><p>역세권은 도보시간과 대중교통 이동시간을 활용해 비교하도록 구성했습니다.</p><dl><dt>데이터 준비</dt><dd>필요한 이동시간을 수집·전처리해 DB에 적재</dd><dt>비교 기준 공유</dt><dd>매물 찾기와 추천에서 공통 역세권 점수 사용</dd><dt>지도 조회</dt><dd>현재 지도 영역 안의 매물과 인프라 표시</dd></dl></section>
+      <section id="panel-finance" data-panel="finance" hidden><h2>자격과 이유를 함께</h2><p>선택한 관심 매물과 개인 금융 조건을 함께 확인하도록 흐름을 연결했습니다.</p><dl><dt>조건 확인</dt><dd>프로젝트 당시 정리한 정책대출 규칙표 사용</dd><dt>판정 이유</dt><dd>충족한 핵심 조건과 불가 사유 표시</dd><dt>다음 단계</dt><dd>우대금리 적용 예상 금리와 월 상환 그래프</dd></dl></section>
+    </div>
+  </div>
+</body></html>

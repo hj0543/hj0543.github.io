@@ -1,0 +1,120 @@
+1:"$Sreact.fragment"
+2:I[22016,["/_next/static/chunks/0q654p4lxvnny.js","/_next/static/chunks/08eldunmyzqwk.js","/_next/static/chunks/0uri8sq5s_br9.js"],""]
+3:I[5014,["/_next/static/chunks/0q654p4lxvnny.js","/_next/static/chunks/08eldunmyzqwk.js","/_next/static/chunks/0uri8sq5s_br9.js"],"default"]
+4:I[73428,["/_next/static/chunks/0q654p4lxvnny.js","/_next/static/chunks/08eldunmyzqwk.js","/_next/static/chunks/0uri8sq5s_br9.js"],"default"]
+5:T39ba,<!-- 작성 메모: 수치와 사실은 S15P31D103 저장소 문서(docs/frontend/reviews/정현진, docs/ai/reviews)와 최종 발표 자료에서 가져왔다. 느낌·소감 문장은 직접 다듬을 것. --><p>10월 17일에 첫 커밋을 올리고, 11월 17일에 마지막 핫픽스를 머지했다. 한 달 동안 6명이 만든 Geomate는 원스토어에 올라갔고, 나는 그 앱을 들고 최종 발표 무대에 섰다. Geomate는 자율 프로젝트 우수상(1등)을 받아 전국 결선 전시회에 진출했다.</p>
+<p><a href="/devlog/2026-10-14-geomate-design">면접 때 했던 다짐</a>에서 시작한 프로젝트였다. 학원에서 &quot;어디에 선을 그어야 해요?&quot;라고 묻던 학생들에게, 답 대신 직접 돌려 보고 잘라 볼 수 있는 도형을 건네고 싶었다. 이 글은 그 한 달을 돌아보는 기록이다. 기하 엔진 PoC를 만든 과정은 <a href="/devlog/2026-10-24-geomate-p3-p4">이전 글</a>에 따로 적었다.</p>
+<h2>무엇을 만들었나</h2>
+<p>Geomate는 도형 문제를 태블릿에서 손으로 조작하는 2D·3D 도형으로 바꿔 주는 기하 학습 앱이다. 학생은 문제를 사진이나 PDF로 가져오고, 앱이 복원한 도형을 돌리고 접고 자르며 먼저 답을 예측한다. 진단으로 어디서 어긋났는지 확인하고, 막히면 힌트로 방향을 잡고, 마지막에 ‘결과 확인’을 눌러야 정답이 보인다. 선생님은 클래스에서 문제를 배포하고 학생별 풀이를 확인한다.</p>
+<p>나는 PM과 프론트엔드, AI를 함께 맡았다. 화면의 판단 기준을 정하고, 학생이 실제로 문제를 푸는 도형 조작 공간과 S펜 조작을 만들고, 사진 해석 모델 비교와 문제 영역·손글씨 인식 모델 학습을 진행했다. 마지막에는 발표를 맡았다.</p>
+<p>수학과 출신 교육생 두 명과 수학팀장으로 일했던 나까지, 수학과 인연이 있는 세 명의 교육생이라는 뜻에서 팀명을 ‘삼수생’으로 정했다.</p>
+<p>팀의 분위기는 좋았다. 각자 사비로 다과를 사 와 아침마다 채워 두는 모습에서는 학원에서 근무하던 때의 분위기가 떠올랐다. 서로 농담을 주고받으며 즐겁게 프로젝트를 진행했다. 돌아보면 세 번의 프로젝트 중 가장 즐겁고 분위기도 좋았던 프로젝트가 아닐까 싶다.</p>
+<h2>1. 화면이 먼저 답을 말하지 않게</h2>
+<p>기획 단계에서 정한 원칙은 단순했다. <strong>답이나 답에 가까운 값은 학생이 생각한 뒤에만 보인다.</strong> 그런데 이 원칙을 지키기가 생각보다 어려웠다.</p>
+<p>10월 28일, 팀 예제 71개를 태블릿에서 하나씩 열어 보며 셀프 QA를 했다. 그때 가장 많이 찾은 문제가 &quot;학생이 생각하기 전에 화면이 답을 보여 주는 곳&quot;이었다.</p>
+<ul>
+<li>힌트의 계산 값(18π, 48π)을 더하면 그대로 답이 됐다.</li>
+<li>회전체의 이름을 묻는 문제에서 처음부터 다 돌린 원뿔대가 보였다.</li>
+<li>기울인 그릇의 물 문제는 글로만 된 문제인데 처음부터 기울어진 물이 그려져 있었다.</li>
+<li>쌓기나무 문제의 안내 문구가 &quot;보기 다와 같은 모양이에요&quot;라고 말했다.</li>
+</ul>
+<p>하나하나는 작은 실수였지만, 모두 학생이 스스로 찾을 기회를 빼앗는 것이었다. 힌트 값은 일부만 숨기는 안과 마지막 단계만 숨기는 안도 있었지만, <code>π × 5²</code>처럼 한 번 계산하면 답이 되는 값이 많아 결과 확인 전에는 전부 숨기기로 했다.</p>
+<p>같은 원칙을 AI 힌트에도 적용했다. 힌트를 만든 뒤 그대로 내보내지 않고 검사해서, &quot;단면은 오각형이에요&quot;처럼 정답이 드러나면 탈락시킨다.</p>
+<p><img src="/projects/geomate/hint-check.png" alt="정답을 드러낸 AI 힌트가 탈락하는 예시">
+ <strong>답을 알려 주면 학생은 스스로 풀지 못한다.</strong> 발표에서도 이 문장을 핵심 기술의 마지막 장에 두었다.</p>
+<h2>2. AI에게 맡길 일과 맡기지 않을 일</h2>
+<p>사진 한 장이 도형과 힌트가 되기까지의 파이프라인은 12단계다. 발표에서는 이를 <strong>읽기 → 검증 → 그리기 → 힌트</strong> 네 가지로 묶었다. 이 구조에서 가장 중요하게 지킨 선은 <strong>AI는 읽고 설명할 뿐, 답은 계산하지 않는다</strong>는 것이었다.</p>
+<ul>
+<li><strong>읽기:</strong> VLM은 사진을 엔진이 계산할 수 있는 요청으로 옮긴다. 값마다 읽음·추론·못 읽음을 표시해, 확인하지 못한 값을 그럴듯하게 채우지 않게 했다.</li>
+<li><strong>검증:</strong> 서버의 Python 엔진이 요청을 검사한다. 예를 들어 점 Q를 O로 잘못 읽으면 &quot;점 O가 없어요&quot;라는 이유를 붙여 돌려보내고, VLM이 고쳐서 한 번 더 보낸다.</li>
+<li><strong>그리기:</strong> 검사를 통과한 요청만 앱의 TypeScript 엔진이 그린다. 두 엔진은 같은 입력 451개로 결과를 교차 검증했다.</li>
+<li><strong>힌트:</strong> 엔진이 풀이 순서를 정하고, LLM은 그 순서를 질문과 단계 문장으로만 바꾼다.</li>
+</ul>
+<p><img src="/projects/geomate/pipeline.png" alt="문제 사진 한 장이 도형과 힌트가 되기까지의 12단계"></p>
+<p>모델도 감으로 고르지 않았다. 5개 모델을 같은 사진으로 비교했더니 GPT-6.1 Sol(medium)의 문제 읽기 정확도가 97%로 가장 높았다. 더 작은 모델은 정답 11/20, 엔진 통과 12/20까지 떨어졌다. 빠르고 싼 모델로 바꾸고 싶었지만, 숫자를 보고 나니 미련 없이 접을 수 있었다.</p>
+<p>그래도 한계는 남았다. 잘못 읽은 값이 수학적으로 성립하면 엔진 검사로는 걸러지지 않는다. 그래서 원본 문제와 앱이 읽은 조건을 학생이 비교하고, 다르면 신고하거나 다시 해석을 요청하는 단계를 두었다. AI 출력을 초안으로 다루는 이상, 사람의 확인을 완전히 없앨 수는 없었다.</p>
+<h2>3. &quot;렉 걸린다&quot;를 숫자로</h2>
+<p>태블릿에서 정육면체 단면을 돌리면 끊긴다는 말이 나왔다. 처음에는 원인을 짐작으로 두 번 틀렸다. <code>dumpsys gfxinfo</code>로 끊긴 프레임을 재고, React Profiler로 다시 그린 횟수를 세고, 같은 조작을 전후로 녹화하고 나서야 원인이 보였다.</p>
+<p>공통 원인은 <strong>손으로 계속 바꾸는 값이 화면 전체 상태에 들어 있어서, 값이 바뀔 때마다 툴바·카드·도형을 모두 다시 그린 것</strong>이었다.</p>
+<table>
+<thead>
+<tr>
+<th>조작</th>
+<th>전</th>
+<th>후</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>정육면체 단면 회전(6초)</td>
+<td>115프레임, 끊김 8.70%</td>
+<td>351프레임, 끊김 1.71%</td>
+</tr>
+<tr>
+<td>원 굴리기</td>
+<td>가장 느린 1% 프레임 65ms</td>
+<td>16ms</td>
+</tr>
+<tr>
+<td>원기둥 옆면 펼치기</td>
+<td>초당 20.7번, 펼칠수록 도형이 작아짐</td>
+<td>초당 29.3번, 크기 유지</td>
+</tr>
+</tbody></table>
+<p>종이 접기 슬라이더는 다시 그리는 범위만 줄였을 때 수치가 두 배 좋아졌지만, 손으로 쓰면 여전히 끊겼다. 손을 따라 움직이는 그림은 처음부터 UI 스레드에서 그려야 했다. <strong>수치가 좋아진 것과 손이 느끼는 것은 다를 수 있다</strong>는 것도 이때 배웠다.</p>
+<h2>4. 펜 하나로</h2>
+<p>갤럭시탭을 타깃으로 정한 이유 중 하나가 S펜이었다. 처음에는 &quot;도형 조작은 손, 필기는 펜&quot;으로 나눴는데, 펜을 쥔 채 손가락으로 도형을 돌리는 동작이 생각보다 번거로웠다.</p>
+<p>그래서 펜 옆 버튼에 역할을 더했다. 버튼을 누른 채 <strong>시작한 자리</strong>에 따라 선 위에서는 지우개, 입체 위에서는 회전과 접기, 빈 곳에서는 화면 이동이 된다. 기준은 평소 쓰던 필기 앱 Flexcil의 동작이었다.</p>
+<p>문제는 인식 영역이었다. 입체 영역을 화면 사각형으로 잡았더니, 십자 모양 전개도의 빈 모서리에서도 입체가 돌아갔다. 면마다 꼭짓점을 화면에 투영한 다각형으로 판정하도록 바꾸고, 버튼을 누르는 동안 인식 영역의 외곽선을 보여 주었다. 학생이 지금 펜이 무엇을 할지 화면에서 알 수 있어야 했다.</p>
+<h2>5. 짐작 대신 같은 표본으로</h2>
+<p>정답 입력은 처음에 수식 키패드였다. 태블릿에서는 펜으로 바로 쓰는 편이 자연스러워 손글씨 인식을 붙이려 했지만, 삼성 손글씨는 <code>3/4</code>를 <code>314</code>로, Google ML Kit는 <code>4π</code>를 <code>44</code>로 읽었다. 같은 S펜 표본으로 후보를 나란히 비교한 뒤 수식 전용 모델 Uni-MuMER 2B를 골랐다.</p>
+<p>학습 전 정확도는 65.0%였다. 팀원들에게 손글씨를 받아 다시 학습해 81.8%, 증강 데이터를 더해 90.5%까지 올렸다.</p>
+<p><img src="/projects/geomate/handwriting-accuracy.png" alt="정답 입력 필기 인식 정확도: 65.0%에서 90.5%로">
+ 사람에 따라 64%에서 87%까지 차이가 나서, 내 글씨 하나로 재면 안 된다는 것도 알게 됐다. 이름을 쓰는 칸은 엔진이 답 형식을 알고 있으니 ML Kit로 나눴다. 그래도 10% 가까이는 틀리므로, 인식 결과를 칸 아래에 바로 보여 줘서 학생이 다르면 다시 쓰게 했다.</p>
+<p>문제 영역 선택도 같은 방식으로 풀었다. 문제를 사진에서 고를 때 사각형이 조금 엇나가면 다시 맞춰야 했다. 삼성 AI 셀렉트처럼 알아서 영역을 잡아 주고 싶어 PP-DocLayout-S를 가져왔지만, 학습 전 모델은 문제 영역을 제대로 잡지 못했다. 문제집 페이지를 직접 라벨링하며 24페이지에서 67페이지까지 늘렸고, AP50은 76.3에서 90.7이 됐다.</p>
+<!-- 작성 메모: 라벨링 작업을 직접 하면서 든 생각(예: 문제·그림·보기를 어디까지 한 영역으로 볼지 정하는 기준)을 한 문단 추가하면 좋다. -->
+<p>하나의 문제가 어디까지 이어지는지 판단하기 위해, 사용자가 지정한 범위에서 바깥쪽으로 탐색했다. 일정 범위의 행과 열이 모두 비어 있으면 그 공백을 문제의 경계로 보고, 경계 안쪽을 하나의 문제 범위로 정했다.</p>
+<h2>아쉬웠던 것</h2>
+<p><strong>방향을 너무 자주 바꿨다.</strong> 도형 조작 공간의 배치는 네 번 바뀌었다. 칸을 하나씩 고치다 보니 손잡이와 좌표 계산을 만들고 지우기를 반복했다. 답 입력도 키패드 → 손글씨 → 키패드 → 손글씨로 세 번 방향을 틀었다. 배치는 화면 전체를 먼저 그려 보고, 인식기는 표본 수집 페이지를 먼저 만들어 후보를 한 번에 비교했다면 덜 돌았을 것이다.</p>
+<p><strong>학습 효과를 숫자로 보여 주지 못했다.</strong> 원스토어 후기와 학생·선생님 유저테스트, 수학과 교수님과 현직 선생님 인터뷰로 반응은 확인했다. 하지만 성적 변화는 측정하지 못했다. 발표 Q&amp;A를 준비하며 &quot;우연히 맞힌 답은 어떻게 구분하나요?&quot;라는 질문에 &quot;아직 완전히 구분하지 못한다&quot;고 답을 적어야 했다.</p>
+<p><strong>실기기 검증이 늦었다.</strong> 반응 속도는 모두 개발 모드에서 쟀고, 릴리스 빌드와 완전 저사양 태블릿에서는 재지 못했다. 손바닥 무시와 필압도 충분히 확인하지 못했다. 리뷰에서 가장 많이 받은 질문도 &quot;실기기에서 확인했나&quot;였다.</p>
+<p><strong>다른 파트의 작업이 언제 필요한지 늦게 공유했다.</strong> 기하 엔진을 전체 풀이 흐름에서 검증하려면 문제 등록·문제함 화면과 API가 필요했는데, 이 관계를 스프린트 후반에야 알렸다. 작업 단위도 커서 엔진 검증이 스크럼에서 사흘 내내 ‘진행 중’으로 남았다. 발표를 앞두고는 기능 수정과 발표 자료·영상 제작이 한꺼번에 몰렸다. 다음에는 스프린트 시작 때 누가 무엇을 언제까지 넘겨줘야 하는지 먼저 맞추고, 검증 작업은 하루 안에 확인할 수 있는 단위로 나누려고 한다. 발표에 꼭 필요한 수정은 미리 정하고, 추가 개선은 발표 이후로 미뤄 시연 준비 시간을 확보하고 싶다.</p>
+<h2>다음에 다르게 할 것</h2>
+<ul>
+<li>화면 배치를 바꿀 때는 부분이 아니라 전체 화면을 먼저 그려 보고 정한다.</li>
+<li>선택지가 여럿이면 같은 표본으로 비교할 장치를 먼저 만든다. 결과 표가 방향을 정하는 근거가 된다.</li>
+<li>&quot;느리다&quot;, &quot;불편하다&quot;는 말은 재서 고치고, 고친 뒤에는 다시 손으로 써 본다.</li>
+<li>학습 효과를 확인할 방법(사용 전후 정답률 비교, 조건을 바꾼 유사 문제)을 기획 단계에서 함께 설계한다.</li>
+</ul>
+<h2>마치며</h2>
+<p>처음 PoC를 만들 때는 엔진이 문제를 계산할 수 있는지가 가장 큰 질문이었다. 한 달이 지나고 나니 질문이 바뀌어 있었다. 학생이 생각하기 전에 화면이 답을 말하고 있지는 않은지, 막힌 학생이 힌트를 보고 자기 시도로 돌아올 수 있는지.</p>
+<p>계산이 맞는 도형을 만드는 일보다, 그 도형 앞에서 학생이 스스로 생각할 시간을 지켜 주는 일이 더 어려웠다. 그리고 그게 Geomate가 하려던 일이었다.</p>
+<p>특화 프로젝트 본선과 달리 자율 프로젝트 지역 본선은 온라인으로 진행됐다. 카메라를 보고 말한 건 코로나 시절 강의할 때 이후로 처음이었다. 좌우로 움직이지 않고 한자리에 서서 말하려니 생각보다 어색하고 어려웠다. 발표를 한 번 하고 나면 무릎이 아팠다. 군대에서 차렷 자세로 대기할 때가 떠올랐다. 교육 앱을 소개하는 만큼 딱딱하게 들리지 않으려고 애썼는데, 심사위원들에게도 그렇게 들렸을지는 모르겠다.</p>
+<p>처음엔 취업 준비하면서 프로젝트 하나 끝까지 해 보자고 모였다. 같이 농담하고 웃으면서 만들다 보니 상도 받고, 전국 결선에 나갈 기회도 얻었다. 그동안 함께 고생한 팀원들에게 고맙다는 말을 전하고 싶다.</p>
+<p>프로젝트 초중기부터 매일 새벽 두 시에 잔다. 전국 결선이 끝나면 며칠은 푹 쉬어야겠다.</p>
+a:X
+f:X
+f:C
+0:{"buildId":"nP3BUmEPVBHPrrKu1xgxr","data":[{"rsc":["$","$1","c",{"children":[["$","div",null,{"className":"@container","children":["$","article",null,{"className":"mx-auto max-w-[760px] px-5 pb-24 pt-8 sm:px-8 sm:pt-10","children":[["$","div",null,{"children":["$","$L2",null,{"href":"/","scroll":false,"className":"text-[13px] text-foreground/65 transition-colors hover:text-accent","children":"← Devlog"}]}],["$","span",null,{"className":"mt-10 flex items-center gap-1.5 font-mono text-[12px] text-foreground/65","children":[["$","$L3",null,{"iconNode":[["path",{"d":"M8 2v3","key":"1ioesn"}],["path",{"d":"M16 2v3","key":"otl347"}],["rect",{"x":"3","y":"3","width":"18","height":"18","rx":"2","key":"h1oib"}],["path",{"d":"M3 9h18","key":"1pudct"}],["path",{"d":"M8 13h.01","key":"1sbv64"}],["path",{"d":"M12 13h.01","key":"y0uutt"}],["path",{"d":"M16 13h.01","key":"wip0gl"}],["path",{"d":"M8 17h.01","key":"p3bg7i"}],["path",{"d":"M12 17h.01","key":"p32p05"}],["path",{"d":"M16 17h.01","key":"ql8jdd"}]],"className":"lucide-calendar-days","aria-hidden":"true","size":13,"strokeWidth":1.7}],"2026-11-18"]}],["$","h1",null,{"className":"mt-4 text-3xl font-bold leading-tight tracking-[-0.025em] text-foreground sm:text-[2.25rem]","children":"답을 알려 주지 않는 앱 — Geomate 한 달 회고"}],["$","$L4","stats:2026-11-18-geomate-retrospective",{"slug":"2026-11-18-geomate-retrospective","recordVisit":true,"className":"mt-4"}],["$","p",null,{"className":"mt-4 text-[16px] leading-7 text-foreground/70","children":"문제 사진을 손으로 조작하는 도형으로 바꾸는 기하 학습 앱 Geomate를 한 달 동안 만들어 자율 프로젝트 우수상(1등)을 받았다. 화면이 먼저 답을 말하지 않게 하는 일, AI에게 맡길 일을 나누는 일, 느낌을 숫자로 바꾸는 일에서 배운 것을 정리했다."}],["$","div",null,{"className":"mt-6 flex flex-wrap gap-1.5","children":[["$","span","SSAFY",{"className":"rounded-full border border-ink/12 bg-ink/6 px-2.5 py-1 text-[12px] text-foreground/75","children":"SSAFY"}],["$","span","Geomate",{"className":"rounded-full border border-ink/12 bg-ink/6 px-2.5 py-1 text-[12px] text-foreground/75","children":"Geomate"}],["$","span","자율 프로젝트",{"className":"rounded-full border border-ink/12 bg-ink/6 px-2.5 py-1 text-[12px] text-foreground/75","children":"자율 프로젝트"}],["$","span","PM",{"className":"rounded-full border border-ink/12 bg-ink/6 px-2.5 py-1 text-[12px] text-foreground/75","children":"PM"}],["$","span","회고",{"className":"rounded-full border border-ink/12 bg-ink/6 px-2.5 py-1 text-[12px] text-foreground/75","children":"회고"}]]}],["$","div",null,{"className":"mt-10 border-t border-ink/10 doc-prose-module__rLTzAW__prose","dangerouslySetInnerHTML":{"__html":"$5"}}],"$L6"]}]}],["$L7"],"$L8"]}],"isPartial":"$@9","staleTime":"$a","varyParams":null},{"rsc":"$Lb","isPartial":"$@c","staleTime":"$a","varyParams":null},{"rsc":"$Ld","isPartial":"$@e","staleTime":"$a","varyParams":"$f"},{"rsc":"$L10","isPartial":"$@11","staleTime":"$a","varyParams":"$f"}],"isUpgradeableISRFallback":false,"a":"$@12","rootVaryParams":null,"needsRuntimeRequest":"$@13"}
+14:I[97053,["/_next/static/chunks/0q654p4lxvnny.js","/_next/static/chunks/08eldunmyzqwk.js","/_next/static/chunks/0uri8sq5s_br9.js"],"default"]
+15:I[97367,["/_next/static/chunks/0q654p4lxvnny.js","/_next/static/chunks/08eldunmyzqwk.js"],"OutletBoundary"]
+16:"$Sreact.suspense"
+18:I[97367,["/_next/static/chunks/0q654p4lxvnny.js","/_next/static/chunks/08eldunmyzqwk.js"],"ViewportBoundary"]
+19:I[97367,["/_next/static/chunks/0q654p4lxvnny.js","/_next/static/chunks/08eldunmyzqwk.js"],"MetadataBoundary"]
+1a:I[27201,["/_next/static/chunks/0q654p4lxvnny.js","/_next/static/chunks/08eldunmyzqwk.js"],"IconMark"]
+1b:I[39756,["/_next/static/chunks/0q654p4lxvnny.js","/_next/static/chunks/08eldunmyzqwk.js"],"default"]
+1c:I[37457,["/_next/static/chunks/0q654p4lxvnny.js","/_next/static/chunks/08eldunmyzqwk.js"],"default"]
+6:["$","$L14","comments:2026-11-18-geomate-retrospective",{"slug":"2026-11-18-geomate-retrospective"}]
+7:["$","script","script-0",{"src":"/_next/static/chunks/0uri8sq5s_br9.js","async":true}]
+8:["$","$L15",null,{"children":["$","$16",null,{"name":"Next.MetadataOutlet","children":"$@17"}]}]
+b:["$","$1","h",{"children":[null,["$","$L18",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]}],["$","div",null,{"hidden":true,"children":["$","$L19",null,{"children":["$","$16",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"답을 알려 주지 않는 앱 — Geomate 한 달 회고 · Belog"}],["$","meta","1",{"name":"description","content":"문제 사진을 손으로 조작하는 도형으로 바꾸는 기하 학습 앱 Geomate를 한 달 동안 만들어 자율 프로젝트 우수상(1등)을 받았다. 화면이 먼저 답을 말하지 않게 하는 일, AI에게 맡길 일을 나누는 일, 느낌을 숫자로 바꾸는 일에서 배운 것을 정리했다."}],["$","meta","2",{"name":"giscus:backlink","content":"https://hj0543.github.io/devlog/2026-11-18-geomate-retrospective/"}],["$","link","3",{"rel":"icon","href":"/icon.png?icon.3bup3hv08dkxp.png","sizes":"1254x1254","type":"image/png"}],["$","$L1a","4",{}]]}]}]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}]
+d:["$","$1","c",{"children":[null,["$","$L1b",null,{"parallelRouterKey":"children","template":["$","$L1c",null,{}]}]]}]
+10:["$","$1","c",{"children":[null,["$","$L1b",null,{"parallelRouterKey":"children","template":["$","$L1c",null,{}]}]]}]
+13:true
+17:null
+a:300
+a:C
+12:0
+c:"$undefined"
+e:"$undefined"
+11:"$undefined"
+9:"$undefined"

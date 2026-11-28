@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <title>GEOMATE 학습 흐름</title>
+  <style>
+    *{box-sizing:border-box}body{margin:0;padding:22px;background:#fff;color:#292b2a;font:15px/1.7 system-ui,sans-serif;word-break:keep-all}
+    .steps{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:8px;margin:0;padding:0;list-style:none}
+    button{width:100%;min-height:84px;padding:12px 6px;border:1px solid #daddd5;border-radius:6px;background:#fafbf8;color:#343a30;font:inherit;line-height:1.5;cursor:pointer}
+    button span{display:block;margin-bottom:7px;color:#707965;font-size:12px;font-variant-numeric:tabular-nums}button[aria-pressed=true]{background:#414b39;color:white;border-color:#414b39}button[aria-pressed=true] span{color:#dce3d6}button:hover{border-color:#737d68}button:focus-visible{outline:2px solid #414b39;outline-offset:3px}
+    .detail{margin-top:22px;padding-top:18px;border-top:1px solid #e0e3db}.detail h2{margin:0;font-size:19px}.detail p{margin:9px 0 0;color:#555e4e}.position{margin:16px 0 0;color:#6e7666;font-size:12px}
+    @media(max-width:600px){body{padding:16px}.steps{grid-template-columns:repeat(2,minmax(0,1fr))}button{min-height:50px;display:flex;align-items:center;gap:8px;padding:10px 12px;font-size:14px}button span{margin:0}.detail{margin-top:18px}.detail h2{font-size:18px}.detail p{font-size:14px;line-height:1.7}}
+  </style>
+</head>
+<body>
+  <ol class="steps" aria-label="학습 단계">
+    <li><button type="button" aria-pressed="true" data-step="0"><span>01</span>문제 가져오기</button></li>
+    <li><button type="button" aria-pressed="false" data-step="1"><span>02</span>도형 복원</button></li>
+    <li><button type="button" aria-pressed="false" data-step="2"><span>03</span>예측</button></li>
+    <li><button type="button" aria-pressed="false" data-step="3"><span>04</span>진단</button></li>
+    <li><button type="button" aria-pressed="false" data-step="4"><span>05</span>힌트</button></li>
+    <li><button type="button" aria-pressed="false" data-step="5"><span>06</span>결과 확인</button></li>
+    <li><button type="button" aria-pressed="false" data-step="6"><span>07</span>학습 기록</button></li>
+  </ol>
+  <section class="detail" aria-live="polite" aria-atomic="true">
+    <h2 id="step-title">문제 가져오기</h2>
+    <p id="step-description">사진이나 PDF에서 내가 풀 문제를 가져옵니다.</p>
+    <p class="position" id="step-position">1 / 7</p>
+  </section>
+  <script>
+    const steps=[['문제 가져오기','사진이나 PDF에서 내가 풀 문제를 가져옵니다.'],['도형 복원','문제 속 도형을 태블릿에서 직접 조작할 수 있는 2D·3D 도형으로 복원합니다.'],['예측','결과를 바로 확인하기 전에 먼저 답을 예상하고 도형을 관찰합니다.'],['진단','막힌 단계를 확인하고, 지금 살펴볼 관계를 찾습니다.'],['힌트','정답을 바로 보여 주는 대신 다음에 관찰할 방향을 단계별로 안내합니다.'],['결과 확인','생각하고 조작한 뒤에 정답과 풀이를 확인합니다.'],['학습 기록','문제를 풀며 진행한 학습을 기록으로 남깁니다.']];
+    const buttons=document.querySelectorAll('[data-step]');
+    buttons.forEach(button=>button.addEventListener('click',()=>{const index=Number(button.dataset.step);buttons.forEach(item=>item.setAttribute('aria-pressed',String(item===button)));document.getElementById('step-title').textContent=steps[index][0];document.getElementById('step-description').textContent=steps[index][1];document.getElementById('step-position').textContent=(index+1)+' / '+steps.length;}));
+  </script>
+</body>
+</html>

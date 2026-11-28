@@ -1,0 +1,11 @@
+<!doctype html>
+<html lang="ko">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="color-scheme" content="light"><title>스터디 봇 외부 요청 처리 정책</title><link rel="stylesheet" href="/projects/_shared/case-widget.css"><script src="/projects/_shared/case-explorer.js" defer></script></head>
+<body class="request-body" data-active="normal">
+  <nav class="controls" aria-label="외부 API 응답 상황 선택"><button type="button" data-select="normal" aria-pressed="true" aria-controls="panel-normal">정상 응답</button><button type="button" data-select="timeout" aria-pressed="false" aria-controls="panel-timeout">응답 없음</button></nav>
+  <div aria-live="polite" aria-atomic="true">
+    <section id="panel-normal" data-panel="normal"><div class="request-flow"><div>스터디원별 조회</div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 12h18m-6-6 6 6-6 6"/></svg><div>풀이 기록 수신</div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 12h18m-6-6 6 6-6 6"/></svg><div>기록 저장 · 알림</div></div><p class="request-note">풀이 여부를 확인하고, 상태가 바뀔 때마다 <strong>JSON 파일에 저장</strong>합니다. 재시작할 때 저장된 기록을 다시 읽어 옵니다.</p></section>
+    <section id="panel-timeout" data-panel="timeout" hidden><div class="request-flow"><div>스터디원별 조회</div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 12h18m-6-6 6 6-6 6"/></svg><div>5초 타임아웃</div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 12h18m-6-6 6 6-6 6"/></svg><div>다음 사용자 계속</div></div><p class="request-note">모든 외부 요청에 <strong>timeout=5</strong>를 지정하고, 풀이 확인 루프에서 스터디원별로 예외를 처리했습니다. 한 사람의 조회 실패가 전체 확인을 멈추지 않게 했습니다.</p></section>
+  </div>
+  <p class="request-example"><span>입력 예시 <code>실1 + BFS</code></span><span>조건 변환 <code>난이도 번호 · 알고리즘 태그</code></span></p>
+</body></html>

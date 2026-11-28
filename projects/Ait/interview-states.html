@@ -1,0 +1,15 @@
+<!doctype html>
+<html lang="ko">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="color-scheme" content="light"><title>Ait 면접 상태와 화면 기준</title><link rel="stylesheet" href="/projects/_shared/case-widget.css"><script src="/projects/_shared/case-explorer.js" defer></script></head>
+<body data-active="progress">
+  <nav class="controls states" aria-label="면접 상태 선택">
+    <button type="button" data-select="scheduled" aria-pressed="false" aria-controls="panel-scheduled">예정</button><button type="button" data-select="ready" aria-pressed="false" aria-controls="panel-ready">준비 완료</button><button type="button" data-select="progress" aria-pressed="true" aria-controls="panel-progress">진행 중</button><button type="button" data-select="analysis" aria-pressed="false" aria-controls="panel-analysis">분석 중</button><button type="button" data-select="complete" aria-pressed="false" aria-controls="panel-complete">완료</button>
+  </nav>
+  <div aria-live="polite" aria-atomic="true">
+    <section class="explanation" id="panel-scheduled" data-panel="scheduled" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="4" y="5" width="16" height="16" rx="2"/><path d="M8 2v6m8-6v6M4 11h16"/></svg><div><h2>연습을 준비하는 화면</h2><p>개인 자료 연동과 면접 설정을 통해 어떤 경험을 바탕으로 연습할지 정합니다.</p><p class="owner">이력서 · 자기소개서 · GitHub 연동과 설정 흐름</p></div></section>
+    <section class="explanation" id="panel-ready" data-panel="ready" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="4" y="3" width="16" height="13" rx="1"/><path d="M2 20h20m-15-10 3 3 6-6"/></svg><div><h2>장치를 먼저 점검</h2><p>면접에 들어가기 전에 카메라·마이크를 확인하고, 마이크 레벨을 표시해 입력 상태를 알 수 있게 했습니다.</p><p class="owner">프론트엔드 직접 구현 · 장치 점검과 진입 흐름</p></div></section>
+    <section class="explanation" id="panel-progress" data-panel="progress"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="9" y="2" width="6" height="12" rx="3"/><path d="M5 10v2a7 7 0 0 0 14 0v-2M12 19v3m-4 0h8"/></svg><div><h2>질문과 답변이 이어지는 면접 화면</h2><p>질문 음성 안내 뒤 답변 녹음·음성 인식을 시작하고, 표정·시선 데이터를 캡처합니다. 안내나 인식이 끊길 때의 대체 경로도 두었습니다.</p><p class="owner">프론트엔드: 캡처 · 전송 / 서버·AI: 집계 · 평가</p></div></section>
+    <section class="explanation" id="panel-analysis" data-panel="analysis" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 6v6l4 3"/></svg><div><h2>진행과 분석을 구분</h2><p>면접 진행 화면과 결과를 분석하는 화면이 같은 상태를 다르게 해석하지 않도록 공통 상태 이름을 정했습니다.</p><p class="owner">점수 계산과 집계는 서버·AI 파트 담당</p></div></section>
+    <section class="explanation" id="panel-complete" data-panel="complete" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5 3h14v18H5zM8 8h8M8 12h8m-8 4h5"/></svg><div><h2>다음 연습으로 돌아가는 리포트</h2><p>질문별 피드백, 평가 지표와 회차별 추이를 보여 줍니다. 이번 답변에서 보완할 점과 이전 연습과의 차이를 살펴보도록 구성했습니다.</p><p class="owner">프론트엔드 직접 구현 · 결과 리포트와 대시보드</p></div></section>
+  </div>
+</body></html>
